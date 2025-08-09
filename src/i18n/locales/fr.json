@@ -1,0 +1,46 @@
+{
+  "header": {
+    "logo": "BrokerAnalysis",
+    "language": "Langue",
+    "darkMode": "Mode Sombre",
+    "lightMode": "Mode Clair",
+    "userMenu": "Menu Utilisateur",
+    "signIn": "Se Connecter",
+    "createAccount": "Créer un Compte",
+    "helpSupport": "Aide et Support"
+  },
+  "nav": {
+    "search": "Rechercher courtiers, plateformes, instruments...",
+    "menu": "Menu",
+    "compareBrokers": "Comparer les Courtiers"
+  },
+  "footer": {
+    "description": "Votre partenaire de confiance pour trouver le courtier parfait. Comparez plus de 500 courtiers réglementés dans le monde entier avec des avis d'experts et des commentaires d'utilisateurs réels.",
+    "copyright": "Tous droits réservés.",
+    "sections": {
+      "reviews": "Avis",
+      "tools": "Outils",
+      "company": "Entreprise",
+      "resources": "Ressources"
+    },
+    "links": {
+      "bestBrokers": "Meilleurs Courtiers",
+      "brokerReviews": "Avis sur les Courtiers",
+      "comparisonTool": "Outil de Comparaison",
+      "allReviews": "Tous les Avis",
+      "profitCalculator": "Calculateur de Profit",
+      "positionSizeCalculator": "Calculateur de Taille de Position",
+      "marginCalculator": "Calculateur de Marge",
+      "marketScanner": "Scanner de Marché",
+      "aboutUs": "À Propos",
+      "contact": "Contact",
+      "privacyPolicy": "Politique de Confidentialité",
+      "termsOfService": "Conditions de Service",
+      "cookiePolicy": "Politique des Cookies",
+      "tradingGuide": "Guide de Trading",
+      "blog": "Blog",
+      "faq": "FAQ",
+      "support": "Support"
+    }
+  }
+}

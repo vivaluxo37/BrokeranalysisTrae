@@ -1,0 +1,326 @@
+name: ⚡ Performance Issue
+description: Report slow loading, high memory usage, or other performance problems
+title: "[Performance]: "
+labels: ["performance", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a performance issue! Performance problems can significantly impact user experience, so we take these reports seriously. Please provide as much detail as possible to help us identify and resolve the issue.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have tested this on multiple browsers/devices to confirm it's not device-specific
+          required: true
+        - label: I have checked my internet connection and confirmed it's stable
+          required: true
+        - label: I have cleared my browser cache and cookies
+          required: true
+        - label: I have searched existing issues to ensure this hasn't been reported before
+          required: true
+
+  - type: dropdown
+    id: performance-type
+    attributes:
+      label: Performance Issue Type
+      description: What type of performance issue are you experiencing?
+      options:
+        - Slow page loading
+        - Slow search results
+        - High memory usage
+        - High CPU usage
+        - Unresponsive UI
+        - Slow data processing
+        - Network timeouts
+        - Database query slowness
+        - Animation/transition lag
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: Describe the performance issue you're experiencing
+      placeholder: |
+        What specific performance problem are you encountering?
+        When does it occur?
+        How does it affect your usage of the platform?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the performance issue
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Wait for '...'
+        4. Notice slow performance when '...'
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-pages
+    attributes:
+      label: Affected Pages/Features
+      description: Which pages or features are affected by this performance issue?
+      multiple: true
+      options:
+        - Homepage
+        - Broker Search
+        - Broker Comparison
+        - Broker Profile Pages
+        - User Dashboard
+        - Login/Registration
+        - Settings
+        - AI Chat
+        - Data Analysis Tools
+        - All pages
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: load-time
+    attributes:
+      label: Observed Load Time
+      description: How long does the affected action/page take to complete?
+      placeholder: e.g., 15 seconds, 2 minutes, never completes
+    validations:
+      required: true
+
+  - type: input
+    id: expected-time
+    attributes:
+      label: Expected Load Time
+      description: How long should this action/page take to complete?
+      placeholder: e.g., 2-3 seconds, under 1 second
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: Frequency
+      description: How often does this performance issue occur?
+      options:
+        - Always (100%)
+        - Often (75-99%)
+        - Sometimes (25-74%)
+        - Rarely (1-24%)
+        - Once
+    validations:
+      required: true
+
+  - type: dropdown
+    id: time-of-day
+    attributes:
+      label: Time of Day
+      description: When do you typically experience this issue?
+      options:
+        - Morning (6 AM - 12 PM)
+        - Afternoon (12 PM - 6 PM)
+        - Evening (6 PM - 12 AM)
+        - Night (12 AM - 6 AM)
+        - All times
+        - No specific pattern
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Browser
+      description: Which browser(s) are you experiencing this issue on?
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Opera
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser Version
+      description: What version of the browser are you using?
+      placeholder: e.g., Chrome 118.0.5993.88
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device-type
+    attributes:
+      label: Device Type
+      description: What type of device are you using?
+      options:
+        - Desktop
+        - Laptop
+        - Mobile Phone
+        - Tablet
+    validations:
+      required: true
+
+  - type: input
+    id: device-specs
+    attributes:
+      label: Device Specifications
+      description: What are your device specifications?
+      placeholder: e.g., Intel i7, 16GB RAM, Windows 11 / iPhone 14, iOS 16.1
+    validations:
+      required: true
+
+  - type: input
+    id: internet-speed
+    attributes:
+      label: Internet Connection Speed
+      description: What is your internet connection speed?
+      placeholder: e.g., 100 Mbps download, 20 Mbps upload (test at speedtest.net)
+
+  - type: dropdown
+    id: connection-type
+    attributes:
+      label: Connection Type
+      description: What type of internet connection are you using?
+      options:
+        - Fiber/Broadband
+        - Cable
+        - DSL
+        - Mobile/Cellular
+        - Satellite
+        - Other
+
+  - type: textarea
+    id: browser-performance
+    attributes:
+      label: Browser Performance Metrics
+      description: If available, please share performance metrics from browser dev tools
+      placeholder: |
+        Open browser dev tools (F12) > Performance tab > Record while reproducing the issue
+        
+        Share any relevant metrics like:
+        - Loading time
+        - Scripting time
+        - Rendering time
+        - Memory usage
+        - Network requests
+      render: text
+
+  - type: textarea
+    id: console-errors
+    attributes:
+      label: Console Errors/Warnings
+      description: Any errors or warnings shown in the browser console during the performance issue
+      placeholder: Paste any console errors or warnings here...
+      render: text
+
+  - type: textarea
+    id: network-analysis
+    attributes:
+      label: Network Analysis
+      description: Information from the Network tab in browser dev tools
+      placeholder: |
+        Open browser dev tools (F12) > Network tab > Reproduce the issue
+        
+        Share information about:
+        - Slow-loading resources
+        - Failed requests
+        - Large file sizes
+        - Request timing
+      render: text
+
+  - type: dropdown
+    id: data-amount
+    attributes:
+      label: Data Amount
+      description: How much data are you working with when the issue occurs?
+      options:
+        - Small dataset (< 100 items)
+        - Medium dataset (100-1000 items)
+        - Large dataset (1000-10000 items)
+        - Very large dataset (> 10000 items)
+        - Unknown
+        - Not applicable
+
+  - type: checkboxes
+    id: performance-factors
+    attributes:
+      label: Performance Factors
+      description: Which factors seem to affect the performance issue?
+      options:
+        - label: Number of open browser tabs
+        - label: Other applications running
+        - label: Time since browser was last restarted
+        - label: Amount of data being processed
+        - label: Number of concurrent users (if known)
+        - label: Specific search filters or criteria
+        - label: Browser extensions enabled
+        - label: Ad blockers enabled
+
+  - type: textarea
+    id: workarounds
+    attributes:
+      label: Workarounds
+      description: Have you found any workarounds that improve performance?
+      placeholder: |
+        Things that help:
+        - Refreshing the page
+        - Using a different browser
+        - Clearing cache
+        - Disabling extensions
+        - Using incognito mode
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots/Videos
+      description: Screenshots of performance metrics, slow loading, or videos showing the issue
+      placeholder: Drag and drop images/videos here or paste URLs...
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact Level
+      description: How much does this performance issue impact your use of the platform?
+      options:
+        - Critical (Cannot use the platform)
+        - High (Significantly impacts productivity)
+        - Medium (Noticeable but manageable)
+        - Low (Minor inconvenience)
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help us understand and resolve this performance issue
+      placeholder: |
+        - When did you first notice this issue?
+        - Has performance gotten worse over time?
+        - Any recent changes to your setup?
+        - Comparison with other similar platforms?
+
+  - type: checkboxes
+    id: testing-help
+    attributes:
+      label: Testing Assistance
+      description: Are you willing to help test potential fixes?
+      options:
+        - label: I can test fixes on my current setup
+        - label: I can provide additional performance data if needed
+        - label: I can test on different devices/browsers
+        - label: I can provide feedback on performance improvements

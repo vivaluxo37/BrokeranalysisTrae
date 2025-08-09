@@ -1,0 +1,202 @@
+# Dependabot configuration for BrokerAnalysis platform
+# This configuration manages automated dependency updates
+
+version: 2
+updates:
+  # NPM dependencies for the main application
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "@brokeranalysis/maintainers"
+    assignees:
+      - "@brokeranalysis/maintainers"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "automated"
+    # Group related updates together
+    groups:
+      # React ecosystem updates
+      react:
+        patterns:
+          - "react*"
+          - "@types/react*"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # TypeScript and related tools
+      typescript:
+        patterns:
+          - "typescript"
+          - "@types/*"
+          - "ts-*"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # Testing frameworks
+      testing:
+        patterns:
+          - "*jest*"
+          - "@testing-library/*"
+          - "vitest*"
+          - "playwright*"
+          - "@playwright/*"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # Build tools and bundlers
+      build-tools:
+        patterns:
+          - "vite*"
+          - "@vitejs/*"
+          - "rollup*"
+          - "esbuild*"
+          - "webpack*"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # Linting and formatting
+      code-quality:
+        patterns:
+          - "eslint*"
+          - "@eslint/*"
+          - "prettier*"
+          - "@typescript-eslint/*"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # UI and styling
+      ui-styling:
+        patterns:
+          - "tailwindcss*"
+          - "@tailwindcss/*"
+          - "lucide-react"
+          - "recharts"
+          - "sonner"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # State management and utilities
+      utilities:
+        patterns:
+          - "zustand"
+          - "date-fns"
+          - "lodash*"
+          - "@types/lodash*"
+        update-types:
+          - "minor"
+          - "patch"
+    
+    # Ignore specific packages that require manual updates
+    ignore:
+      # Major version updates that might break compatibility
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "vite"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "tailwindcss"
+        update-types: ["version-update:semver-major"]
+      
+      # Packages that are pinned for stability
+      - dependency-name: "node-types"
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+    
+    # Allow automatic merging for patch updates of trusted packages
+    allow:
+      - dependency-type: "direct"
+        update-type: "security"
+      - dependency-type: "indirect"
+        update-type: "security"
+    
+    # Custom commit message for security updates
+    commit-message:
+      prefix: "security"
+      prefix-development: "security-dev"
+      include: "scope"
+    
+    # Rebase strategy for cleaner history
+    rebase-strategy: "auto"
+    
+    # Target branch for updates
+    target-branch: "develop"
+
+  # GitHub Actions workflow dependencies
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "10:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "@brokeranalysis/maintainers"
+    assignees:
+      - "@brokeranalysis/maintainers"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "github-actions"
+      - "ci/cd"
+      - "automated"
+    # Group GitHub Actions updates
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    
+    # Allow automatic security updates
+    allow:
+      - dependency-type: "direct"
+        update-type: "security"
+    
+    # Target branch for CI updates
+    target-branch: "develop"
+
+  # Docker dependencies (if using Docker in the future)
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "11:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "@brokeranalysis/maintainers"
+    commit-message:
+      prefix: "docker"
+      include: "scope"
+    labels:
+      - "docker"
+      - "infrastructure"
+      - "automated"
+    # Only security updates for Docker
+    allow:
+      - dependency-type: "direct"
+        update-type: "security"
+    target-branch: "develop"

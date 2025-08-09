@@ -1,0 +1,46 @@
+{
+  "header": {
+    "logo": "BrokerAnalysis",
+    "language": "Language",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "userMenu": "User Menu",
+    "signIn": "Sign In",
+    "createAccount": "Create Account",
+    "helpSupport": "Help & Support"
+  },
+  "nav": {
+    "search": "Search brokers, platforms, instruments...",
+    "menu": "Menu",
+    "compareBrokers": "Compare Brokers"
+  },
+  "footer": {
+    "description": "Your trusted partner for finding the perfect broker. Compare 500+ regulated brokers worldwide with expert reviews and real user feedback.",
+    "copyright": "All rights reserved.",
+    "sections": {
+      "reviews": "Reviews",
+      "tools": "Tools",
+      "company": "Company",
+      "resources": "Resources"
+    },
+    "links": {
+      "bestBrokers": "Best Brokers",
+      "brokerReviews": "Broker Reviews",
+      "comparisonTool": "Comparison Tool",
+      "allReviews": "All Reviews",
+      "profitCalculator": "Profit Calculator",
+      "positionSizeCalculator": "Position Size Calculator",
+      "marginCalculator": "Margin Calculator",
+      "marketScanner": "Market Scanner",
+      "aboutUs": "About Us",
+      "contact": "Contact",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "cookiePolicy": "Cookie Policy",
+      "tradingGuide": "Trading Guide",
+      "blog": "Blog",
+      "faq": "FAQ",
+      "support": "Support"
+    }
+  }
+}

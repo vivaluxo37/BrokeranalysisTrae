@@ -1,0 +1,9 @@
+a.asc, a.desc {
+    color: #fff;
+}
+a.asc::before {    
+    content: "⬇";
+}
+a.desc::before {
+    content: "⬆";
+}

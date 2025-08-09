@@ -1,0 +1,277 @@
+/*
+Theme Name: PokaTheme Child
+Template: pokatheme
+Theme URI: https://pokatheme.com
+Description: Premium Affiliate WordPress Theme
+Author: PokaTheme
+Author URI: https://pokatheme.com
+Version: 1.0.1
+License: Licensed theme
+Tags: black, blue, white, two-columns
+Text Domain:  poka
+*/
+
+/*
+    Add your custom styles here
+*/
+.site-header--style2 .header-logo::after {
+	display: none;
+}
+.breadcrumbs-wrapper span {
+	color: #8a8a93;
+}
+.breadcrumbs-wrapper span.item-current {
+	opacity: 1;
+}
+.breadcrumbs-wrapper span.item-current .bread-current {
+	color: #20f7bc;
+}
+
+.postbox-container .inside .acf-field {
+	padding: 14px 24px;
+}
+
+/* scroll to top */
+
+@-webkit-keyframes fadeOutRight {
+	0% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+}
+
+@keyframes fadeOutRight {
+	0% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+}
+
+@-webkit-keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+
+.et_pb_scroll_top svg {
+	max-width: 18px;
+	width: 100%;
+	margin-bottom: 3px;
+	margin-left: 10px;
+	margin-right: 8px;
+}
+
+.et_pb_scroll_top path {
+	fill: #fff;
+}
+
+.et-pb-icon {
+	font-family: ETmodules;
+	speak: none;
+	font-weight: 400;
+	-webkit-font-feature-settings: normal;
+	font-feature-settings: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	font-size: 96px;
+	font-style: normal;
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	direction: ltr;
+}
+
+.et_pb_scroll_top.et-pb-icon {
+	text-align: center;
+	background: rgba(0, 0, 0, 0.4);
+	text-decoration: none;
+	position: fixed;
+	z-index: 99999;
+	bottom: 125px;
+	right: 0;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	display: none;
+	cursor: pointer;
+	font-size: 30px;
+	padding: 5px;
+	color: #fff;
+}
+
+.et_pb_scroll_top.et-visible {
+	opacity: 1;
+	-webkit-animation: fadeInRight 1s 1 cubic-bezier(0.77, 0, 0.175, 1);
+	animation: fadeInRight 1s 1 cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.et_pb_scroll_top.et-hidden {
+	opacity: 0;
+	-webkit-animation: fadeOutRight 1s 1 cubic-bezier(0.77, 0, 0.175, 1);
+	animation: fadeOutRight 1s 1 cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.et_pb_scroll_top.et-pb-icon {
+	-webkit-border-top-left-radius: 100px;
+	-webkit-border-bottom-left-radius: 100px;
+	-moz-border-radius-topleft: 100px;
+	-moz-border-radius-bottomleft: 100px;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+}
+
+/* User Ratings stars */
+.icon-poka {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+}
+.icon-poka:before {
+	font-family: pokatheme !important;
+	font-style: normal !important;
+	font-weight: 400 !important;
+	font-variant: normal !important;
+	text-transform: none !important;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-poka-empty-star:before {
+	content: "i";
+	color: #fdcc0d;
+}
+.icon-poka-half-star:before {
+	content: "h";
+	color: #fdcc0d;
+}
+.icon-poka-full-star:before {
+	content: "j";
+	color: #fdcc0d;
+}
+
+.header-static--row .rating-box .rating,
+.header-static--row .rating-box .rating-msg {
+	display: none;
+}
+
+.header-static--row .rating-box .rating-box__number-of-ratings {
+	display: none;
+}
+
+.review-grid-item .rating-box .rating {
+	display: none;
+}
+
+.rating-box .rating {
+	margin-top: 6px;
+	z-index: 1;
+	position: relative;
+}
+
+.rating-box .rating .star {
+	margin-left: 3px;
+	margin-right: 3px;
+	z-index: 1;
+	position: relative;
+}
+
+.edu-menu-top-5-wrapper {
+	position: sticky;
+	top: 30px;
+}
+.edu-menu-top-5-wrapper .top-5--wrapper {
+	margin-top: 30px;
+}
+
+.education-menu {
+	background-color: #fff;
+	border-radius: 0.3125rem;
+	padding: 1.25rem 1.5625rem;
+	list-style: none;
+	font-weight: 600;
+	font-size: 1rem;
+	color: #777;
+}
+
+.review-logo {
+	border: 2px solid rgb(21 22 39);
+}
+
+.bonus-box .review-box-thumb,
+.bonus-box .review-box-actions {
+	flex-basis: 50%;
+	max-width: 50%;
+}
+
+.bonus-box-name {
+	color: #fff !important;
+	text-align: center;
+	margin-top: 0 !important;
+}
+
+.bonus-box a.btn.btn-primary.btn--full {
+	max-width: 300px;
+	text-align: center;
+	margin: 0 auto 10px;
+}
+
+.wysiwyg-part .bonus-box .review-box-actions h3 {
+	color: #fff;
+	text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+	.bonus-box .review-box-thumb,
+	.bonus-box .review-box-actions {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+}
+
+.page-id-149411 .breadcrumbs-wrapper,
+.page-id-149418 .breadcrumbs-wrapper,
+.page-id-149407 .breadcrumbs-wrapper,
+.page-id-149431 .breadcrumbs-wrapper {
+	display: none;
+}

@@ -1,0 +1,61 @@
+<svg width="116.000000" height="116.000000" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<clipPath id="clip447_26894">
+			<rect id="Frame" width="109.451614" height="116.000000" transform="translate(2.333008 0.000000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<clipPath id="clip447_26893">
+			<rect id="Frame 2072750474" width="116.000000" height="116.000000" transform="translate(-0.666992 0.000000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<linearGradient id="paint_linear_447_26905_0" x1="49.808903" y1="55.705822" x2="49.808903" y2="95.860809" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#088A7E"/>
+			<stop offset="1.000000" stop-color="#001A38"/>
+		</linearGradient>
+		<linearGradient id="paint_linear_447_26905_1" x1="49.808903" y1="55.705822" x2="49.808903" y2="95.860809" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#088A7E"/>
+			<stop offset="1.000000" stop-color="#001A38"/>
+		</linearGradient>
+	</defs>
+	<rect id="Frame 2072750474" width="116.000000" height="116.000000" transform="translate(-0.666992 0.000000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip447_26893)">
+		<rect id="Frame" width="109.451614" height="116.000000" transform="translate(2.333008 0.000000)" fill="#FFFFFF" fill-opacity="0"/>
+		<g clip-path="url(#clip447_26894)">
+			<mask id="mask447_26896" mask-type="alpha" maskUnits="userSpaceOnUse" x="2.333008" y="0.000000" width="109.451660" height="116.000000">
+				<path id="Vector" d="M2.33 0L111.78 0L111.78 116L2.33 116L2.33 0Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
+			</mask>
+			<g mask="url(#mask447_26896)">
+				<path id="Vector" d="M26.98 47.96C29.01 45.93 29.01 42.65 26.98 40.62L26.98 40.62C24.96 38.62 21.7 38.62 19.68 40.62L19.68 40.62C17.65 42.65 17.65 45.94 19.68 47.96L19.68 47.96C21.7 49.96 24.96 49.96 26.98 47.96L26.98 47.96Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M26.98 47.96C29.01 45.93 29.01 42.65 26.98 40.62C24.96 38.62 21.7 38.62 19.68 40.62C17.65 42.65 17.65 45.94 19.68 47.96C21.7 49.96 24.96 49.96 26.98 47.96Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="4.000916" stroke-linejoin="round"/>
+				<path id="Vector" d="M33.74 38.74C34.25 38.23 34.25 37.41 33.74 36.9L33.74 36.9C33.24 36.4 32.42 36.4 31.92 36.9L31.92 36.9C31.41 37.41 31.41 38.23 31.92 38.74L31.92 38.74C32.42 39.24 33.24 39.24 33.74 38.74L33.74 38.74Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M33.74 38.74C34.25 38.23 34.25 37.41 33.74 36.9C33.24 36.4 32.42 36.4 31.92 36.9C31.41 37.41 31.41 38.23 31.92 38.74C32.42 39.24 33.24 39.24 33.74 38.74Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M6.71 53.21C7.42 52.5 7.42 51.35 6.71 50.64L6.71 50.64C6 49.94 4.86 49.94 4.15 50.64L4.15 50.64C3.44 51.35 3.44 52.5 4.15 53.21L4.15 53.21C4.86 53.92 6 53.92 6.71 53.21L6.71 53.21Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M6.71 53.21C7.42 52.5 7.42 51.35 6.71 50.64C6 49.94 4.86 49.94 4.15 50.64C3.44 51.35 3.44 52.5 4.15 53.21C4.86 53.92 6 53.92 6.71 53.21Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M53.25 14.25C54.21 13.28 54.21 11.71 53.25 10.75L53.25 10.75C52.28 9.78 50.71 9.78 49.75 10.75L49.75 10.75C48.78 11.71 48.78 13.28 49.75 14.25L49.75 14.25C50.71 15.21 52.28 15.21 53.25 14.25L53.25 14.25Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M53.25 14.25C54.21 13.28 54.21 11.71 53.25 10.75C52.28 9.78 50.71 9.78 49.75 10.75C48.78 11.71 48.78 13.28 49.75 14.25C50.71 15.21 52.28 15.21 53.25 14.25Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M94 112C96.76 112 99 109.76 99 107C99 104.23 96.76 102 94 102C91.23 102 89 104.23 89 107C89 109.76 91.23 112 94 112Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M99 107C99 104.23 96.76 102 94 102C91.23 102 89 104.23 89 107C89 109.76 91.23 112 94 112C96.76 112 99 109.76 99 107Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.883281" stroke-linejoin="round"/>
+				<path id="Vector" d="M91.59 31.82C93.16 31.82 94.44 30.55 94.44 28.98C94.44 27.41 93.16 26.14 91.59 26.14C90.01 26.14 88.74 27.41 88.74 28.98C88.74 30.55 90.01 31.82 91.59 31.82Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M94.44 28.98C94.44 27.41 93.16 26.14 91.59 26.14C90.01 26.14 88.74 27.41 88.74 28.98C88.74 30.55 90.01 31.82 91.59 31.82C93.16 31.82 94.44 30.55 94.44 28.98Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M73.84 86.63L41.84 68.25L25.77 77.48L57.77 95.86L73.84 86.63Z" fill="#088A7E" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M73.84 86.63L41.84 68.25L25.77 77.48L57.77 95.86L73.84 86.63Z" fill="url(#paint_linear_447_26905_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M41.84 68.25L25.77 77.48L57.77 95.86L73.84 86.63L41.84 68.25Z" stroke="#088A7E" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M41.84 68.25L25.77 77.48L57.77 95.86L73.84 86.63L41.84 68.25Z" stroke="url(#paint_linear_447_26905_1)" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M107.06 59.77C107.4 59.96 107.59 60.32 107.56 60.71L106.7 72.44C106.68 72.77 106.49 73.07 106.2 73.23L56.75 101.64C56.44 101.81 56.07 101.81 55.76 101.64L8.68 74.59C8.01 74.21 8.01 73.24 8.68 72.86L68.77 38.35C69.08 38.17 69.46 38.17 69.77 38.35L107.06 59.77Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M107.61 60.08L96.98 65.68C96.29 66.04 96.27 67.04 96.96 67.43L106.66 " stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M42.33 61.72C42.03 61.54 41.65 61.54 41.34 61.72L27.28 69.8C26.61 70.18 26.61 71.15 27.28 71.53L57.27 88.76C57.58 88.93 57.96 88.93 58.27 88.76L72.33 80.68C73 80.3 73 79.33 72.33 78.95L42.33 61.72Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M104.31 71.55L109.74 74.67C110.41 75.06 110.41 76.02 109.74 76.41L55.73 107.43C55.42 107.6 55.04 107.6 54.73 107.43L11.94 82.85C11.28 82.47 11.28 81.5 11.94 81.12L16.25 " stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+				<path id="Vector" d="M17.68 86.15C17.38 85.97 17 85.97 16.69 86.15L11.94 88.87C11.27 89.26 11.27 90.22 11.94 90.61L54.73 115.18C55.04 115.36 55.42 115.36 55.73 115.18L109.74 84.16C110.41 83.78 110.41 82.81 109.74 82.43L105 79.7C104.69 79.53 104.31 79.53 104 79.7L55.73 107.43C55.42 107.6 55.04 107.6 54.73 107.43L17.68 86.15Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linejoin="round"/>
+			</g>
+			<path id="Vector 36" d="M73.66 50.93L73.66 66.76L105.32 48.3L105.32 32.46L73.66 50.93Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+			<path id="Vector 36" d="M73.66 50.93L105.32 32.46L105.32 48.3L73.66 66.76L73.66 50.93Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="0.868354" stroke-linejoin="round"/>
+			<path id="Vector 37" d="M42 48.3L73.66 66.76L73.66 50.93L42 32.46L42 48.3Z" fill="#001A38" fill-opacity="1.000000" fill-rule="nonzero"/>
+			<path id="Vector 37" d="M42 48.3L42 32.46L73.66 50.93L73.66 66.76L42 48.3Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="0.868354" stroke-linejoin="round"/>
+			<path id="Vector 38" d="M73.66 50.93L105.32 32.46L73.66 14L42 32.46L73.66 50.93Z" fill="#001A38" fill-opacity="1.000000" fill-rule="nonzero"/>
+			<path id="Vector 38" d="M73.66 50.93L42 32.46L73.66 14L105.32 32.46L73.66 50.93Z" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="0.868354" stroke-linejoin="round"/>
+			<path id="Vector 74" d="M77.73 34.69L88.45 34.69L88.45 " stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.600000"/>
+			<path id="Vector 76" d="M85.77 26.96L71.03 " stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.600000"/>
+			<path id="Vector 75" d="M68.35 29.28L68.35 23.09L79.07 " stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="1.600000"/>
+			<rect id="Rectangle 10" x="32.000000" y="7.000000" rx="1.000000" width="9.899446" height="9.899446" transform="rotate(45 32.000000 7.000000)" fill="#FFFFFF" fill-opacity="1.000000"/>
+			<rect id="Rectangle 11" x="77.000000" y="108.000000" width="4.242691" height="4.242691" transform="rotate(45 77.000000 108.000000)" fill="#FFFFFF" fill-opacity="1.000000"/>
+		</g>
+	</g>
+</svg>

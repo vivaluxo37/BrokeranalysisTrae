@@ -1,0 +1,230 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide as much detail as possible to help us understand and evaluate your request.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched existing issues to ensure this feature hasn't been requested before
+          required: true
+        - label: I have checked the roadmap to see if this feature is already planned
+          required: true
+        - label: This feature request is specific and actionable
+          required: true
+
+  - type: textarea
+    id: feature-summary
+    attributes:
+      label: Feature Summary
+      description: A brief, clear summary of the feature you're requesting
+      placeholder: Summarize your feature request in 1-2 sentences...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What pain point are you experiencing?
+      placeholder: |
+        As a [type of user], I want [goal/desire] so that [benefit/value].
+        
+        Currently, I have to [current workaround/limitation]...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your ideal solution to the problem
+      placeholder: |
+        I would like to see...
+        
+        This could work by...
+        
+        The user experience would be...
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: User Stories
+      description: Provide specific user stories that describe how this feature would be used
+      placeholder: |
+        1. As a trader, I want to... so that I can...
+        2. As a broker analyst, I want to... so that I can...
+        3. As an administrator, I want to... so that I can...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: Primary User Type
+      description: Who would primarily benefit from this feature?
+      options:
+        - Individual Traders
+        - Professional Traders
+        - Broker Analysts
+        - Platform Administrators
+        - Content Creators
+        - All Users
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: Which area of the platform does this feature relate to?
+      options:
+        - Broker Comparison
+        - Search & Filtering
+        - User Interface/UX
+        - Data Analysis
+        - AI/ML Features
+        - Authentication & Security
+        - Performance & Speed
+        - Mobile Experience
+        - API & Integrations
+        - Reporting & Analytics
+        - Content Management
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature to you?
+      options:
+        - Critical (Blocking current workflow)
+        - High (Significantly improves workflow)
+        - Medium (Nice to have improvement)
+        - Low (Minor enhancement)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - Simple (Small UI changes, configuration)
+        - Medium (New components, moderate logic)
+        - Complex (Major features, significant backend work)
+        - Very Complex (Platform-wide changes, new architecture)
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: |
+        Alternative 1: ...
+        Alternative 2: ...
+        
+        Current workaround: ...
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What specific criteria must be met for this feature to be considered complete?
+      placeholder: |
+        - [ ] User can...
+        - [ ] System should...
+        - [ ] Feature must...
+        - [ ] Performance should...
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups/Wireframes
+      description: If you have any mockups, wireframes, or visual examples, please share them
+      placeholder: Drag and drop images here or paste URLs to mockups...
+
+  - type: textarea
+    id: technical-considerations
+    attributes:
+      label: Technical Considerations
+      description: Any technical aspects, constraints, or requirements you're aware of?
+      placeholder: |
+        - Should integrate with...
+        - Must be compatible with...
+        - Performance requirements...
+        - Security considerations...
+
+  - type: checkboxes
+    id: impact-areas
+    attributes:
+      label: Impact Areas
+      description: Which areas of the platform might be affected by this feature?
+      options:
+        - label: Frontend/UI
+        - label: Backend/API
+        - label: Database
+        - label: Authentication
+        - label: Search functionality
+        - label: Data processing
+        - label: Third-party integrations
+        - label: Mobile responsiveness
+        - label: Performance
+        - label: Security
+
+  - type: textarea
+    id: business-value
+    attributes:
+      label: Business Value
+      description: How would this feature benefit the platform and its users?
+      placeholder: |
+        This feature would:
+        - Increase user engagement by...
+        - Improve user retention because...
+        - Attract new users who...
+        - Reduce support requests for...
+
+  - type: input
+    id: timeline
+    attributes:
+      label: Desired Timeline
+      description: When would you ideally like to see this feature implemented?
+      placeholder: e.g., Next release, Q2 2024, No specific timeline
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Are you willing to contribute to this feature?
+      options:
+        - label: I can help with design/mockups
+        - label: I can help with frontend development
+        - label: I can help with backend development
+        - label: I can help with testing
+        - label: I can help with documentation
+        - label: I can provide domain expertise
+        - label: I'm not able to contribute code but can provide feedback
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would be helpful for understanding this feature request
+      placeholder: Additional details, references, examples from other platforms...

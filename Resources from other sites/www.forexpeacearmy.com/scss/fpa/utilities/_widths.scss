@@ -1,0 +1,6 @@
+.min-w-sm-160 {
+    width:160%;
+    @include media-breakpoint-up(sm) {
+        width:160px;
+    }
+}

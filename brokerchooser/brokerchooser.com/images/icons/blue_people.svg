@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Oops… Page not found. :(</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#000">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="csrf-token" content="">
+    <link rel="shortcut icon" href="https://brokerchooser.com/favicon.svg" type="image/x-icon">
+    <link rel="icon" href="https://brokerchooser.com/favicon.svg" type="image/x-icon">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0 8px 0 8px;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .link {
+            text-align: center;
+
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media screen and (max-width: 640px) {
+            .desktop {
+                display: none;
+            }
+            .mobile {
+                display: block;
+            }
+        }
+
+        @media screen and (min-width: 641px) {
+            .desktop {
+                display: block;
+            }
+            .mobile {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <a href="/" class="link">
+            <img src="https://brokerchooser.com/images/404-page/404-desktop.png" alt="Page not found" class="desktop image"/>
+            <img src="https://brokerchooser.com/images/404-page/404-mobile.png" alt="Page not found" class="mobile image"/>
+        </a>
+    </div>
+</body>
+
+</html>

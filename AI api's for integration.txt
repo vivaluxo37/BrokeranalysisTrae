@@ -1,0 +1,494 @@
+2 batches of AI's with thier api's to integrate and used for 
+
+-for chatbot ui
+-Summarization
+-Document Ingestion (RAG)
+-Reasoning / Fraud Detection Logic
+-Bulk Analysis
+
+
+
+first batch from groq 
+----------
+
+API is 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
+
+curl https://api.groq.com/openai/v1/chat/completions -s \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer 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" \
+-d '{
+"model": "meta-llama/llama-4-scout-17b-16e-instruct",
+"messages": [{
+    "role": "user",
+    "content": "Explain the importance of fast language models"
+}]
+}'
+
+-------------------
+import { Groq } from 'groq-sdk';
+
+const groq = new Groq();
+
+const chatCompletion = await groq.chat.completions.create({
+  "messages": [
+    {
+      "role": "user",
+      "content": ""
+    }
+  ],
+  "model": "deepseek-r1-distill-llama-70b",
+  "temperature": 0.6,
+  "max_completion_tokens": 4096,
+  "top_p": 0.95,
+  "stream": true,
+  "stop": null
+});
+
+for await (const chunk of chatCompletion) {
+  process.stdout.write(chunk.choices[0]?.delta?.content || '');
+}
+
+
+-----------
+import { Groq } from 'groq-sdk';
+
+const groq = new Groq();
+
+const chatCompletion = await groq.chat.completions.create({
+  "messages": [
+    {
+      "role": "user",
+      "content": ""
+    }
+  ],
+  "model": "gemma2-9b-it",
+  "temperature": 1,
+  "max_completion_tokens": 1024,
+  "top_p": 1,
+  "stream": true,
+  "stop": null
+});
+
+for await (const chunk of chatCompletion) {
+  process.stdout.write(chunk.choices[0]?.delta?.content || '');
+}
+
+--------------
+import { Groq } from 'groq-sdk';
+
+const groq = new Groq();
+
+const chatCompletion = await groq.chat.completions.create({
+  "messages": [
+    {
+      "role": "user",
+      "content": ""
+    }
+  ],
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.6,
+  "max_completion_tokens": 4096,
+  "top_p": 0.95,
+  "stream": true,
+  "reasoning_effort": "default",
+  "stop": null
+});
+
+for await (const chunk of chatCompletion) {
+  process.stdout.write(chunk.choices[0]?.delta?.content || '');
+}
+
+------------------
+import { Groq } from 'groq-sdk';
+
+const groq = new Groq();
+
+const chatCompletion = await groq.chat.completions.create({
+  "messages": [
+    {
+      "role": "user",
+      "content": ""
+    }
+  ],
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.6,
+  "max_completion_tokens": 4096,
+  "top_p": 0.95,
+  "stream": true,
+  "reasoning_effort": "default",
+  "stop": null
+});
+
+for await (const chunk of chatCompletion) {
+  process.stdout.write(chunk.choices[0]?.delta?.content || '');
+}
+
+
+-------------
+
+import { Groq } from 'groq-sdk';
+
+const groq = new Groq();
+
+const chatCompletion = await groq.chat.completions.create({
+  "messages": [
+    {
+      "role": "user",
+      "content": ""
+    }
+  ],
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1,
+  "max_completion_tokens": 8192,
+  "top_p": 1,
+  "stream": true,
+  "reasoning_effort": "medium",
+  "stop": null
+});
+
+for await (const chunk of chatCompletion) {
+  process.stdout.write(chunk.choices[0]?.delta?.content || '');
+}
+
+------
+
+
+the second bact is from openrouter
+
+
+--------
+here is the API key fot horizon-beta model below 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "openrouter/horizon-beta",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "What is in this image?"
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+            }
+          }
+        ]
+      }
+    ]
+  })
+});
+
+
+---------------
+glm4.5 air free api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "z-ai/glm-4.5-air:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+-----------------
+kimi k2 free api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "moonshotai/kimi-k2:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+-----------
+
+venice free  api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+-------------
+google gemma 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "google/gemma-3n-e2b-it:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+-------------
+tencent api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "tencent/hunyuan-a13b-instruct:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+-------------
+deepseek qwen reasonin api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "deepseek/deepseek-r1-0528-qwen3-8b:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+
+--------------
+qwen3 api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "qwen/qwen3-14b:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+------------
+mistral api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "microsoft/mai-ds-r1:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+---------
+
+api   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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "deepseek/deepseek-r1-distill-llama-70b:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+-------------
+deepseek r1 free api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "deepseek/deepseek-r1:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+------------
+dolphin  api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "cognitivecomputations/dolphin3.0-r1-mistral-24b:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});
+
+---------
+
+moonshot api  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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "moonshotai/kimi-vl-a3b-thinking:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "What is in this image?"
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+            }
+          }
+        ]
+      }
+    ]
+  })
+});
+
+
+------------
+
+agentica api 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
+
+fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "model": "agentica-org/deepcoder-14b-preview:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+});

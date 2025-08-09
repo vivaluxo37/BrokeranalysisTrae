@@ -1,0 +1,32 @@
+/*
+Theme Name: ForexNewsNow by Negative
+Theme URI: http://www.negative.ee
+Author: Negative Space
+Author URI: http://www.negative.ee
+Description: Custom template made by Negative Space for ForexNewsNow
+Version: 1.2.0
+Tags: white, blue, gray, orange, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu
+Text Domain: negative
+
+*/
+img.alignright { float: right; margin: 0 0 1em 1em; }
+img.alignleft { float: left; margin: 0 1em 1em 0; }
+img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+
+.company-details__content h1, .company-details__content h2, .company-details__content h3, .company-details__content h4, .company-details__content h5, .company-details__content h6 {
+    margin-bottom: 2rem;
+    clear: both;
+}
+
+.company-review__list {
+    margin-top: 6rem;
+    margin-bottom: 40px;
+}
+
+.company-review__controls__text {
+	/*need to delete max-height on sass*/
+	max-height:100%;
+}

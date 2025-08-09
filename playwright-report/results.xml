@@ -1,0 +1,232 @@
+<testsuites id="" name="" tests="15" failures="5" skipped="0" errors="0" time="128.12516499999998">
+<testsuite name="example.spec.ts" timestamp="2025-08-05T08:12:42.500Z" hostname="chromium" tests="3" failures="1" skipped="0" time="42.171" errors="0">
+<testcase name="BrokerAnalysis Platform › should load the homepage" classname="example.spec.ts" time="19.643">
+<failure message="example.spec.ts:4:3 should load the homepage" type="FAILURE">
+<![CDATA[  [chromium] › example.spec.ts:4:3 › BrokerAnalysis Platform › should load the homepage ────────────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('main, [role="main"], body') resolved to 2 elements:
+        1) <body>…</body> aka locator('body')
+        2) <main class="flex-1 bg-gray-50">…</main> aka getByRole('main')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('main, [role="main"], body')
+
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\matchers\matchers.js:131:26)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\common\expectBundleImpl.js:338:834)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\e2e\example.spec.ts:11:61)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:304:9)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\testInfo.js:289:11)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:302:7)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-chromium\video.webm]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="BrokerAnalysis Platform › should navigate to broker comparison" classname="example.spec.ts" time="19.58">
+</testcase>
+<testcase name="BrokerAnalysis Platform › should be responsive on mobile" classname="example.spec.ts" time="2.948">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-08-05T08:12:42.500Z" hostname="firefox" tests="3" failures="1" skipped="0" time="60.21" errors="0">
+<testcase name="BrokerAnalysis Platform › should load the homepage" classname="example.spec.ts" time="26.087">
+<failure message="example.spec.ts:4:3 should load the homepage" type="FAILURE">
+<![CDATA[  [firefox] › example.spec.ts:4:3 › BrokerAnalysis Platform › should load the homepage ─────────────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('main, [role="main"], body') resolved to 2 elements:
+        1) <body>…</body> aka locator('body')
+        2) <main class="flex-1 bg-gray-50">…</main> aka getByRole('main')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('main, [role="main"], body')
+
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\matchers\matchers.js:131:26)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\common\expectBundleImpl.js:338:834)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\e2e\example.spec.ts:11:61)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:304:9)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\testInfo.js:289:11)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:302:7)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-firefox\video.webm]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-firefox\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="BrokerAnalysis Platform › should navigate to broker comparison" classname="example.spec.ts" time="19.431">
+</testcase>
+<testcase name="BrokerAnalysis Platform › should be responsive on mobile" classname="example.spec.ts" time="14.692">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-08-05T08:12:42.500Z" hostname="webkit" tests="3" failures="1" skipped="0" time="21.966" errors="0">
+<testcase name="BrokerAnalysis Platform › should load the homepage" classname="example.spec.ts" time="8.655">
+<failure message="example.spec.ts:4:3 should load the homepage" type="FAILURE">
+<![CDATA[  [webkit] › example.spec.ts:4:3 › BrokerAnalysis Platform › should load the homepage ──────────────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('main, [role="main"], body') resolved to 2 elements:
+        1) <body>…</body> aka locator('body')
+        2) <main class="flex-1 bg-gray-50">…</main> aka getByRole('main')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('main, [role="main"], body')
+
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\matchers\matchers.js:131:26)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\common\expectBundleImpl.js:338:834)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\e2e\example.spec.ts:11:61)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:304:9)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\testInfo.js:289:11)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:302:7)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-webkit\video.webm]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-webkit\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="BrokerAnalysis Platform › should navigate to broker comparison" classname="example.spec.ts" time="8.64">
+</testcase>
+<testcase name="BrokerAnalysis Platform › should be responsive on mobile" classname="example.spec.ts" time="4.671">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-08-05T08:12:42.500Z" hostname="Mobile Chrome" tests="3" failures="1" skipped="0" time="12.092" errors="0">
+<testcase name="BrokerAnalysis Platform › should load the homepage" classname="example.spec.ts" time="3.846">
+<failure message="example.spec.ts:4:3 should load the homepage" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › example.spec.ts:4:3 › BrokerAnalysis Platform › should load the homepage ───────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('main, [role="main"], body') resolved to 2 elements:
+        1) <body>…</body> aka locator('body')
+        2) <main class="flex-1 bg-gray-50">…</main> aka getByRole('main')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('main, [role="main"], body')
+
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\matchers\matchers.js:131:26)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\common\expectBundleImpl.js:338:834)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\e2e\example.spec.ts:11:61)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:304:9)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\testInfo.js:289:11)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:302:7)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="BrokerAnalysis Platform › should navigate to broker comparison" classname="example.spec.ts" time="3.336">
+</testcase>
+<testcase name="BrokerAnalysis Platform › should be responsive on mobile" classname="example.spec.ts" time="4.91">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-08-05T08:12:42.500Z" hostname="Mobile Safari" tests="3" failures="1" skipped="0" time="18.315" errors="0">
+<testcase name="BrokerAnalysis Platform › should load the homepage" classname="example.spec.ts" time="5.67">
+<failure message="example.spec.ts:4:3 should load the homepage" type="FAILURE">
+<![CDATA[  [Mobile Safari] › example.spec.ts:4:3 › BrokerAnalysis Platform › should load the homepage ───────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('main, [role="main"], body') resolved to 2 elements:
+        1) <body>…</body> aka locator('body')
+        2) <main class="flex-1 bg-gray-50">…</main> aka getByRole('main')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('main, [role="main"], body')
+
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\matchers\matchers.js:131:26)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\common\expectBundleImpl.js:338:834)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\e2e\example.spec.ts:11:61)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:304:9)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\testInfo.js:289:11)
+        at C:\Users\LENOVO\Desktop\New folder (2)\brokeranalysis\node_modules\playwright\lib\worker\workerMain.js:302:7)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Safari\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Safari\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Safari\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Safari\test-failed-1.png]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Safari\video.webm]]
+
+[[ATTACHMENT|..\test-results\example-BrokerAnalysis-Platform-should-load-the-homepage-Mobile-Safari\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="BrokerAnalysis Platform › should navigate to broker comparison" classname="example.spec.ts" time="6.675">
+</testcase>
+<testcase name="BrokerAnalysis Platform › should be responsive on mobile" classname="example.spec.ts" time="5.97">
+</testcase>
+</testsuite>
+</testsuites>

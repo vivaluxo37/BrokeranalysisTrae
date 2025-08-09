@@ -1,0 +1,17 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/style.scss to edit this template
+*/
+/*
+    Created on : Feb 26, 2024, 3:26:25 PM
+    Author     : rysar
+*/
+
+.broker-links {
+    @include media-breakpoint-up(xs) {
+        min-height: 55px;
+    }
+    @include media-breakpoint-up(lg) {
+        min-height: 28px;
+    }
+}

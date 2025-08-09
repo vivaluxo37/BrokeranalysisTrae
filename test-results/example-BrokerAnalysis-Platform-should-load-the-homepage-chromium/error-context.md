@@ -1,0 +1,143 @@
+# Page snapshot
+
+```yaml
+- banner:
+  - link "BrokerAnalysis":
+    - /url: /
+  - button "Menu"
+- main:
+  - text: Live Market Data
+  - heading "Get matched with regulated online brokers" [level=1]
+  - paragraph: Compare brokers, read reviews, and discover tools to help you make informed trading decisions.
+  - link "Find my broker":
+    - /url: /best-brokers
+    - text: Find my broker
+    - img
+  - link "Compare brokers":
+    - /url: /tools
+  - text: 500+ Brokers Analyzed 50K+ User Reviews 99.9% Uptime 24/7 Support
+  - img "Professional trader"
+  - text: +12.5% Today $2,847.92 Portfolio Value
+  - heading "Everything you need to succeed" [level=2]
+  - paragraph: Comprehensive tools and insights to make informed trading decisions
+  - img
+  - heading "Compare Brokers" [level=3]
+  - paragraph: Find the best broker based on fees, features, and reliability.
+  - link "View Brokers":
+    - /url: /best-brokers
+    - text: View Brokers
+    - img
+  - img
+  - heading "Read Reviews" [level=3]
+  - paragraph: Real user reviews and detailed broker analysis.
+  - link "Read Reviews":
+    - /url: /broker-reviews
+    - text: Read Reviews
+    - img
+  - img
+  - heading "Trading Tools" [level=3]
+  - paragraph: Calculators, charts, and analysis tools for traders.
+  - link "Use Tools":
+    - /url: /tools
+    - text: Use Tools
+    - img
+  - heading "Why Choose Our Platform?" [level=2]
+  - img
+  - heading "Unbiased Reviews" [level=3]
+  - paragraph: Independent analysis and real user feedback.
+  - img
+  - heading "Comprehensive Data" [level=3]
+  - paragraph: Detailed comparison of fees, features, and more.
+  - img
+  - heading "Real-time Updates" [level=3]
+  - paragraph: Get instant notifications about market changes and broker updates.
+  - text: Portfolio Performance +24.5% $12.5K Total Profit 156 Trades
+  - heading "Ready to start trading?" [level=2]
+  - paragraph: Join thousands of traders who trust our platform to find the best brokers and tools.
+  - link "Get Started Today":
+    - /url: /best-brokers
+    - text: Get Started Today
+    - img
+- contentinfo:
+  - link "BrokerAnalysis":
+    - /url: /
+    - img
+    - text: BrokerAnalysis
+  - paragraph: Independent broker reviews and trading tools to help you make informed financial decisions.
+  - link:
+    - /url: "#"
+    - img
+  - link:
+    - /url: "#"
+    - img
+  - link:
+    - /url: "#"
+    - img
+  - heading "Reviews" [level=3]
+  - list:
+    - listitem:
+      - link "Best Brokers":
+        - /url: /best-brokers
+    - listitem:
+      - link "Broker Reviews":
+        - /url: /broker-reviews
+    - listitem:
+      - link "Comparison Tool":
+        - /url: /tools
+    - listitem:
+      - link "All Reviews":
+        - /url: /broker-reviews
+  - heading "Tools" [level=3]
+  - list:
+    - listitem:
+      - link "Profit Calculator":
+        - /url: /tools
+    - listitem:
+      - link "Position Size Calculator":
+        - /url: /tools
+    - listitem:
+      - link "Margin Calculator":
+        - /url: /tools
+    - listitem:
+      - link "Market Scanner":
+        - /url: /tools
+  - heading "Company" [level=3]
+  - list:
+    - listitem:
+      - link "About Us":
+        - /url: /about
+    - listitem:
+      - link "Contact":
+        - /url: /contact
+    - listitem:
+      - link "Privacy Policy":
+        - /url: /privacy
+    - listitem:
+      - link "Terms of Service":
+        - /url: /terms
+  - heading "Resources" [level=3]
+  - list:
+    - listitem:
+      - link "Trading Guide":
+        - /url: /guide
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+    - listitem:
+      - link "FAQ":
+        - /url: /faq
+    - listitem:
+      - link "Support":
+        - /url: /support
+  - text: © 2025 BrokerAnalysis. All rights reserved.
+  - link "Privacy Policy":
+    - /url: /privacy
+  - link "Terms of Service":
+    - /url: /terms
+  - link "Cookie Policy":
+    - /url: /cookies
+- paragraph: We use cookies to improve your experience and analyze site usage. By continuing to use our site, you consent to our use of cookies.
+- button "Accept Cookies"
+- button "Open Tanstack query devtools":
+  - img
+```

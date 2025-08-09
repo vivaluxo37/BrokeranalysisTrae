@@ -1,0 +1,9 @@
+.main-content--sponsored {
+    @include media-breakpoint-up(lg) {
+        max-width:1024px;
+    }
+}
+
+.extra-small {
+    font-size: 0.8em;
+}

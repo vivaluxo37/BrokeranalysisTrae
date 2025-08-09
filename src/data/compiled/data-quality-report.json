@@ -1,0 +1,23 @@
+{
+  "summary": {
+    "totalBrokers": 12,
+    "dataQualityScore": 93,
+    "compilationDate": "2025-08-08T14:41:19.892Z"
+  },
+  "qualityMetrics": {
+    "completeness": 100,
+    "accuracy": 95,
+    "consistency": 90,
+    "timeliness": 85
+  },
+  "recommendations": [],
+  "issues": [
+    "3 errors encountered during compilation"
+  ],
+  "nextSteps": [
+    "Review data quality metrics",
+    "Address identified issues",
+    "Update data sources as needed",
+    "Schedule next compilation"
+  ]
+}
