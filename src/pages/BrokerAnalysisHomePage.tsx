@@ -1,10 +1,10 @@
 import { 
-  HeroSection,
   AssetCategoriesSection,
+  EducationalHubSection,
   FeaturedBrokersSection,
+  HeroSection,
   TradingToolsSection,
-  TrustSignalsSection,
-  EducationalHubSection
+  TrustSignalsSection
 } from '@/components/brokeranalysis'
 import { Layout } from '@/components/layout/Layout'
 import { mockRootProps } from '@/brokerAnalysisMockData'

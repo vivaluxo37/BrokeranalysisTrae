@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { TrendingUp, BarChart3, Coins, LineChart, ArrowRight } from 'lucide-react'
+import { ArrowRight, BarChart3, Coins, LineChart, TrendingUp } from 'lucide-react'
 import { AssetClass } from '@/enums'
 
 interface AssetCategory {

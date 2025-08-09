@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, ArrowRight, Zap, Target } from 'lucide-react'
+import { ArrowRight, Search, Target, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'

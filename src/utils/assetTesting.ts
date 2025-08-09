@@ -3,7 +3,7 @@
  * Tests that all static assets are properly served and accessible
  */
 
-import { validateAssetAccessibility, getBrokerAssetPaths, ASSET_CONFIG } from './assetOptimization';
+import { ASSET_CONFIG, getBrokerAssetPaths, validateAssetAccessibility } from './assetOptimization';
 
 export interface AssetTestResult {
   path: string;

@@ -1,26 +1,26 @@
-import React, { useState, useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
+  HomepageHooks,
   HomepageIntegrationContext,
   HomepageIntegrationContextType,
   HomepageIntegrationProviderProps,
-  HomepageState,
   HomepageServices,
-  HomepageHooks,
-  defaultFeatureFlags,
-  defaultApiConfig,
+  HomepageState,
   defaultAIConfig,
+  defaultApiConfig,
+  defaultFeatureFlags,
 } from './HomepageIntegrationContext'
 import {
-  useSearchState,
   useAIChatState,
   useBrokerState,
+  useSearchState,
   useUIState,
   useUserPreferences,
 } from '@/hooks/useHomepageState'
 import {
+  STATE_SYNC_ACTIONS,
   useStateSync,
   useStateSyncEmitter,
-  STATE_SYNC_ACTIONS,
 } from '@/services/StateSynchronizationService'
 import { authService } from '@/services/authService'
 import { SearchService } from '@/services/search/SearchService'
@@ -32,7 +32,7 @@ import { CacheService } from '@/services/sync/CacheService'
 import { useAuth } from '@/hooks/useAuth'
 import { useSearch } from '@/hooks/useSearch'
 import { useProfile } from '@/hooks/useProfile'
-import type { SearchFilters, SavedSearch } from '@/types/search'
+import type { SavedSearch, SearchFilters } from '@/types/search'
 import type { Broker } from '@/types/broker'
 
 /**
@@ -328,7 +328,7 @@ export const HomepageIntegrationProvider: React.FC<HomepageIntegrationProviderPr
   }, [searchState, stateSyncEmitter])
 
   // AI actions
-  const openAIChat = useCallback((context: string = 'general') => {
+  const openAIChat = useCallback((context = 'general') => {
     if (!mergedFeatures.homepageIntegration.aiIntegration) return
 
     aiChatState.updateChat({ 

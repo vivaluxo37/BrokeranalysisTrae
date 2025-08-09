@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { Star, Shield, TrendingUp, ArrowRight, Users } from 'lucide-react'
+import { ArrowRight, Shield, Star, TrendingUp, Users } from 'lucide-react'
 import { AssetClass, BrokerCategory, RegulatorType, TradingPlatform } from '@/enums'
 
 interface FeaturedBroker {

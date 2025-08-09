@@ -6,12 +6,10 @@ export interface BrokerAsset {
   originalName: string;
   assets: {
     original: string;
-    sizes: {
-      [size: string]: {
+    sizes: Record<string, {
         png: string;
         webp: string;
-      };
-    };
+      }>;
   };
 }
 
@@ -20,12 +18,10 @@ export interface AssetMapping {
   generated: string;
   fallback: {
     original: string;
-    sizes: {
-      [size: string]: {
+    sizes: Record<string, {
         png: string;
         webp: string;
-      };
-    };
+      }>;
   };
   brokers: BrokerAsset[];
 }
@@ -89,7 +85,7 @@ class AssetManager {
     }
 
     const sizedAsset = broker.assets.sizes[size];
-    if (!sizedAsset || !sizedAsset[format]) {
+    if (!sizedAsset?.[format]) {
       return this.getFallbackLogo(size, format);
     }
 
@@ -105,7 +101,7 @@ class AssetManager {
     }
 
     const fallbackAsset = this.mapping.fallback.sizes[size];
-    if (!fallbackAsset || !fallbackAsset[format]) {
+    if (!fallbackAsset?.[format]) {
       return this.baseUrl + this.mapping.fallback.original;
     }
 
@@ -137,8 +133,8 @@ class AssetManager {
    * Get responsive image sources for different formats
    */
   getResponsiveImageSources(brokerId: string): {
-    webp: { [size: string]: string };
-    png: { [size: string]: string };
+    webp: Record<string, string>;
+    png: Record<string, string>;
   } {
     const broker = this.mapping.brokers.find(b => b.id === brokerId);
     

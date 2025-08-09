@@ -2,13 +2,13 @@
  * React hook for managing broker assets with loading states and fallbacks
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { 
-  getBrokerAssetPaths, 
+  type ImageLoadingOptions, 
   checkImageExists, 
+  getBrokerAssetPaths,
   getFallbackImageUrl,
-  getOptimizedImageProps,
-  type ImageLoadingOptions 
+  getOptimizedImageProps 
 } from '@/utils/assetOptimization';
 
 export interface BrokerAssetState {

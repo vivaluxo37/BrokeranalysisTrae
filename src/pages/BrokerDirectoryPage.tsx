@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
-import { Star, Eye, Plus } from 'lucide-react'
+import { Eye, Plus, Star } from 'lucide-react'
 import { BrokerDirectoryFilters } from '@/components/brokeranalysis/BrokerDirectoryFilters'
 import { Layout } from '@/components/layout/Layout'
 import { SeoHead } from '@/components/common'
+import { brokerDataService } from '@/services/BrokerDataService'
 import { mockQuery } from '@/additionalPagesMockData'
 
 interface FilterState {
@@ -33,9 +34,9 @@ export function BrokerDirectoryPage() {
   const [selectedBrokers, setSelectedBrokers] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
-  const brokers = mockQuery.brokerDirectory.brokers
-  const totalPages = mockQuery.brokerDirectory.totalPages
-  const totalCount = mockQuery.brokerDirectory.totalCount
+  const {brokers} = mockQuery.brokerDirectory
+  const {totalPages} = mockQuery.brokerDirectory
+  const {totalCount} = mockQuery.brokerDirectory
 
   useEffect(() => {
     // Simulate API call when filters change
@@ -165,28 +166,37 @@ export function BrokerDirectoryPage() {
                             className="w-4 h-4 text-pure-white bg-charcoal-grey border-medium-grey rounded focus:ring-pure-white"
                           />
                           <img 
-                            src={broker.logo} 
-                            alt={`${broker.name} logo`}
+                            src={brokerDataService.getBrokerProperty(broker, 'logo', '/assets/icons/broker-placeholder.svg')} 
+                            alt={`${brokerDataService.getBrokerProperty(broker, 'name', 'Unknown Broker')} logo`}
                             className="w-12 h-12 rounded-lg object-cover"
+                            onError={(e) => {
+                              e.currentTarget.src = '/assets/icons/broker-placeholder.svg'
+                            }}
                           />
                           <div>
-                            <div className="text-pure-white font-medium">{broker.name}</div>
-                            <div className="text-light-grey text-sm">{broker.headquarters}</div>
+                            <div className="text-pure-white font-medium">
+                              {brokerDataService.getBrokerProperty(broker, 'name', 'Unknown Broker')}
+                            </div>
+                            <div className="text-light-grey text-sm">
+                              {brokerDataService.getBrokerProperty(broker, 'details', {})?.headquarters || 'N/A'}
+                            </div>
                           </div>
                         </div>
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center">
                           <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" />
-                          <span className="text-pure-white font-medium">{broker.rating}</span>
+                          <span className="text-pure-white font-medium">
+                            {brokerDataService.getBrokerProperty(broker, 'rating', 0)}
+                          </span>
                           <span className="text-light-grey text-sm ml-1">
-                            ({broker.reviewCount.toLocaleString()})
+                            ({brokerDataService.getBrokerProperty(broker, 'reviewCount', 0).toLocaleString()})
                           </span>
                         </div>
                       </TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
-                          {broker.assetClasses.slice(0, 3).map((asset) => (
+                          {brokerDataService.getBrokerProperty(broker, 'assetClasses', []).slice(0, 3).map((asset: string) => (
                             <Badge 
                               key={asset} 
                               variant="outline" 
@@ -195,16 +205,16 @@ export function BrokerDirectoryPage() {
                               {asset}
                             </Badge>
                           ))}
-                          {broker.assetClasses.length > 3 && (
+                          {brokerDataService.getBrokerProperty(broker, 'assetClasses', []).length > 3 && (
                             <Badge variant="outline" className="text-light-grey border-medium-grey text-xs">
-                              +{broker.assetClasses.length - 3}
+                              +{brokerDataService.getBrokerProperty(broker, 'assetClasses', []).length - 3}
                             </Badge>
                           )}
                         </div>
                       </TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
-                          {broker.regulation.map((reg) => (
+                          {brokerDataService.getBrokerProperty(broker, 'regulators', []).map((reg: string) => (
                             <Badge 
                               key={reg} 
                               className="bg-green-500/20 text-green-400 border-green-500/30 text-xs"
@@ -215,10 +225,10 @@ export function BrokerDirectoryPage() {
                         </div>
                       </TableCell>
                       <TableCell className="text-pure-white">
-                        {formatMinDeposit(broker.minDeposit)}
+                        {formatMinDeposit(brokerDataService.getBrokerProperty(broker, 'minDeposit', 0))}
                       </TableCell>
                       <TableCell className="text-pure-white">
-                        {formatSpread(broker.avgSpread)}
+                        {formatSpread(brokerDataService.getBrokerProperty(broker, 'spreadsFrom', 0))}
                       </TableCell>
                       <TableCell>
                         <div className="flex space-x-2">

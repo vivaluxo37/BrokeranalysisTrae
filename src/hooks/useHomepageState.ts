@@ -1,7 +1,7 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { useState, useCallback, useEffect } from 'react'
-import { statePersistenceService, PersistableState } from '@/services/StatePersistenceService'
-import type { SearchFilters, SearchResult, SavedSearch } from '@/types/search'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useCallback, useEffect, useState } from 'react'
+import { PersistableState, statePersistenceService } from '@/services/StatePersistenceService'
+import type { SavedSearch, SearchFilters, SearchResult } from '@/types/search'
 import type { Broker } from '@/types/broker'
 import type { User } from '@/types/auth'
 
@@ -128,12 +128,12 @@ export const useAIChatState = () => {
     isOpen: boolean
     isLoading: boolean
     context: 'hero' | 'comparison' | 'testimonials' | 'general'
-    tempMessages: Array<{
+    tempMessages: {
       id: string
       role: 'user' | 'assistant'
       content: string
       timestamp: Date
-    }>
+    }[]
   }>({
     isOpen: false,
     isLoading: false,
@@ -278,12 +278,12 @@ export const useUIState = () => {
 
   const [temporaryState, setTemporaryState] = useState<{
     modalsOpen: Record<string, boolean>
-    notifications: Array<{
+    notifications: {
       id: string
       type: 'error' | 'warning' | 'info' | 'success'
       message: string
       timestamp: Date
-    }>
+    }[]
   }>({
     modalsOpen: {},
     notifications: [],

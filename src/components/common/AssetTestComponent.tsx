@@ -3,8 +3,8 @@
  * This component can be used to test asset loading in development and production
  */
 
-import React, { useState, useEffect } from 'react';
-import { runAssetTests, generateAssetTestReport } from '@/utils/assetTesting';
+import React, { useEffect, useState } from 'react';
+import { generateAssetTestReport, runAssetTests } from '@/utils/assetTesting';
 import { validateAssetAccessibility } from '@/utils/assetOptimization';
 
 interface AssetTestComponentProps {

@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { 
-  HomePage, 
   BrokerDirectoryPage, 
   BrokerProfilePage, 
   BrokerWizardPage, 
+  HomePage, 
   ToolsLandingPage 
 } from './pages'
 import './index.css'

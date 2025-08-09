@@ -1,4 +1,4 @@
-import { TrendingUp, BarChart3, Bitcoin, LineChart, Package } from 'lucide-react'
+import { BarChart3, Bitcoin, LineChart, Package, TrendingUp } from 'lucide-react'
 import { CheckCircle } from 'lucide-react'
 
 interface Option {

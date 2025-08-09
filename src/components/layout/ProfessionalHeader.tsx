@@ -13,8 +13,8 @@ import {
   ChevronDown,
   Menu,
   Search,
-  User,
   Shield,
+  User,
 } from 'lucide-react'
 
 export function ProfessionalHeader() {

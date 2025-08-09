@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Mail, Shield, CheckCircle } from 'lucide-react'
+import { CheckCircle, Mail, Shield } from 'lucide-react'
 
 export function NewsletterSection() {
   const [email, setEmail] = useState('')

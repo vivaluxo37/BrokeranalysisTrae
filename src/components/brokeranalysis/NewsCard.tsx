@@ -35,16 +35,16 @@ export function NewsCard({ article }: NewsCardProps) {
     }).format(date)
   }
 
-  const formatTitle = (title: string, maxLength: number = 60): string => {
+  const formatTitle = (title: string, maxLength = 60): string => {
     if (!title) return ''
     if (title.length <= maxLength) return title
-    return title.substring(0, maxLength).trim() + '...'
+    return `${title.substring(0, maxLength).trim()  }...`
   }
 
-  const formatExcerpt = (excerpt: string, maxLength: number = 120): string => {
+  const formatExcerpt = (excerpt: string, maxLength = 120): string => {
     if (!excerpt) return ''
     if (excerpt.length <= maxLength) return excerpt
-    return excerpt.substring(0, maxLength).trim() + '...'
+    return `${excerpt.substring(0, maxLength).trim()  }...`
   }
 
   return (

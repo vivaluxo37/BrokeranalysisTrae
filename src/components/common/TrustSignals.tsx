@@ -1,4 +1,4 @@
-import { Star, Shield, Users, Award, Quote } from 'lucide-react'
+import { Award, Quote, Shield, Star, Users } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
 const testimonials = [

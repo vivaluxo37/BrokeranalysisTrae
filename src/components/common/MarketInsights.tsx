@@ -1,4 +1,4 @@
-import { TrendingUp, Clock, ArrowRight, Eye, MessageCircle, Share2 } from 'lucide-react'
+import { ArrowRight, Clock, Eye, MessageCircle, Share2, TrendingUp } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

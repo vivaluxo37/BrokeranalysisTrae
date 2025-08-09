@@ -29,17 +29,17 @@ export interface ErrorStats {
   errorsBySection: Record<string, number>
   errorsByType: Record<string, number>
   recentErrors: ErrorReport[]
-  topErrors: Array<{
+  topErrors: {
     message: string
     count: number
     lastOccurred: Date
-  }>
+  }[]
 }
 
 export class ErrorReportingService {
   private errors: ErrorReport[] = []
   private maxStoredErrors = 100
-  private listeners: Set<(report: ErrorReport) => void> = new Set()
+  private listeners = new Set<(report: ErrorReport) => void>()
 
   /**
    * Report an error with context

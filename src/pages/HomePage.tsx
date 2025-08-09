@@ -1,21 +1,21 @@
 import { 
-  SeoHead,
-  seoConfigs,
-  WebsiteStructuredData,
-  OrganizationStructuredData,
   FAQStructuredData,
-  FaviconMeta
+  FaviconMeta,
+  OrganizationStructuredData,
+  SeoHead,
+  WebsiteStructuredData,
+  seoConfigs
 } from '@/components/common'
 import {
   BrokerAnalysisHeroSection,
-  TopRatedBrokersSection,
-  QuickCompareModule,
-  TrustFeaturesSection,
-  MarketNewsSection,
   EducationalSpotlightSection,
-  ToolsPreviewSection,
+  MarketNewsSection,
+  NewsletterSection,
+  QuickCompareModule,
   TestimonialsSection,
-  NewsletterSection
+  ToolsPreviewSection,
+  TopRatedBrokersSection,
+  TrustFeaturesSection
 } from '@/components/brokeranalysis'
 import { Layout } from '@/components/layout/Layout'
 import { dataIntegrationService } from '@/services/dataIntegrationService'
@@ -39,51 +39,49 @@ export function HomePage() {
         <FAQStructuredData />
 
         {/* Main content sections */}
-        <main>
-          {/* 1. Hero Section with Broker Search Widget */}
-          <BrokerAnalysisHeroSection 
-            heroData={homepageData.heroData}
-            trustLogos={mockQuery.trustLogos}
-          />
+        {/* 1. Hero Section with Broker Search Widget */}
+        <BrokerAnalysisHeroSection 
+          heroData={homepageData.heroData}
+          trustLogos={mockQuery.trustLogos}
+        />
 
-          {/* 2. Top-Rated Brokers Showcase - Using Real Extracted Data */}
-          <TopRatedBrokersSection 
-            brokers={topRatedBrokers}
-          />
+        {/* 2. Top-Rated Brokers Showcase - Using Real Extracted Data */}
+        <TopRatedBrokersSection 
+          brokers={topRatedBrokers}
+        />
 
-          {/* 3. Quick Compare Module - Using Real Extracted Data */}
-          <QuickCompareModule 
-            brokers={topRatedBrokers}
-          />
+        {/* 3. Quick Compare Module - Using Real Extracted Data */}
+        <QuickCompareModule 
+          brokers={topRatedBrokers}
+        />
 
-          {/* 4. Trust and Credibility Section */}
-          <TrustFeaturesSection 
-            features={homepageData.trustFeatures}
-          />
+        {/* 4. Trust and Credibility Section */}
+        <TrustFeaturesSection 
+          features={homepageData.trustFeatures}
+        />
 
-          {/* 5. Market News and Analysis */}
-          <MarketNewsSection 
-            articles={mockQuery.marketNews}
-          />
+        {/* 5. Market News and Analysis */}
+        <MarketNewsSection 
+          articles={mockQuery.marketNews}
+        />
 
-          {/* 6. Educational Spotlight */}
-          <EducationalSpotlightSection 
-            educationLevels={homepageData.educationLevels}
-          />
+        {/* 6. Educational Spotlight */}
+        <EducationalSpotlightSection 
+          educationLevels={homepageData.educationLevels}
+        />
 
-          {/* 7. Tools Preview */}
-          <ToolsPreviewSection 
-            tools={homepageData.tradingTools}
-          />
+        {/* 7. Tools Preview */}
+        <ToolsPreviewSection 
+          tools={homepageData.tradingTools}
+        />
 
-          {/* 8. Community Testimonials */}
-          <TestimonialsSection 
-            testimonials={mockQuery.testimonials}
-          />
+        {/* 8. Community Testimonials */}
+        <TestimonialsSection 
+          testimonials={mockQuery.testimonials}
+        />
 
-          {/* 9. Newsletter Subscription */}
-          <NewsletterSection />
-        </main>
+        {/* 9. Newsletter Subscription */}
+        <NewsletterSection />
       </div>
     </Layout>
   )

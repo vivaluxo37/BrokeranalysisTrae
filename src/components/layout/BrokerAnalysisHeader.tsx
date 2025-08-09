@@ -18,10 +18,10 @@ import {
 } from '@/components/ui/navigation-menu'
 import {
   ChevronDown,
+  Edit3,
   Menu,
   Search,
   User,
-  Edit3,
 } from 'lucide-react'
 import { BrokerAnalysisLogo } from '@/components/common'
 import { TrustBar } from './TrustBar'
@@ -46,6 +46,19 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
       href: '/brokers',
       sections: [
         {
+          title: 'Popular Brokers',
+          items: [
+            { name: 'Interactive Brokers', href: '/brokers/interactive-brokers' },
+            { name: 'eToro', href: '/brokers/etoro' },
+            { name: 'XTB', href: '/brokers/xtb' },
+            { name: 'Saxo Bank', href: '/brokers/saxo-bank' },
+            { name: 'Charles Schwab', href: '/brokers/charles-schwab' },
+            { name: 'Trading 212', href: '/brokers/trading-212' },
+            { name: 'Plus500', href: '/brokers/plus500' },
+            { name: 'AvaTrade', href: '/brokers/avatrade' },
+          ]
+        },
+        {
           title: 'By Asset Class',
           items: [
             { name: 'Forex', href: '/brokers/forex' },
@@ -64,15 +77,6 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
             { name: 'Asia-Pacific', href: '/brokers/asia-pacific' },
             { name: 'MENA', href: '/brokers/mena' },
           ]
-        },
-        {
-          title: 'By Account Type',
-          items: [
-            { name: 'Standard', href: '/brokers/standard' },
-            { name: 'ECN', href: '/brokers/ecn' },
-            { name: 'Islamic', href: '/brokers/islamic' },
-            { name: 'Demo', href: '/brokers/demo' },
-          ]
         }
       ]
     },
@@ -80,6 +84,26 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
       name: 'Compare',
       href: '/compare',
       sections: [
+        {
+          title: 'Best Brokers 2025',
+          items: [
+            { name: 'Best Online Brokers', href: '/comparison/best-online-brokers' },
+            { name: 'Best Forex Brokers', href: '/comparison/best-forex-brokers' },
+            { name: 'Best Stock Brokers', href: '/comparison/best-stock-brokers' },
+            { name: 'Best CFD Brokers', href: '/comparison/best-cfd-brokers' },
+            { name: 'Best Crypto Brokers', href: '/comparison/best-crypto-brokers' },
+          ]
+        },
+        {
+          title: 'Specialized Lists',
+          items: [
+            { name: 'Best for Beginners', href: '/comparison/best-beginner-brokers' },
+            { name: 'Best for Day Trading', href: '/comparison/best-day-trading-brokers' },
+            { name: 'Best for Options', href: '/comparison/best-options-trading-brokers' },
+            { name: 'Best Low Cost', href: '/comparison/best-low-cost-brokers' },
+            { name: 'Best Futures Brokers', href: '/comparison/best-futures-brokers' },
+          ]
+        },
         {
           title: 'Comparison Tools',
           items: [
@@ -153,30 +177,65 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
   ]
 
   return (
-    <header className="sticky top-0 z-50">
+    <header 
+      id="navigation"
+      className="sticky top-0 z-50" 
+      role="banner"
+      tabIndex={-1}
+    >
+      {/* Skip Navigation Link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-[60] focus:bg-professional-black focus:text-pure-white focus:px-4 focus:py-2 focus:rounded-md focus:m-2"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            document.getElementById('main-content')?.focus();
+          }
+        }}
+      >
+        Skip to main content
+      </a>
+      
       {/* Top Trust Bar */}
       <TrustBar totalTraders={totalTraders} />
 
       {/* Main Navigation */}
-      <div className="professional-nav">
+      <nav className="professional-nav" role="navigation" aria-label="Main navigation">
         <div className="professional-container">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center">
+            <Link 
+              to="/" 
+              className="flex items-center focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
+              aria-label="BrokerAnalysis homepage"
+            >
               <BrokerAnalysisLogo size="md" />
             </Link>
 
             {/* Search Bar */}
             <div className="flex-1 mx-8 max-w-md hidden lg:block">
-              <form onSubmit={handleSearch} className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-light-grey w-4 h-4" />
+              <form onSubmit={handleSearch} className="relative" role="search">
+                <label htmlFor="desktop-search" className="sr-only">
+                  Search brokers, platforms, or instruments
+                </label>
+                <Search 
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-light-grey w-4 h-4" 
+                  aria-hidden="true"
+                />
                 <Input
+                  id="desktop-search"
                   type="text"
                   placeholder="Search brokers, platforms, or instruments..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="professional-input pl-10"
+                  className="professional-input pl-10 focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                  aria-describedby="search-help"
+                  autoComplete="off"
                 />
+                <div id="search-help" className="sr-only">
+                  Press Enter to search or use arrow keys to navigate suggestions
+                </div>
               </form>
             </div>
 
@@ -185,14 +244,25 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
               <NavigationMenuList>
                 {navigation.map((item) => (
                   <NavigationMenuItem key={item.name}>
-                    <NavigationMenuTrigger className="professional-nav-item">
+                    <NavigationMenuTrigger 
+                      className="professional-nav-item focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                    >
                       {item.name}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="bg-charcoal-grey border-medium-grey p-6 w-96 left-0">
+                    <NavigationMenuContent 
+                      className="bg-charcoal-grey border-medium-grey p-6 w-96 left-0"
+                      role="menu"
+                      aria-label={`${item.name} submenu`}
+                    >
                       <div className="grid gap-6">
                         {item.sections.map((section) => (
-                          <div key={section.title}>
-                            <h4 className="text-pure-white font-medium mb-3">
+                          <div key={section.title} role="group" aria-labelledby={`${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}>
+                            <h4 
+                              id={`${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}
+                              className="text-pure-white font-medium mb-3"
+                            >
                               {section.title}
                             </h4>
                             <div className="space-y-2">
@@ -200,7 +270,8 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                                 <Link
                                   key={subItem.name}
                                   to={subItem.href}
-                                  className="block text-light-grey hover:text-pure-white transition-colors text-sm"
+                                  className="block text-light-grey hover:text-pure-white focus:text-pure-white focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey transition-colors text-sm rounded-sm px-2 py-1"
+                                  role="menuitem"
                                 >
                                   {subItem.name}
                                 </Link>
@@ -223,32 +294,43 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-light-grey hover:text-pure-white hover:bg-charcoal-grey"
+                    className="text-light-grey hover:text-pure-white hover:bg-charcoal-grey focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
+                    aria-label="User account menu"
+                    aria-haspopup="true"
+                    aria-expanded="false"
                   >
-                    <User className="w-4 h-4" />
+                    <User className="w-4 h-4" aria-hidden="true" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent 
                   align="end" 
                   className="bg-charcoal-grey border-medium-grey"
+                  role="menu"
+                  aria-label="User account options"
                 >
-                  <DropdownMenuItem className="text-pure-white hover:bg-medium-grey/20">
+                  <DropdownMenuItem 
+                    className="text-pure-white hover:bg-medium-grey/20 focus:bg-medium-grey/20 focus:outline-none"
+                    role="menuitem"
+                  >
                     Sign In
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="text-pure-white hover:bg-medium-grey/20">
+                  <DropdownMenuItem 
+                    className="text-pure-white hover:bg-medium-grey/20 focus:bg-medium-grey/20 focus:outline-none"
+                    role="menuitem"
+                  >
                     Create Account
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
 
               {/* Primary CTAs */}
-              <Button asChild className="btn-professional-secondary">
-                <Link to="/compare">
+              <Button asChild className="btn-professional-secondary focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
+                <Link to="/compare" aria-label="Compare different brokers side by side">
                   Compare Brokers
                 </Link>
               </Button>
-              <Button asChild className="btn-professional-primary">
-                <Link to="/find-broker">
+              <Button asChild className="btn-professional-primary focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
+                <Link to="/find-broker" aria-label="Find the best broker for your needs">
                   Find My Broker
                 </Link>
               </Button>
@@ -261,67 +343,86 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                   <Button 
                     variant="ghost" 
                     size="icon"
-                    className="text-light-grey hover:text-pure-white"
+                    className="text-light-grey hover:text-pure-white focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
+                    aria-label="Open mobile navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
                   >
-                    <Menu className="w-6 h-6" />
+                    <Menu className="w-6 h-6" aria-hidden="true" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent 
+                  id="mobile-menu"
                   side="right" 
                   className="bg-professional-black border-charcoal-grey w-80"
+                  role="dialog"
+                  aria-label="Mobile navigation menu"
                 >
                   <div className="space-y-6 mt-8">
                     {/* Mobile Search */}
-                    <form onSubmit={handleSearch} className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-light-grey w-4 h-4" />
+                    <form onSubmit={handleSearch} className="relative" role="search">
+                      <label htmlFor="mobile-search" className="sr-only">
+                        Search brokers, platforms, or instruments
+                      </label>
+                      <Search 
+                        className="absolute left-3 top-1/2 transform -translate-y-1/2 text-light-grey w-4 h-4" 
+                        aria-hidden="true"
+                      />
                       <Input
+                        id="mobile-search"
                         type="text"
                         placeholder="Search..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="professional-input pl-10"
+                        className="professional-input pl-10 focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                        autoComplete="off"
                       />
                     </form>
 
                     {/* Mobile Navigation */}
-                    {navigation.map((item) => (
-                      <div key={item.name}>
-                        <Link
-                          to={item.href}
-                          className="block text-pure-white hover:text-light-grey py-2 text-lg font-medium"
-                        >
-                          {item.name}
-                        </Link>
-                        {item.sections.map((section) => (
-                          <div key={section.title} className="ml-4 mt-2">
-                            <h5 className="text-light-grey text-sm font-medium mb-2">
-                              {section.title}
-                            </h5>
-                            <div className="space-y-1">
-                              {section.items.map((subItem) => (
-                                <Link
-                                  key={subItem.name}
-                                  to={subItem.href}
-                                  className="block text-light-grey hover:text-pure-white py-1 text-sm"
-                                >
-                                  {subItem.name}
-                                </Link>
-                              ))}
+                    <nav role="navigation" aria-label="Mobile navigation">
+                      {navigation.map((item) => (
+                        <div key={item.name} className="mb-4">
+                          <Link
+                            to={item.href}
+                            className="block text-pure-white hover:text-light-grey focus:text-light-grey focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black py-2 text-lg font-medium rounded-md px-2"
+                          >
+                            {item.name}
+                          </Link>
+                          {item.sections.map((section) => (
+                            <div key={section.title} className="ml-4 mt-2" role="group" aria-labelledby={`mobile-${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}>
+                              <h5 
+                                id={`mobile-${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}
+                                className="text-light-grey text-sm font-medium mb-2"
+                              >
+                                {section.title}
+                              </h5>
+                              <div className="space-y-1">
+                                {section.items.map((subItem) => (
+                                  <Link
+                                    key={subItem.name}
+                                    to={subItem.href}
+                                    className="block text-light-grey hover:text-pure-white focus:text-pure-white focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black py-1 text-sm rounded-sm px-2"
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
-                    ))}
+                          ))}
+                        </div>
+                      ))}
+                    </nav>
 
                     {/* Mobile CTAs */}
                     <div className="space-y-3 pt-4 border-t border-medium-grey">
-                      <Button asChild className="btn-professional-secondary w-full">
-                        <Link to="/compare">
+                      <Button asChild className="btn-professional-secondary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
+                        <Link to="/compare" aria-label="Compare different brokers side by side">
                           Compare Brokers
                         </Link>
                       </Button>
-                      <Button asChild className="btn-professional-primary w-full">
-                        <Link to="/find-broker">
+                      <Button asChild className="btn-professional-primary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
+                        <Link to="/find-broker" aria-label="Find the best broker for your needs">
                           Find My Broker
                         </Link>
                       </Button>
@@ -332,7 +433,7 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
             </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   )
 }

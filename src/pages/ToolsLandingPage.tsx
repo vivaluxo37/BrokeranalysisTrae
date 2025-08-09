@@ -5,16 +5,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { 
-  Calendar, 
-  Calculator, 
-  RefreshCw, 
-  Grid3X3, 
+  Activity, 
   BarChart3, 
-  DollarSign,
-  Search,
-  TrendingUp,
+  Calculator, 
+  Calendar, 
+  DollarSign, 
+  Grid3X3,
   PieChart,
-  Activity
+  RefreshCw,
+  Search,
+  TrendingUp
 } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
 import { SeoHead } from '@/components/common'

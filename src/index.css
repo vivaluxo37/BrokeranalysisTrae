@@ -61,7 +61,7 @@
   --secondary: #1a1a1a;
   --secondary-foreground: #ffffff;
   --muted: #262626;
-  --muted-foreground: #a3a3a3;
+  --muted-foreground: #9ca3af; /* Improved contrast ratio */
   --accent: #ffffff;
   --accent-foreground: #000000;
   --destructive: #dc2626;
@@ -69,11 +69,12 @@
   --input: #1a1a1a;
   --ring: #ffffff;
   
-  /* Professional Color System */
+  /* Professional Color System - Improved Contrast */
   --professional-black: #000000;
   --charcoal-grey: #1a1a1a;
   --medium-grey: #404040;
-  --light-grey: #a3a3a3;
+  --light-grey: #d1d5db; /* Improved from #a3a3a3 for better contrast */
+  --muted-text: #9ca3af; /* New intermediate color for less important text */
   --pure-white: #ffffff;
   --off-white: #f5f5f5;
   --subtle-accent: #e5e5e5;
@@ -148,7 +149,7 @@
     background-color: var(--off-white);
   }
   
-  /* Professional Text Utilities */
+  /* Professional Text Utilities - Improved Contrast */
   .text-professional-black {
     color: var(--professional-black);
   }
@@ -163,6 +164,10 @@
   
   .text-light-grey {
     color: var(--light-grey);
+  }
+  
+  .text-muted-text {
+    color: var(--muted-text);
   }
   
   .text-pure-white {

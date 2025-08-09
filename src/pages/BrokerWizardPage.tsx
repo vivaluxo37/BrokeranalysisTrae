@@ -5,14 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { CheckCircle } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
 import { SeoHead } from '@/components/common'
-import { mockRootProps, mockQuery } from '@/additionalPagesMockData'
+import { mockQuery, mockRootProps } from '@/additionalPagesMockData'
 import {
-  WizardProgress,
   AssetClassSelector,
+  BrokerRecommendationCard,
+  PreferencesSummary,
   RadioSelector,
   WizardNavigation,
-  PreferencesSummary,
-  BrokerRecommendationCard
+  WizardProgress
 } from '@/components/wizard'
 
 interface WizardState {

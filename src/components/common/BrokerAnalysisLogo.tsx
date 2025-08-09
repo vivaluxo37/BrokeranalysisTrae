@@ -1,4 +1,4 @@
-import { TrendingUp, BarChart3 } from 'lucide-react'
+import { BarChart3, TrendingUp } from 'lucide-react'
 
 interface BrokerAnalysisLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl'

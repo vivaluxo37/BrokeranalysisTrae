@@ -1,4 +1,4 @@
-import { BookOpen, TrendingUp, Shield, Calculator, Users, ArrowRight, Play, Clock, Star } from 'lucide-react'
+import { ArrowRight, BookOpen, Calculator, Clock, Play, Shield, Star, TrendingUp, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

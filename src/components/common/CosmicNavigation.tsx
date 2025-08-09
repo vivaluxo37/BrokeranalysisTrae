@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { User, Shield } from 'lucide-react'
+import { Shield, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function CosmicNavigation() {

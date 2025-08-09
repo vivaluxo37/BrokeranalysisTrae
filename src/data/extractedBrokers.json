@@ -1,5 +1,155 @@
 [
   {
+    "id": "interactive-brokers",
+    "name": "Interactive Brokers",
+    "logo": "https://img.brokersview.com/prod/image/interactive-brokers-logo.png",
+    "rating": 4.8,
+    "reviewCount": 1250,
+    "regulators": [
+      "sec",
+      "finra",
+      "fca"
+    ],
+    "minDeposit": 0,
+    "maxLeverage": 50,
+    "spreadsFrom": 0.1,
+    "assetClasses": [
+      "stocks",
+      "forex",
+      "options",
+      "futures",
+      "bonds",
+      "etf"
+    ],
+    "platforms": [
+      "tws",
+      "mobile",
+      "web"
+    ],
+    "category": "full-service",
+    "trustScore": 95,
+    "isRegulated": true,
+    "yearEstablished": 1978,
+    "headquarters": "United States",
+    "website": "https://www.interactivebrokers.com",
+    "description": "Interactive Brokers is a leading global electronic broker offering direct access to stocks, options, futures, forex, bonds and funds from a single integrated account.",
+    "keyFeatures": [
+      "Low-cost trading",
+      "Global market access",
+      "Professional trading tools",
+      "Advanced order types",
+      "Comprehensive research"
+    ],
+    "featured": true,
+    "details": {
+      "fullName": "Interactive Brokers LLC",
+      "tradingName": "Interactive Brokers",
+      "legalEntity": "Interactive Brokers LLC",
+      "businessModel": "Electronic Broker",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to $500,000 (SIPC)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Smart routing",
+      "tradingHours": "24/6",
+      "serverLocation": "Global",
+      "dataFeed": "Real-time market data",
+      "slippage": "Minimal",
+      "requotes": "No requotes"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 0.2,
+        "minimum": 0.1,
+        "currency": "USD"
+      },
+      "commissions": {
+        "stocks": 0.005,
+        "options": 0.65,
+        "futures": 0.85,
+        "forex": 0.2,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -2.5,
+        "short": 1.5,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 20,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "sec",
+        "licenseNumber": "SEC8-69531",
+        "status": "active",
+        "jurisdiction": "United States",
+        "verificationUrl": "https://www.sec.gov/"
+      },
+      {
+        "authority": "finra",
+        "licenseNumber": "CRD283",
+        "status": "active",
+        "jurisdiction": "United States",
+        "verificationUrl": "https://brokercheck.finra.org/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": true
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": true,
+        "prioritySupport": true,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@interactivebrokers.com",
+      "phone": "+1 312 542 6901",
+      "liveChat": true,
+      "address": {
+        "street": "One Pickwick Plaza",
+        "city": "Greenwich",
+        "state": "CT",
+        "country": "United States",
+        "postalCode": "06830"
+      },
+      "socialMedia": {
+        "twitter": "@IBKR",
+        "facebook": "facebook.com/InteractiveBrokers",
+        "linkedin": "linkedin.com/company/interactive-brokers"
+      }
+    }
+  },
+  {
     "id": "broker-24",
     "name": "Pepperstone",
     "logo": "https://img.brokersview.com/prod/image/20231220/d96043b9323b9340683ab8e363d36bf0.jpeg",

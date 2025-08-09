@@ -4,7 +4,7 @@
  */
 
 import { z } from 'zod';
-import { AssetClass, BrokerCategory, RegulatorType, TradingPlatform, AccountType, ReviewType } from '../enums';
+import { AccountType, AssetClass, BrokerCategory, RegulatorType, ReviewType, TradingPlatform } from '../enums';
 
 // ============================================================================
 // ENUM VALIDATION SCHEMAS

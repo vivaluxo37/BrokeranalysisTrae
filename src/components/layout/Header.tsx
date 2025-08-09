@@ -18,10 +18,10 @@ import {
   Moon,
   Search,
   Sun,
-  User,
   TrendingUp,
+  User,
 } from 'lucide-react'
-import { LanguageSwitcher, BrokerAnalysisLogo } from '@/components/common'
+import { BrokerAnalysisLogo, LanguageSwitcher } from '@/components/common'
 
 export function Header() {
   const { t } = useTranslation()

@@ -5,44 +5,44 @@
 
 import { z } from 'zod';
 import {
-  Broker,
-  BrokerDetails,
-  BrokerContact,
-  BrokerRegulation,
-  BrokerFeatures,
-  BrokerCosts,
-  BrokerRating,
-  BrokerReview,
-  UserTestimonial,
   AssetCategory,
+  Broker,
+  BrokerContact,
+  BrokerCosts,
+  BrokerDetails,
+  BrokerFeatures,
+  BrokerRating,
+  BrokerRegulation,
+  BrokerReview,
+  BrokerSearchFilters,
+  BrokerSearchResult,
+  EducationLevel,
+  NewsArticle,
   TradingTool,
   TrustIndicators,
-  NewsArticle,
-  EducationLevel,
-  BrokerSearchFilters,
-  BrokerSearchResult
+  UserTestimonial
 } from './broker';
 import {
-  BrokerSchema,
-  BrokerReviewSchema,
-  UserTestimonialSchema,
   AssetCategorySchema,
-  TradingToolSchema,
-  TrustIndicatorsSchema,
-  NewsArticleSchema,
-  EducationLevelSchema,
+  BrokerReviewSchema,
+  BrokerSchema,
   BrokerSearchFiltersSchema,
   BrokerSearchResultSchema,
+  EducationLevelSchema,
+  NewsArticleSchema,
+  TradingToolSchema,
+  TrustIndicatorsSchema,
+  UserTestimonialSchema,
   validateBroker,
-  validateBrokers,
   validateBrokerReview,
+  validateBrokers,
+  validateNewsArticle,
   validateSearchFilters,
   validateSearchResult,
   validateTrustIndicators,
-  validateNewsArticle,
   validateUserTestimonial
 } from './brokerValidation';
-import { AssetClass, BrokerCategory, RegulatorType, TradingPlatform, AccountType, ReviewType } from '../enums';
+import { AccountType, AssetClass, BrokerCategory, RegulatorType, ReviewType, TradingPlatform } from '../enums';
 
 // ============================================================================
 // TYPE GUARDS
@@ -186,12 +186,12 @@ export function calculateOverallRating(rating: Partial<BrokerRating>): number {
 /**
  * Formats broker minimum deposit for display
  */
-export function formatMinDeposit(amount: number, currency: string = 'USD'): string {
+export function formatMinDeposit(amount: number, currency = 'USD'): string {
   if (amount === 0) return 'No minimum';
   
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currency,
+    currency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   });

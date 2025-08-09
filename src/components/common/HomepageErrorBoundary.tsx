@@ -1,5 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react'
-import { AlertTriangle, RefreshCw, Bug, ExternalLink } from 'lucide-react'
+import { AlertTriangle, Bug, ExternalLink, RefreshCw } from 'lucide-react'
 import { errorReportingService } from '@/services/ErrorReportingService'
 
 interface Props {

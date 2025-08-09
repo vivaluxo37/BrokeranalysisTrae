@@ -1,4 +1,4 @@
-import { Shield, Lock, CreditCard, Wallet, Building2, Bitcoin } from 'lucide-react'
+import { Bitcoin, Building2, CreditCard, Lock, Shield, Wallet } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
 export function PaymentSecuritySection() {

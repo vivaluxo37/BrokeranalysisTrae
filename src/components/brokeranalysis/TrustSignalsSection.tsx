@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Shield, Award, Users, Globe, CheckCircle, Star } from 'lucide-react'
+import { Award, CheckCircle, Globe, Shield, Star, Users } from 'lucide-react'
 
 interface TrustSignalsSectionProps {
   trustIndicators: {

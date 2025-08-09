@@ -4,20 +4,26 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Star, Shield, ExternalLink, Plus, ThumbsUp, ThumbsDown } from 'lucide-react'
+import { ExternalLink, Plus, Shield, Star, ThumbsDown, ThumbsUp, AlertCircle, RefreshCw } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
 import { SeoHead } from '@/components/common'
-import { dataIntegrationService } from '@/services/dataIntegrationService'
+import { useSafeBrokerData, useSafeBrokerProperty } from '@/hooks/useSafeBrokerData'
+import { BrokerPageErrorBoundary } from '@/components/common/BrokerPageErrorBoundary'
 import { mockQuery } from '@/additionalPagesMockData'
 
 export function BrokerProfilePage() {
   const { brokerId } = useParams()
   const [activeTab, setActiveTab] = useState('overview')
   
-  // Get broker data from integrated service (real extracted data + fallback to mock)
-  const broker = brokerId 
-    ? dataIntegrationService.getBrokerById(brokerId) || mockQuery.brokerProfile
-    : mockQuery.brokerProfile
+  // Use safe broker data loading with error handling and fallbacks
+  const { broker, isLoading, error, retry } = useSafeBrokerData(brokerId)
+  
+  // Safe property access with fallbacks
+  const brokerName = useSafeBrokerProperty(broker, 'name', 'Unknown Broker')
+  const brokerLogo = useSafeBrokerProperty(broker, 'logo', '/assets/icons/broker-placeholder.svg')
+  const brokerRating = useSafeBrokerProperty(broker, 'rating', 0)
+  const brokerReviewCount = useSafeBrokerProperty(broker, 'reviewCount', 0)
+  
   const reviews = mockQuery.userReviews.filter(review => review.brokerId === brokerId)
 
   const formatCurrency = (amount: number): string => {
@@ -37,13 +43,99 @@ export function BrokerProfilePage() {
     })
   }
 
+  // Loading state
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="min-h-screen bg-professional-black">
+          <div className="professional-container py-8">
+            <div className="professional-card p-8 mb-8">
+              <div className="animate-pulse">
+                <div className="flex items-center mb-6">
+                  <div className="w-20 h-20 bg-medium-grey rounded-xl mr-6"></div>
+                  <div className="space-y-2">
+                    <div className="h-8 bg-medium-grey rounded w-64"></div>
+                    <div className="h-4 bg-medium-grey rounded w-32"></div>
+                    <div className="h-4 bg-medium-grey rounded w-48"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="professional-card p-4">
+                  <div className="animate-pulse">
+                    <div className="h-6 bg-medium-grey rounded mb-2"></div>
+                    <div className="h-4 bg-medium-grey rounded w-20"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Layout>
+    )
+  }
+
+  // Error state with retry option
+  if (error && !broker) {
+    return (
+      <Layout>
+        <div className="min-h-screen bg-professional-black">
+          <div className="professional-container py-8">
+            <div className="professional-card p-8 text-center">
+              <AlertCircle className="w-16 h-16 text-red-400 mx-auto mb-4" />
+              <h1 className="text-2xl font-bold text-pure-white mb-2">
+                Unable to Load Broker Information
+              </h1>
+              <p className="text-light-grey mb-6">
+                {error}
+              </p>
+              <Button onClick={retry} className="btn-professional-primary">
+                <RefreshCw className="w-4 h-4 mr-2" />
+                Try Again
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    )
+  }
+
+  // Ensure broker exists (should always be true due to fallback, but extra safety)
+  if (!broker) {
+    return (
+      <Layout>
+        <div className="min-h-screen bg-professional-black">
+          <div className="professional-container py-8">
+            <div className="professional-card p-8 text-center">
+              <AlertCircle className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
+              <h1 className="text-2xl font-bold text-pure-white mb-2">
+                Broker Not Found
+              </h1>
+              <p className="text-light-grey mb-6">
+                The requested broker could not be found. Please check the URL or browse our broker directory.
+              </p>
+              <Button asChild className="btn-professional-primary">
+                <Link to="/brokers">
+                  Browse Brokers
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    )
+  }
+
   return (
-    <Layout>
-      <div className="min-h-screen bg-professional-black">
-        <SeoHead 
-          title={`${broker.name} Review | BrokerAnalysis`}
-          description={`Detailed review of ${broker.name}. Read expert analysis, user reviews, fees, and regulation information.`}
-        />
+    <BrokerPageErrorBoundary brokerId={brokerId || 'unknown'} brokerName={brokerName}>
+      <Layout>
+        <div className="min-h-screen bg-professional-black">
+          <SeoHead 
+            title={`${brokerName} Review | BrokerAnalysis`}
+            description={`Detailed review of ${brokerName}. Read expert analysis, user reviews, fees, and regulation information.`}
+          />
 
         <div className="professional-container py-8">
           {/* Broker Header */}
@@ -51,27 +143,30 @@ export function BrokerProfilePage() {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between">
               <div className="flex items-center mb-6 lg:mb-0">
                 <img 
-                  src={broker.logo} 
-                  alt={`${broker.name} logo`}
+                  src={brokerLogo} 
+                  alt={`${brokerName} logo`}
                   className="w-20 h-20 rounded-xl object-cover mr-6"
+                  onError={(e) => {
+                    e.currentTarget.src = '/assets/icons/broker-placeholder.svg'
+                  }}
                 />
                 <div>
                   <h1 className="text-3xl font-bold text-pure-white mb-2">
-                    {broker.name}
+                    {brokerName}
                   </h1>
                   <div className="flex items-center mb-2">
                     <div className="flex items-center mr-4">
                       <Star className="w-5 h-5 text-yellow-400 fill-current mr-1" />
                       <span className="text-pure-white font-semibold text-lg">
-                        {broker.rating}
+                        {brokerRating}
                       </span>
                     </div>
                     <span className="text-light-grey">
-                      Based on {broker.reviewCount.toLocaleString()} reviews
+                      Based on {brokerReviewCount.toLocaleString()} reviews
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {broker.regulation.map((reg) => (
+                    {useSafeBrokerProperty(broker, 'regulation', []).map((reg: any) => (
                       <Badge 
                         key={reg.authority} 
                         className="bg-green-500/20 text-green-400 border-green-500/30"
@@ -101,25 +196,25 @@ export function BrokerProfilePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div className="professional-card p-4 text-center">
               <div className="text-2xl font-bold text-pure-white mb-1">
-                {formatCurrency(broker.minDeposit)}
+                {formatCurrency(useSafeBrokerProperty(broker, 'minDeposit', 0))}
               </div>
               <div className="text-light-grey text-sm">Min Deposit</div>
             </div>
             <div className="professional-card p-4 text-center">
               <div className="text-2xl font-bold text-pure-white mb-1">
-                {broker.fees.forexSpread} pips
+                {useSafeBrokerProperty(broker, 'spreadsFrom', 0)} pips
               </div>
               <div className="text-light-grey text-sm">Avg Spread</div>
             </div>
             <div className="professional-card p-4 text-center">
               <div className="text-2xl font-bold text-pure-white mb-1">
-                1:{broker.maxLeverage}
+                1:{useSafeBrokerProperty(broker, 'maxLeverage', 1)}
               </div>
               <div className="text-light-grey text-sm">Max Leverage</div>
             </div>
             <div className="professional-card p-4 text-center">
               <div className="text-2xl font-bold text-pure-white mb-1">
-                {broker.founded}
+                {useSafeBrokerProperty(broker, 'details', {})?.foundedYear || 'N/A'}
               </div>
               <div className="text-light-grey text-sm">Founded</div>
             </div>
@@ -152,7 +247,12 @@ export function BrokerProfilePage() {
                     Pros
                   </h3>
                   <ul className="space-y-3">
-                    {broker.pros.map((pro, index) => (
+                    {(broker?.pros || [
+                      'Regulated by reputable authorities',
+                      'Competitive spreads and fees',
+                      'Multiple trading platforms available',
+                      'Good customer support'
+                    ]).map((pro: string, index: number) => (
                       <li key={index} className="flex items-start">
                         <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <span className="text-light-grey">{pro}</span>
@@ -168,7 +268,11 @@ export function BrokerProfilePage() {
                     Cons
                   </h3>
                   <ul className="space-y-3">
-                    {broker.cons.map((con, index) => (
+                    {(broker?.cons || [
+                      'Limited educational resources',
+                      'Higher minimum deposit requirements',
+                      'Some advanced features require premium account'
+                    ]).map((con: string, index: number) => (
                       <li key={index} className="flex items-start">
                         <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <span className="text-light-grey">{con}</span>
@@ -180,15 +284,19 @@ export function BrokerProfilePage() {
 
               {/* Description */}
               <div className="professional-card p-6">
-                <h3 className="text-xl font-semibold text-pure-white mb-4">About {broker.name}</h3>
-                <p className="text-light-grey leading-relaxed">{broker.description}</p>
+                <h3 className="text-xl font-semibold text-pure-white mb-4">About {brokerName}</h3>
+                <p className="text-light-grey leading-relaxed">
+                  {useSafeBrokerProperty(broker, 'details', {})?.description || 
+                   `${brokerName} is a regulated broker offering trading services across multiple asset classes. 
+                    Please visit their website for more detailed information about their services and offerings.`}
+                </p>
               </div>
 
               {/* Trading Platforms */}
               <div className="professional-card p-6">
                 <h3 className="text-xl font-semibold text-pure-white mb-4">Trading Platforms</h3>
                 <div className="flex flex-wrap gap-3">
-                  {broker.platforms.map((platform) => (
+                  {useSafeBrokerProperty(broker, 'platforms', ['MetaTrader 4', 'Web Platform']).map((platform: string) => (
                     <Badge 
                       key={platform} 
                       variant="outline" 
@@ -216,27 +324,29 @@ export function BrokerProfilePage() {
                   <TableBody>
                     <TableRow className="border-medium-grey">
                       <TableCell className="text-pure-white">Forex Spread (EUR/USD)</TableCell>
-                      <TableCell className="text-pure-white">{broker.fees.forexSpread} pips</TableCell>
+                      <TableCell className="text-pure-white">
+                        {useSafeBrokerProperty(broker, 'spreadsFrom', 0)} pips
+                      </TableCell>
                       <TableCell className="text-light-grey">Variable spread</TableCell>
                     </TableRow>
                     <TableRow className="border-medium-grey">
                       <TableCell className="text-pure-white">Commission</TableCell>
                       <TableCell className="text-pure-white">
-                        {broker.fees.commission === 0 ? 'Free' : formatCurrency(broker.fees.commission)}
+                        {useSafeBrokerProperty(broker, 'costs', {})?.commissions?.forex === 0 ? 'Free' : 'Contact broker'}
                       </TableCell>
                       <TableCell className="text-light-grey">Per trade</TableCell>
                     </TableRow>
                     <TableRow className="border-medium-grey">
                       <TableCell className="text-pure-white">Inactivity Fee</TableCell>
                       <TableCell className="text-pure-white">
-                        {formatCurrency(broker.fees.inactivityFee)}/month
+                        Contact broker
                       </TableCell>
                       <TableCell className="text-light-grey">After 12 months</TableCell>
                     </TableRow>
                     <TableRow className="border-medium-grey">
                       <TableCell className="text-pure-white">Withdrawal Fee</TableCell>
                       <TableCell className="text-pure-white">
-                        {broker.fees.withdrawalFee === 0 ? 'Free' : formatCurrency(broker.fees.withdrawalFee)}
+                        Contact broker
                       </TableCell>
                       <TableCell className="text-light-grey">Per withdrawal</TableCell>
                     </TableRow>
@@ -250,24 +360,35 @@ export function BrokerProfilePage() {
               <div className="professional-card p-6">
                 <h3 className="text-xl font-semibold text-pure-white mb-6">Regulatory Information</h3>
                 <div className="space-y-6">
-                  {broker.regulation.map((reg) => (
-                    <div key={reg.authority} className="border border-medium-grey rounded-lg p-4">
+                  {useSafeBrokerProperty(broker, 'regulation', []).map((reg: any, index: number) => (
+                    <div key={reg.authority || index} className="border border-medium-grey rounded-lg p-4">
                       <div className="flex items-center mb-3">
                         <Shield className="w-5 h-5 text-green-400 mr-2" />
-                        <h4 className="text-lg font-semibold text-pure-white">{reg.authority}</h4>
+                        <h4 className="text-lg font-semibold text-pure-white">{reg.authority || 'Regulatory Authority'}</h4>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                         <div>
                           <span className="text-light-grey">License Number:</span>
-                          <span className="text-pure-white ml-2">{reg.license}</span>
+                          <span className="text-pure-white ml-2">{reg.licenseNumber || 'Contact broker'}</span>
                         </div>
                         <div>
-                          <span className="text-light-grey">Country:</span>
-                          <span className="text-pure-white ml-2">{reg.country}</span>
+                          <span className="text-light-grey">Status:</span>
+                          <span className="text-pure-white ml-2">{reg.status || 'Active'}</span>
                         </div>
                       </div>
                     </div>
                   ))}
+                  {useSafeBrokerProperty(broker, 'regulation', []).length === 0 && (
+                    <div className="border border-medium-grey rounded-lg p-4">
+                      <div className="flex items-center mb-3">
+                        <Shield className="w-5 h-5 text-yellow-400 mr-2" />
+                        <h4 className="text-lg font-semibold text-pure-white">Regulation Information</h4>
+                      </div>
+                      <p className="text-light-grey">
+                        Please contact the broker directly for detailed regulatory information.
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </TabsContent>
@@ -377,5 +498,6 @@ export function BrokerProfilePage() {
         </div>
       </div>
     </Layout>
+    </BrokerPageErrorBoundary>
   )
 }

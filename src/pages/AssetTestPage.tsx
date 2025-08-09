@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { AssetTestComponent, AssetPreviewComponent } from '@/components/common/AssetTestComponent';
+import { AssetPreviewComponent, AssetTestComponent } from '@/components/common/AssetTestComponent';
 
 export function AssetTestPage() {
   return (

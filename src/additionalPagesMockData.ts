@@ -1,5 +1,5 @@
 // Mock data for additional BrokerAnalysis pages
-import { AssetClass, BrokerCategory, RegulatorType, TradingPlatform, AccountType, ReviewType, ToolType } from './enums';
+import { AccountType, AssetClass, BrokerCategory, RegulatorType, ReviewType, ToolType, TradingPlatform } from './enums';
 
 // Data for global state store
 export const mockStore = {

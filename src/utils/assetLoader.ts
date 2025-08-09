@@ -3,7 +3,7 @@
  * Handles loading of broker logos and other assets with error handling
  */
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // Asset loading configuration
 interface AssetConfig {

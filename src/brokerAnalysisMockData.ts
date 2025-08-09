@@ -2,23 +2,23 @@
 // This file contains sample data for development and testing purposes
 
 import type {
+  AssetCategory,
   Broker,
   BrokerReview,
-  UserTestimonial,
-  AssetCategory,
+  EducationLevel,
+  NewsArticle,
   TradingTool,
   TrustIndicators,
-  NewsArticle,
-  EducationLevel
+  UserTestimonial
 } from './types/broker';
 import {
+  AccountType,
   AssetClass,
   BrokerCategory,
   RegulatorType,
-  TradingPlatform,
-  AccountType,
   ReviewType,
-  ToolType
+  ToolType,
+  TradingPlatform
 } from './enums';
 
 // Data passed as props to the root component
@@ -35,11 +35,11 @@ featuredBrokers: Broker[];
   tradingTools: TradingTool[];
   trustIndicators: TrustIndicators;
   recentReviews: BrokerReview[];
-  trustFeatures: Array<{
+  trustFeatures: {
     icon: string;
     title: string;
     description: string;
-  }>;
+  }[];
   educationLevels: EducationLevel[];
 } = {
   // Hero section data

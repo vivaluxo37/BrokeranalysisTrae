@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Play, Clock, BookOpen, TrendingUp, BarChart3, Target } from 'lucide-react'
+import { BarChart3, BookOpen, Clock, Play, Target, TrendingUp } from 'lucide-react'
 
 interface EducationLevel {
   level: string

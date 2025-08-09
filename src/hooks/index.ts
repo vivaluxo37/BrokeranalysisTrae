@@ -13,3 +13,9 @@ export {
 } from './useBrokers'
 
 export { useDebounce } from './useDebounce'
+
+export {
+  useSafeBrokerData,
+  useSafeBrokerProperty,
+  useSafeBrokersData,
+} from './useSafeBrokerData'

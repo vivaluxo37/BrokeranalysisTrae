@@ -2,14 +2,14 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
-type CarouselApi = {
+interface CarouselApi {
   scrollPrev: () => void
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
 }
 
-type CarouselProps = {
+interface CarouselProps {
   opts?: any
   plugins?: any
   orientation?: "horizontal" | "vertical"

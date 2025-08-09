@@ -1,0 +1,47 @@
+{
+  "mcpServers": {
+    "puppeteer": {
+      "name": "Puppeteer Web Automation",
+      "description": "Web automation server using Puppeteer for browser control, screenshots, and content extraction",
+      "command": "node",
+      "args": ["./src/puppeteer/index.js"],
+      "cwd": "./mcp-servers",
+      "env": {},
+      "capabilities": [
+        "browser_automation",
+        "web_scraping",
+        "screenshot_capture",
+        "content_extraction",
+        "user_interaction"
+      ],
+      "tools": [
+        "puppeteer_launch",
+        "puppeteer_navigate",
+        "puppeteer_screenshot",
+        "puppeteer_get_content",
+        "puppeteer_click",
+        "puppeteer_type",
+        "puppeteer_evaluate",
+        "puppeteer_close"
+      ]
+    },
+    "filesystem": {
+      "name": "Filesystem Operations",
+      "description": "File system operations server",
+      "command": "node",
+      "args": ["./src/filesystem/index.js"],
+      "cwd": "./mcp-servers",
+      "env": {},
+      "capabilities": [
+        "file_operations",
+        "directory_management"
+      ]
+    }
+  },
+  "settings": {
+    "logLevel": "info",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "enableLogging": true
+  }
+}

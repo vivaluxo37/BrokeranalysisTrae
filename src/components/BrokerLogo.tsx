@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import { getBrokerLogo, getFallbackLogo, generateSrcSet } from '../utils/assetUtils';
+import React, { useCallback, useState } from 'react';
+import { generateSrcSet, getBrokerLogo, getFallbackLogo } from '../utils/assetUtils';
 
 // Define types locally to avoid import issues
 type ImageFormat = 'png' | 'webp';

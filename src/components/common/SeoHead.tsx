@@ -25,7 +25,7 @@ export function SeoHead({
     // Update or create meta tags
     const updateMetaTag = (name: string, content: string, property?: boolean) => {
       const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`
-      let meta = document.querySelector(selector) as HTMLMetaElement
+      let meta = document.querySelector(selector)!
       
       if (!meta) {
         meta = document.createElement('meta')
@@ -40,7 +40,7 @@ export function SeoHead({
     }
 
     // Update canonical link
-    let canonical_link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement
+    let canonical_link = document.querySelector('link[rel="canonical"]')!
     if (!canonical_link) {
       canonical_link = document.createElement('link')
       canonical_link.setAttribute('rel', 'canonical')

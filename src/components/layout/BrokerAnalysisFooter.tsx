@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { BrokerAnalysisLogo } from '@/components/common'
-import { Shield, Twitter, Linkedin, Youtube } from 'lucide-react'
+import { Linkedin, Shield, Twitter, Youtube } from 'lucide-react'
 
 export function BrokerAnalysisFooter() {
   const footerSections = [
@@ -57,52 +57,84 @@ export function BrokerAnalysisFooter() {
   ]
 
   return (
-    <footer className="bg-charcoal-grey border-t border-medium-grey">
+    <footer 
+      id="footer"
+      className="bg-charcoal-grey border-t border-medium-grey"
+      role="contentinfo"
+      aria-label="Site footer"
+      tabIndex={-1}
+    >
       {/* Main Footer Content */}
       <div className="professional-container py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Logo and Description */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <BrokerAnalysisLogo size="md" className="mb-4" />
+            <div className="mb-4">
+              <BrokerAnalysisLogo 
+                size="md" 
+                className="focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey" 
+                tabIndex={0}
+                aria-label="BrokerAnalysis homepage"
+              />
+            </div>
             <p className="text-light-grey text-sm leading-relaxed mb-6">
               The world's most trusted broker comparison platform, serving millions of traders with independent analysis and verified reviews.
             </p>
             
             {/* Social Links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 bg-professional-black border border-medium-grey rounded-lg flex items-center justify-center text-light-grey hover:text-pure-white hover:bg-medium-grey/20 transition-colors"
-                >
-                  <social.icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
+            <nav aria-label="Social media links">
+              <div className="flex space-x-4" role="list">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 bg-professional-black border border-medium-grey rounded-lg flex items-center justify-center text-light-grey hover:text-pure-white hover:bg-medium-grey/20 hover:scale-110 focus:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey"
+                    aria-label={`Follow us on ${social.name} (opens in new tab)`}
+                    role="listitem"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        e.currentTarget.click();
+                      }
+                    }}
+                  >
+                    <social.icon className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </nav>
           </div>
 
           {/* Footer Sections */}
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-pure-white font-semibold mb-4">
+          {footerSections.map((section, sectionIndex) => (
+            <nav key={section.title} aria-labelledby={`footer-section-${sectionIndex}`}>
+              <h3 
+                id={`footer-section-${sectionIndex}`}
+                className="text-pure-white font-semibold mb-4"
+              >
                 {section.title}
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3" role="list">
                 {section.links.map((link) => (
-                  <li key={link.name}>
+                  <li key={link.name} role="listitem">
                     <Link
                       to={link.href}
-                      className="text-light-grey hover:text-pure-white transition-colors text-sm"
+                      className="text-light-grey hover:text-pure-white hover:underline focus:text-pure-white focus:underline transition-all duration-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey rounded-sm px-1 py-0.5 -mx-1 -my-0.5"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          e.currentTarget.click();
+                        }
+                      }}
                     >
                       {link.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
       </div>
@@ -112,37 +144,64 @@ export function BrokerAnalysisFooter() {
         <div className="professional-container py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Copyright */}
-            <div className="text-light-grey text-sm mb-4 md:mb-0">
+            <div className="text-light-grey text-sm mb-4 md:mb-0" role="contentinfo">
               © 2025 BrokerAnalysis. All rights reserved.
             </div>
 
             {/* Security Badge and Links */}
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center text-light-grey text-sm">
-                <Shield className="w-4 h-4 mr-2" />
-                Secure site: SSL-encrypted
+            <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <div 
+                className="flex items-center text-light-grey text-sm"
+                role="status"
+                aria-label="Security information"
+              >
+                <Shield className="w-4 h-4 mr-2" aria-hidden="true" />
+                <span>Secure site: SSL-encrypted</span>
               </div>
               
-              <div className="flex items-center space-x-4 text-sm">
-                <Link 
-                  to="/privacy" 
-                  className="text-light-grey hover:text-pure-white transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-                <Link 
-                  to="/terms" 
-                  className="text-light-grey hover:text-pure-white transition-colors"
-                >
-                  Terms of Service
-                </Link>
-                <Link 
-                  to="/cookies" 
-                  className="text-light-grey hover:text-pure-white transition-colors"
-                >
-                  Cookie Policy
-                </Link>
-              </div>
+              <nav aria-label="Legal links">
+                <div className="flex items-center space-x-4 text-sm" role="list">
+                  <Link 
+                    to="/privacy" 
+                    className="text-light-grey hover:text-pure-white hover:underline focus:text-pure-white focus:underline transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey rounded-sm px-1 py-0.5 -mx-1 -my-0.5"
+                    role="listitem"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        e.currentTarget.click();
+                      }
+                    }}
+                  >
+                    Privacy Policy
+                  </Link>
+                  <Link 
+                    to="/terms" 
+                    className="text-light-grey hover:text-pure-white hover:underline focus:text-pure-white focus:underline transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey rounded-sm px-1 py-0.5 -mx-1 -my-0.5"
+                    role="listitem"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        e.currentTarget.click();
+                      }
+                    }}
+                  >
+                    Terms of Service
+                  </Link>
+                  <Link 
+                    to="/cookies" 
+                    className="text-light-grey hover:text-pure-white hover:underline focus:text-pure-white focus:underline transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey rounded-sm px-1 py-0.5 -mx-1 -my-0.5"
+                    role="listitem"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        e.currentTarget.click();
+                      }
+                    }}
+                  >
+                    Cookie Policy
+                  </Link>
+                </div>
+              </nav>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import type { Broker } from '@/types/broker';
-import { mockRootProps, mockQuery } from '@/brokerAnalysisMockData';
+import { mockQuery, mockRootProps } from '@/brokerAnalysisMockData';
 import extractedBrokers from '@/data/extractedBrokers.json';
 import { AssetClass, BrokerCategory, RegulatorType, TradingPlatform } from '@/enums';
 

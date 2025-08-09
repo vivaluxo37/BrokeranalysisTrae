@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Calculator, Search, CalendarDays, BarChart3, ArrowRight, Zap } from 'lucide-react'
+import { ArrowRight, BarChart3, Calculator, CalendarDays, Search, Zap } from 'lucide-react'
 import { ToolType } from '@/enums'
 
 interface TradingTool {

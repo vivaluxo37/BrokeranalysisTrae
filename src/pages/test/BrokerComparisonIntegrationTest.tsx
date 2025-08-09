@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CheckCircle, XCircle, AlertTriangle, Clock, BarChart3, Database, Zap } from 'lucide-react';
+import { AlertTriangle, BarChart3, CheckCircle, Clock, Database, XCircle, Zap } from 'lucide-react';
 import { BrokerComparisonTable } from '@/components/common/BrokerComparisonTable'
 import { TopBrokerComparison } from '@/components/common/TopBrokerComparison';
 import { dataIntegrationService } from '@/services/dataIntegrationService';

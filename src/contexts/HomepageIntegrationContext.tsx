@@ -1,4 +1,4 @@
-import React, { createContext, useContext, ReactNode } from 'react'
+import React, { ReactNode, createContext, useContext } from 'react'
 import { authService } from '@/services/authService'
 import { SearchService } from '@/services/search/SearchService'
 import { AIGateway } from '@/services/ai/AIGateway'
@@ -10,7 +10,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useSearch } from '@/hooks/useSearch'
 import { useProfile } from '@/hooks/useProfile'
 import type { User } from '@/types/auth'
-import type { SearchFilters, SearchResult, SavedSearch } from '@/types/search'
+import type { SavedSearch, SearchFilters, SearchResult } from '@/types/search'
 import type { Broker } from '@/types/broker'
 
 /**
@@ -66,12 +66,12 @@ export interface HomepageState {
   }
   aiState: {
     isOpen: boolean
-    messages: Array<{
+    messages: {
       id: string
       role: 'user' | 'assistant'
       content: string
       timestamp: Date
-    }>
+    }[]
     isLoading: boolean
     context: 'hero' | 'comparison' | 'testimonials' | 'general'
   }
@@ -84,12 +84,12 @@ export interface HomepageState {
   uiState: {
     activeSection: string
     modalsOpen: Record<string, boolean>
-    notifications: Array<{
+    notifications: {
       id: string
       type: 'error' | 'warning' | 'info' | 'success'
       message: string
       timestamp: Date
-    }>
+    }[]
   }
 }
 

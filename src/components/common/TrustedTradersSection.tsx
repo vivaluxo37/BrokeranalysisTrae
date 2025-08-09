@@ -1,4 +1,4 @@
-import { Users, Shield, Award, Star } from 'lucide-react'
+import { Award, Shield, Star, Users } from 'lucide-react'
 
 export function TrustedTradersSection() {
   return (

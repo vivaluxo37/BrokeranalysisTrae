@@ -3,7 +3,7 @@
  * Defines the complete data structure for broker information, ratings, regulation, and features
  */
 
-import { AssetClass, BrokerCategory, RegulatorType, TradingPlatform, AccountType, ReviewType } from '../enums';
+import { AccountType, AssetClass, BrokerCategory, RegulatorType, ReviewType, TradingPlatform } from '../enums';
 
 // ============================================================================
 // CORE BROKER INTERFACES

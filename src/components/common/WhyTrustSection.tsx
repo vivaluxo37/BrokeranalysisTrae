@@ -1,4 +1,4 @@
-import { Shield, BarChart3, Users, Target } from 'lucide-react'
+import { BarChart3, Shield, Target, Users } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
 export function WhyTrustSection() {

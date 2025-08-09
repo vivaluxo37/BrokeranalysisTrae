@@ -1,4 +1,4 @@
-import { Shield, Zap, Globe, Lock } from 'lucide-react'
+import { Globe, Lock, Shield, Zap } from 'lucide-react'
 
 export function ProfessionalFeaturesSection() {
   const features = [

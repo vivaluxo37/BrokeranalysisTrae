@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrokerCard } from '../../components/brokeranalysis/BrokerCard';
 import { dataIntegrationService } from '../../services/dataIntegrationService';
 import type { Broker } from '../../types/broker';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Badge } from '../../components/ui/Badge';
-import { CheckCircle, XCircle, AlertTriangle, BarChart3, Clock, Zap } from 'lucide-react';
+import { AlertTriangle, BarChart3, CheckCircle, Clock, XCircle, Zap } from 'lucide-react';
 
 interface TestResult {
   brokerId: string;
@@ -49,7 +49,7 @@ export const BrokerCardIntegrationTest: React.FC = () => {
   const loadBrokerData = () => {
     try {
       setIsLoading(true);
-      const allBrokers = dataIntegrationService.getIntegratedBrokerData().allBrokers;
+      const {allBrokers} = dataIntegrationService.getIntegratedBrokerData();
       setBrokers(allBrokers.slice(0, 10)); // Test with first 10 brokers
       setIsLoading(false);
     } catch (error) {

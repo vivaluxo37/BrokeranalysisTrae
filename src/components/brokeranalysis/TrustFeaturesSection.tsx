@@ -1,4 +1,4 @@
-import { Database, Activity, ShieldCheck, TrendingUp } from 'lucide-react'
+import { Activity, Database, ShieldCheck, TrendingUp } from 'lucide-react'
 
 interface TrustFeature {
   type: string

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, CheckCircle, Star, TrendingUp, Shield, Users, Calculator } from 'lucide-react'
+import { Calculator, CheckCircle, Search, Shield, Star, TrendingUp, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
