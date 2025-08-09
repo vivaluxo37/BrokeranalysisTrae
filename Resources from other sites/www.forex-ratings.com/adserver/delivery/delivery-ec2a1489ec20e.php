@@ -1,1 +1,0 @@
-No Content: https://www.forex-ratings.com/adserver/delivery/delivery.php?zone=5

@@ -1,1 +1,0 @@
-No Content: https://www.earnforex.com/_nuxt/js/bd5060fcf887ad7d21e8.js

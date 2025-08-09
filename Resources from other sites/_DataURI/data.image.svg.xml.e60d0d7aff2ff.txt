@@ -1,1 +1,0 @@
-data:image/svg+xml;charset=utf8,%3Csvg width='20' height='16' viewBox='0 0 20 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' width='20' height='3' fill='white'/%3E%3Crect x='0' y='6.5' width='20' height='3' fill='white'/%3E%3Crect x='0' y='13' width='20' height='3' fill='white'/%3E%3C/svg%3E

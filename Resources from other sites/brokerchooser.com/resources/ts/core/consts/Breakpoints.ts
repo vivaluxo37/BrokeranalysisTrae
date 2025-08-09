@@ -1,9 +1,0 @@
-/**
- * These are the default tailwind breakpoints.
- */
-export enum Breakpoints {
-    sm = 640,
-    md = 768,
-    lg = 1024,
-    xl = 1280,
-}
