@@ -14,7 +14,10 @@
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist node_modules/.cache",
     "compile-brokers": "tsx scripts/compileBrokerData.ts",
-    "extract-brokers": "tsx scripts/extractBrokerData.ts"
+    "extract-brokers": "tsx scripts/extractBrokerData.ts",
+    "test:assets": "node scripts/test-assets.js",
+    "test:assets:dev": "npm run test:assets",
+    "verify:build": "npm run build && npm run test:assets"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.14",
@@ -39,6 +42,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
+    "@playwright/test": "^1.54.2",
     "@tailwindcss/postcss": "^4.1.11",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
@@ -56,8 +60,8 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "~5.8.3",
     "tsx": "^4.7.1",
+    "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4",
     "vite-tsconfig-paths": "^5.1.4"

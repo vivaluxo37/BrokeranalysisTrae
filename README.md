@@ -39,6 +39,10 @@ BrokerAnalysis is a broker comparison and review platform built with React, Type
 - **Tailwind CSS** - Utility-first CSS framework
 - **Vite** - Build tool and dev server
 
+## Deployment
+
+The application is configured for deployment on Vercel. For detailed information about deployment configuration changes and troubleshooting, see [VERCEL_DEPLOYMENT_CHANGES.md](./VERCEL_DEPLOYMENT_CHANGES.md).
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:

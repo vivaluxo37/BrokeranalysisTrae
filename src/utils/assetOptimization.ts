@@ -31,10 +31,19 @@ export const ASSET_CONFIG: AssetConfig = {
 };
 
 /**
+ * Get the correct asset base URL for the current environment
+ */
+export function getAssetBaseUrl(): string {
+  // In production (Vercel), assets are served from the root
+  // In development, they're served from the public directory
+  return ASSET_CONFIG.baseUrl;
+}
+
+/**
  * Generate broker asset paths for different logo types and sizes
  */
 export function getBrokerAssetPaths(brokerId: string): BrokerAssetPaths {
-  const baseUrl = ASSET_CONFIG.baseUrl;
+  const baseUrl = getAssetBaseUrl();
   
   return {
     square: {
@@ -98,10 +107,64 @@ export async function checkImageExists(url: string): Promise<boolean> {
 }
 
 /**
+ * Validate that all critical assets are accessible
+ */
+export async function validateAssetAccessibility(): Promise<{
+  success: boolean;
+  errors: string[];
+  warnings: string[];
+}> {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  
+  // Test fallback image
+  const fallbackExists = await checkImageExists(ASSET_CONFIG.fallbackImage);
+  if (!fallbackExists) {
+    errors.push(`Fallback image not accessible: ${ASSET_CONFIG.fallbackImage}`);
+  }
+  
+  // Test placeholder icon
+  const placeholderSvg = '/assets/icons/broker-placeholder.svg';
+  const placeholderExists = await checkImageExists(placeholderSvg);
+  if (!placeholderExists) {
+    warnings.push(`Placeholder SVG not accessible: ${placeholderSvg}`);
+  }
+  
+  // Test a sample broker asset path structure
+  const sampleBrokerId = 'test-broker';
+  const samplePaths = getBrokerAssetPaths(sampleBrokerId);
+  
+  // We don't expect these to exist, but we test the path structure
+  const pathTests = [
+    samplePaths.square.small,
+    samplePaths.square.medium,
+    samplePaths.square.large,
+    samplePaths.horizontal,
+    samplePaths.favicon
+  ];
+  
+  // Validate path structure (should not contain double slashes, etc.)
+  pathTests.forEach(path => {
+    if (path.includes('//')) {
+      errors.push(`Invalid path structure (double slashes): ${path}`);
+    }
+    if (!path.startsWith('/')) {
+      errors.push(`Path should be absolute: ${path}`);
+    }
+  });
+  
+  return {
+    success: errors.length === 0,
+    errors,
+    warnings
+  };
+}
+
+/**
  * Get fallback image URL with format preference
  */
 export function getFallbackImageUrl(brokerId: string, type: 'square' | 'horizontal' | 'favicon', format: 'webp' | 'png' = 'webp'): string {
-  const baseUrl = ASSET_CONFIG.baseUrl;
+  const baseUrl = getAssetBaseUrl();
   
   switch (type) {
     case 'square':
