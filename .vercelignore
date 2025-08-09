@@ -1,0 +1,56 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+
+# Test files and reports
+playwright-report
+test-results
+e2e
+
+# Large directories
+brokerchooser
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache directories
+.cache
+.parcel-cache
+
+# Documentation
+docs
+
+# Development tools
+.husky
+scripts
+
+# Large assets (will be optimized separately)
+public/assets/large-images
+public/assets/videos
