@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { BrokerCard } from '../../components/brokeranalysis/BrokerCard';
 import { dataIntegrationService } from '../../services/dataIntegrationService';
 import type { Broker } from '../../types/broker';
-import { Card } from '../../components/ui/Card';
-import { Button } from '../../components/ui/Button';
-import { Badge } from '../../components/ui/Badge';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { AlertTriangle, BarChart3, CheckCircle, Clock, XCircle, Zap } from 'lucide-react';
 
 interface TestResult {
