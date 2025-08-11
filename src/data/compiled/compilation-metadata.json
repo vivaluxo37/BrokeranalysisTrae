@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2025-08-08T14:41:19.892Z",
+  "sources": [
+    {
+      "name": "Extracted Brokers",
+      "type": "extracted",
+      "brokerCount": 12,
+      "lastModified": "2025-08-08T13:16:57.517Z"
+    }
+  ],
+  "statistics": {
+    "totalBrokers": 12,
+    "uniqueBrokers": 12,
+    "duplicatesFound": 0,
+    "validationErrors": 0,
+    "dataQualityScore": 93
+  },
+  "qualityMetrics": {
+    "completeness": 100,
+    "accuracy": 95,
+    "consistency": 90,
+    "timeliness": 85
+  }
+}

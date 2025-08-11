@@ -1,0 +1,75 @@
+Understood. I’ll now explore and map out the complete site structure of brokerchooser.com, including all main and subpages: broker reviews, comparison pages, blog posts, tools, FAQs, legal pages, and any unique landing or country-specific pages. I’ll also provide a brief description of what each page covers.
+
+I’ll let you know as soon as I’ve completed the full site map analysis.
+
+
+# Broker Reviews
+
+* **Broker reviews listing page** – Main directory of all brokers. Lists each broker with summary stats and links to individual review pages (dynamic listing page).
+* **\[Broker name] review pages** – Individual broker review for each company. Each page provides an in-depth analysis of that broker’s fees, features, pros/cons and ratings (static informational pages). For example, the *Interactive Brokers review* gives details on trading fees and services. (There are review pages for dozens of brokers, e.g., Charles Schwab, Lightyear, Trading 212, Swissquote, IG, Oanda, AJ Bell, Plus500, Freetrade, Pepperstone, CMC Markets, Fusion Markets, Forex.com, Capital.com, Webull, City Index, Spreadex, Tickmill, TradeStation, Axi, Robinhood, FXCM, Eightcap, FP Markets, Vantage, AMP Futures, XM, Optimus Futures, ActivTrades, AvaTrade, TradeStation, Alpaca, Firstrade, Global Prime, Hantec, FXTRADING.com, FxPro, GO Markets, HYCM, Halifax, Trade Nation, TradeZero, FBS, VT Markets, BlackBull, Hargreaves Lansdown, SogoTrade, TMGM, Charles Stanley, FXTM, Revolut, flatex, Fidelity Int’l, CapTrader, Barclays, Royal, Comdirect, EasyEquities, ChoiceTrade, BGL BNP Paribas, Davy Select, Trading.com, etc.). Each is a comprehensive review page (often updated) on that broker.
+
+# Broker Comparison / Listing Pages
+
+* **Best Online Brokers (Toplist)** – “Best Online Brokers in 2025” page ranks top brokers overall (U.S.). It lists 2025’s top 10 brokers (Interactive Brokers, eToro, Charles Schwab, etc.) with scores and key features. Static content with data and tables.
+* **Best Stock Brokers** – “Best Stock Brokers in 2025” page (USA) listing top stock-only brokers. Compares fee and service features. Static toplist article.
+* **Best Forex Brokers** – “Best Forex Brokers in 2025” page (USA) with top forex-specialist brokers. Static ranking of brokers optimized for forex trading.
+* **Best CFD Brokers** – “Best CFD Brokers in 2025” page, listing top brokers for CFDs (found via search, similar format as above). Static comparison.
+* **Best Trading Platforms** – “Best Trading Platforms in the US for 2025” page, focusing on platform quality. Static review of brokers known for platform features.
+* **BrokerChooser Awards 2025** – Annual awards page listing winners in dozens of categories (Best online broker, Best forex broker, Best stocks broker, etc.). Each award links to a toplist of nominees. Static content summarizing the year’s top picks.
+* **Best for Funds** – “Best Brokers for Funds in 2025” page (USA) identifying brokers suited to mutual funds/ETFs. Static comparison of fees and offerings for fund investors.
+* **Best for Day Trading** – “Best Brokers for Day Trading 2025 (US)” page. Static list of top brokers for active/day traders, with fee and tool comparisons.
+* **Best Full-Service Brokers** – “Best Full-Service Brokers in the US (2025)” page. Static review of brokers offering the widest range of asset classes (stocks, funds, options, etc.), including fee tables and features.
+* **Best for Beginners** – “Best Brokers for Beginners in 2025 (USA)” page. Static toplist and FAQ geared towards new traders, covering fees and ease-of-use.
+* **Best for Professional Traders** – Pages like “Best Brokers for Professional Traders in the US/Canada” (static lists with advanced features).
+* **Best for MetaTrader** – “Best Brokers for MetaTrader 4 (MT4) in US 2025” page. Static list of brokers supporting MT4.
+* **Other “Best X” pages** – The site has many specialized toplist pages (e.g. “Best brokers for tradingview”, “Best full-service brokers”, “Best discount brokers,” etc.), all in similar static article format.
+
+# Interactive Tools
+
+* **Find My Broker (Quiz tool)** – An interactive questionnaire tool at `/find-my-broker` that guides users through choosing a broker. It asks questions about location, trading needs and returns personalized broker recommendations. The page describes the tool and FAQs (static overview) and includes a “Start matching” button to launch the quiz. Users can save their results via sign-up. The tool itself is dynamic, but the page is informational (with steps and FAQ).
+* **Brokerage Fee Calculator** – Stock trading fee comparison tool at `/brokerage-fee-calculator`. Users enter trade details and see a table comparing commission costs across brokers. The page has static instructions (“Stock Fee Calculator”) and a live calculator embedded.
+* **Forex Fee Calculator** – FX spread/commission calculator at `/forex-fee-calculator`. Static content explains how brokers charge FX fees and provides a live calculator (“Which brokers are cheapest for 1 lot EURUSD?”).
+* **Other Tools** – The site has planned/announced tools (e.g. Portfolio Tracker). It also provides data like a “Data Dashboard” (for businesses) linked in the About section.
+
+# Education & Resources (Blog/News)
+
+* **News & Blog** – The “News” section (e.g. `/education/news` or `/news`) lists articles on market events, platform launches, and educational guides. This section is styled like a blog with news posts (e.g. “Portfolio Tracker Tool”, broker news, market commentary).
+* **Education Hub** – The “For Beginners” navigation leads to an education overview page (title “Learn about investments and assets”) with categories like Stocks, Forex, Crypto, Options, Commodities. These lead to further articles (static informational pages) about each topic.
+* **Glossary** – *Financial Glossary* page (under Education) provides definitions of finance/investing terms. It is a static knowledge base page.
+* **Forex Trading Glossary** – Specialized glossary for Forex terms, also static with definitions (includes an FAQ/Q\&A section).
+
+# FAQ & Glossary
+
+* **BrokerChooser FAQ** – A short FAQ section appears on the homepage and the Find My Broker page (covering how the site works, methodology, etc.). It is not a separate page but a static section of content on those pages.
+* **Financial Glossary** – Static page explaining investing terminology.
+* **Forex Glossary** – Static glossary specifically for forex/trading terms (includes FAQ items).
+
+# Country-Specific Pages
+
+* **United States** – “Best Online Brokers in the United States” landing page. Static page tailored for US users, listing top brokers available in the US, plus guides (“How to invest in stocks from the US”).
+* **United Kingdom** – “Online Brokers & Trading Platforms in the UK” page. Static UK-specific toplist (Interactive Brokers, Saxo, eToro, etc.) and guides.
+* **India** – Best brokers for India. Static page for Indian users (e.g. includes Zerodha, etc.).
+* **Singapore, Australia, Malaysia, Canada, Philippines** – Similar country-landing pages (static content listing best brokers, fees, regulations). Each page’s URL follows `/country-name`. These are informational comparison pages updated 2025.
+
+# About & Company Pages
+
+* **About Us** – Static company overview page (mission, purpose).
+* **For Businesses** – Static information page on licensing and partnerships.
+* **Our Methodology** – Detailed static page describing BrokerChooser’s review methodology (how brokers are evaluated).
+* **Our Team** – Static profiles of the BrokerChooser staff.
+* **News** (also listed here) – Same blog/news listing as above.
+* **Careers** – Static page listing job openings.
+* **Contact** – Static page with contact information and form.
+* **Data Dashboard** – A page (likely static or login-protected) offering data to broker-partners.
+* **Disclaimer/Advertiser Disclosure** – Shown at page bottoms as part of About.
+
+# Legal Pages
+
+* **General Terms and Conditions** – The site’s Terms of Use (static legal text).
+* **Privacy Policy** – Privacy statement (hosted via Iubenda).
+* **Cookie Policy** – Cookie notice (via Iubenda).
+* **Cookie Preferences** – Pop-up/system for adjusting cookie consent (linked in footer).
+
+Each of the above pages is identified and described by category. Most review and comparison pages are static content (long-form articles) with periodically updated data. The broker review pages are individual static reports, often linked into funnels (e.g. calculators and “Compare brokers” flows). The Find My Broker tool and calculators provide interactive/dynamic functionality, while the rest of the site is largely informational. All pages are organized under the main navigation headings (Best brokers, Broker reviews, Tools, For beginners, About us).
+
+**Sources:** Site navigation and page contents from BrokerChooser’s website and relevant category pages.

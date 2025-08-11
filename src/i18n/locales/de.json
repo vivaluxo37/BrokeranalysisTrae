@@ -1,0 +1,46 @@
+{
+  "header": {
+    "logo": "BrokerAnalysis",
+    "language": "Sprache",
+    "darkMode": "Dunkler Modus",
+    "lightMode": "Heller Modus",
+    "userMenu": "Benutzermenü",
+    "signIn": "Anmelden",
+    "createAccount": "Konto Erstellen",
+    "helpSupport": "Hilfe & Support"
+  },
+  "nav": {
+    "search": "Broker, Plattformen, Instrumente suchen...",
+    "menu": "Menü",
+    "compareBrokers": "Broker Vergleichen"
+  },
+  "footer": {
+    "description": "Ihr vertrauensvoller Partner für die Suche nach dem perfekten Broker. Vergleichen Sie über 500 regulierte Broker weltweit mit Expertenbewertungen und echtem Nutzerfeedback.",
+    "copyright": "Alle Rechte vorbehalten.",
+    "sections": {
+      "reviews": "Bewertungen",
+      "tools": "Tools",
+      "company": "Unternehmen",
+      "resources": "Ressourcen"
+    },
+    "links": {
+      "bestBrokers": "Beste Broker",
+      "brokerReviews": "Broker Bewertungen",
+      "comparisonTool": "Vergleichstool",
+      "allReviews": "Alle Bewertungen",
+      "profitCalculator": "Gewinnrechner",
+      "positionSizeCalculator": "Positionsgrößenrechner",
+      "marginCalculator": "Margin-Rechner",
+      "marketScanner": "Markt-Scanner",
+      "aboutUs": "Über Uns",
+      "contact": "Kontakt",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfService": "Nutzungsbedingungen",
+      "cookiePolicy": "Cookie-Richtlinie",
+      "tradingGuide": "Trading-Leitfaden",
+      "blog": "Blog",
+      "faq": "FAQ",
+      "support": "Support"
+    }
+  }
+}

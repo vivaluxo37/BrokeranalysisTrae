@@ -1,0 +1,287 @@
+{
+  "version": "1.0.0",
+  "generated": "2024-01-08T10:00:00.000Z",
+  "fallback": {
+    "original": "logos/fallback/broker-placeholder.svg",
+    "sizes": {
+      "64": {
+        "png": "logos/fallback/broker-placeholder-64.svg",
+        "webp": "logos/fallback/broker-placeholder-64.svg"
+      },
+      "128": {
+        "png": "logos/fallback/broker-placeholder-128.svg",
+        "webp": "logos/fallback/broker-placeholder-128.svg"
+      },
+      "256": {
+        "png": "logos/fallback/broker-placeholder-256.svg",
+        "webp": "logos/fallback/broker-placeholder-256.svg"
+      }
+    }
+  },
+  "brokers": [
+    {
+      "id": "acy-securities",
+      "name": "ACY Securities",
+      "originalName": "ACY Securities.png",
+      "assets": {
+        "original": "logos/square/ACY Securities.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/acy-securities.png",
+            "webp": "logos/64x64/acy-securities.webp"
+          },
+          "128": {
+            "png": "logos/128x128/acy-securities.png",
+            "webp": "logos/128x128/acy-securities.webp"
+          },
+          "256": {
+            "png": "logos/256x256/acy-securities.png",
+            "webp": "logos/256x256/acy-securities.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "atfx",
+      "name": "ATFX",
+      "originalName": "ATFX.png",
+      "assets": {
+        "original": "logos/square/ATFX.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/atfx.png",
+            "webp": "logos/64x64/atfx.webp"
+          },
+          "128": {
+            "png": "logos/128x128/atfx.png",
+            "webp": "logos/128x128/atfx.webp"
+          },
+          "256": {
+            "png": "logos/256x256/atfx.png",
+            "webp": "logos/256x256/atfx.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "cwg-markets",
+      "name": "CWG MARKETS",
+      "originalName": "CWG MARKETS.png",
+      "assets": {
+        "original": "logos/square/CWG MARKETS.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/cwg-markets.png",
+            "webp": "logos/64x64/cwg-markets.webp"
+          },
+          "128": {
+            "png": "logos/128x128/cwg-markets.png",
+            "webp": "logos/128x128/cwg-markets.webp"
+          },
+          "256": {
+            "png": "logos/256x256/cwg-markets.png",
+            "webp": "logos/256x256/cwg-markets.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "eightcap",
+      "name": "EightCap",
+      "originalName": "EightCap.png",
+      "assets": {
+        "original": "logos/square/EightCap.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/eightcap.png",
+            "webp": "logos/64x64/eightcap.webp"
+          },
+          "128": {
+            "png": "logos/128x128/eightcap.png",
+            "webp": "logos/128x128/eightcap.webp"
+          },
+          "256": {
+            "png": "logos/256x256/eightcap.png",
+            "webp": "logos/256x256/eightcap.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "pu-prime",
+      "name": "PU Prime",
+      "originalName": "PU Prime.png",
+      "assets": {
+        "original": "logos/square/PU Prime.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/pu-prime.png",
+            "webp": "logos/64x64/pu-prime.webp"
+          },
+          "128": {
+            "png": "logos/128x128/pu-prime.png",
+            "webp": "logos/128x128/pu-prime.webp"
+          },
+          "256": {
+            "png": "logos/256x256/pu-prime.png",
+            "webp": "logos/256x256/pu-prime.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "swissquote",
+      "name": "Swissquote",
+      "originalName": "Swissquote.png",
+      "assets": {
+        "original": "logos/square/Swissquote.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/swissquote.png",
+            "webp": "logos/64x64/swissquote.webp"
+          },
+          "128": {
+            "png": "logos/128x128/swissquote.png",
+            "webp": "logos/128x128/swissquote.webp"
+          },
+          "256": {
+            "png": "logos/256x256/swissquote.png",
+            "webp": "logos/256x256/swissquote.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "thinkmarkets",
+      "name": "ThinkMarkets",
+      "originalName": "ThinkMarkets.png",
+      "assets": {
+        "original": "logos/square/ThinkMarkets.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/thinkmarkets.png",
+            "webp": "logos/64x64/thinkmarkets.webp"
+          },
+          "128": {
+            "png": "logos/128x128/thinkmarkets.png",
+            "webp": "logos/128x128/thinkmarkets.webp"
+          },
+          "256": {
+            "png": "logos/256x256/thinkmarkets.png",
+            "webp": "logos/256x256/thinkmarkets.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "vt-markets",
+      "name": "VT Markets",
+      "originalName": "VT Markets.png",
+      "assets": {
+        "original": "logos/square/VT Markets.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/vt-markets.png",
+            "webp": "logos/64x64/vt-markets.webp"
+          },
+          "128": {
+            "png": "logos/128x128/vt-markets.png",
+            "webp": "logos/128x128/vt-markets.webp"
+          },
+          "256": {
+            "png": "logos/256x256/vt-markets.png",
+            "webp": "logos/256x256/vt-markets.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "easymarkets",
+      "name": "easyMarkets",
+      "originalName": "easyMarkets.png",
+      "assets": {
+        "original": "logos/square/easyMarkets.png",
+        "sizes": {
+          "64": {
+            "png": "logos/64x64/easymarkets.png",
+            "webp": "logos/64x64/easymarkets.webp"
+          },
+          "128": {
+            "png": "logos/128x128/easymarkets.png",
+            "webp": "logos/128x128/easymarkets.webp"
+          },
+          "256": {
+            "png": "logos/256x256/easymarkets.png",
+            "webp": "logos/256x256/easymarkets.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "50",
+      "name": "Broker 50",
+      "originalName": "broker-50.svg",
+      "assets": {
+        "original": "logos/square/broker-50-128.svg",
+        "sizes": {
+          "64": {
+            "png": "logos/square/broker-50-128.svg",
+            "webp": "logos/square/broker-50-128.svg"
+          },
+          "128": {
+            "png": "logos/square/broker-50-128.svg",
+            "webp": "logos/square/broker-50-128.svg"
+          },
+          "256": {
+            "png": "logos/square/broker-50-128.svg",
+            "webp": "logos/square/broker-50-128.svg"
+          }
+        }
+      }
+    },
+    {
+      "id": "67",
+      "name": "Broker 67",
+      "originalName": "broker-67.svg",
+      "assets": {
+        "original": "logos/square/broker-67-128.svg",
+        "sizes": {
+          "64": {
+            "png": "logos/square/broker-67-128.svg",
+            "webp": "logos/square/broker-67-128.svg"
+          },
+          "128": {
+            "png": "logos/square/broker-67-128.svg",
+            "webp": "logos/square/broker-67-128.svg"
+          },
+          "256": {
+            "png": "logos/square/broker-67-128.svg",
+            "webp": "logos/square/broker-67-128.svg"
+          }
+        }
+      }
+    },
+    {
+      "id": "24",
+      "name": "Broker 24",
+      "originalName": "broker-24.svg",
+      "assets": {
+        "original": "logos/square/broker-24-128.svg",
+        "sizes": {
+          "64": {
+            "png": "logos/square/broker-24-128.svg",
+            "webp": "logos/square/broker-24-128.svg"
+          },
+          "128": {
+            "png": "logos/square/broker-24-128.svg",
+            "webp": "logos/square/broker-24-128.svg"
+          },
+          "256": {
+            "png": "logos/square/broker-24-128.svg",
+            "webp": "logos/square/broker-24-128.svg"
+          }
+        }
+      }
+    }
+  ]
+}

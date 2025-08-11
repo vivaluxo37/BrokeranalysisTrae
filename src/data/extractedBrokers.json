@@ -1,0 +1,1772 @@
+[
+  {
+    "id": "interactive-brokers",
+    "name": "Interactive Brokers",
+    "logo": "https://img.brokersview.com/prod/image/interactive-brokers-logo.png",
+    "rating": 4.8,
+    "reviewCount": 1250,
+    "regulators": [
+      "sec",
+      "finra",
+      "fca"
+    ],
+    "minDeposit": 0,
+    "maxLeverage": 50,
+    "spreadsFrom": 0.1,
+    "assetClasses": [
+      "stocks",
+      "forex",
+      "options",
+      "futures",
+      "bonds",
+      "etf"
+    ],
+    "platforms": [
+      "tws",
+      "mobile",
+      "web"
+    ],
+    "category": "full-service",
+    "trustScore": 95,
+    "isRegulated": true,
+    "yearEstablished": 1978,
+    "headquarters": "United States",
+    "website": "https://www.interactivebrokers.com",
+    "description": "Interactive Brokers is a leading global electronic broker offering direct access to stocks, options, futures, forex, bonds and funds from a single integrated account.",
+    "keyFeatures": [
+      "Low-cost trading",
+      "Global market access",
+      "Professional trading tools",
+      "Advanced order types",
+      "Comprehensive research"
+    ],
+    "featured": true,
+    "details": {
+      "fullName": "Interactive Brokers LLC",
+      "tradingName": "Interactive Brokers",
+      "legalEntity": "Interactive Brokers LLC",
+      "businessModel": "Electronic Broker",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to $500,000 (SIPC)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Smart routing",
+      "tradingHours": "24/6",
+      "serverLocation": "Global",
+      "dataFeed": "Real-time market data",
+      "slippage": "Minimal",
+      "requotes": "No requotes"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 0.2,
+        "minimum": 0.1,
+        "currency": "USD"
+      },
+      "commissions": {
+        "stocks": 0.005,
+        "options": 0.65,
+        "futures": 0.85,
+        "forex": 0.2,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -2.5,
+        "short": 1.5,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 20,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "sec",
+        "licenseNumber": "SEC8-69531",
+        "status": "active",
+        "jurisdiction": "United States",
+        "verificationUrl": "https://www.sec.gov/"
+      },
+      {
+        "authority": "finra",
+        "licenseNumber": "CRD283",
+        "status": "active",
+        "jurisdiction": "United States",
+        "verificationUrl": "https://brokercheck.finra.org/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": true
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": true,
+        "prioritySupport": true,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@interactivebrokers.com",
+      "phone": "+1 312 542 6901",
+      "liveChat": true,
+      "address": {
+        "street": "One Pickwick Plaza",
+        "city": "Greenwich",
+        "state": "CT",
+        "country": "United States",
+        "postalCode": "06830"
+      },
+      "socialMedia": {
+        "twitter": "@IBKR",
+        "facebook": "facebook.com/InteractiveBrokers",
+        "linkedin": "linkedin.com/company/interactive-brokers"
+      }
+    }
+  },
+  {
+    "id": "broker-24",
+    "name": "Pepperstone",
+    "logo": "https://img.brokersview.com/prod/image/20231220/d96043b9323b9340683ab8e363d36bf0.jpeg",
+    "rating": 5,
+    "reviewCount": 767,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 200,
+    "maxLeverage": 500,
+    "spreadsFrom": 0,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "ecn",
+    "trustScore": 100,
+    "isRegulated": true,
+    "yearEstablished": 2017,
+    "headquarters": "United Kingdom",
+    "website": "https://www.pepperstone.com",
+    "description": "Pepperstone is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 0 pips",
+      "Risk Level: 1/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "Pepperstone",
+      "tradingName": "Pepperstone",
+      "legalEntity": "Pepperstone Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 0.8,
+        "minimum": 0.5599999999999999,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -10.1393,
+        "short": 5.27072,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA231869",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@pepperstone.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@pepperstone",
+        "facebook": "facebook.com/pepperstone",
+        "linkedin": "linkedin.com/company/pepperstone"
+      }
+    }
+  },
+  {
+    "id": "broker-27",
+    "name": "ACY Securities",
+    "logo": "https://img.brokersview.com/stage/image/20210125/ALIOSS/1611557655000",
+    "rating": 4,
+    "reviewCount": 929,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 7,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 80,
+    "isRegulated": true,
+    "yearEstablished": 2013,
+    "headquarters": "United Kingdom",
+    "website": "https://www.acysecurities.com",
+    "description": "ACY Securities is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 7 pips",
+      "Risk Level: 2/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "ACY Securities",
+      "tradingName": "ACY Securities",
+      "legalEntity": "ACY Securities Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 7,
+        "minimum": 4.8999999999999995,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -9.377,
+        "short": 2.612,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA229451",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@acysecurities.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@acysecurities",
+        "facebook": "facebook.com/acysecurities",
+        "linkedin": "linkedin.com/company/acysecurities"
+      }
+    }
+  },
+  {
+    "id": "broker-21",
+    "name": "FP Markets",
+    "logo": "https://img.brokersview.com/prod/image/20211118/9cf63701a8363a41bca8050aa7e15172.png",
+    "rating": 5,
+    "reviewCount": 168,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 12,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 100,
+    "isRegulated": true,
+    "yearEstablished": 2014,
+    "headquarters": "United Kingdom",
+    "website": "https://www.fpmarkets.com",
+    "description": "FP Markets is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 12 pips",
+      "Risk Level: 1/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "FP Markets",
+      "tradingName": "FP Markets",
+      "legalEntity": "FP Markets Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 12,
+        "minimum": 8.399999999999999,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -9.71,
+        "short": 4.5,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA941437",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@fpmarkets.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@fpmarkets",
+        "facebook": "facebook.com/fpmarkets",
+        "linkedin": "linkedin.com/company/fpmarkets"
+      }
+    }
+  },
+  {
+    "id": "broker-56",
+    "name": "BDSwiss",
+    "logo": "https://img.brokersview.com/stage/image/20210125/ALIOSS/1611553068000",
+    "rating": 4,
+    "reviewCount": 471,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 12,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 80,
+    "isRegulated": true,
+    "yearEstablished": 2023,
+    "headquarters": "United Kingdom",
+    "website": "https://www.bdswiss.com",
+    "description": "BDSwiss is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 12 pips",
+      "Risk Level: 2/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "BDSwiss",
+      "tradingName": "BDSwiss",
+      "legalEntity": "BDSwiss Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 12,
+        "minimum": 8.399999999999999,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -8,
+        "short": 1,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA872582",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@bdswiss.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@bdswiss",
+        "facebook": "facebook.com/bdswiss",
+        "linkedin": "linkedin.com/company/bdswiss"
+      }
+    }
+  },
+  {
+    "id": "broker-76",
+    "name": "ZFX",
+    "logo": "https://img.brokersview.com/prod/image/20210309/ALIOSS/1615272277000",
+    "rating": 4,
+    "reviewCount": 679,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 13,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 80,
+    "isRegulated": true,
+    "yearEstablished": 2020,
+    "headquarters": "United Kingdom",
+    "website": "https://www.zfx.com",
+    "description": "ZFX is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 13 pips",
+      "Risk Level: 2/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "ZFX",
+      "tradingName": "ZFX",
+      "legalEntity": "ZFX Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 13,
+        "minimum": 9.1,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -5.59,
+        "short": 2.1,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA458308",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@zfx.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@zfx",
+        "facebook": "facebook.com/zfx",
+        "linkedin": "linkedin.com/company/zfx"
+      }
+    }
+  },
+  {
+    "id": "broker-50",
+    "name": "CPT Markets",
+    "logo": "https://img.brokersview.com/prod/image/20220810/57dfa02616f6314f741b2b210379b6d5.png",
+    "rating": 5,
+    "reviewCount": 958,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 15,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 100,
+    "isRegulated": true,
+    "yearEstablished": 2013,
+    "headquarters": "United Kingdom",
+    "website": "https://www.cptmarkets.com",
+    "description": "CPT Markets is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 15 pips",
+      "Risk Level: 1/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "CPT Markets",
+      "tradingName": "CPT Markets",
+      "legalEntity": "CPT Markets Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 15,
+        "minimum": 10.5,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -10.13,
+        "short": 3.48,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA409875",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@cptmarkets.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@cptmarkets",
+        "facebook": "facebook.com/cptmarkets",
+        "linkedin": "linkedin.com/company/cptmarkets"
+      }
+    }
+  },
+  {
+    "id": "broker-9",
+    "name": "ThinkMarkets",
+    "logo": "https://img.brokersview.com/prod/image/20210809/e37910fd184c114c7a18ddc1459f578b.png",
+    "rating": 4,
+    "reviewCount": 517,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 18,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 80,
+    "isRegulated": true,
+    "yearEstablished": 2010,
+    "headquarters": "United Kingdom",
+    "website": "https://www.thinkmarkets.com",
+    "description": "ThinkMarkets is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 18 pips",
+      "Risk Level: 2/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "ThinkMarkets",
+      "tradingName": "ThinkMarkets",
+      "legalEntity": "ThinkMarkets Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 18,
+        "minimum": 12.6,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -11.167,
+        "short": 4.578,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA411845",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@thinkmarkets.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@thinkmarkets",
+        "facebook": "facebook.com/thinkmarkets",
+        "linkedin": "linkedin.com/company/thinkmarkets"
+      }
+    }
+  },
+  {
+    "id": "broker-490",
+    "name": "AMarkets",
+    "logo": "https://img.brokersview.com/prod/image/20231106/aad47e4a0ac3f045f80ae6c026d70b39.jpeg",
+    "rating": 4,
+    "reviewCount": 938,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 19,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 80,
+    "isRegulated": true,
+    "yearEstablished": 2020,
+    "headquarters": "United Kingdom",
+    "website": "https://www.amarkets.com",
+    "description": "AMarkets is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 19 pips",
+      "Risk Level: 2/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "AMarkets",
+      "tradingName": "AMarkets",
+      "legalEntity": "AMarkets Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 19,
+        "minimum": 13.299999999999999,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -5.6,
+        "short": 2.2,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA546319",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@amarkets.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@amarkets",
+        "facebook": "facebook.com/amarkets",
+        "linkedin": "linkedin.com/company/amarkets"
+      }
+    }
+  },
+  {
+    "id": "broker-16",
+    "name": "Doo Prime",
+    "logo": "https://img.brokersview.com/prod/image/20250613/0a5f22025819b5464359263515132455.png",
+    "rating": 5,
+    "reviewCount": 236,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 25,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 100,
+    "isRegulated": true,
+    "yearEstablished": 2023,
+    "headquarters": "United Kingdom",
+    "website": "https://www.dooprime.com",
+    "description": "Doo Prime is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 25 pips",
+      "Risk Level: 1/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "Doo Prime",
+      "tradingName": "Doo Prime",
+      "legalEntity": "Doo Prime Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 25,
+        "minimum": 17.5,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -10.211,
+        "short": 5.498,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA419541",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@dooprime.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@dooprime",
+        "facebook": "facebook.com/dooprime",
+        "linkedin": "linkedin.com/company/dooprime"
+      }
+    }
+  },
+  {
+    "id": "broker-37",
+    "name": "Swissquote",
+    "logo": "https://img.brokersview.com/stage/image/20210125/ALIOSS/1611557516000",
+    "rating": 5,
+    "reviewCount": 344,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 1000,
+    "maxLeverage": 100,
+    "spreadsFrom": 35,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 100,
+    "isRegulated": true,
+    "yearEstablished": 2022,
+    "headquarters": "United Kingdom",
+    "website": "https://www.swissquote.com",
+    "description": "Swissquote is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 35 pips",
+      "Risk Level: 1/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "Swissquote",
+      "tradingName": "Swissquote",
+      "legalEntity": "Swissquote Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 35,
+        "minimum": 24.5,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -8.20079,
+        "short": 5.03847,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA596867",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@swissquote.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@swissquote",
+        "facebook": "facebook.com/swissquote",
+        "linkedin": "linkedin.com/company/swissquote"
+      }
+    }
+  },
+  {
+    "id": "broker-34",
+    "name": "IC Markets",
+    "logo": "https://img.brokersview.com/prod/image/20240218/243cbb3976017744e1787ff7398c651d.jpeg",
+    "rating": 5,
+    "reviewCount": 369,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 200,
+    "maxLeverage": 500,
+    "spreadsFrom": 70,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "ecn",
+    "trustScore": 100,
+    "isRegulated": true,
+    "yearEstablished": 2022,
+    "headquarters": "United Kingdom",
+    "website": "https://www.icmarkets.com",
+    "description": "IC Markets is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 70 pips",
+      "Risk Level: 1/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "IC Markets",
+      "tradingName": "IC Markets",
+      "legalEntity": "IC Markets Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 70,
+        "minimum": 49,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -11.573,
+        "short": 3.297,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA568457",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@icmarkets.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@icmarkets",
+        "facebook": "facebook.com/icmarkets",
+        "linkedin": "linkedin.com/company/icmarkets"
+      }
+    }
+  },
+  {
+    "id": "broker-67",
+    "name": "MultiBank Group",
+    "logo": "https://img.brokersview.com/prod/image/20240314/79265e94c8507c4b4dc832fc2a600c1c.jpeg",
+    "rating": 5,
+    "reviewCount": 872,
+    "regulators": [
+      "fca"
+    ],
+    "minDeposit": 250,
+    "maxLeverage": 200,
+    "spreadsFrom": 136,
+    "assetClasses": [
+      "forex",
+      "cfd"
+    ],
+    "platforms": [
+      "mt4",
+      "mt5"
+    ],
+    "category": "stp",
+    "trustScore": 100,
+    "isRegulated": true,
+    "yearEstablished": 2021,
+    "headquarters": "United Kingdom",
+    "website": "https://www.multibankgroup.com",
+    "description": "MultiBank Group is a regulated forex and CFD broker offering competitive spreads and professional trading platforms.",
+    "keyFeatures": [
+      "Spreads from 136 pips",
+      "Risk Level: 1/10",
+      "Regulated broker",
+      "Multiple trading platforms",
+      "Competitive swap rates"
+    ],
+    "featured": false,
+    "details": {
+      "fullName": "MultiBank Group",
+      "tradingName": "MultiBank Group",
+      "legalEntity": "MultiBank Group Limited",
+      "businessModel": "STP/ECN",
+      "clientFunds": "Segregated accounts",
+      "depositProtection": "Up to £85,000 (FSCS)",
+      "negativeBalanceProtection": true,
+      "orderExecution": "Market execution",
+      "tradingHours": "24/5",
+      "serverLocation": "London, UK",
+      "dataFeed": "Institutional grade",
+      "slippage": "Minimal",
+      "requotes": "No requotes policy"
+    },
+    "costs": {
+      "spreads": {
+        "type": "variable",
+        "typical": 136,
+        "minimum": 95.19999999999999,
+        "currency": "USD"
+      },
+      "commissions": {
+        "forex": 0,
+        "stocks": 0.1,
+        "crypto": 0.5,
+        "cfd": 0.05,
+        "currency": "USD"
+      },
+      "swapRates": {
+        "long": -9,
+        "short": 5.42,
+        "currency": "USD"
+      },
+      "fees": {
+        "deposit": 0,
+        "withdrawal": 0,
+        "inactivity": 0,
+        "currency": "USD"
+      }
+    },
+    "regulation": [
+      {
+        "authority": "fca",
+        "licenseNumber": "FCA451523",
+        "status": "active",
+        "jurisdiction": "United Kingdom",
+        "verificationUrl": "https://register.fca.org.uk/"
+      }
+    ],
+    "features": {
+      "education": {
+        "webinars": true,
+        "tutorials": true,
+        "eBooks": true,
+        "marketAnalysis": true,
+        "tradingGuides": true,
+        "economicCalendar": true
+      },
+      "research": {
+        "marketNews": true,
+        "technicalAnalysis": true,
+        "fundamentalAnalysis": true,
+        "tradingSignals": false
+      },
+      "trading": {
+        "copyTrading": false,
+        "socialTrading": false,
+        "algorithmicTrading": true,
+        "apiAccess": true,
+        "mobileTrading": true,
+        "webTrading": true,
+        "desktopTrading": true
+      },
+      "support": {
+        "multiLanguage": true,
+        "personalAccountManager": false,
+        "prioritySupport": false,
+        "phoneSupport": true,
+        "emailSupport": true,
+        "liveChat": true
+      }
+    },
+    "contact": {
+      "email": "support@multibankgroup.com",
+      "phone": "+44 20 7000 0000",
+      "liveChat": true,
+      "address": {
+        "street": "1 Financial Street",
+        "city": "London",
+        "country": "United Kingdom",
+        "postalCode": "EC2V 8NL"
+      },
+      "socialMedia": {
+        "twitter": "@multibankgroup",
+        "facebook": "facebook.com/multibankgroup",
+        "linkedin": "linkedin.com/company/multibankgroup"
+      }
+    }
+  }
+]

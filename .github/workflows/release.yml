@@ -1,0 +1,319 @@
+name: Release Management
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
+      - 'docs/**'
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      should_release: ${{ steps.check.outputs.should_release }}
+      version: ${{ steps.check.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for releasable changes
+        id: check
+        run: |
+          # Get the latest tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Latest tag: $LATEST_TAG"
+          
+          # Get commits since last tag
+          COMMITS=$(git log $LATEST_TAG..HEAD --oneline)
+          echo "Commits since last tag:"
+          echo "$COMMITS"
+          
+          # Check if there are any commits with conventional commit format
+          if echo "$COMMITS" | grep -E "^[a-f0-9]+ (feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\(.+\))?: .+"; then
+            echo "should_release=true" >> $GITHUB_OUTPUT
+            
+            # Determine version bump based on commits
+            if echo "$COMMITS" | grep -E "^[a-f0-9]+ feat(\(.+\))?: .+" || [ "${{ github.event.inputs.release_type }}" = "minor" ]; then
+              VERSION_TYPE="minor"
+            elif echo "$COMMITS" | grep -E "BREAKING CHANGE" || [ "${{ github.event.inputs.release_type }}" = "major" ]; then
+              VERSION_TYPE="major"
+            else
+              VERSION_TYPE="patch"
+            fi
+            
+            # Override with manual input if provided
+            if [ "${{ github.event.inputs.release_type }}" != "" ]; then
+              VERSION_TYPE="${{ github.event.inputs.release_type }}"
+            fi
+            
+            # Calculate new version
+            CURRENT_VERSION=$(echo $LATEST_TAG | sed 's/v//')
+            if [ "$CURRENT_VERSION" = "0.0.0" ]; then
+              NEW_VERSION="1.0.0"
+            else
+              NEW_VERSION=$(npm version --no-git-tag-version $VERSION_TYPE)
+              NEW_VERSION=$(echo $NEW_VERSION | sed 's/v//')
+            fi
+            
+            echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+            echo "New version will be: $NEW_VERSION"
+          else
+            echo "should_release=false" >> $GITHUB_OUTPUT
+            echo "No releasable changes found"
+          fi
+
+  build-and-test:
+    needs: check-changes
+    if: needs.check-changes.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run type check
+        run: npm run type-check
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test:unit
+
+      - name: Build project
+        run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_GROQ_API_KEY: ${{ secrets.VITE_GROQ_API_KEY }}
+          VITE_OPENROUTER_API_KEY: ${{ secrets.VITE_OPENROUTER_API_KEY }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            dist/
+            package.json
+            package-lock.json
+          retention-days: 30
+
+  create-release:
+    needs: [check-changes, build-and-test]
+    if: needs.check-changes.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: ./release-artifacts
+
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          VERSION="v${{ needs.check-changes.outputs.version }}"
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          
+          echo "Generating release notes for $VERSION"
+          
+          # Create release notes
+          cat > release_notes.md << EOF
+          # Release $VERSION
+          
+          ## 🚀 What's New
+          
+          EOF
+          
+          # Get commits since last tag
+          if [ "$LATEST_TAG" != "" ]; then
+            COMMITS=$(git log $LATEST_TAG..HEAD --pretty=format:"- %s (%h)" --reverse)
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --reverse)
+          fi
+          
+          # Categorize commits
+          echo "### ✨ Features" >> release_notes.md
+          echo "$COMMITS" | grep -E "^- feat" | sed 's/^- feat/- ✨/' >> release_notes.md || echo "- No new features in this release" >> release_notes.md
+          echo "" >> release_notes.md
+          
+          echo "### 🐛 Bug Fixes" >> release_notes.md
+          echo "$COMMITS" | grep -E "^- fix" | sed 's/^- fix/- 🐛/' >> release_notes.md || echo "- No bug fixes in this release" >> release_notes.md
+          echo "" >> release_notes.md
+          
+          echo "### 📚 Documentation" >> release_notes.md
+          echo "$COMMITS" | grep -E "^- docs" | sed 's/^- docs/- 📚/' >> release_notes.md || echo "- No documentation updates in this release" >> release_notes.md
+          echo "" >> release_notes.md
+          
+          echo "### 🔧 Other Changes" >> release_notes.md
+          echo "$COMMITS" | grep -vE "^- (feat|fix|docs)" >> release_notes.md || echo "- No other changes in this release" >> release_notes.md
+          echo "" >> release_notes.md
+          
+          echo "## 📦 Assets" >> release_notes.md
+          echo "- **Source Code**: Available as zip and tar.gz" >> release_notes.md
+          echo "- **Build Artifacts**: Included in this release" >> release_notes.md
+          echo "" >> release_notes.md
+          
+          echo "## 🔗 Links" >> release_notes.md
+          echo "- **Live Demo**: [BrokerAnalysis Platform](https://brokeranalysis.vercel.app)" >> release_notes.md
+          echo "- **Documentation**: [GitHub Repository](https://github.com/${{ github.repository }})" >> release_notes.md
+          
+          # Set output
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          cat release_notes.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Update package.json version
+        run: |
+          npm version ${{ needs.check-changes.outputs.version }} --no-git-tag-version
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to v${{ needs.check-changes.outputs.version }}"
+
+      - name: Create and push tag
+        run: |
+          git tag -a "v${{ needs.check-changes.outputs.version }}" -m "Release v${{ needs.check-changes.outputs.version }}"
+          git push origin "v${{ needs.check-changes.outputs.version }}"
+          git push origin main
+
+      - name: Create GitHub Release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const version = 'v${{ needs.check-changes.outputs.version }}';
+            const releaseNotes = `${{ steps.release_notes.outputs.notes }}`;
+            
+            const release = await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: version,
+              name: `Release ${version}`,
+              body: releaseNotes,
+              draft: false,
+              prerelease: false
+            });
+            
+            console.log(`Created release: ${release.data.html_url}`);
+
+      - name: Create build archive
+        run: |
+          cd release-artifacts
+          tar -czf ../brokeranalysis-v${{ needs.check-changes.outputs.version }}-build.tar.gz .
+          cd ..
+          zip -r brokeranalysis-v${{ needs.check-changes.outputs.version }}-build.zip release-artifacts/
+
+      - name: Upload release assets
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const version = 'v${{ needs.check-changes.outputs.version }}';
+            
+            // Get the release
+            const releases = await github.rest.repos.listReleases({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            
+            const release = releases.data.find(r => r.tag_name === version);
+            
+            if (release) {
+              // Upload tar.gz
+              await github.rest.repos.uploadReleaseAsset({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                release_id: release.id,
+                name: `brokeranalysis-${version}-build.tar.gz`,
+                data: fs.readFileSync(`brokeranalysis-${version}-build.tar.gz`)
+              });
+              
+              // Upload zip
+              await github.rest.repos.uploadReleaseAsset({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                release_id: release.id,
+                name: `brokeranalysis-${version}-build.zip`,
+                data: fs.readFileSync(`brokeranalysis-${version}-build.zip`)
+              });
+              
+              console.log('Release assets uploaded successfully');
+            }
+
+  notify-release:
+    needs: [check-changes, create-release]
+    if: needs.check-changes.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify successful release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const version = 'v${{ needs.check-changes.outputs.version }}';
+            console.log(`🎉 Successfully released ${version}!`);
+            console.log(`Release URL: https://github.com/${{ github.repository }}/releases/tag/${version}`);
+
+  skip-release:
+    needs: check-changes
+    if: needs.check-changes.outputs.should_release == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip release notification
+        run: |
+          echo "ℹ️ No releasable changes detected. Skipping release creation."
+          echo "To create a release manually, use the workflow_dispatch trigger."

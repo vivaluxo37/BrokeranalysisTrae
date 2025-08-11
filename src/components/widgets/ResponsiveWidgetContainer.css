@@ -1,0 +1,34 @@
+.widget-container {
+  width: 100%;
+  height: 100%;
+  /* Default styles for all screen sizes */
+  padding: 10px;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+/* Mobile devices (up to 768px) */
+@media (max-width: 768px) {
+  .widget-container {
+    /* Example: make widgets take full width on mobile */
+    width: 100%;
+    height: 300px; /* Adjust height for mobile */
+  }
+}
+
+/* Tablets (from 769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .widget-container {
+    /* Example: make widgets take half width on tablets */
+    width: 50%;
+    height: 400px; /* Adjust height for tablets */
+  }
+}
+
+/* Desktops (from 1025px and up) */
+@media (min-width: 1025px) {
+  .widget-container {
+    /* Example: make widgets take one-third width on desktops */
+    width: 33.33%;
+    height: 500px; /* Adjust height for desktops */
+  }
+}

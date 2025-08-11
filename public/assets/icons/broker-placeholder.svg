@@ -1,0 +1,7 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" rx="8" fill="#f3f4f6"/>
+  <rect x="16" y="16" width="96" height="96" rx="4" fill="#e5e7eb"/>
+  <path d="M64 48C68.4183 48 72 51.5817 72 56C72 60.4183 68.4183 64 64 64C59.5817 64 56 60.4183 56 56C56 51.5817 59.5817 48 64 48Z" fill="#9ca3af"/>
+  <path d="M48 80L56 72L64 80L72 72L80 80V88H48V80Z" fill="#9ca3af"/>
+  <text x="64" y="100" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="10">BROKER</text>
+</svg>
