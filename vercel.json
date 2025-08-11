@@ -1,13 +1,8 @@
 {
-  "buildCommand": "npm run build:prod",
+  "buildCommand": "cp package.production.json package.json && npm install && npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm install",
   "framework": "vite",
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/index"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
