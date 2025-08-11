@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { AlertTriangle, Shield, Info, ExternalLink, FileText, Scale } from 'lucide-react';
+import { AlertTriangle, ExternalLink, FileText, Info, Scale, Shield } from 'lucide-react';
 
 const Disclaimer: React.FC = () => {
   return (

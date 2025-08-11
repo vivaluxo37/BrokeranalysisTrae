@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight, Shield, Star } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { CollectionManager } from '@/utils/SafeCollection'
 
 interface Testimonial {
   id: string
@@ -19,14 +20,20 @@ interface TestimonialsSectionProps {
 }
 
 export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
+  // Create safe collection wrapper for testimonials
+  const safeTestimonials = CollectionManager.validateCollection(
+    testimonials,
+    'testimonials'
+  )
+  
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    setCurrentIndex((prev) => (prev + 1) % safeTestimonials.size())
   }
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setCurrentIndex((prev) => (prev - 1 + safeTestimonials.size()) % safeTestimonials.size())
   }
 
   return (
@@ -48,7 +55,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
               className="flex transition-transform duration-300 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {testimonials.map((testimonial) => (
+              {safeTestimonials.map((testimonial) => (
                 <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
                   <div className="professional-card p-8">
                     {/* Rating */}
@@ -112,14 +119,14 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
           <Button
             onClick={nextTestimonial}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-charcoal-grey border-medium-grey text-pure-white hover:bg-medium-grey/20 w-10 h-10 rounded-full p-0"
-            disabled={currentIndex === testimonials.length - 1}
+            disabled={currentIndex === safeTestimonials.size() - 1}
           >
             <ChevronRight className="w-5 h-5" />
           </Button>
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-6 space-x-2">
-            {testimonials.map((_, index) => (
+            {safeTestimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}

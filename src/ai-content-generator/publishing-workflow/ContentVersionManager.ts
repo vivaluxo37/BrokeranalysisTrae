@@ -69,9 +69,9 @@ export interface VersioningConfig {
 
 export class ContentVersionManager {
   private config: VersioningConfig;
-  private versions: Map<string, ContentVersion[]> = new Map();
-  private currentVersions: Map<string, string> = new Map();
-  private versionIndex: Map<string, ContentVersion> = new Map();
+  private versions = new Map<string, ContentVersion[]>();
+  private currentVersions = new Map<string, string>();
+  private versionIndex = new Map<string, ContentVersion>();
 
   constructor(config: VersioningConfig) {
     this.config = config;

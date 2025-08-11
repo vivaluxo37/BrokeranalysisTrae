@@ -1,6 +1,7 @@
 import { 
   FAQStructuredData,
   FaviconMeta,
+  NavigationAnalytics,
   OrganizationStructuredData,
   SeoHead,
   WebsiteStructuredData,
@@ -82,6 +83,9 @@ export function HomePage() {
 
         {/* 9. Newsletter Subscription */}
         <NewsletterSection />
+        
+        {/* Navigation Analytics (Development Tool) */}
+        {process.env.NODE_ENV === 'development' && <NavigationAnalytics />}
       </div>
     </Layout>
   )

@@ -36,10 +36,10 @@ export interface BrokerReviewContent {
     educationalResources: string;
   };
   verdict: string;
-  faq: Array<{
+  faq: {
     question: string;
     answer: string;
-  }>;
+  }[];
   rating: {
     overall: number;
     tradingPlatform: number;
@@ -230,7 +230,7 @@ export class BrokerContentGenerator {
     if (name.includes('xm-review') || name === 'xm') return 'xm';
     
     // Extract broker name from review pattern
-    const reviewMatch = name.match(/^(.+?)-review/);
+    const reviewMatch = /^(.+?)-review/.exec(name);
     if (reviewMatch) {
       return reviewMatch[1];
     }
@@ -352,7 +352,7 @@ Return only the JSON response without any additional text.`;
   private parseAIResponse(content: string, brokerInfo: BrokerInfo): BrokerReviewContent {
     try {
       // Clean the response to extract JSON
-      const jsonMatch = content.match(/\{[\s\S]*\}/);
+      const jsonMatch = /\{[\s\S]*\}/.exec(content);
       if (!jsonMatch) {
         throw new Error('No valid JSON found in AI response');
       }
@@ -636,8 +636,8 @@ const ${this.toPascalCase(slug)}Review: React.FC = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
           <div className="space-y-4">
-            ${review.faq.map((faq, index) => `<div key={${index}} className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">${faq.question}</h3>
+            ${review.faq.map((faq, index) => `<div key="faq-${index}" className="border border-gray-200 rounded-lg p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-3">${faq.question}</h3>
               <p className="text-gray-700">${faq.answer}</p>
             </div>`).join('\n            ')}
           </div>

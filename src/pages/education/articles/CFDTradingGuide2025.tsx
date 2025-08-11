@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { TrendingUp, Shield, AlertTriangle, Calculator, BarChart3, Target, Zap, DollarSign } from 'lucide-react';
+import { AlertTriangle, BarChart3, Calculator, DollarSign, Shield, Target, TrendingUp, Zap } from 'lucide-react';
 
 const CFDTradingGuide2025: React.FC = () => {
   const [leverage, setLeverage] = useState(10);

@@ -25,8 +25,8 @@ export interface ComplianceReport {
 }
 
 export class ComplianceChecker {
-  private rules: Map<string, ComplianceRule> = new Map();
-  private exemptions: Set<string> = new Set();
+  private rules = new Map<string, ComplianceRule>();
+  private exemptions = new Set<string>();
 
   constructor() {
     this.initializeDefaultRules();
@@ -378,7 +378,7 @@ export class ComplianceChecker {
       'cryptocurrency', 'portfolio', 'return', 'profit'
     ];
     
-    const contentText = (content.title + ' ' + content.content).toLowerCase();
+    const contentText = (`${content.title  } ${  content.content}`).toLowerCase();
     return financialKeywords.some(keyword => contentText.includes(keyword));
   }
 
@@ -391,7 +391,7 @@ export class ComplianceChecker {
       'market', 'price', 'chart', 'analysis'
     ];
     
-    const contentText = (content.title + ' ' + content.content).toLowerCase();
+    const contentText = (`${content.title  } ${  content.content}`).toLowerCase();
     return tradingKeywords.some(keyword => contentText.includes(keyword));
   }
 

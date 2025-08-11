@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { TrendingUp, X } from 'lucide-react'
 
@@ -6,22 +6,22 @@ export function StickyCtaBar() {
   const [isVisible, setIsVisible] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      const windowHeight = window.innerHeight
-      
-      // Show after scrolling 50% of viewport height
-      if (scrollPosition > windowHeight * 0.5 && !isHidden) {
-        setIsVisible(true)
-      } else if (scrollPosition <= windowHeight * 0.5) {
-        setIsVisible(false)
-      }
+  const handleScroll = useCallback(() => {
+    const scrollPosition = window.scrollY
+    const windowHeight = window.innerHeight
+    
+    // Show after scrolling 50% of viewport height
+    if (scrollPosition > windowHeight * 0.5 && !isHidden) {
+      setIsVisible(true)
+    } else if (scrollPosition <= windowHeight * 0.5) {
+      setIsVisible(false)
     }
+  }, [isHidden])
 
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isHidden])
+  }, [handleScroll])
 
   const handleClose = () => {
     setIsHidden(true)

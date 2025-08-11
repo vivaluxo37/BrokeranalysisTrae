@@ -3,7 +3,8 @@
 
 export { Button, buttonVariants, type ButtonProps } from './button'
 export { Badge, badgeVariants, type BadgeProps } from './badge'
-export { Input, type InputProps } from './input'
+export { Input, inputVariants, type InputProps } from './input'
+export { Textarea, textareaVariants, type TextareaProps } from './textarea'
 export { Checkbox } from './checkbox'
 export { Label } from './label'
 export {
@@ -35,6 +36,14 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
+  ProfessionalCard,
+  BrokerCard,
+  ToolCard,
+  cardVariants,
+  type CardProps,
+  type ProfessionalCardProps,
+  type BrokerCardProps,
+  type ToolCardProps,
 } from './card'
 export {
   Sheet,
@@ -106,3 +115,52 @@ export {
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from './navigation-menu'
+export { VisuallyHidden } from './visually-hidden'
+export {
+  ProfessionalForm,
+  FormField,
+  FormFieldWrapper,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormActions,
+  type ProfessionalFormProps,
+  type FormFieldProps,
+  type FormFieldWrapperProps,
+} from './form'
+export {
+  DataTable,
+  type ColumnDef,
+  type SortingState,
+  type FilterState,
+  type PaginationState,
+  type DataTableProps,
+} from './data-table'
+export {
+  Skeleton,
+  CardSkeleton,
+  TableSkeleton,
+  ListSkeleton,
+  TextSkeleton,
+  BrokerCardSkeleton,
+  BrokerComparisonSkeleton,
+  skeletonVariants,
+  type SkeletonProps,
+} from './skeleton'
+export {
+  MetricCard,
+  ComparisonBar,
+  RatingDisplay,
+  ProgressRing,
+  BrokerComparisonChart,
+  FeatureComparisonGrid,
+  type MetricCardProps,
+  type ComparisonBarProps,
+  type RatingDisplayProps,
+  type ProgressRingProps,
+  type BrokerComparisonData,
+  type BrokerComparisonChartProps,
+  type FeatureComparisonProps,
+} from './data-visualization'

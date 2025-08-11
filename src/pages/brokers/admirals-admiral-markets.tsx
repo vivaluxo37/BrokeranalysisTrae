@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Star, Shield, TrendingUp, DollarSign, Globe, Award } from 'lucide-react';
+import { Award, DollarSign, Globe, Shield, Star, TrendingUp } from 'lucide-react';
 
 const AdmiralMarketsReview: React.FC = () => {
   const brokerData = {

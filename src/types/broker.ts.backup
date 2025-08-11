@@ -1,0 +1,105 @@
+/**
+ * Comprehensive TypeScript interfaces for BrokerAnalysis platform
+ * Defines the complete data structure for broker information, ratings, regulation, and features
+ */
+
+// ============================================================================
+// CORE BROKER INTERFACES
+// ============================================================================
+
+/**
+ * Core Broker interface representing a trading broker with all essential information
+ */
+export interface Broker {
+  /** Unique identifier for the broker */
+  id: string;
+  
+  /** Display name of the broker */
+  name: string;
+  
+  /** URL to the broker's logo image */
+  logo: string;
+  
+  /** Overall rating of the broker (0-5 scale) */
+  rating: number;
+  
+  /** Total number of reviews for this broker */
+  reviewCount: number;
+  
+  /** List of regulatory authorities overseeing this broker */
+  regulators: string[];
+  
+  /** Minimum deposit required to open an account */
+  minDeposit: number;
+  
+  /** Maximum leverage offered by the broker */
+  maxLeverage: number;
+  
+  /** Starting spread value (in pips or percentage) */
+  spreadsFrom: number;
+  
+  /** Asset classes available for trading */
+  assetClasses: string[];
+  
+  /** Trading platforms supported by the broker */
+  platforms: string[];
+  
+  /** Category classification of the broker */
+  category: string;
+  
+  /** Whether this broker is featured on the platform */
+  featured: boolean;
+  
+  /** Trust score of the broker (0-10 scale) */
+  trustScore?: number;
+  
+  /** Whether this broker is regulated */
+  isRegulated?: boolean;
+  
+  /** Optional detailed broker information */
+  details?: any;
+  
+  /** Optional contact information */
+  contact?: any;
+  
+  /** Optional regulation details */
+  regulation?: any[];
+  
+  /** Optional features and offerings */
+  features?: any;
+  
+  /** Optional trading costs breakdown */
+  costs?: any;
+  
+  /** Optional account types offered */
+  accountTypes?: string[];
+  
+  /** Additional properties for flexibility */
+  [key: string]: any;
+}
+
+/**
+ * Broker rating information
+ */
+export interface BrokerRating {
+  /** Broker ID */
+  brokerId: string;
+  
+  /** Overall rating */
+  overallRating: number;
+  
+  /** Individual rating categories */
+  categories: {
+    trustworthiness: number;
+    customerService: number;
+    tradingPlatform: number;
+    costs: number;
+    research: number;
+  };
+  
+  /** Total number of reviews */
+  reviewCount: number;
+  
+  /** Last updated timestamp */
+  lastUpdated: string;
+}

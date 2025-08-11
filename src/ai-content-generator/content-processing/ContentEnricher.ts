@@ -4,7 +4,7 @@
  * Enhances generated content with additional data, images, formatting, and metadata.
  */
 
-import { ContentSchema, BrokerData, ContentType } from '../types';
+import { BrokerData, ContentSchema, ContentType } from '../types';
 import { BrokerDataService } from '../services/BrokerDataService';
 
 export interface EnrichmentOptions {
@@ -41,7 +41,7 @@ export class ContentEnricher {
   private brokerDataService: BrokerDataService;
   private brokerLogosPath: string;
 
-  constructor(brokerDataService: BrokerDataService, brokerLogosPath: string = '/c:/Users/LENOVO/Desktop/New folder (2)/Broker reviews │ BrokerChooser/') {
+  constructor(brokerDataService: BrokerDataService, brokerLogosPath = '/c:/Users/LENOVO/Desktop/New folder (2)/Broker reviews │ BrokerChooser/') {
     this.brokerDataService = brokerDataService;
     this.brokerLogosPath = brokerLogosPath;
   }
@@ -423,8 +423,8 @@ export class ContentEnricher {
   /**
    * Extract FAQ items from content
    */
-  private extractFAQItems(content: string): Array<{ question: string; answer: string }> {
-    const faqItems: Array<{ question: string; answer: string }> = [];
+  private extractFAQItems(content: string): { question: string; answer: string }[] {
+    const faqItems: { question: string; answer: string }[] = [];
     const lines = content.split('\n');
     
     let currentQuestion = '';
@@ -440,7 +440,7 @@ export class ContentEnricher {
         currentAnswer = '';
         inAnswer = true;
       } else if (inAnswer && line.trim()) {
-        currentAnswer += line + ' ';
+        currentAnswer += `${line  } `;
       } else if (inAnswer && !line.trim()) {
         inAnswer = false;
       }

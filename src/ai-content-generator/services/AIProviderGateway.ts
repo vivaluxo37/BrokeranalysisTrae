@@ -5,7 +5,7 @@
  * fallback, rate limiting, and performance monitoring.
  */
 
-import { AIProviderConfig, AIContentGeneratorConfig } from '../config';
+import { AIContentGeneratorConfig, AIProviderConfig } from '../config';
 import { AIProvider, AIRequest } from '../types';
 
 export interface AIResponse {
@@ -30,10 +30,10 @@ export interface AIRequestOptions {
 }
 
 export class AIProviderGateway {
-  private providers: Map<string, AIProvider> = new Map();
+  private providers = new Map<string, AIProvider>();
   private config: AIContentGeneratorConfig;
   private requestQueue: AIRequest[] = [];
-  private activeRequests: Map<string, AIRequest> = new Map();
+  private activeRequests = new Map<string, AIRequest>();
 
   constructor(config: AIContentGeneratorConfig) {
     this.config = config;
@@ -185,11 +185,11 @@ export class AIProviderGateway {
 
       const data = await response.json();
       
-      if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      if (!data.choices?.[0]?.message) {
         throw new Error(`Invalid response format from provider: ${name}`);
       }
 
-      const content = data.choices[0].message.content;
+      const {content} = data.choices[0].message;
       const usage = data.usage || { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 };
       
       return {

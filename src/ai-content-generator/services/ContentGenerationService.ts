@@ -6,7 +6,7 @@
  */
 
 import { AIProviderGateway, AIResponse } from './AIProviderGateway';
-import { ContentSchema, ContentType, ContentGenerationParameters, BrokerData } from '../types';
+import { BrokerData, ContentGenerationParameters, ContentSchema, ContentType } from '../types';
 import { AIContentGeneratorConfig } from '../config';
 import { ContentTemplateService } from './ContentTemplateService';
 import { BrokerDataService } from './BrokerDataService';
@@ -322,14 +322,14 @@ Please format the response as JSON with the following structure:
     const title = lines[0].replace(/^#+\s*/, '').trim();
     
     // Extract excerpt (first paragraph)
-    const excerpt = lines.find(line => line.length > 50 && !line.startsWith('#'))?.substring(0, 200) + '...';
+    const excerpt = `${lines.find(line => line.length > 50 && !line.startsWith('#'))?.substring(0, 200)  }...`;
     
     // Convert to HTML
     const content = this.convertToHTML(text);
     
     return {
       title,
-      excerpt: excerpt || title.substring(0, 200) + '...',
+      excerpt: excerpt || `${title.substring(0, 200)  }...`,
       content,
       headings: this.extractHeadings(text)
     };
@@ -457,12 +457,12 @@ Format as JSON: {"metaDescription": "", "keywords": [], "titleSuggestions": []}`
     if (type === 'broker-review' && brokerData.length > 0) {
       const broker = brokerData[0];
       baseStructuredData['@type'] = 'Review';
-      baseStructuredData['itemReviewed'] = {
+      baseStructuredData.itemReviewed = {
         '@type': 'FinancialService',
         'name': broker.name,
         'description': broker.description
       };
-      baseStructuredData['reviewRating'] = {
+      baseStructuredData.reviewRating = {
         '@type': 'Rating',
         'ratingValue': broker.rating.overall,
         'bestRating': 5

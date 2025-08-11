@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Award, CheckCircle, Globe, Shield, Star, Users } from 'lucide-react'
+import { CollectionManager } from '@/utils/SafeCollection'
 
 interface TrustSignalsSectionProps {
   trustIndicators: {
@@ -40,6 +41,12 @@ export function TrustSignalsSection({ trustIndicators }: TrustSignalsSectionProp
       color: "text-topforex-teal"
     }
   ]
+
+  // Create safe collection wrapper for trust features
+  const safeTrustFeatures = CollectionManager.validateCollection(
+    trustFeatures,
+    'trustFeatures'
+  )
 
   return (
     <section className="section-padding bg-deep-charcoal">
@@ -118,7 +125,7 @@ export function TrustSignalsSection({ trustIndicators }: TrustSignalsSectionProp
 
         {/* Trust Features */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {trustFeatures.map((feature, index) => (
+          {safeTrustFeatures.map((feature, index) => (
             <Card key={index} className="topforex-card group hover:bg-glass-overlay/10 transition-all duration-300">
               <CardContent className="p-8 text-center">
                 <div className={`w-16 h-16 mx-auto mb-6 bg-glass-overlay/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>

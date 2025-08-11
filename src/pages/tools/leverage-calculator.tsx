@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Calculator, TrendingUp, AlertTriangle, DollarSign, BarChart3, Info, Download } from 'lucide-react';
+import { AlertTriangle, BarChart3, Calculator, DollarSign, Download, Info, TrendingUp } from 'lucide-react';
 
 interface LeverageCalculation {
   accountBalance: number;

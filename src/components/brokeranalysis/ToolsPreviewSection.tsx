@@ -59,7 +59,7 @@ export function ToolsPreviewSection({ tools }: ToolsPreviewSectionProps) {
             
             return (
               <Link
-                key={tool.type}
+                key={`${tool.type}-${index}`}
                 to={tool.link}
                 className="group"
               >

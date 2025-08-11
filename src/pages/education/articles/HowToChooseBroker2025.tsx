@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { CheckCircle, AlertTriangle, Shield, TrendingUp, DollarSign, Globe, Users, Award } from 'lucide-react';
+import { AlertTriangle, Award, CheckCircle, DollarSign, Globe, Shield, TrendingUp, Users } from 'lucide-react';
 
 const HowToChooseBroker2025: React.FC = () => {
   const criteriaList = [

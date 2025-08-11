@@ -141,60 +141,47 @@ featuredBrokers: Broker[];
   // Trading tools data
   tradingTools: [
     {
-      type: ToolType.COMPARISON as const,
-      title: "Broker Comparison" as const,
-      description: "Compare brokers side by side" as const,
-      icon: "compare" as const,
-      link: "/tools/comparison" as const
+      type: "comparison",
+      title: "Broker Comparison",
+      description: "Compare brokers side by side",
+      icon: "grid",
+      link: "/tools/comparison"
     },
     {
-      type: ToolType.CALCULATOR as const,
-      title: "Fee Calculator" as const,
-      description: "Calculate your trading costs" as const,
-      icon: "calculator" as const,
-      link: "/tools/calculator" as const
+      type: "calculator",
+      title: "Fee Calculator",
+      description: "Calculate your trading costs",
+      icon: "calculator",
+      link: "/tools/calculator"
     },
     {
-      type: ToolType.SCANNER as const,
-      title: "Market Scanner" as const,
-      description: "Scan markets for opportunities" as const,
-      icon: "search" as const,
-      link: "/tools/scanner" as const
+      type: "scanner",
+      title: "Market Scanner",
+      description: "Scan markets for opportunities",
+      icon: "bar-chart",
+      link: "/tools/scanner"
     },
     {
-      type: ToolType.CALENDAR as const,
-      title: "Economic Calendar" as const,
-      description: "Track important market events" as const,
-      icon: "calendar" as const,
-      link: "/tools/calendar" as const
+      type: "calendar",
+      title: "Economic Calendar",
+      description: "Track important market events",
+      icon: "calendar",
+      link: "/tools/calendar"
     },
     {
-      id: "economic-calendar",
-      name: "Economic Calendar",
-      description: "Stay updated with market-moving events",
-      icon: "Calendar",
-      category: ToolType.ANALYSIS,
-      popularity: 95,
-      brokerCount: 142
-    } as TradingTool,
-    {
-      id: "trading-signals",
-      name: "Trading Signals",
+      type: "signals",
+      title: "Trading Signals",
       description: "Get expert trading recommendations",
-      icon: "Signal",
-      category: ToolType.SIGNALS,
-      popularity: 88,
-      brokerCount: 78
-    } as TradingTool,
+      icon: "refresh-cw",
+      link: "/tools/signals"
+    },
     {
-      id: "copy-trading",
-      name: "Copy Trading",
+      type: "copy-trading",
+      title: "Copy Trading",
       description: "Follow and copy successful traders",
-      icon: "Copy",
-      category: ToolType.AUTOMATION,
-      popularity: 82,
-      brokerCount: 56
-    } as TradingTool
+      icon: "dollar-sign",
+      link: "/tools/copy-trading"
+    }
   ],
   
   // Trust indicators

@@ -5,7 +5,7 @@
  * templates, publishing workflows, and content analytics.
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -18,25 +18,25 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Progress } from '@/components/ui/progress';
 import {
-  FileText,
-  Play,
-  Pause,
-  Square,
-  RefreshCw,
-  Plus,
-  Edit,
-  Trash2,
-  Download,
-  Upload,
-  Eye,
-  Clock,
-  CheckCircle,
-  XCircle,
   AlertTriangle,
   BarChart3,
-  Settings,
+  CheckCircle,
+  Clock,
+  Download,
+  Edit,
+  Eye,
+  FileText,
   Filter,
-  Search
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Search,
+  Settings,
+  Square,
+  Trash2,
+  Upload,
+  XCircle
 } from 'lucide-react';
 
 export interface ContentJob {

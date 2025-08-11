@@ -5,7 +5,7 @@
  * including performance metrics, resource usage, and health checks.
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -14,19 +14,19 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Activity,
-  Server,
-  Database,
-  Cpu,
-  MemoryStick,
-  HardDrive,
-  Wifi,
   AlertTriangle,
   CheckCircle,
-  XCircle,
+  Clock,
+  Cpu,
+  Database,
+  HardDrive,
+  MemoryStick,
   RefreshCw,
-  TrendingUp,
+  Server,
   TrendingDown,
-  Clock
+  TrendingUp,
+  Wifi,
+  XCircle
 } from 'lucide-react';
 
 export interface SystemMetrics {

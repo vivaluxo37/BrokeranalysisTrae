@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Calculator, DollarSign, TrendingUp, BarChart3, Info, Download } from 'lucide-react';
+import { BarChart3, Calculator, DollarSign, Download, Info, TrendingUp } from 'lucide-react';
 
 interface BrokerFeeStructure {
   name: string;
@@ -218,7 +218,7 @@ const BrokerageFeeCalculator: React.FC = () => {
         calc.monthlyFees.total.toFixed(2),
         calc.yearlyFees.total.toFixed(2),
         calc.costPerTrade.toFixed(2),
-        calc.costAsPercentage.toFixed(3) + '%'
+        `${calc.costAsPercentage.toFixed(3)  }%`
       ])
     ].map(row => row.join(',')).join('\n');
 

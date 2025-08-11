@@ -1,8 +1,36 @@
-// Global styles
-// Export global style imports and theme configurations
+/**
+ * Global Styles and Design System Exports
+ * 
+ * Central export point for all styling utilities, theme configuration,
+ * and design system constants used throughout the BrokerAnalysis platform.
+ */
 
-// Example:
-// import './globals.css';
-// import './components.css';
-// export { theme } from './theme';
-// export { breakpoints } from './breakpoints';
+// Design System Exports
+export * from '../lib/design-system';
+export * from '../lib/theme';
+export * from '../lib/style-utils';
+
+// Re-export commonly used utilities
+export { cn } from '../lib/utils';
+
+// Type exports for external consumption
+export type {
+  Theme,
+  ThemeName,
+  ThemeContextType,
+} from '../lib/theme';
+
+export type {
+  ColorKey,
+  SemanticColorKey,
+  TypographySizeKey,
+  TypographyWeightKey,
+  SpacingKey,
+  BorderRadiusKey,
+  BreakpointKey,
+  ZIndexKey,
+  ButtonVariant,
+  ButtonSize,
+  CardVariant,
+  InputVariant,
+} from '../lib/design-system';

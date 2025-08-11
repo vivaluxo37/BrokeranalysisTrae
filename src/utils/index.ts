@@ -8,3 +8,6 @@ export * from './assetUtils'
 
 // Safe collection utilities
 export * from './SafeCollection'
+
+// Focus management utilities
+export * from './focusManagement'

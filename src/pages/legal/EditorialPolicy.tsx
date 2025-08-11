@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FileText, Users, Shield, CheckCircle, Eye, Award, BookOpen, Target } from 'lucide-react';
+import { Award, BookOpen, CheckCircle, Eye, FileText, Shield, Target, Users } from 'lucide-react';
 
 const EditorialPolicy: React.FC = () => {
   return (

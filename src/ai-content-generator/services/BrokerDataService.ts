@@ -10,7 +10,7 @@ import fs from 'fs';
 import path from 'path';
 
 export class BrokerDataService {
-  private brokers: Map<string, BrokerData> = new Map();
+  private brokers = new Map<string, BrokerData>();
   private brokerLogosPath: string;
   private dataPath: string;
 
@@ -244,7 +244,7 @@ export class BrokerDataService {
   /**
    * Get top-rated brokers
    */
-  async getTopRatedBrokers(limit: number = 10): Promise<BrokerData[]> {
+  async getTopRatedBrokers(limit = 10): Promise<BrokerData[]> {
     return Array.from(this.brokers.values())
       .sort((a, b) => b.rating.overall - a.rating.overall)
       .slice(0, limit);

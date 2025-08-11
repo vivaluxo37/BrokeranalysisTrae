@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Star, Shield, TrendingUp, DollarSign, Globe, Award } from 'lucide-react';
+import { Award, DollarSign, Globe, Shield, Star, TrendingUp } from 'lucide-react';
 
 const MonetaMarketsReview: React.FC = () => {
   const brokerData = {
@@ -156,15 +156,15 @@ const MonetaMarketsReview: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">Trading Platforms</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {brokerData.platforms.map((platform, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-4">
-                          <h4 className="font-semibold text-gray-900">{platform}</h4>
-                          <p className="text-sm text-gray-600 mt-1">
-                            Professional trading platform with advanced features
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                    {brokerData.platforms.map((platform, index) => (
+                      <div key={`platform-${index}`} className="border border-gray-200 rounded-lg p-4">
+                        <h4 className="font-semibold text-gray-900">{platform}</h4>
+                        <p className="text-sm text-gray-600 mt-1">
+                          Professional trading platform with advanced features
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                   </div>
                   
                   <div>
@@ -172,7 +172,7 @@ const MonetaMarketsReview: React.FC = () => {
                     <div className="flex flex-wrap gap-2">
                       {brokerData.assetClasses.map((asset, index) => (
                         <span 
-                          key={index}
+                          key={`asset-${index}`}
                           className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
                         >
                           {asset}

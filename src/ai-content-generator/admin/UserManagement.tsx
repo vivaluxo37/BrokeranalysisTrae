@@ -5,7 +5,7 @@
  * roles, and access control for the AI Content Generator system.
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -20,30 +20,30 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Progress } from '@/components/ui/progress';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
-  Users,
-  UserPlus,
-  Shield,
-  Key,
-  Mail,
-  Calendar,
   Activity,
-  Settings,
-  Search,
-  Filter,
-  MoreHorizontal,
-  Edit,
-  Trash2,
-  Lock,
-  Unlock,
-  RefreshCw,
-  Download,
-  Upload,
-  CheckCircle,
-  XCircle,
   AlertTriangle,
+  Ban,
+  Calendar,
+  CheckCircle,
   Clock,
+  Download,
+  Edit,
   Eye,
-  Ban
+  Filter,
+  Key,
+  Lock,
+  Mail,
+  MoreHorizontal,
+  RefreshCw,
+  Search,
+  Settings,
+  Shield,
+  Trash2,
+  Unlock,
+  Upload,
+  UserPlus,
+  Users,
+  XCircle
 } from 'lucide-react';
 
 export interface User {

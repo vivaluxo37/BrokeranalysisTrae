@@ -55,7 +55,7 @@ export { config } from './config';
 
 // Export default instance factory
 export function createAIContentGenerator(
-  brokerLogosPath: string = 'c:/Users/LENOVO/Desktop/New folder (2)/Broker reviews │ BrokerChooser/',
+  brokerLogosPath = 'c:/Users/LENOVO/Desktop/New folder (2)/Broker reviews │ BrokerChooser/',
   outputDirectory?: string
 ): AIContentGeneratorService {
   return new AIContentGeneratorService(brokerLogosPath, outputDirectory);
@@ -64,7 +64,7 @@ export function createAIContentGenerator(
 // Export quick start function for generating site map content
 export async function generateSiteMapContent(
   brokerLogosPath?: string,
-  autoPublish: boolean = false
+  autoPublish = false
 ) {
   const generator = createAIContentGenerator(brokerLogosPath);
   

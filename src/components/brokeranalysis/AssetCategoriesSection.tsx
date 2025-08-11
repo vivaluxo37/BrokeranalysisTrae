@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight, BarChart3, Coins, LineChart, TrendingUp } from 'lucide-react'
 import { AssetClass } from '@/enums'
+import { CollectionManager } from '@/utils/SafeCollection'
 
 interface AssetCategory {
   type: AssetClass
@@ -25,6 +26,12 @@ const iconMap = {
 }
 
 export function AssetCategoriesSection({ assetCategories }: AssetCategoriesSectionProps) {
+  // Create safe collection wrapper for asset categories
+  const safeAssetCategories = CollectionManager.validateCollection(
+    assetCategories,
+    'assetCategories'
+  )
+
   return (
     <section className="section-padding bg-gradient-mesh">
       <div className="container mx-auto px-6">
@@ -41,7 +48,7 @@ export function AssetCategoriesSection({ assetCategories }: AssetCategoriesSecti
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {assetCategories.map((category) => {
+          {safeAssetCategories.map((category) => {
             const IconComponent = iconMap[category.icon as keyof typeof iconMap] || TrendingUp
             
             return (

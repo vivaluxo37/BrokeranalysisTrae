@@ -41,7 +41,7 @@ interface BrokerPageData {
 }
 
 const generateBrokerData = (brokerSlug: string): BrokerPageData => {
-  const brokerNames: { [key: string]: string } = {
+  const brokerNames: Record<string, string> = {
     'interactive-brokers': 'Interactive Brokers',
     'etoro': 'eToro',
     'xtb': 'XTB',

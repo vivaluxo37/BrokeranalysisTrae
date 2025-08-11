@@ -4,7 +4,7 @@
  * This file contains utility functions used throughout the AI Content Generator system.
  */
 
-import { ContentType, BrokerData } from '../types';
+import { BrokerData, ContentType } from '../types';
 
 /**
  * Generate a URL-friendly slug from a title
@@ -42,7 +42,7 @@ export function countWords(text: string): number {
 /**
  * Calculate estimated reading time
  */
-export function calculateReadingTime(text: string, wordsPerMinute: number = 200): number {
+export function calculateReadingTime(text: string, wordsPerMinute = 200): number {
   const wordCount = countWords(text);
   return Math.ceil(wordCount / wordsPerMinute);
 }
@@ -50,7 +50,7 @@ export function calculateReadingTime(text: string, wordsPerMinute: number = 200)
 /**
  * Extract keywords from text
  */
-export function extractKeywords(text: string, maxKeywords: number = 10): string[] {
+export function extractKeywords(text: string, maxKeywords = 10): string[] {
   // Simple keyword extraction - can be enhanced with NLP libraries
   const words = text
     .toLowerCase()
@@ -74,17 +74,17 @@ export function extractKeywords(text: string, maxKeywords: number = 10): string[
 /**
  * Format currency amount
  */
-export function formatCurrency(amount: number, currency: string = 'USD'): string {
+export function formatCurrency(amount: number, currency = 'USD'): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currency
+    currency
   }).format(amount);
 }
 
 /**
  * Format percentage
  */
-export function formatPercentage(value: number, decimals: number = 2): string {
+export function formatPercentage(value: number, decimals = 2): string {
   return `${(value * 100).toFixed(decimals)}%`;
 }
 
@@ -123,7 +123,7 @@ export function sanitizeHtml(html: string): string {
 /**
  * Truncate text to specified length
  */
-export function truncateText(text: string, maxLength: number, suffix: string = '...'): string {
+export function truncateText(text: string, maxLength: number, suffix = '...'): string {
   if (text.length <= maxLength) {
     return text;
   }
@@ -142,7 +142,7 @@ export function titleCase(text: string): string {
 /**
  * Generate random string
  */
-export function generateRandomString(length: number = 8): string {
+export function generateRandomString(length = 8): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let result = '';
   for (let i = 0; i < length; i++) {
@@ -214,8 +214,8 @@ export function throttle<T extends (...args: any[]) => any>(
  */
 export async function retryWithBackoff<T>(
   fn: () => Promise<T>,
-  maxRetries: number = 3,
-  baseDelay: number = 1000
+  maxRetries = 3,
+  baseDelay = 1000
 ): Promise<T> {
   let lastError: Error;
   
@@ -245,7 +245,7 @@ export function formatFileSize(bytes: number): string {
   if (bytes === 0) return '0 Bytes';
   
   const i = Math.floor(Math.log(bytes) / Math.log(1024));
-  return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+  return `${Math.round(bytes / Math.pow(1024, i) * 100) / 100  } ${  sizes[i]}`;
 }
 
 /**
@@ -298,7 +298,7 @@ export function formatRegulationList(regulations: string[]): string {
   if (regulations.length === 2) return regulations.join(' and ');
   
   const last = regulations.pop();
-  return regulations.join(', ') + ', and ' + last;
+  return `${regulations.join(', ')  }, and ${  last}`;
 }
 
 /**
@@ -332,7 +332,7 @@ export function calculateContentSimilarity(content1: string, content2: string): 
 /**
  * Generate meta description from content
  */
-export function generateMetaDescription(content: string, maxLength: number = 160): string {
+export function generateMetaDescription(content: string, maxLength = 160): string {
   // Remove markdown and HTML
   const cleanContent = content
     .replace(/[#*`\[\]()]/g, '')
@@ -348,7 +348,7 @@ export function generateMetaDescription(content: string, maxLength: number = 160
   for (let i = 1; i < sentences.length && description.length < maxLength - 50; i++) {
     const nextSentence = sentences[i].trim();
     if (nextSentence && description.length + nextSentence.length + 2 <= maxLength) {
-      description += '. ' + nextSentence;
+      description += `. ${  nextSentence}`;
     } else {
       break;
     }

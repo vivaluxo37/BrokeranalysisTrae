@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { ArrowRight, Shield, Star, TrendingUp, Users } from 'lucide-react'
 import { AssetClass, BrokerCategory, RegulatorType, TradingPlatform } from '@/enums'
+import { CollectionManager } from '@/utils/SafeCollection'
 
 interface FeaturedBroker {
   id: string
@@ -58,6 +59,12 @@ const getCategoryBadgeColor = (category: BrokerCategory): string => {
 }
 
 export function FeaturedBrokersSection({ featuredBrokers }: FeaturedBrokersSectionProps) {
+  // Create safe collection wrapper for featuredBrokers
+  const safeFeaturedBrokers = CollectionManager.validateCollection<FeaturedBroker>(
+    featuredBrokers,
+    'featuredBrokers'
+  )
+
   return (
     <section className="section-padding bg-cosmic-void">
       <div className="container mx-auto px-6">
@@ -74,7 +81,7 @@ export function FeaturedBrokersSection({ featuredBrokers }: FeaturedBrokersSecti
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {featuredBrokers.map((broker, index) => (
+          {safeFeaturedBrokers.map((broker, index) => (
             <Card key={broker.id} className="topforex-card topforex-card-hover group relative overflow-hidden">
               {/* Featured Badge */}
               {index === 0 && (
@@ -153,12 +160,15 @@ export function FeaturedBrokersSection({ featuredBrokers }: FeaturedBrokersSecti
                 <div>
                   <div className="text-sm text-starfield-gray mb-2">Asset Classes</div>
                   <div className="flex flex-wrap gap-1">
-                    {broker.assetClasses.slice(0, 3).map((asset) => (
-                      <Badge key={asset} variant="secondary" className="text-xs bg-glass-overlay/20 text-starfield-gray">
-                        {asset.toUpperCase()}
-                      </Badge>
-                    ))}
-                    {broker.assetClasses.length > 3 && (
+                    {CollectionManager.validateCollection(broker.assetClasses, 'assetClasses')
+                      .toArray()
+                      .slice(0, 3)
+                      .map((asset) => (
+                        <Badge key={asset} variant="secondary" className="text-xs bg-glass-overlay/20 text-starfield-gray">
+                          {asset.toUpperCase()}
+                        </Badge>
+                      ))}
+                    {broker.assetClasses && broker.assetClasses.length > 3 && (
                       <Badge variant="secondary" className="text-xs bg-glass-overlay/20 text-starfield-gray">
                         +{broker.assetClasses.length - 3} more
                       </Badge>
@@ -196,7 +206,7 @@ export function FeaturedBrokersSection({ featuredBrokers }: FeaturedBrokersSecti
             className="border-brokeranalysis-accent text-brokeranalysis-accent hover:bg-brokeranalysis-accent hover:text-white px-8 py-4 rounded-xl font-semibold"
           >
             <Users className="w-5 h-5 mr-2" />
-            View All {featuredBrokers.length * 10}+ Brokers
+            View All {safeFeaturedBrokers.size() * 10}+ Brokers
           </Button>
         </div>
       </div>

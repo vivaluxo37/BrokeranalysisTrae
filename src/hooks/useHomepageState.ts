@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useCallback, useEffect, useState } from 'react'
 import { PersistableState, statePersistenceService } from '@/services/StatePersistenceService'
 import type { SavedSearch, SearchFilters, SearchResult } from '@/types/search'
-import type { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 import type { User } from '@/types/auth'
 
 /**

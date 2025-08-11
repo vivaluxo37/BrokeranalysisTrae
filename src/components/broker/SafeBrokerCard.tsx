@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Star, Shield, ExternalLink, AlertCircle } from 'lucide-react'
+import { AlertCircle, ExternalLink, Shield, Star } from 'lucide-react'
 import { useSafeBrokerData, useSafeBrokerProperty } from '@/hooks/useSafeBrokerData'
 import { BrokerPageErrorBoundary } from '@/components/common/BrokerPageErrorBoundary'
 

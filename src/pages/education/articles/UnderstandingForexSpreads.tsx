@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { TrendingUp, Calculator, AlertCircle, BarChart3, Clock, DollarSign, Zap, Target } from 'lucide-react';
+import { AlertCircle, BarChart3, Calculator, Clock, DollarSign, Target, TrendingUp, Zap } from 'lucide-react';
 
 const UnderstandingForexSpreads: React.FC = () => {
   const [selectedPair, setSelectedPair] = useState('EURUSD');

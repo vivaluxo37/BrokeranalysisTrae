@@ -270,7 +270,7 @@ export class CollectionManager {
       }
       
       if (data && typeof data === 'object' && 'items' in data) {
-        const items = (data as any).items
+        const {items} = (data as any)
         if (Array.isArray(items)) {
           return new SafeCollectionImpl<T>(items, name)
         }

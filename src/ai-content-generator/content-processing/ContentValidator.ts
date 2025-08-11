@@ -28,15 +28,15 @@ export interface ValidationReport {
     warnings: number;
     infos: number;
   };
-  results: Array<{
+  results: {
     rule: string;
     result: ValidationResult;
-  }>;
+  }[];
   recommendations: string[];
 }
 
 export class ContentValidator {
-  private rules: Map<string, ValidationRule> = new Map();
+  private rules = new Map<string, ValidationRule>();
 
   constructor() {
     this.initializeDefaultRules();
@@ -60,7 +60,7 @@ export class ContentValidator {
    * Validate content against all rules
    */
   validateContent(content: ContentSchema): ValidationReport {
-    const results: Array<{ rule: string; result: ValidationResult }> = [];
+    const results: { rule: string; result: ValidationResult }[] = [];
     let totalScore = 0;
     let errors = 0;
     let warnings = 0;
@@ -150,7 +150,7 @@ export class ContentValidator {
       description: 'Validates title quality and SEO optimization',
       severity: 'warning',
       validate: (content: ContentSchema) => {
-        const title = content.title;
+        const {title} = content;
         const titleLength = title.length;
         let score = 100;
         const issues: string[] = [];
@@ -387,7 +387,7 @@ export class ContentValidator {
   /**
    * Generate recommendations based on validation results
    */
-  private generateRecommendations(results: Array<{ rule: string; result: ValidationResult }>): string[] {
+  private generateRecommendations(results: { rule: string; result: ValidationResult }[]): string[] {
     const recommendations: string[] = [];
     
     results.forEach(({ result }) => {

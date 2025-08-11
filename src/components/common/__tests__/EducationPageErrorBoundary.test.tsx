@@ -1,13 +1,13 @@
 import React from 'react'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { 
-  EducationPageErrorBoundary, 
-  withEducationErrorBoundary, 
+  ArticleErrorFallback, 
+  CourseErrorFallback, 
   EducationContentFallback, 
-  CourseErrorFallback,
-  ArticleErrorFallback,
-  EducationLinkErrorFallback 
+  EducationLinkErrorFallback,
+  EducationPageErrorBoundary,
+  withEducationErrorBoundary 
 } from '../EducationPageErrorBoundary'
 import { errorReportingService } from '@/services/ErrorReportingService'
 

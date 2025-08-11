@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Users, Target, Award, TrendingUp, Shield, Globe } from 'lucide-react';
+import { Award, Globe, Shield, Target, TrendingUp, Users } from 'lucide-react';
 
 const AboutUs: React.FC = () => {
   return (

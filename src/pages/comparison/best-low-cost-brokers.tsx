@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Star, CheckCircle, TrendingUp, Award, Filter, ArrowRight, ExternalLink, DollarSign } from 'lucide-react';
+import { ArrowRight, Award, CheckCircle, DollarSign, ExternalLink, Filter, Star, TrendingUp } from 'lucide-react';
 
 interface Broker {
   id: string;

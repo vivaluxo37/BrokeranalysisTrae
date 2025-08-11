@@ -5,7 +5,7 @@
  * quality checks, and approval workflows for generated content.
  */
 
-import { ContentSchema, BrokerData, QAResult, QAIssue, QACheckType } from '../types';
+import { BrokerData, ContentSchema, QACheckType, QAIssue, QAResult } from '../types';
 import { QAValidator } from './QAValidator';
 import { QualityAnalyzer } from './QualityAnalyzer';
 import { ComplianceChecker } from './ComplianceChecker';
@@ -158,7 +158,7 @@ export class QAOrchestrator {
    */
   async batchQA(
     contentItems: { content: ContentSchema; brokerData?: BrokerData[] }[],
-    concurrency: number = 3
+    concurrency = 3
   ): Promise<QAPipelineResult[]> {
     const results: QAPipelineResult[] = [];
     

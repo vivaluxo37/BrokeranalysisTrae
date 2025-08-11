@@ -11,7 +11,7 @@ import { useSearch } from '@/hooks/useSearch'
 import { useProfile } from '@/hooks/useProfile'
 import type { User } from '@/types/auth'
 import type { SavedSearch, SearchFilters, SearchResult } from '@/types/search'
-import type { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 
 /**
  * Feature flags for gradual rollout of homepage integrations

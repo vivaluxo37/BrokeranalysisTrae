@@ -5,10 +5,10 @@
  * Templates provide structure and consistency for AI-generated content.
  */
 
-import { ContentType, ContentTemplate, TemplateVariable, SEOTemplate } from '../types';
+import { ContentTemplate, ContentType, SEOTemplate, TemplateVariable } from '../types';
 
 export class ContentTemplateService {
-  private templates: Map<ContentType, ContentTemplate> = new Map();
+  private templates = new Map<ContentType, ContentTemplate>();
 
   constructor() {
     this.initializeDefaultTemplates();
@@ -480,7 +480,7 @@ export class ContentTemplateService {
    */
   async generateSEOFromTemplate(type: ContentType, variables: Record<string, any>): Promise<any> {
     const template = await this.getTemplate(type);
-    const seoTemplate = template.seoTemplate;
+    const {seoTemplate} = template;
 
     const renderSEOField = (field: string): string => {
       let rendered = field;

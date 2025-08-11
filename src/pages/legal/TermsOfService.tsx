@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FileText, Scale, Shield, AlertTriangle, Users, Globe } from 'lucide-react';
+import { AlertTriangle, FileText, Globe, Scale, Shield, Users } from 'lucide-react';
 
 const TermsOfService: React.FC = () => {
   return (

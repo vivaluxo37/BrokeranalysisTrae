@@ -5,7 +5,7 @@
  * regulatory databases, and other authoritative sources.
  */
 
-import { ContentSchema, QAIssue, BrokerData } from '../types';
+import { BrokerData, ContentSchema, QAIssue } from '../types';
 import { BrokerDataService } from '../services/BrokerDataService';
 import { AIProviderGateway } from '../services/AIProviderGateway';
 
@@ -39,8 +39,8 @@ export interface FactCheckReport {
 export class FactChecker {
   private brokerDataService: BrokerDataService;
   private aiGateway: AIProviderGateway;
-  private factCache: Map<string, FactCheckResult> = new Map();
-  private claimExtractors: Map<string, RegExp[]> = new Map();
+  private factCache = new Map<string, FactCheckResult>();
+  private claimExtractors = new Map<string, RegExp[]>();
 
   constructor(brokerDataService: BrokerDataService, aiGateway: AIProviderGateway) {
     this.brokerDataService = brokerDataService;

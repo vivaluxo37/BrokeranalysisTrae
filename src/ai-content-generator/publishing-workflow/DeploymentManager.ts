@@ -77,9 +77,9 @@ export interface DeploymentJob {
 
 export class DeploymentManager {
   private config: DeploymentConfig;
-  private activeDeployments: Map<string, DeploymentJob> = new Map();
-  private deploymentHistory: Map<string, DeploymentJob[]> = new Map();
-  private contentVersions: Map<string, string[]> = new Map();
+  private activeDeployments = new Map<string, DeploymentJob>();
+  private deploymentHistory = new Map<string, DeploymentJob[]>();
+  private contentVersions = new Map<string, string[]>();
 
   constructor(config: DeploymentConfig) {
     this.config = config;
@@ -216,15 +216,15 @@ export class DeploymentManager {
   ): Promise<{ deploymentId?: string; url?: string; metadata?: any }> {
     switch (target.type) {
       case 'static':
-        return await this.deployToStatic(content, target);
+        return this.deployToStatic(content, target);
       case 'cdn':
-        return await this.deployToCDN(content, target);
+        return this.deployToCDN(content, target);
       case 'cms':
-        return await this.deployToCMS(content, target);
+        return this.deployToCMS(content, target);
       case 'api':
-        return await this.deployToAPI(content, target);
+        return this.deployToAPI(content, target);
       case 'database':
-        return await this.deployToDatabase(content, target);
+        return this.deployToDatabase(content, target);
       default:
         throw new Error(`Unsupported deployment target type: ${target.type}`);
     }
@@ -415,7 +415,7 @@ export class DeploymentManager {
     const job = this.activeDeployments.get(jobId) || 
                 this.getJobFromHistory(jobId);
     
-    if (!job || !job.rollbackAvailable) {
+    if (!job?.rollbackAvailable) {
       return false;
     }
 

@@ -5,7 +5,7 @@
  * errors, and debugging information across the AI content generation system.
  */
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -19,43 +19,43 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
-  FileText,
-  Search,
-  Filter,
-  Download,
-  RefreshCw,
-  AlertTriangle,
-  Info,
+  Activity,
   AlertCircle,
-  XCircle,
-  CheckCircle,
-  Clock,
-  Calendar,
-  Server,
-  Database,
-  Globe,
-  Cpu,
-  HardDrive,
-  Network,
-  Bug,
-  Zap,
-  Eye,
-  EyeOff,
-  Copy,
-  ExternalLink,
-  Settings,
-  Trash2,
+  AlertTriangle,
   Archive,
-  Play,
-  Pause,
-  Square,
-  RotateCcw,
+  Bug,
+  Calendar,
+  CheckCircle,
   ChevronDown,
   ChevronRight,
-  Terminal,
+  Clock,
   Code,
-  Activity,
-  Monitor
+  Copy,
+  Cpu,
+  Database,
+  Download,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  FileText,
+  Filter,
+  Globe,
+  HardDrive,
+  Info,
+  Monitor,
+  Network,
+  Pause,
+  Play,
+  RefreshCw,
+  RotateCcw,
+  Search,
+  Server,
+  Settings,
+  Square,
+  Terminal,
+  Trash2,
+  XCircle,
+  Zap
 } from 'lucide-react';
 
 export interface LogEntry {
@@ -96,11 +96,11 @@ export interface LogStats {
   byCategory: Record<string, number>;
   errorRate: number;
   avgResponseTime: number;
-  topErrors: Array<{
+  topErrors: {
     message: string;
     count: number;
     lastOccurrence: Date;
-  }>;
+  }[];
 }
 
 export interface LogStream {

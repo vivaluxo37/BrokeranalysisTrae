@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { brokerDataService } from '@/services/BrokerDataService'
-import { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 
 interface UseSafeBrokerDataResult {
   broker: Broker | null
@@ -92,7 +92,7 @@ export function useSafeBrokersData(brokerIds: string[]): {
           return await brokerDataService.getBrokerWithFallback(id)
         } catch (error) {
           setErrors(prev => [...prev, `Failed to load broker ${id}: ${error}`])
-          return await brokerDataService.getBrokerWithFallback(id) // Still return fallback
+          return brokerDataService.getBrokerWithFallback(id) // Still return fallback
         }
       })
 

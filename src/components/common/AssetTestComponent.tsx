@@ -3,7 +3,7 @@
  * This component can be used to test asset loading in development and production
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { generateAssetTestReport, runAssetTests } from '@/utils/assetTesting';
 import { validateAssetAccessibility } from '@/utils/assetOptimization';
 
@@ -17,7 +17,7 @@ export function AssetTestComponent({ showDetails = false, autoRun = false }: Ass
   const [isRunning, setIsRunning] = useState(false);
   const [report, setReport] = useState<string>('');
 
-  const runTests = async () => {
+  const runTests = useCallback(async () => {
     setIsRunning(true);
     try {
       const results = await runAssetTests();
@@ -32,13 +32,13 @@ export function AssetTestComponent({ showDetails = false, autoRun = false }: Ass
     } finally {
       setIsRunning(false);
     }
-  };
+  }, [showDetails]);
 
   useEffect(() => {
     if (autoRun) {
       runTests();
     }
-  }, [autoRun]);
+  }, [autoRun, runTests]);
 
   if (!showDetails && !testResults) {
     return (
@@ -145,13 +145,13 @@ export function AssetPreviewComponent() {
     '/vite.svg'
   ];
 
-  const handleImageError = (src: string) => {
+  const handleImageError = useCallback((src: string) => {
     setImageErrors(prev => ({ ...prev, [src]: true }));
-  };
+  }, []);
 
-  const handleImageLoad = (src: string) => {
+  const handleImageLoad = useCallback((src: string) => {
     setImageErrors(prev => ({ ...prev, [src]: false }));
-  };
+  }, []);
 
   return (
     <div className="p-4 border rounded-lg">

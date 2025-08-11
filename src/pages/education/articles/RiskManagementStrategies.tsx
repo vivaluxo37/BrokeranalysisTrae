@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Shield, AlertTriangle, TrendingDown, Calculator, Target, BarChart3, DollarSign, Percent } from 'lucide-react';
+import { AlertTriangle, BarChart3, Calculator, DollarSign, Percent, Shield, Target, TrendingDown } from 'lucide-react';
 
 const RiskManagementStrategies: React.FC = () => {
   const [accountBalance, setAccountBalance] = useState(10000);

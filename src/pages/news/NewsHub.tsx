@@ -1,6 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Calendar, Clock, TrendingUp, Building, Shield, BookOpen, Search, Filter } from 'lucide-react';
+import { BookOpen, Building, Calendar, Clock, Filter, Search, Shield, TrendingUp, BarChart3, Eye, Share2, Bookmark, ArrowUpRight, Tag } from 'lucide-react';
+import { PageLayout } from '@/components/layout';
+import { ProfessionalCard } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface NewsArticle {
   id: string;
@@ -14,11 +18,49 @@ interface NewsArticle {
   tags: string[];
   featured: boolean;
   imageUrl?: string;
+  views?: number;
+  likes?: number;
+  bookmarked?: boolean;
+  trending?: boolean;
+}
+
+interface MarketData {
+  symbol: string;
+  name: string;
+  price: number;
+  change: number;
+  changePercent: number;
+  volume: string;
+}
+
+interface TrendingTopic {
+  topic: string;
+  articles: number;
+  trend: 'up' | 'down' | 'stable';
 }
 
 const NewsHub: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('latest');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+
+  // Mock market data
+  const marketData: MarketData[] = [
+    { symbol: 'EUR/USD', name: 'Euro/US Dollar', price: 1.0845, change: 0.0012, changePercent: 0.11, volume: '2.1B' },
+    { symbol: 'GBP/USD', name: 'British Pound/US Dollar', price: 1.2634, change: -0.0023, changePercent: -0.18, volume: '1.8B' },
+    { symbol: 'USD/JPY', name: 'US Dollar/Japanese Yen', price: 149.82, change: 0.45, changePercent: 0.30, volume: '1.9B' },
+    { symbol: 'BTC/USD', name: 'Bitcoin/US Dollar', price: 43250, change: 1250, changePercent: 2.98, volume: '890M' }
+  ];
+
+  // Mock trending topics
+  const trendingTopics: TrendingTopic[] = [
+    { topic: 'Federal Reserve Policy', articles: 15, trend: 'up' },
+    { topic: 'Cryptocurrency Regulation', articles: 12, trend: 'up' },
+    { topic: 'European Markets', articles: 8, trend: 'stable' },
+    { topic: 'AI Trading', articles: 6, trend: 'up' },
+    { topic: 'Broker Mergers', articles: 4, trend: 'down' }
+  ];
 
   const newsArticles: NewsArticle[] = [
     {
@@ -32,6 +74,9 @@ const NewsHub: React.FC = () => {
       readTime: 8,
       tags: ['Forex', 'Brokers', '2025', 'Rankings'],
       featured: true,
+      views: 15420,
+      likes: 234,
+      trending: true,
       imageUrl: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20forex%20trading%20desk%20with%20multiple%20monitors%20showing%20charts%20and%20data%20modern%20office%20environment&image_size=landscape_16_9'
     },
     {
@@ -45,6 +90,8 @@ const NewsHub: React.FC = () => {
       readTime: 6,
       tags: ['Regulation', 'CFD', 'EU', 'Compliance'],
       featured: true,
+      views: 8930,
+      likes: 156,
       imageUrl: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=european%20union%20flag%20with%20financial%20documents%20and%20legal%20papers%20regulatory%20compliance%20concept&image_size=landscape_16_9'
     },
     {
@@ -58,6 +105,9 @@ const NewsHub: React.FC = () => {
       readTime: 10,
       tags: ['Volatility', 'Risk Management', 'Strategies'],
       featured: false,
+      views: 12340,
+      likes: 189,
+      bookmarked: true,
       imageUrl: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=volatile%20financial%20charts%20with%20dramatic%20price%20movements%20trading%20strategy%20concept&image_size=landscape_16_9'
     },
     {
@@ -71,6 +121,9 @@ const NewsHub: React.FC = () => {
       readTime: 7,
       tags: ['Federal Reserve', 'Currency', 'Policy', 'USD'],
       featured: false,
+      views: 9876,
+      likes: 143,
+      trending: true,
       imageUrl: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=federal%20reserve%20building%20with%20currency%20symbols%20and%20economic%20data%20financial%20policy%20concept&image_size=landscape_16_9'
     },
     {
@@ -84,6 +137,8 @@ const NewsHub: React.FC = () => {
       readTime: 5,
       tags: ['Cryptocurrency', 'Integration', 'Brokers', 'Innovation'],
       featured: false,
+      views: 7654,
+      likes: 98,
       imageUrl: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=bitcoin%20and%20traditional%20trading%20platforms%20merging%20cryptocurrency%20integration%20concept&image_size=landscape_16_9'
     },
     {
@@ -97,6 +152,8 @@ const NewsHub: React.FC = () => {
       readTime: 12,
       tags: ['Risk Management', 'Education', 'Beginners', 'Safety'],
       featured: false,
+      views: 11230,
+      likes: 167,
       imageUrl: 'https://trae-api-sg.mchost.guru/api/ide/v1/text_to_image?prompt=risk%20management%20concept%20with%20scales%20charts%20and%20protective%20shields%20financial%20safety&image_size=landscape_16_9'
     }
   ];
@@ -110,14 +167,34 @@ const NewsHub: React.FC = () => {
   ];
 
   const filteredArticles = useMemo(() => {
-    return newsArticles.filter(article => {
+    let filtered = newsArticles.filter(article => {
       const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
       const matchesCategory = selectedCategory === 'All' || article.category === selectedCategory;
       return matchesSearch && matchesCategory;
-    }).sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
-  }, [searchTerm, selectedCategory]);
+    });
+
+    // Sort articles
+    filtered.sort((a, b) => {
+      switch (sortBy) {
+        case 'latest':
+          return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+        case 'popular':
+          return (b.views || 0) - (a.views || 0);
+        case 'trending':
+          if (a.trending && !b.trending) return -1;
+          if (!a.trending && b.trending) return 1;
+          return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+        case 'readTime':
+          return a.readTime - b.readTime;
+        default:
+          return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+      }
+    });
+
+    return filtered;
+  }, [searchTerm, selectedCategory, sortBy]);
 
   const featuredArticles = newsArticles.filter(article => article.featured);
 
@@ -130,7 +207,14 @@ const NewsHub: React.FC = () => {
   };
 
   return (
-    <>
+    <PageLayout
+      title="Trading News Hub 2025"
+      description="Stay ahead with the latest broker news, market updates, regulatory changes, and expert trading insights."
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'News', href: '/news', current: true }
+      ]}
+    >
       <Helmet>
         <title>Trading News Hub 2025 | Latest Broker News & Market Updates</title>
         <meta name="description" content="Stay updated with the latest trading news, broker updates, regulatory changes, and market analysis for 2025. Expert insights and trading tips." />
@@ -178,225 +262,326 @@ const NewsHub: React.FC = () => {
         </script>
       </Helmet>
 
-      <div className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <TrendingUp className="w-16 h-16 mx-auto mb-6" />
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Trading News Hub 2025
-              </h1>
-              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                Stay ahead with the latest broker news, market updates, regulatory changes, and expert trading insights.
-              </p>
-              <div className="flex justify-center gap-4 text-lg">
-                <span className="bg-white/20 px-4 py-2 rounded-full">
-                  {newsArticles.length} Articles
-                </span>
-                <span className="bg-white/20 px-4 py-2 rounded-full">
-                  Daily Updates
-                </span>
-              </div>
-            </div>
+      <div className="space-y-8">
+        {/* Hero Section with Market Data */}
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-8 rounded-lg">
+          <div className="text-center mb-8">
+            <TrendingUp className="w-12 h-12 mx-auto mb-4" />
+            <h1 className="text-4xl font-bold mb-4">Trading News Hub 2025</h1>
+            <p className="text-xl max-w-3xl mx-auto">
+              Stay ahead with the latest broker news, market updates, regulatory changes, and expert trading insights.
+            </p>
           </div>
-        </div>
-
-        {/* Search and Categories */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <div className="flex flex-col lg:flex-row gap-6">
-              {/* Search */}
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search news articles..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              
-              {/* Categories */}
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category, index) => {
-                  const Icon = category.icon;
-                  return (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedCategory(category.name)}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-                        selectedCategory === category.name
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                    >
-                      <Icon className="w-4 h-4" />
-                      {category.name}
-                      <span className="bg-white/20 text-xs px-2 py-1 rounded-full">
-                        {category.count}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Featured Articles */}
-        {selectedCategory === 'All' && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Stories</h2>
-            <div className="grid lg:grid-cols-2 gap-8">
-              {featuredArticles.map((article, index) => (
-                <div key={article.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="aspect-video bg-gray-200">
-                    <img
-                      src={article.imageUrl}
-                      alt={article.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                        {article.category}
-                      </span>
-                      <span className="text-gray-500 text-sm">Featured</span>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
-                      {article.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-sm text-gray-500">
-                      <div className="flex items-center gap-4">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {formatDate(article.publishDate)}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {article.readTime} min read
-                        </span>
-                      </div>
-                      <span>{article.author}</span>
-                    </div>
+          
+          {/* Live Market Data */}
+          <div className="bg-white/10 rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <BarChart3 className="w-5 h-5" />
+              Live Market Data
+            </h3>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {marketData.map((market, index) => (
+                <div key={index} className="bg-white/5 rounded-lg p-3">
+                  <div className="text-sm font-medium">{market.symbol}</div>
+                  <div className="text-lg font-bold">{market.price.toFixed(market.symbol.includes('JPY') ? 2 : 4)}</div>
+                  <div className={`text-sm flex items-center gap-1 ${
+                    market.change >= 0 ? 'text-green-300' : 'text-red-300'
+                  }`}>
+                    <ArrowUpRight className={`w-3 h-3 ${market.change < 0 ? 'rotate-90' : ''}`} />
+                    {market.changePercent >= 0 ? '+' : ''}{market.changePercent.toFixed(2)}%
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        )}
-
-        {/* All Articles */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-900">
-              {selectedCategory === 'All' ? 'Latest News' : selectedCategory}
-            </h2>
-            <div className="text-gray-600">
-              {filteredArticles.length} articles
-            </div>
-          </div>
-
-          <div className="grid gap-6">
-            {filteredArticles.map((article, index) => (
-              <div key={article.id} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <div className="lg:w-64 flex-shrink-0">
-                    <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-                      <img
-                        src={article.imageUrl}
-                        alt={article.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                        {article.category}
-                      </span>
-                      {article.featured && (
-                        <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
-                          Featured
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 text-lg">
-                      {article.excerpt}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {article.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center justify-between text-sm text-gray-500">
-                      <div className="flex items-center gap-4">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {formatDate(article.publishDate)}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {article.readTime} min read
-                        </span>
-                      </div>
-                      <span>{article.author}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {filteredArticles.length === 0 && (
-            <div className="text-center py-16">
-              <TrendingUp className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles found</h3>
-              <p className="text-gray-500">Try adjusting your search or filter criteria.</p>
-            </div>
-          )}
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="bg-blue-600 text-white py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Stay Updated with Trading News 2025
-            </h2>
-            <p className="text-xl mb-8">
-              Get the latest broker news, market updates, and trading insights delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:outline-none"
+        {/* Search, Filter and Sort Controls */}
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <div className="flex flex-col lg:flex-row gap-4 mb-4">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Input
+                type="text"
+                placeholder="Search news articles..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10"
               />
-              <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Subscribe
-              </button>
             </div>
-            <p className="text-sm mt-4 text-blue-100">
-              No spam. Unsubscribe anytime. Your privacy is protected.
-            </p>
+            
+            <div className="flex gap-2">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="latest">Latest</option>
+                <option value="popular">Most Popular</option>
+                <option value="trending">Trending</option>
+                <option value="readTime">Quick Reads</option>
+              </select>
+              
+              <div className="flex border border-gray-300 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`px-3 py-2 ${viewMode === 'grid' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700'}`}
+                >
+                  Grid
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`px-3 py-2 ${viewMode === 'list' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700'}`}
+                >
+                  List
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category, index) => {
+              const Icon = category.icon;
+              return (
+                <button
+                  key={index}
+                  onClick={() => setSelectedCategory(category.name)}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    selectedCategory === category.name
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {category.name}
+                  <span className="bg-white/20 text-xs px-2 py-1 rounded-full">
+                    {category.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          
+          <div className="mt-4 text-sm text-gray-600">
+            Showing {filteredArticles.length} articles
+          </div>
+        </div>
+
+        {/* Trending Topics Sidebar */}
+        <div className="grid lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-3">
+            {/* Featured Articles */}
+            {selectedCategory === 'All' && (
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Stories</h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {featuredArticles.map((article, index) => (
+                    <ProfessionalCard key={article.id} variant="featured" className="hover:shadow-lg transition-shadow">
+                      <div className="aspect-video bg-gray-200 rounded-t-lg overflow-hidden">
+                        <img
+                          src={article.imageUrl}
+                          alt={article.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
+                            {article.category}
+                          </span>
+                          {article.trending && (
+                            <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                              <TrendingUp className="w-3 h-3" />
+                              Trending
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                          {article.title}
+                        </h3>
+                        <p className="text-gray-600 mb-4 text-sm line-clamp-2">
+                          {article.excerpt}
+                        </p>
+                        <div className="flex items-center justify-between text-xs text-gray-500">
+                          <div className="flex items-center gap-3">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {formatDate(article.publishDate)}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="w-3 h-3" />
+                              {article.readTime} min
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Eye className="w-3 h-3" />
+                              {article.views?.toLocaleString()}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </ProfessionalCard>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* All Articles */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {selectedCategory === 'All' ? 'Latest News' : selectedCategory}
+              </h2>
+              
+              <div className={viewMode === 'grid' ? 'grid md:grid-cols-2 gap-6' : 'space-y-6'}>
+                {filteredArticles.map((article, index) => (
+                  <ProfessionalCard key={article.id} variant="default" className="hover:shadow-lg transition-shadow">
+                    <div className={viewMode === 'list' ? 'flex gap-4' : ''}>
+                      <div className={viewMode === 'list' ? 'w-48 flex-shrink-0' : 'aspect-video mb-4'}>
+                        <div className="bg-gray-200 rounded-lg overflow-hidden h-full">
+                          <img
+                            src={article.imageUrl}
+                            alt={article.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="p-6 flex-1">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
+                            {article.category}
+                          </span>
+                          {article.featured && (
+                            <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">
+                              Featured
+                            </span>
+                          )}
+                          {article.trending && (
+                            <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                              <TrendingUp className="w-3 h-3" />
+                              Trending
+                            </span>
+                          )}
+                        </div>
+                        
+                        <h3 className="text-lg font-bold text-gray-900 mb-2">
+                          {article.title}
+                        </h3>
+                        <p className="text-gray-600 mb-4 text-sm">
+                          {article.excerpt}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-1 mb-4">
+                          {article.tags.slice(0, 3).map((tag, tagIndex) => (
+                            <span
+                              key={tagIndex}
+                              className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center gap-1"
+                            >
+                              <Tag className="w-3 h-3" />
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-4 text-xs text-gray-500">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {formatDate(article.publishDate)}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="w-3 h-3" />
+                              {article.readTime} min
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Eye className="w-3 h-3" />
+                              {article.views?.toLocaleString()}
+                            </span>
+                          </div>
+                          
+                          <div className="flex items-center gap-2">
+                            <Button variant="ghost" size="sm">
+                              <Share2 className="w-4 h-4" />
+                            </Button>
+                            <Button variant="ghost" size="sm">
+                              <Bookmark className={`w-4 h-4 ${article.bookmarked ? 'fill-current text-blue-600' : ''}`} />
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ProfessionalCard>
+                ))}
+              </div>
+
+              {filteredArticles.length === 0 && (
+                <div className="text-center py-16">
+                  <TrendingUp className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles found</h3>
+                  <p className="text-gray-500 mb-4">Try adjusting your search or filter criteria.</p>
+                  <Button onClick={() => {
+                    setSearchTerm('');
+                    setSelectedCategory('All');
+                  }}>
+                    Clear Filters
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Trending Topics */}
+            <ProfessionalCard variant="compact">
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5" />
+                  Trending Topics
+                </h3>
+                <div className="space-y-3">
+                  {trendingTopics.map((topic, index) => (
+                    <div key={index} className="flex items-center justify-between">
+                      <div>
+                        <div className="font-medium text-gray-900 text-sm">{topic.topic}</div>
+                        <div className="text-xs text-gray-500">{topic.articles} articles</div>
+                      </div>
+                      <div className={`w-2 h-2 rounded-full ${
+                        topic.trend === 'up' ? 'bg-green-500' :
+                        topic.trend === 'down' ? 'bg-red-500' : 'bg-gray-400'
+                      }`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ProfessionalCard>
+
+            {/* Newsletter Signup */}
+            <ProfessionalCard variant="compact">
+              <div className="p-6 text-center">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Stay Updated</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Get the latest trading news delivered to your inbox.
+                </p>
+                <div className="space-y-2">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="text-sm"
+                  />
+                  <Button size="sm" className="w-full">
+                    Subscribe
+                  </Button>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  No spam. Unsubscribe anytime.
+                </p>
+              </div>
+            </ProfessionalCard>
           </div>
         </div>
       </div>
-    </>
+    </PageLayout>
   );
 };
 

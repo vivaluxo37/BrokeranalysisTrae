@@ -9,7 +9,7 @@ import { AlertTriangle, BarChart3, CheckCircle, Clock, Database, XCircle, Zap } 
 import { BrokerComparisonTable } from '@/components/common/BrokerComparisonTable'
 import { TopBrokerComparison } from '@/components/common/TopBrokerComparison';
 import { dataIntegrationService } from '@/services/dataIntegrationService';
-import type { Broker } from '@/types/broker';
+import type { Broker } from '@/types/brokerTypes';
 
 interface TestResult {
   testName: string;

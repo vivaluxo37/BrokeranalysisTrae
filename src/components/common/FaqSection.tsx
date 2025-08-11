@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { CollectionManager } from '@/utils/SafeCollection'
 
 const faqs = [
   {
@@ -37,6 +38,12 @@ const faqs = [
 ]
 
 export function FaqSection() {
+  // Create safe collection wrapper for FAQs
+  const safeFaqs = CollectionManager.validateCollection(
+    faqs,
+    'faqs'
+  )
+  
   const [openItems, setOpenItems] = useState<number[]>([])
 
   const toggleItem = (id: number) => {
@@ -61,7 +68,7 @@ export function FaqSection() {
         </header>
 
         <div className="max-w-4xl mx-auto space-y-6">
-          {faqs.map((faq, index) => (
+          {safeFaqs.map((faq, index) => (
             <Card key={faq.id} className="topforex-card topforex-card-hover floating-node" style={{ animationDelay: `${index * 0.1}s` }}>
               <CardContent className="p-0">
                 <button

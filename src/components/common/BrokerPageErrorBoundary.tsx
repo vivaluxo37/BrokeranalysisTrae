@@ -1,7 +1,7 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react'
 import { AlertTriangle, Building2, ExternalLink, RefreshCw, TrendingUp } from 'lucide-react'
 import { errorReportingService } from '@/services/ErrorReportingService'
-import { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 
 interface Props {
   children: ReactNode

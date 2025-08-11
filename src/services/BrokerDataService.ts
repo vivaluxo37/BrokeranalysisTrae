@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 import { errorReportingService } from './ErrorReportingService'
 
 // Zod schema for broker validation

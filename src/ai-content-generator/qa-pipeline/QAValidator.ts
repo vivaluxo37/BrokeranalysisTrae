@@ -17,8 +17,8 @@ export interface ValidationRule {
 }
 
 export class QAValidator {
-  private validationRules: Map<string, ValidationRule> = new Map();
-  private seoRules: Map<string, ValidationRule> = new Map();
+  private validationRules = new Map<string, ValidationRule>();
+  private seoRules = new Map<string, ValidationRule>();
 
   constructor() {
     this.initializeValidationRules();

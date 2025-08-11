@@ -5,13 +5,13 @@
  * including validation, fact-checking, and compliance verification.
  */
 
-import { QAResult, QAIssue, QACheckType, ContentSchema, BrokerData } from '../types';
+import { BrokerData, ContentSchema, QACheckType, QAIssue, QAResult } from '../types';
 import { AIProviderGateway } from './AIProviderGateway';
 
 export class QAPipelineService {
   private aiGateway: AIProviderGateway;
-  private qaRules: Map<string, QARule> = new Map();
-  private factCheckCache: Map<string, boolean> = new Map();
+  private qaRules = new Map<string, QARule>();
+  private factCheckCache = new Map<string, boolean>();
 
   constructor(aiGateway: AIProviderGateway) {
     this.aiGateway = aiGateway;
@@ -472,7 +472,7 @@ Provide a JSON response with the following structure:
     for (const broker of brokerData) {
       // Check founding year
       if (claimLower.includes('founded') || claimLower.includes('established')) {
-        const yearMatch = claim.match(/\d{4}/);
+        const yearMatch = /\d{4}/.exec(claim);
         if (yearMatch && parseInt(yearMatch[0]) === broker.founded) {
           return true;
         }
@@ -480,7 +480,7 @@ Provide a JSON response with the following structure:
       
       // Check regulation
       if (claimLower.includes('regulated')) {
-        const regMatch = claim.match(/regulated by ([A-Z]{2,10})/i);
+        const regMatch = /regulated by ([A-Z]{2,10})/i.exec(claim);
         if (regMatch && broker.regulation.includes(regMatch[1])) {
           return true;
         }
@@ -488,7 +488,7 @@ Provide a JSON response with the following structure:
       
       // Check minimum deposit
       if (claimLower.includes('minimum deposit')) {
-        const depositMatch = claim.match(/\$?([0-9,]+)/);
+        const depositMatch = /\$?([0-9,]+)/.exec(claim);
         if (depositMatch) {
           const amount = parseInt(depositMatch[1].replace(/,/g, ''));
           if (amount === broker.minDeposit) {

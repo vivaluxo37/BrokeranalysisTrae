@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Star, Shield, DollarSign, CreditCard, TrendingUp, AlertTriangle } from 'lucide-react';
+import { AlertTriangle, CreditCard, DollarSign, Shield, Star, TrendingUp } from 'lucide-react';
 
 interface Broker {
   id: string;

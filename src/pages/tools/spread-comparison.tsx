@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { TrendingUp, RefreshCw, BarChart3, Clock, AlertCircle, Download } from 'lucide-react';
+import { AlertCircle, BarChart3, Clock, Download, RefreshCw, TrendingUp } from 'lucide-react';
 
 interface SpreadData {
   broker: string;

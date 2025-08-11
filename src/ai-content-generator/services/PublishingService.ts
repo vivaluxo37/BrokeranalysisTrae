@@ -5,21 +5,21 @@
  * including content deployment, SEO optimization, and integration with the platform.
  */
 
-import { ContentSchema, PublishingJob, ContentStatus, QAResult } from '../types';
+import { ContentSchema, ContentStatus, PublishingJob, QAResult } from '../types';
 import fs from 'fs';
 import path from 'path';
 
 export class PublishingService {
-  private publishingQueue: Map<string, PublishingJob> = new Map();
-  private publishedContent: Map<string, ContentSchema> = new Map();
+  private publishingQueue = new Map<string, PublishingJob>();
+  private publishedContent = new Map<string, ContentSchema>();
   private outputDirectory: string;
   private sitemapPath: string;
   private robotsPath: string;
 
   constructor(
-    outputDirectory: string = './public/generated-content',
-    sitemapPath: string = './public/sitemap.xml',
-    robotsPath: string = './public/robots.txt'
+    outputDirectory = './public/generated-content',
+    sitemapPath = './public/sitemap.xml',
+    robotsPath = './public/robots.txt'
   ) {
     this.outputDirectory = outputDirectory;
     this.sitemapPath = sitemapPath;

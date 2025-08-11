@@ -22,9 +22,9 @@ function getAllBrokerNames(): string[] {
 // Generate imports for all brokers
 function generateBrokerImports(brokerNames: string[]): string {
   return brokerNames.map(name => {
-    const componentName = name.split('-').map(word => 
+    const componentName = `${name.split('-').map(word => 
       word.charAt(0).toUpperCase() + word.slice(1)
-    ).join('') + 'Page';
+    ).join('')  }Page`;
     return `import ${componentName} from './pages/brokers/${name}';`;
   }).join('\n');
 }
@@ -32,9 +32,9 @@ function generateBrokerImports(brokerNames: string[]): string {
 // Generate routes for all brokers
 function generateBrokerRoutes(brokerNames: string[]): string {
   return brokerNames.map(name => {
-    const componentName = name.split('-').map(word => 
+    const componentName = `${name.split('-').map(word => 
       word.charAt(0).toUpperCase() + word.slice(1)
-    ).join('') + 'Page';
+    ).join('')  }Page`;
     return `        <Route path="/brokers/${name}" element={<${componentName} />} />`;
   }).join('\n');
 }

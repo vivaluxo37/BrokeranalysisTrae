@@ -21,7 +21,9 @@ export function SeoHead({
   useEffect(() => {
     // Update document title
     document.title = title
+  }, [title])
 
+  useEffect(() => {
     // Update or create meta tags
     const updateMetaTag = (name: string, content: string, property?: boolean) => {
       const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`
@@ -38,15 +40,6 @@ export function SeoHead({
       }
       meta.setAttribute('content', content)
     }
-
-    // Update canonical link
-    let canonical_link = document.querySelector('link[rel="canonical"]')!
-    if (!canonical_link) {
-      canonical_link = document.createElement('link')
-      canonical_link.setAttribute('rel', 'canonical')
-      document.head.appendChild(canonical_link)
-    }
-    canonical_link.setAttribute('href', canonical)
 
     // Standard meta tags
     updateMetaTag('description', description)
@@ -77,10 +70,20 @@ export function SeoHead({
     updateMetaTag('msapplication-TileColor', '#10B981')
     updateMetaTag('application-name', 'BrokerAnalysis')
     updateMetaTag('apple-mobile-web-app-title', 'BrokerAnalysis')
-    updateMetaTag('apple-mobile-web-app-capable', 'yes')
+    updateMetaTag('mobile-web-app-capable', 'yes')
     updateMetaTag('apple-mobile-web-app-status-bar-style', 'black-translucent')
+  }, [description, ogImage, ogType, keywords, title, canonical])
 
-  }, [title, description, canonical, ogImage, ogType, keywords])
+  useEffect(() => {
+    // Update canonical link
+    let canonical_link = document.querySelector('link[rel="canonical"]')!
+    if (!canonical_link) {
+      canonical_link = document.createElement('link')
+      canonical_link.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonical_link)
+    }
+    canonical_link.setAttribute('href', canonical)
+  }, [canonical])
 
   return null
 }

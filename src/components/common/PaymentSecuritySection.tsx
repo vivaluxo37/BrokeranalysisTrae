@@ -1,5 +1,6 @@
 import { Bitcoin, Building2, CreditCard, Lock, Shield, Wallet } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { CollectionManager } from '@/utils/SafeCollection'
 
 export function PaymentSecuritySection() {
   const paymentMethods = [
@@ -10,6 +11,12 @@ export function PaymentSecuritySection() {
     { name: 'Bank Transfer', icon: Building2, description: 'Direct bank transfers' },
     { name: 'Bitcoin', icon: Bitcoin, description: 'Cryptocurrency payments' }
   ]
+
+  // Create safe collection wrappers
+  const safePaymentMethods = CollectionManager.validateCollection(
+    paymentMethods,
+    'paymentMethods'
+  )
 
   const securityFeatures = [
     {
@@ -29,6 +36,11 @@ export function PaymentSecuritySection() {
     }
   ]
 
+  const safeSecurityFeatures = CollectionManager.validateCollection(
+    securityFeatures,
+    'securityFeatures'
+  )
+
   return (
     <section className="section-padding cosmic-void" aria-labelledby="payment-security-heading">
       <div className="container mx-auto container-padding">
@@ -44,7 +56,7 @@ export function PaymentSecuritySection() {
 
         {/* Payment methods grid */}
         <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
-          {paymentMethods.map((payment, index) => (
+          {safePaymentMethods.map((payment, index) => (
             <Card 
               key={payment.name} 
               className="topforex-card topforex-card-hover floating-node" 
@@ -63,7 +75,7 @@ export function PaymentSecuritySection() {
 
         {/* Security features */}
         <div className="grid md:grid-cols-3 gap-8">
-          {securityFeatures.map((feature, index) => (
+          {safeSecurityFeatures.map((feature, index) => (
             <Card 
               key={feature.title} 
               className="topforex-card floating-node" 

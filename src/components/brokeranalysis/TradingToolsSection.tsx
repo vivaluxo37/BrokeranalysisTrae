@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight, BarChart3, Calculator, CalendarDays, Search, Zap } from 'lucide-react'
 import { ToolType } from '@/enums'
+import { CollectionManager } from '@/utils/SafeCollection'
 
 interface TradingTool {
   type: ToolType
@@ -24,6 +25,12 @@ const iconMap = {
 }
 
 export function TradingToolsSection({ tradingTools }: TradingToolsSectionProps) {
+  // Create safe collection wrapper for tradingTools
+  const safeTradingTools = CollectionManager.validateCollection<TradingTool>(
+    tradingTools,
+    'tradingTools'
+  )
+
   return (
     <section className="section-padding bg-gradient-hero">
       <div className="container mx-auto px-6">
@@ -41,7 +48,7 @@ export function TradingToolsSection({ tradingTools }: TradingToolsSectionProps) 
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {tradingTools.map((tool, index) => {
+          {safeTradingTools.map((tool, index) => {
             const IconComponent = iconMap[tool.icon as keyof typeof iconMap] || Calculator
             
             return (
@@ -123,7 +130,7 @@ export function TradingToolsSection({ tradingTools }: TradingToolsSectionProps) 
             className="bg-gradient-to-r from-neural-blue to-brokeranalysis-accent hover:from-neural-blue/90 hover:to-brokeranalysis-accent/90 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Zap className="w-5 h-5 mr-2" />
-            Explore All Tools
+            Explore All {safeTradingTools.size() * 5}+ Tools
           </Button>
         </div>
       </div>

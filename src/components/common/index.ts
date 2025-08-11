@@ -37,3 +37,4 @@ export { SeoHead, seoConfigs } from './SeoHead'
 
 // Shared/common components
 // Export reusable components used across the application
+export { NavigationAnalytics } from './NavigationAnalytics'

@@ -1,13 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
+import { NavigationProvider } from '@/contexts/NavigationContext'
 import { 
   AboutPage, 
   BrokerDirectoryPage, 
   BrokerProfilePage, 
+  BrokerReviews, 
   BrokerWizardPage, 
-  HomePage, 
-  ToolsLandingPage,
-  BrokerReviews,
-  InteractiveBrokersReview
+  HomePage,
+  InteractiveBrokersReview,
+  ToolsLandingPage
 } from './pages'
 import BrokerCardIntegrationTest from './pages/test/BrokerCardIntegrationTest'
 import BrokerComparisonIntegrationTest from './pages/test/BrokerComparisonIntegrationTest'
@@ -161,7 +163,9 @@ import './index.css'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <NavigationProvider enableAnalytics={true} maxAnalyticsEvents={1000}>
       <Routes>
         {/* Main Pages */}
         <Route path="/" element={<HomePage />} />
@@ -326,7 +330,9 @@ function App() {
         {/* Fallback */}
         <Route path="*" element={<HomePage />} />
       </Routes>
+        </NavigationProvider>
     </BrowserRouter>
+    </HelmetProvider>
   )
 }
 

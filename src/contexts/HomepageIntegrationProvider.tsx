@@ -33,7 +33,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useSearch } from '@/hooks/useSearch'
 import { useProfile } from '@/hooks/useProfile'
 import type { SavedSearch, SearchFilters } from '@/types/search'
-import type { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 
 /**
  * Homepage Integration Provider Component

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -11,30 +11,30 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { 
-  Play, 
-  Pause, 
-  Square, 
-  RefreshCw, 
-  Settings, 
+  AlertTriangle, 
   BarChart3, 
-  FileText, 
   CheckCircle, 
-  XCircle, 
-  AlertTriangle,
-  Download,
-  Upload,
+  Download, 
+  Eye, 
+  FileText, 
+  Pause, 
+  Play, 
+  RefreshCw, 
+  Settings,
+  Square,
   Trash2,
-  Eye
+  Upload,
+  XCircle
 } from 'lucide-react';
 
 import { 
   AIContentGeneratorService,
-  ContentType,
-  ContentStatus,
-  SystemMetrics,
   ContentGenerationRequest,
+  ContentStatus,
+  ContentType,
+  PublishingJob,
   QAResult,
-  PublishingJob
+  SystemMetrics
 } from '../index';
 
 interface AIContentGeneratorAdminProps {

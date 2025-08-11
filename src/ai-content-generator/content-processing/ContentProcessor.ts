@@ -9,7 +9,7 @@ import { ContentGenerationService } from '../services/ContentGenerationService';
 import { ContentTemplateService } from '../services/ContentTemplateService';
 import { AIProviderGateway } from '../services/AIProviderGateway';
 import { BrokerDataService } from '../services/BrokerDataService';
-import { ContentType, ContentSchema, ProcessingOptions, ProcessingResult } from '../types';
+import { ContentSchema, ContentType, ProcessingOptions, ProcessingResult } from '../types';
 
 export interface ContentProcessingRequest {
   type: ContentType;
@@ -30,7 +30,7 @@ export class ContentProcessor {
   private templateService: ContentTemplateService;
   private aiGateway: AIProviderGateway;
   private brokerDataService: BrokerDataService;
-  private pipelines: Map<ContentType, ContentProcessingPipeline> = new Map();
+  private pipelines = new Map<ContentType, ContentProcessingPipeline>();
 
   constructor(
     contentGenerationService: ContentGenerationService,
@@ -60,7 +60,7 @@ export class ContentProcessor {
         return request;
       },
       process: async (request) => {
-        return await this.contentGenerationService.generateContent(request.type, request.parameters);
+        return this.contentGenerationService.generateContent(request.type, request.parameters);
       },
       postProcess: async (content) => {
         // Add broker-specific enhancements
@@ -90,7 +90,7 @@ export class ContentProcessor {
         return request;
       },
       process: async (request) => {
-        return await this.contentGenerationService.generateContent(request.type, request.parameters);
+        return this.contentGenerationService.generateContent(request.type, request.parameters);
       },
       postProcess: async (content) => {
         // Add comparison-specific enhancements
@@ -117,7 +117,7 @@ export class ContentProcessor {
         return request;
       },
       process: async (request) => {
-        return await this.contentGenerationService.generateContent(request.type, request.parameters);
+        return this.contentGenerationService.generateContent(request.type, request.parameters);
       },
       postProcess: async (content) => {
         // Add toplist-specific enhancements
@@ -132,7 +132,7 @@ export class ContentProcessor {
     // Educational Content Pipeline
     this.pipelines.set('educational', {
       process: async (request) => {
-        return await this.contentGenerationService.generateContent(request.type, request.parameters);
+        return this.contentGenerationService.generateContent(request.type, request.parameters);
       },
       postProcess: async (content) => {
         // Add educational-specific enhancements
@@ -155,7 +155,7 @@ export class ContentProcessor {
         return request;
       },
       process: async (request) => {
-        return await this.contentGenerationService.generateContent(request.type, request.parameters);
+        return this.contentGenerationService.generateContent(request.type, request.parameters);
       },
       postProcess: async (content) => {
         // Add country-specific enhancements
@@ -170,7 +170,7 @@ export class ContentProcessor {
     // FAQ Pipeline
     this.pipelines.set('faq', {
       process: async (request) => {
-        return await this.contentGenerationService.generateContent(request.type, request.parameters);
+        return this.contentGenerationService.generateContent(request.type, request.parameters);
       },
       postProcess: async (content) => {
         // Add FAQ-specific enhancements
@@ -211,7 +211,7 @@ export class ContentProcessor {
 
       // Validation
       let isValid = true;
-      let validationErrors: string[] = [];
+      const validationErrors: string[] = [];
       if (pipeline.validate) {
         try {
           isValid = await pipeline.validate(content);

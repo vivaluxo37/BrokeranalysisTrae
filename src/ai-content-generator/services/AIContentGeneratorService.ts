@@ -6,15 +6,15 @@
  */
 
 import { 
-  ContentType, 
+  BrokerData, 
+  ContentAnalytics, 
   ContentGenerationRequest, 
   ContentSchema, 
-  QAResult, 
+  ContentType,
+  ErrorLog,
   PublishingJob,
-  BrokerData,
-  ContentAnalytics,
-  SystemMetrics,
-  ErrorLog
+  QAResult,
+  SystemMetrics
 } from '../types';
 import { AIProviderGateway } from './AIProviderGateway';
 import { ContentGenerationService } from './ContentGenerationService';
@@ -32,14 +32,14 @@ export class AIContentGeneratorService {
   private qaService: QAPipelineService;
   private publishingService: PublishingService;
   
-  private generationQueue: Map<string, ContentGenerationRequest> = new Map();
-  private generationHistory: Map<string, ContentSchema> = new Map();
+  private generationQueue = new Map<string, ContentGenerationRequest>();
+  private generationHistory = new Map<string, ContentSchema>();
   private analytics: ContentAnalytics = this.initializeAnalytics();
   private errorLogs: ErrorLog[] = [];
-  private isProcessing: boolean = false;
+  private isProcessing = false;
 
   constructor(
-    brokerLogosPath: string = 'c:/Users/LENOVO/Desktop/New folder (2)/Broker reviews │ BrokerChooser/',
+    brokerLogosPath = 'c:/Users/LENOVO/Desktop/New folder (2)/Broker reviews │ BrokerChooser/',
     outputDirectory?: string
   ) {
     // Initialize services
@@ -78,7 +78,7 @@ export class AIContentGeneratorService {
    */
   async generateContent(
     request: ContentGenerationRequest,
-    autoPublish: boolean = false
+    autoPublish = false
   ): Promise<{
     content: ContentSchema | null;
     qaResult: QAResult | null;
@@ -178,17 +178,17 @@ export class AIContentGeneratorService {
    */
   async generateBatchContent(
     requests: ContentGenerationRequest[],
-    autoPublish: boolean = false,
-    maxConcurrent: number = 3
+    autoPublish = false,
+    maxConcurrent = 3
   ): Promise<{
-    results: Array<{
+    results: {
       request: ContentGenerationRequest;
       content: ContentSchema | null;
       qaResult: QAResult | null;
       publishingJob: PublishingJob | null;
       success: boolean;
       error?: string;
-    }>;
+    }[];
     summary: {
       total: number;
       successful: number;
@@ -240,7 +240,7 @@ export class AIContentGeneratorService {
    */
   async generateSiteMapContent(
     siteMapConfig: SiteMapConfig,
-    autoPublish: boolean = false
+    autoPublish = false
   ): Promise<{
     results: any[];
     summary: any;
@@ -352,7 +352,7 @@ export class AIContentGeneratorService {
     }
 
     console.log(`Generated ${requests.length} content requests for site map`);
-    return await this.generateBatchContent(requests, autoPublish, 2);
+    return this.generateBatchContent(requests, autoPublish, 2);
   }
 
   /**

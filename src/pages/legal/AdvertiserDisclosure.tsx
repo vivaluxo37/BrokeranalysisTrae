@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ExternalLink, DollarSign, Shield, Eye, FileText, AlertTriangle } from 'lucide-react';
+import { AlertTriangle, DollarSign, ExternalLink, Eye, FileText, Shield } from 'lucide-react';
 
 const AdvertiserDisclosure: React.FC = () => {
   const quickNavItems = [

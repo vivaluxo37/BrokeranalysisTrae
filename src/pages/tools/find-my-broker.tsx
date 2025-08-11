@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ChevronRight, CheckCircle, ArrowLeft, ArrowRight, TrendingUp, Shield, DollarSign, BarChart3 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BarChart3, CheckCircle, ChevronRight, DollarSign, Shield, TrendingUp } from 'lucide-react';
 
 interface QuizQuestion {
   id: string;
@@ -13,9 +13,7 @@ interface QuizQuestion {
   unit?: string;
 }
 
-interface QuizAnswers {
-  [key: string]: string | string[] | number;
-}
+type QuizAnswers = Record<string, string | string[] | number>;
 
 interface BrokerRecommendation {
   name: string;

@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Search, BookOpen, Filter } from 'lucide-react';
+import { BookOpen, Filter, Search } from 'lucide-react';
 
 interface GlossaryTerm {
   term: string;

@@ -26,7 +26,7 @@ export interface QualityAnalysisResult {
 
 export class QualityAnalyzer {
   private aiGateway: AIProviderGateway;
-  private analysisCache: Map<string, QualityAnalysisResult> = new Map();
+  private analysisCache = new Map<string, QualityAnalysisResult>();
 
   constructor(aiGateway: AIProviderGateway) {
     this.aiGateway = aiGateway;

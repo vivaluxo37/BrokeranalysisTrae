@@ -2,46 +2,55 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Award, Shield, Star, TrendingUp } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { dataIntegrationService } from '@/services/dataIntegrationService'
-import type { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 import { RegulatorType } from '@/enums'
+import { CollectionManager } from '@/utils/SafeCollection'
 
-// Fallback data in case real data is unavailable
-const fallbackBrokers = [
-  {
-    id: '1',
-    name: 'Interactive Brokers',
-    rating: 4.8,
-    spreadsFrom: 0.1,
-    regulators: [RegulatorType.SEC, RegulatorType.FCA, RegulatorType.CFTC],
-    minDeposit: 0,
-    keyFeatures: ['Low Costs', 'Global Markets', 'Advanced Tools']
-  },
-  {
-    id: '2',
-    name: 'eToro',
-    rating: 4.6,
-    spreadsFrom: 1.0,
-    regulators: [RegulatorType.FCA, RegulatorType.CYSEC, RegulatorType.ASIC],
-    minDeposit: 200,
-    keyFeatures: ['Social Trading', 'Copy Trading', 'Crypto']
-  },
-  {
-    id: '3',
-    name: 'XM Group',
-    rating: 4.5,
-    spreadsFrom: 0.6,
-    regulators: [RegulatorType.FCA, RegulatorType.CYSEC, RegulatorType.ASIC],
-    minDeposit: 5,
-    keyFeatures: ['No Deposit Fees', 'Education', 'Micro Accounts']
-  }
-]
+
 
 export function TopBrokerComparison() {
   const [brokers, setBrokers] = useState<Broker[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Memoize fallback data to prevent recreation on every render
+  const fallbackBrokers = useMemo(() => [
+    {
+      id: '1',
+      name: 'Interactive Brokers',
+      rating: 4.8,
+      spreadsFrom: 0.1,
+      regulators: [RegulatorType.SEC, RegulatorType.FCA, RegulatorType.CFTC],
+      minDeposit: 0,
+      keyFeatures: ['Low Costs', 'Global Markets', 'Advanced Tools']
+    },
+    {
+      id: '2',
+      name: 'eToro',
+      rating: 4.6,
+      spreadsFrom: 1.0,
+      regulators: [RegulatorType.FCA, RegulatorType.CYSEC, RegulatorType.ASIC],
+      minDeposit: 200,
+      keyFeatures: ['Social Trading', 'Copy Trading', 'Crypto']
+    },
+    {
+      id: '3',
+      name: 'XM Group',
+      rating: 4.5,
+      spreadsFrom: 0.6,
+      regulators: [RegulatorType.FCA, RegulatorType.CYSEC, RegulatorType.ASIC],
+      minDeposit: 5,
+      keyFeatures: ['No Deposit Fees', 'Education', 'Micro Accounts']
+    }
+  ], []);
+  
+  // Create safe collection wrapper for brokers
+  const safeBrokers = CollectionManager.validateCollection<Broker>(
+    brokers,
+    'topBrokers'
+  )
 
   useEffect(() => {
     try {
@@ -58,23 +67,23 @@ export function TopBrokerComparison() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [fallbackBrokers]);
 
-  const formatMinDeposit = (amount: number): string => {
+  const formatMinDeposit = useCallback((amount: number): string => {
     if (amount === 0) return '$0';
     if (amount >= 1000) return `$${(amount / 1000).toFixed(0)}k`;
     return `$${amount}`;
-  };
+  }, []);
 
-  const formatSpread = (spread: number): string => {
+  const formatSpread = useCallback((spread: number): string => {
     return `${spread} pips`;
-  };
+  }, []);
 
-  const getRegulationDisplay = (regulators: RegulatorType[]): string => {
+  const getRegulationDisplay = useCallback((regulators: RegulatorType[]): string => {
     return regulators.slice(0, 3).join(', ');
-  };
+  }, []);
 
-  const generateFeatures = (broker: Broker): string[] => {
+  const generateFeatures = useCallback((broker: Broker): string[] => {
     const features: string[] = [];
     
     // Use keyFeatures if available, otherwise generate based on broker data
@@ -90,7 +99,7 @@ export function TopBrokerComparison() {
     if (broker.trustScore >= 8) features.push('Trusted');
     
     return features.slice(0, 3);
-  };
+  }, []);
 
   if (loading) {
     return (
@@ -125,7 +134,7 @@ export function TopBrokerComparison() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {brokers.map((broker, index) => (
+          {safeBrokers.map((broker, index) => (
             <Card key={broker.id} className="glass-card border-white/10 hover:border-topforex-accent/50 transition-all duration-300">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
@@ -144,7 +153,7 @@ export function TopBrokerComparison() {
                   </div>
                   <Badge variant="outline" className="border-white/20 text-white/80">
                     <Shield className="w-3 h-3 mr-1" />
-                    {broker.regulators[0] || 'Regulated'}
+                    {CollectionManager.validateCollection(broker.regulators, 'regulators').toArray()[0] || 'Regulated'}
                   </Badge>
                 </div>
               </CardHeader>
@@ -163,7 +172,7 @@ export function TopBrokerComparison() {
                 <div className="space-y-2">
                   <span className="text-white/60 text-sm">Key Features</span>
                   <div className="flex flex-wrap gap-1">
-                    {generateFeatures(broker).map((feature, idx) => (
+                    {CollectionManager.validateCollection(generateFeatures(broker), 'features').map((feature, idx) => (
                       <Badge key={idx} variant="secondary" className="text-xs bg-white/10 text-white/80">
                         {feature}
                       </Badge>

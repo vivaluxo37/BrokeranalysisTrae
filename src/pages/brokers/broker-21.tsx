@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Star, CheckCircle, Shield, TrendingUp, DollarSign, Globe, Phone, Mail, ExternalLink } from 'lucide-react';
+import { CheckCircle, DollarSign, ExternalLink, Globe, Mail, Phone, Shield, Star, TrendingUp } from 'lucide-react';
 
 const FPMarketsReview: React.FC = () => {
   const renderStars = (rating: number) => {

@@ -1,7 +1,7 @@
 import React from 'react'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { BrokerPageErrorBoundary, withBrokerErrorBoundary, BrokerDataFallback, BrokerNotFoundFallback } from '../BrokerPageErrorBoundary'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { BrokerDataFallback, BrokerNotFoundFallback, BrokerPageErrorBoundary, withBrokerErrorBoundary } from '../BrokerPageErrorBoundary'
 import { errorReportingService } from '@/services/ErrorReportingService'
 
 // Mock the error reporting service

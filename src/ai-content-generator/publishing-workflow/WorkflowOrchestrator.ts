@@ -5,7 +5,7 @@
  * through QA validation to final deployment and monitoring.
  */
 
-import { ContentSchema, QAResult, PublishingJob, WorkflowStage, WorkflowStatus } from '../types';
+import { ContentSchema, PublishingJob, QAResult, WorkflowStage, WorkflowStatus } from '../types';
 import { PublishingService } from '../services/PublishingService';
 import { QAOrchestrator } from '../qa-pipeline/QAOrchestrator';
 import { ContentProcessor } from '../content-processing/ContentProcessor';
@@ -54,8 +54,8 @@ export class WorkflowOrchestrator {
   private qaOrchestrator: QAOrchestrator;
   private contentProcessor: ContentProcessor;
   private config: WorkflowConfig;
-  private activeWorkflows: Map<string, WorkflowExecution> = new Map();
-  private workflowHistory: Map<string, WorkflowExecution[]> = new Map();
+  private activeWorkflows = new Map<string, WorkflowExecution>();
+  private workflowHistory = new Map<string, WorkflowExecution[]>();
 
   constructor(
     publishingService: PublishingService,
@@ -102,7 +102,7 @@ export class WorkflowOrchestrator {
     try {
       // Stage 1: Content Validation
       await this.executeStage(workflow, 'validation', async () => {
-        return await this.validateContent(content);
+        return this.validateContent(content);
       });
 
       // Stage 2: QA Pipeline (unless skipped)
@@ -116,13 +116,13 @@ export class WorkflowOrchestrator {
 
       // Stage 3: Content Processing
       await this.executeStage(workflow, 'processing', async () => {
-        return await this.contentProcessor.processContent(content);
+        return this.contentProcessor.processContent(content);
       });
 
       // Stage 4: Approval (if required)
       if (this.config.requireApproval && !options.forcePublish) {
         await this.executeStage(workflow, 'approval', async () => {
-          return await this.requestApproval(workflow);
+          return this.requestApproval(workflow);
         });
       } else {
         this.skipStage(workflow, 'approval');
@@ -130,17 +130,17 @@ export class WorkflowOrchestrator {
 
       // Stage 5: Deployment
       await this.executeStage(workflow, 'deployment', async () => {
-        return await this.deployContent(content, workflow);
+        return this.deployContent(content, workflow);
       });
 
       // Stage 6: Verification
       await this.executeStage(workflow, 'verification', async () => {
-        return await this.verifyDeployment(content, workflow);
+        return this.verifyDeployment(content, workflow);
       });
 
       // Stage 7: Notification
       await this.executeStage(workflow, 'notification', async () => {
-        return await this.sendNotifications(workflow);
+        return this.sendNotifications(workflow);
       });
 
       workflow.status = 'completed';
@@ -183,13 +183,13 @@ export class WorkflowOrchestrator {
       
       stage.status = 'completed';
       stage.completedAt = new Date();
-      stage.duration = stage.completedAt.getTime() - stage.startedAt!.getTime();
+      stage.duration = stage.completedAt.getTime() - stage.startedAt.getTime();
       stage.result = result;
       
     } catch (error) {
       stage.status = 'failed';
       stage.completedAt = new Date();
-      stage.duration = stage.completedAt.getTime() - stage.startedAt!.getTime();
+      stage.duration = stage.completedAt.getTime() - stage.startedAt.getTime();
       stage.error = error.message;
       
       throw error;
@@ -329,13 +329,13 @@ export class WorkflowOrchestrator {
     // Implementation would depend on target type
     switch (target.type) {
       case 'static':
-        return await this.deployToStatic(content, target);
+        return this.deployToStatic(content, target);
       case 'cdn':
-        return await this.deployToCDN(content, target);
+        return this.deployToCDN(content, target);
       case 'cms':
-        return await this.deployToCMS(content, target);
+        return this.deployToCMS(content, target);
       case 'api':
-        return await this.deployToAPI(content, target);
+        return this.deployToAPI(content, target);
       default:
         throw new Error(`Unknown deployment target type: ${target.type}`);
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Star, TrendingUp, Shield } from 'lucide-react';
+import { Shield, Star, TrendingUp } from 'lucide-react';
 
 const BrokersIndex: React.FC = () => {
   const brokers = [

@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { AlertCircle, Star } from 'lucide-react'
-import BrokerLogo from '@/components/BrokerLogo'
-import type { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 import { RegulatorType } from '@/enums'
-import { generateBrokerLogoFallbacks, useAssetLoader } from '@/utils/assetLoader'
+import { CollectionManager } from '@/utils/SafeCollection'
+import { useBrokerAsset } from '@/hooks/useBrokerAssets'
+import { getBrokerRating } from '@/data/brokers/brokerRatings'
 
 interface BrokerCardProps {
   broker: Broker
@@ -15,26 +16,49 @@ interface BrokerCardProps {
 export function BrokerCard({ broker }: BrokerCardProps) {
   const [imageError, setImageError] = useState(false);
   
-  // Use asset loader for broker logo with fallbacks
-  const logoConfig = generateBrokerLogoFallbacks(broker);
-  const { url: logoUrl, loading: logoLoading, error: logoError } = useAssetLoader(logoConfig);
+  // Get enhanced rating data from broker ratings
+  const brokerRating = useMemo(() => getBrokerRating(broker.id), [broker.id]);
   
-  const formatMinDeposit = (amount: number): string => {
+  // Create safe collection wrappers for broker arrays with memoization
+  const safeRegulation = useMemo(() => 
+    CollectionManager.validateCollection(
+      broker.regulation || [],
+      'broker.regulation'
+    ), [broker.regulation]
+  );
+  
+  const safeRegulators = useMemo(() => 
+    CollectionManager.validateCollection(
+      broker.regulators || [],
+      'broker.regulators'
+    ), [broker.regulators]
+  );
+  
+  // Use enhanced broker asset loading with proper fallbacks
+  const { isLoading: logoLoading, isError: logoError, imageUrl: logoUrl, fallbackUrl } = useBrokerAsset({
+    brokerId: broker.id,
+    type: 'square',
+    size: 'medium',
+    preload: true
+  });
+  
+  // Memoized formatting functions for performance
+  const formatMinDeposit = useCallback((amount: number): string => {
     if (amount >= 1000) {
       return `$${(amount / 1000).toFixed(0)}K`;
     }
     return `$${amount}`;
-  }
+  }, []);
 
-  const formatLeverage = (leverage: number): string => {
+  const formatLeverage = useCallback((leverage: number): string => {
     return `1:${leverage}`;
-  }
+  }, []);
 
-  const formatSpread = (spread: number): string => {
+  const formatSpread = useCallback((spread: number): string => {
     return `${spread} pips`;
-  }
+  }, []);
 
-  const getRegulatorDisplayName = (regulator: RegulatorType): string => {
+  const getRegulatorDisplayName = useCallback((regulator: RegulatorType): string => {
     const regulatorNames: Record<RegulatorType, string> = {
       fca: 'FCA',
       cysec: 'CySEC',
@@ -50,7 +74,17 @@ export function BrokerCard({ broker }: BrokerCardProps) {
       esma: 'ESMA'
     };
     return regulatorNames[regulator] || regulator.toUpperCase();
-  }
+  }, []);
+  
+  // Enhanced error handling for image loading
+  const handleImageError = useCallback(() => {
+    setImageError(true);
+  }, []);
+  
+  // Memoized display values for performance
+  const displayRating = useMemo(() => brokerRating?.overall || broker.rating, [brokerRating, broker.rating]);
+  const displayTrustScore = useMemo(() => brokerRating?.trustScore || broker.trustScore, [brokerRating, broker.trustScore]);
+  const displayReviewCount = useMemo(() => brokerRating?.reviewCount || broker.reviewCount, [brokerRating, broker.reviewCount]);
 
   return (
     <article 
@@ -70,7 +104,7 @@ export function BrokerCard({ broker }: BrokerCardProps) {
             >
               <div className="w-10 h-10 border-2 border-white/20 border-t-white/60 rounded-full animate-spin" />
             </div>
-          ) : logoError || !logoUrl ? (
+          ) : logoError || !logoUrl || imageError ? (
             <div 
               className="w-20 h-20 rounded-lg bg-white/10 flex items-center justify-center"
               role="img"
@@ -84,7 +118,8 @@ export function BrokerCard({ broker }: BrokerCardProps) {
               alt={`${broker.name} official logo`}
               className="w-20 h-20 rounded-lg object-contain bg-white/10 p-2 transition-transform duration-300 group-hover:scale-110"
               loading="lazy"
-              onError={() => setImageError(true)}
+              onError={handleImageError}
+              onLoad={() => setImageError(false)}
             />
           )}
         </div>
@@ -98,25 +133,25 @@ export function BrokerCard({ broker }: BrokerCardProps) {
           <div className="flex items-center justify-between">
             <div className="flex items-center" role="group" aria-label="Broker rating">
               <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" aria-hidden="true" />
-              <span className="text-pure-white font-medium" aria-label={`Rating: ${broker.rating} out of 5 stars`}>
-                {broker.rating}
+              <span className="text-pure-white font-medium" aria-label={`Rating: ${displayRating} out of 5 stars`}>
+                {displayRating}
               </span>
-              <span className="text-light-grey text-sm ml-1" aria-label={`Based on ${broker.reviewCount} reviews`}>
-                ({broker.reviewCount} reviews)
+              <span className="text-light-grey text-sm ml-1" aria-label={`Based on ${displayReviewCount} reviews`}>
+                ({displayReviewCount} reviews)
               </span>
             </div>
-            {broker.trustScore && (
+            {displayTrustScore && (
               <div className="flex items-center" role="group" aria-label="Trust score">
                 <span className="text-xs text-light-grey mr-1">Trust:</span>
                 <span 
                   className={`text-xs font-medium ${
-                    broker.trustScore >= 8 ? 'text-green-400' :
-                    broker.trustScore >= 6 ? 'text-yellow-400' :
+                    displayTrustScore >= 8 ? 'text-green-400' :
+                    displayTrustScore >= 6 ? 'text-yellow-400' :
                     'text-red-400'
                   }`}
-                  aria-label={`Trust score: ${broker.trustScore} out of 10`}
+                  aria-label={`Trust score: ${displayTrustScore} out of 10`}
                 >
-                  {broker.trustScore}/10
+                  {displayTrustScore}/10
                 </span>
               </div>
             )}
@@ -177,8 +212,8 @@ export function BrokerCard({ broker }: BrokerCardProps) {
           )}
         </div>
         <div className="flex flex-wrap gap-2" role="list" aria-label="Regulatory authorities">
-          {broker.regulation && broker.regulation.length > 0 ? (
-            broker.regulation.map((reg, index) => (
+          {!safeRegulation.isEmpty() ? (
+            safeRegulation.map((reg, index) => (
               <Badge 
                 key={index}
                 variant="outline" 
@@ -196,7 +231,7 @@ export function BrokerCard({ broker }: BrokerCardProps) {
               </Badge>
             ))
           ) : (
-            broker.regulators.map((regulator) => (
+            safeRegulators.map((regulator) => (
               <Badge 
                 key={regulator} 
                 variant="outline" 

@@ -2,9 +2,9 @@
 // Generated on: 2025-08-08T14:41:19.890Z
 // Total brokers: 12
 
-import type { Broker } from '../types/broker';
+import type { Broker } from '../../types/brokerTypes';
 
-export const compiledBrokers: Broker[] = [
+export const compiledBrokers = [
   {
     "id": "broker-24",
     "name": "Pepperstone",

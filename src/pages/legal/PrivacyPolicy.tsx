@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Shield, Lock, Eye, FileText, Globe, Clock, Mail, Phone } from 'lucide-react';
+import { Clock, Eye, FileText, Globe, Lock, Mail, Phone, Shield, Search, ChevronRight, Download, Print } from 'lucide-react';
+import { PageLayout } from '@/components/layout';
+import { ProfessionalCard } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const PrivacyPolicy: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const sections = [
+    { id: 'information-collection', title: 'Information We Collect', icon: FileText },
+    { id: 'how-we-use', title: 'How We Use Data', icon: Eye },
+    { id: 'data-sharing', title: 'Data Sharing', icon: Globe },
+    { id: 'data-security', title: 'Data Security', icon: Lock },
+    { id: 'your-rights', title: 'Your Rights', icon: Shield },
+    { id: 'cookies', title: 'Cookies', icon: Globe }
+  ];
+
+  const filteredSections = sections.filter(section =>
+    section.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <>
+    <PageLayout
+      title="Privacy Policy"
+      description="Your privacy is important to us. This policy explains how BrokerAnalysis collects, uses, and protects your personal information."
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Legal', href: '/legal' },
+        { label: 'Privacy Policy', current: true }
+      ]}
+    >
+      <>
       <Helmet>
         <title>Privacy Policy - BrokerAnalysis Data Protection & GDPR Compliance 2025</title>
         <meta name="description" content="Comprehensive privacy policy for BrokerAnalysis 2025. Learn how we protect your data, GDPR compliance, cookie usage, and your privacy rights when using our broker comparison platform." />
@@ -41,58 +69,92 @@ const PrivacyPolicy: React.FC = () => {
         </script>
       </Helmet>
 
-      <div className="min-h-screen bg-gray-50 py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex justify-center mb-6">
-              <div className="p-3 bg-blue-100 rounded-full">
-                <Shield className="h-8 w-8 text-blue-600" />
-              </div>
-            </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Privacy Policy
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Your privacy is important to us. This policy explains how BrokerAnalysis collects, uses, and protects your personal information.
-            </p>
-            <p className="text-sm text-gray-500 mt-4">
+      <div className="space-y-8">
+        {/* Header Section */}
+        <div className="bg-blue-600 text-white p-8 rounded-lg text-center">
+          <Shield className="w-12 h-12 mx-auto mb-4" />
+          <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-4">
+            Your privacy is important to us. This policy explains how BrokerAnalysis collects, uses, and protects your personal information.
+          </p>
+          <div className="flex items-center justify-center gap-4 text-sm">
+            <span className="bg-white/20 px-3 py-1 rounded-full">
               Last updated: January 1, 2025
-            </p>
+            </span>
+            <span className="bg-white/20 px-3 py-1 rounded-full">
+              GDPR Compliant
+            </span>
           </div>
+        </div>
 
-          {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Navigation</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <a href="#information-collection" className="text-blue-600 hover:text-blue-800 text-sm">
-                Information We Collect
-              </a>
-              <a href="#how-we-use" className="text-blue-600 hover:text-blue-800 text-sm">
-                How We Use Data
-              </a>
-              <a href="#data-sharing" className="text-blue-600 hover:text-blue-800 text-sm">
-                Data Sharing
-              </a>
-              <a href="#data-security" className="text-blue-600 hover:text-blue-800 text-sm">
-                Data Security
-              </a>
-              <a href="#your-rights" className="text-blue-600 hover:text-blue-800 text-sm">
-                Your Rights
-              </a>
-              <a href="#cookies" className="text-blue-600 hover:text-blue-800 text-sm">
-                Cookies
-              </a>
-            </div>
+        {/* Document Actions */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Button variant="outline" size="sm">
+              <Print className="w-4 h-4 mr-2" />
+              Print
+            </Button>
+            <Button variant="outline" size="sm">
+              <Download className="w-4 h-4 mr-2" />
+              Download PDF
+            </Button>
           </div>
+          <div className="text-sm text-gray-600">
+            Reading time: ~15 minutes
+          </div>
+        </div>
 
-          <div className="space-y-8">
-            {/* Information We Collect */}
-            <section id="information-collection" className="bg-white rounded-lg shadow-sm p-8">
-              <div className="flex items-center mb-6">
-                <FileText className="h-6 w-6 text-blue-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-900">Information We Collect</h2>
+        {/* Search and Navigation */}
+        <div className="grid lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-1">
+            <ProfessionalCard variant="compact" className="sticky top-4">
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Navigation</h3>
+                
+                <div className="mb-4">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                    <Input
+                      type="text"
+                      placeholder="Search sections..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="pl-10 text-sm"
+                    />
+                  </div>
+                </div>
+                
+                <nav className="space-y-2">
+                  {filteredSections.map((section) => {
+                    const IconComponent = section.icon;
+                    return (
+                      <a
+                        key={section.id}
+                        href={`#${section.id}`}
+                        className="flex items-center gap-3 p-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        {section.title}
+                        <ChevronRight className="w-3 h-3 ml-auto" />
+                      </a>
+                    );
+                  })}
+                </nav>
               </div>
+            </ProfessionalCard>
+          </div>
+
+          <div className="lg:col-span-3">
+
+            <div className="space-y-8">
+              {/* Information We Collect */}
+              <section id="information-collection">
+                <ProfessionalCard variant="default">
+                  <div className="p-8">
+                    <div className="flex items-center mb-6">
+                      <FileText className="h-6 w-6 text-blue-600 mr-3" />
+                      <h2 className="text-2xl font-bold text-gray-900">Information We Collect</h2>
+                    </div>
               
               <div className="space-y-6">
                 <div>

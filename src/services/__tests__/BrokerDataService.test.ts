@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { BrokerDataService, brokerDataService } from '../BrokerDataService'
 import { errorReportingService } from '../ErrorReportingService'
 import { Broker } from '@/types/broker'

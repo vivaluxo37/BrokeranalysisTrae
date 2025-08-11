@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useNavigation, useMobileMenu, useNavigationSearch, useRouteUtils } from '@/contexts/NavigationContext'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -22,22 +23,65 @@ import {
   Menu,
   Search,
   User,
+  X,
 } from 'lucide-react'
 import { BrokerAnalysisLogo } from '@/components/common'
 import { TrustBar } from './TrustBar'
+import { cn } from '@/lib/utils'
 
 interface BrokerAnalysisHeaderProps {
   totalTraders: number
 }
 
 export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps) {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [isSearchFocused, setIsSearchFocused] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const searchInputRef = useRef<HTMLInputElement>(null)
+  
+  // Use navigation context
+  const { trackNavigation } = useNavigation()
+  const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu, close: closeMobileMenu } = useMobileMenu()
+  const { query: searchQuery, setQuery: setSearchQuery, performSearch } = useNavigationSearch()
+  const { isActiveRoute } = useRouteUtils()
+
+  // Mobile menu is automatically closed by NavigationContext on route changes
+
+  // Handle keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ctrl/Cmd + K to focus search
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        searchInputRef.current?.focus()
+      }
+      // Escape to close mobile menu
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        closeMobileMenu()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isMobileMenuOpen])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      console.log('Search:', searchQuery)
+      performSearch(searchQuery.trim())
+      searchInputRef.current?.blur()
     }
+  }
+
+  // isActiveRoute is now provided by useRouteUtils hook
+
+  // Get active navigation item class
+  const getNavItemClass = (href: string, exact = false): string => {
+    const baseClass = "professional-nav-item focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md transition-colors"
+    const activeClass = "text-pure-white bg-charcoal-grey/50 border-b-2 border-accent-blue"
+    const inactiveClass = "text-light-grey hover:text-pure-white"
+    
+    return cn(baseClass, isActiveRoute(href, exact) ? activeClass : inactiveClass)
   }
 
   const navigation = [
@@ -209,50 +253,77 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
               to="/" 
               className="flex items-center focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
               aria-label="BrokerAnalysis homepage"
+              onClick={() => trackNavigation({
+                type: 'navigation_click',
+                path: '/',
+                previousPath: location.pathname,
+                metadata: { source: 'logo' }
+              })}
             >
               <BrokerAnalysisLogo size="md" />
             </Link>
 
-            {/* Search Bar */}
+            {/* Enhanced Search Bar */}
             <div className="flex-1 mx-8 max-w-md hidden lg:block">
               <form onSubmit={handleSearch} className="relative" role="search">
                 <label htmlFor="desktop-search" className="sr-only">
-                  Search brokers, platforms, or instruments
+                  Search brokers, platforms, or instruments (Ctrl+K)
                 </label>
                 <Search 
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-light-grey w-4 h-4" 
+                  className={cn(
+                    "absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors",
+                    isSearchFocused ? "text-pure-white" : "text-light-grey"
+                  )}
                   aria-hidden="true"
                 />
                 <Input
+                  ref={searchInputRef}
                   id="desktop-search"
                   type="text"
-                  placeholder="Search brokers, platforms, or instruments..."
+                  placeholder="Search brokers, platforms, or instruments... (Ctrl+K)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="professional-input pl-10 focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                  onFocus={() => setIsSearchFocused(true)}
+                  onBlur={() => setIsSearchFocused(false)}
+                  className={cn(
+                    "professional-input pl-10 pr-16 transition-all duration-200",
+                    "focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black",
+                    isSearchFocused && "border-accent-blue shadow-lg"
+                  )}
                   aria-describedby="search-help"
                   autoComplete="off"
                 />
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  <kbd className="hidden sm:inline-flex items-center px-2 py-1 text-xs font-medium text-light-grey bg-charcoal-grey border border-medium-grey rounded">
+                    ⌘K
+                  </kbd>
+                </div>
                 <div id="search-help" className="sr-only">
-                  Press Enter to search or use arrow keys to navigate suggestions
+                  Press Enter to search, Ctrl+K to focus, or use arrow keys to navigate suggestions
                 </div>
               </form>
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Enhanced Desktop Navigation */}
             <NavigationMenu className="hidden lg:flex">
               <NavigationMenuList>
                 {navigation.map((item) => (
                   <NavigationMenuItem key={item.name}>
                     <NavigationMenuTrigger 
-                      className="professional-nav-item focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
+                      className={getNavItemClass(item.href)}
                       aria-expanded="false"
                       aria-haspopup="true"
+                      data-active={isActiveRoute(item.href)}
                     >
-                      {item.name}
+                      <span className="flex items-center gap-1">
+                        {item.name}
+                        {isActiveRoute(item.href) && (
+                          <div className="w-1 h-1 bg-accent-blue rounded-full" aria-hidden="true" />
+                        )}
+                      </span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent 
-                      className="bg-charcoal-grey border-medium-grey p-6 w-96 left-0"
+                      className="bg-charcoal-grey border-medium-grey p-6 w-96 left-0 shadow-xl"
                       role="menu"
                       aria-label={`${item.name} submenu`}
                     >
@@ -261,19 +332,40 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                           <div key={section.title} role="group" aria-labelledby={`${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}>
                             <h4 
                               id={`${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}
-                              className="text-pure-white font-medium mb-3"
+                              className="text-pure-white font-medium mb-3 text-sm uppercase tracking-wide"
                             >
                               {section.title}
                             </h4>
-                            <div className="space-y-2">
+                            <div className="space-y-1">
                               {section.items.map((subItem) => (
                                 <Link
                                   key={subItem.name}
                                   to={subItem.href}
-                                  className="block text-light-grey hover:text-pure-white focus:text-pure-white focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey transition-colors text-sm rounded-sm px-2 py-1"
+                                  className={cn(
+                                    "block text-sm rounded-sm px-3 py-2 transition-all duration-200",
+                                    "focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey",
+                                    isActiveRoute(subItem.href) 
+                                      ? "text-pure-white bg-accent-blue/10 border-l-2 border-accent-blue" 
+                                      : "text-light-grey hover:text-pure-white hover:bg-medium-grey/20"
+                                  )}
                                   role="menuitem"
+                                  onClick={() => trackNavigation({
+                                    type: 'navigation_click',
+                                    path: subItem.href,
+                                    previousPath: location.pathname,
+                                    metadata: { 
+                                      source: 'desktop_nav',
+                                      section: section.title,
+                                      parent: item.name
+                                    }
+                                  })}
                                 >
                                   {subItem.name}
+                                  {isActiveRoute(subItem.href) && (
+                                    <span className="ml-2 text-xs text-accent-blue" aria-label="Current page">
+                                      •
+                                    </span>
+                                  )}
                                 </Link>
                               ))}
                             </div>
@@ -325,36 +417,58 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
 
               {/* Primary CTAs */}
               <Button asChild className="btn-professional-secondary focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
-                <Link to="/compare" aria-label="Compare different brokers side by side">
+                <Link 
+                  to="/compare" 
+                  aria-label="Compare different brokers side by side"
+                  onClick={() => trackNavigation({
+                    type: 'navigation_click',
+                    path: '/compare',
+                    previousPath: location.pathname,
+                    metadata: { source: 'desktop_cta', button: 'compare' }
+                  })}
+                >
                   Compare Brokers
                 </Link>
               </Button>
               <Button asChild className="btn-professional-primary focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
-                <Link to="/find-broker" aria-label="Find the best broker for your needs">
+                <Link 
+                  to="/find-broker" 
+                  aria-label="Find the best broker for your needs"
+                  onClick={() => trackNavigation({
+                    type: 'navigation_click',
+                    path: '/find-broker',
+                    previousPath: location.pathname,
+                    metadata: { source: 'desktop_cta', button: 'find_broker' }
+                  })}
+                >
                   Find My Broker
                 </Link>
               </Button>
             </div>
 
-            {/* Mobile menu */}
+            {/* Enhanced Mobile menu */}
             <div className="lg:hidden">
-              <Sheet>
+              <Sheet open={isMobileMenuOpen} onOpenChange={toggleMobileMenu}>
                 <SheetTrigger asChild>
                   <Button 
                     variant="ghost" 
                     size="icon"
-                    className="text-light-grey hover:text-pure-white focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
-                    aria-label="Open mobile navigation menu"
-                    aria-expanded="false"
+                    className="text-light-grey hover:text-pure-white focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md transition-colors"
+                    aria-label={isMobileMenuOpen ? "Close mobile navigation menu" : "Open mobile navigation menu"}
+                    aria-expanded={isMobileMenuOpen}
                     aria-controls="mobile-menu"
                   >
-                    <Menu className="w-6 h-6" aria-hidden="true" />
+                    {isMobileMenuOpen ? (
+                      <X className="w-6 h-6" aria-hidden="true" />
+                    ) : (
+                      <Menu className="w-6 h-6" aria-hidden="true" />
+                    )}
                   </Button>
                 </SheetTrigger>
                 <SheetContent 
                   id="mobile-menu"
                   side="right" 
-                  className="bg-professional-black border-charcoal-grey w-80"
+                  className="bg-professional-black border-charcoal-grey w-80 overflow-y-auto"
                   role="dialog"
                   aria-label="Mobile navigation menu"
                 >
@@ -371,7 +485,7 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                       <Input
                         id="mobile-search"
                         type="text"
-                        placeholder="Search..."
+                        placeholder="Search brokers, platforms..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="professional-input pl-10 focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
@@ -380,49 +494,130 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                     </form>
 
                     {/* Mobile Navigation */}
-                    <nav role="navigation" aria-label="Mobile navigation">
+                    <nav role="navigation" aria-label="Mobile navigation" className="space-y-1">
                       {navigation.map((item) => (
-                        <div key={item.name} className="mb-4">
+                        <div key={item.name} className="border-b border-medium-grey/30 pb-4 mb-4 last:border-b-0">
                           <Link
                             to={item.href}
-                            className="block text-pure-white hover:text-light-grey focus:text-light-grey focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black py-2 text-lg font-medium rounded-md px-2"
+                            className={cn(
+                              "flex items-center justify-between py-3 px-3 text-lg font-medium rounded-md transition-all duration-200",
+                              "focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black",
+                              isActiveRoute(item.href)
+                                ? "text-pure-white bg-accent-blue/10 border-l-4 border-accent-blue"
+                                : "text-light-grey hover:text-pure-white hover:bg-charcoal-grey/50"
+                            )}
+                            onClick={() => {
+                              trackNavigation({
+                                type: 'navigation_click',
+                                path: item.href,
+                                previousPath: location.pathname,
+                                metadata: { 
+                                  source: 'mobile_nav',
+                                  section: item.name
+                                }
+                              })
+                              closeMobileMenu()
+                            }}
                           >
-                            {item.name}
+                            <span>{item.name}</span>
+                            {isActiveRoute(item.href) && (
+                              <div className="w-2 h-2 bg-accent-blue rounded-full" aria-hidden="true" />
+                            )}
                           </Link>
-                          {item.sections.map((section) => (
-                            <div key={section.title} className="ml-4 mt-2" role="group" aria-labelledby={`mobile-${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}>
-                              <h5 
-                                id={`mobile-${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}
-                                className="text-light-grey text-sm font-medium mb-2"
-                              >
-                                {section.title}
-                              </h5>
-                              <div className="space-y-1">
-                                {section.items.map((subItem) => (
-                                  <Link
-                                    key={subItem.name}
-                                    to={subItem.href}
-                                    className="block text-light-grey hover:text-pure-white focus:text-pure-white focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black py-1 text-sm rounded-sm px-2"
-                                  >
-                                    {subItem.name}
-                                  </Link>
-                                ))}
+                          
+                          {/* Mobile Submenu */}
+                          <div className="mt-3 space-y-3">
+                            {item.sections.map((section) => (
+                              <div key={section.title} className="ml-4" role="group" aria-labelledby={`mobile-${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}>
+                                <h5 
+                                  id={`mobile-${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}
+                                  className="text-light-grey text-xs font-medium mb-2 uppercase tracking-wide"
+                                >
+                                  {section.title}
+                                </h5>
+                                <div className="space-y-1">
+                                  {section.items.map((subItem) => (
+                                    <Link
+                                      key={subItem.name}
+                                      to={subItem.href}
+                                      className={cn(
+                                        "block py-2 px-3 text-sm rounded-md transition-all duration-200",
+                                        "focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black",
+                                        isActiveRoute(subItem.href)
+                                          ? "text-pure-white bg-accent-blue/10 border-l-2 border-accent-blue"
+                                          : "text-light-grey hover:text-pure-white hover:bg-medium-grey/20"
+                                      )}
+                                      onClick={() => {
+                                        trackNavigation({
+                                          type: 'navigation_click',
+                                          path: subItem.href,
+                                          previousPath: location.pathname,
+                                          metadata: { 
+                                            source: 'mobile_nav',
+                                            section: section.title,
+                                            parent: item.name
+                                          }
+                                        })
+                                        closeMobileMenu()
+                                      }}
+                                    >
+                                      <span className="flex items-center justify-between">
+                                        {subItem.name}
+                                        {isActiveRoute(subItem.href) && (
+                                          <span className="text-xs text-accent-blue" aria-label="Current page">
+                                            •
+                                          </span>
+                                        )}
+                                      </span>
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
                       ))}
                     </nav>
 
                     {/* Mobile CTAs */}
-                    <div className="space-y-3 pt-4 border-t border-medium-grey">
-                      <Button asChild className="btn-professional-secondary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
-                        <Link to="/compare" aria-label="Compare different brokers side by side">
+                    <div className="space-y-3 pt-6 border-t border-medium-grey">
+                      <Button 
+                        asChild 
+                        className="btn-professional-secondary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                      >
+                        <Link 
+                          to="/compare" 
+                          aria-label="Compare different brokers side by side"
+                          onClick={() => {
+                            trackNavigation({
+                              type: 'navigation_click',
+                              path: '/compare',
+                              previousPath: location.pathname,
+                              metadata: { source: 'mobile_cta', button: 'compare' }
+                            })
+                            closeMobileMenu()
+                          }}
+                        >
                           Compare Brokers
                         </Link>
                       </Button>
-                      <Button asChild className="btn-professional-primary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
-                        <Link to="/find-broker" aria-label="Find the best broker for your needs">
+                      <Button 
+                        asChild 
+                        className="btn-professional-primary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                      >
+                        <Link 
+                          to="/find-broker" 
+                          aria-label="Find the best broker for your needs"
+                          onClick={() => {
+                            trackNavigation({
+                              type: 'navigation_click',
+                              path: '/find-broker',
+                              previousPath: location.pathname,
+                              metadata: { source: 'mobile_cta', button: 'find_broker' }
+                            })
+                            closeMobileMenu()
+                          }}
+                        >
                           Find My Broker
                         </Link>
                       </Button>
