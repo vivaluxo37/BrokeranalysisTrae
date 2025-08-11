@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { ArrowRight, Award, CheckCircle, DollarSign, ExternalLink, Filter, Star, TrendingUp } from 'lucide-react';
 
 interface Broker {

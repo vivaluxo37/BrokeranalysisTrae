@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { AlertTriangle, Award, CheckCircle, DollarSign, Globe, Shield, TrendingUp, Users } from 'lucide-react';
 
 const HowToChooseBroker2025: React.FC = () => {

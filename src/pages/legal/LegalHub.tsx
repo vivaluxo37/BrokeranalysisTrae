@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Link } from 'react-router-dom';
 import { Shield, FileText, Search, Clock, Download, Eye, Scale, Lock, Globe, AlertTriangle, CheckCircle } from 'lucide-react';
 import { PageLayout } from '@/components/layout';

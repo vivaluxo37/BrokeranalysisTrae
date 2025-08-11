@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Cookie, Eye, Info, Settings, Shield, ToggleLeft } from 'lucide-react';
 
 const CookiePolicy: React.FC = () => {

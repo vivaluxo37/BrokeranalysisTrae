@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { AlertTriangle, BarChart3, Calculator, DollarSign, Percent, Shield, Target, TrendingDown } from 'lucide-react';
 
 const RiskManagementStrategies: React.FC = () => {

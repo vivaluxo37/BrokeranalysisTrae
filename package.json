@@ -56,7 +56,6 @@
     "puppeteer": "^24.16.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-helmet-async": "^2.0.5",
     "react-i18next": "^15.6.1",
     "react-router-dom": "^6.26.2",
     "sharp": "^0.34.3",
