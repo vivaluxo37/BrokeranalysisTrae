@@ -29,7 +29,9 @@
     "mcp:build": "cd mcp-servers/src/puppeteer && npm run build",
     "mcp:start": "cd mcp-servers/src/puppeteer && npm start",
     "mcp:dev": "cd mcp-servers/src/puppeteer && npm run dev",
-    "mcp:install": "cd mcp-servers/src/puppeteer && npm install"
+    "mcp:install": "cd mcp-servers/src/puppeteer && npm install",
+    "validate-data": "tsx scripts/validateBrokerData.ts",
+    "check-data-integrity": "npm run validate-data"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.2",
@@ -97,6 +99,7 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.1.1",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
   }
 }
