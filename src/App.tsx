@@ -12,6 +12,7 @@ import {
   ToolsLandingPage
 } from './pages'
 import { BrokerRecommendationWizardPage } from './pages/BrokerRecommendationWizardPage'
+import { ActivTradesHomePage } from './pages/ActivTradesHomePage'
 import BrokerCardIntegrationTest from './pages/test/BrokerCardIntegrationTest'
 import BrokerComparisonIntegrationTest from './pages/test/BrokerComparisonIntegrationTest'
 
@@ -187,7 +188,8 @@ function App() {
         <NavigationProvider enableAnalytics={true} maxAnalyticsEvents={1000}>
       <Routes>
         {/* Main Pages */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<ActivTradesHomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/brokers" element={<BrokerDirectoryPage />} />
         <Route path="/compare" element={<BrokerDirectoryPage />} />
         <Route path="/compare/wizard" element={<BrokerRecommendationWizardPage />} />
