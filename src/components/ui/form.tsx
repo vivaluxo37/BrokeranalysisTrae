@@ -5,7 +5,7 @@ import { type ZodSchema } from 'zod'
 import { Slot } from '@radix-ui/react-slot'
 import { type LucideIcon } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/style-utils'
 import { Label } from './label'
 
 // Form Provider Component

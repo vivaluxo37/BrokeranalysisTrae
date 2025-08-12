@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { type VariantProps, cva } from 'class-variance-authority'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/style-utils'
 
 const skeletonVariants = cva(
   'animate-pulse rounded-md bg-gray-700',

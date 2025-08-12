@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useNavigation, useRouteUtils } from '@/contexts/NavigationContext'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/style-utils'
 
 interface NavigationItem {
   name: string

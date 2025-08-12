@@ -30,7 +30,7 @@ import {
 } from 'lucide-react'
 import { BrokerAnalysisLogo } from '@/components/common'
 import { TrustBar } from './TrustBar'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/style-utils'
 import { useAuth } from '@/hooks/useAuth'
 
 interface BrokerAnalysisHeaderProps {

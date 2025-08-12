@@ -5,7 +5,7 @@ import {
 } from '@/components/ui/navigation-menu'
 import { useRouteUtils } from '@/contexts/NavigationContext'
 import { NavigationSubmenu } from './NavigationSubmenu'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/style-utils'
 
 interface NavigationItem {
   name: string

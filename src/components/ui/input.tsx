@@ -2,7 +2,7 @@ import * as React from 'react'
 import { type VariantProps, cva } from 'class-variance-authority'
 import { AlertCircle, Eye, EyeOff, type LucideIcon } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/style-utils'
 
 const inputVariants = cva(
   'flex h-10 w-full rounded-md border bg-[#1a1a1a] px-3 py-2 text-sm text-white transition-all duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:cursor-not-allowed disabled:opacity-50',
