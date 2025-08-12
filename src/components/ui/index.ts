@@ -164,3 +164,9 @@ export {
   type BrokerComparisonChartProps,
   type FeatureComparisonProps,
 } from './data-visualization'
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from './tooltip'
