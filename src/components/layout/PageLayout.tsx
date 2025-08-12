@@ -1,6 +1,6 @@
 import { Suspense, Component } from 'react'
 import type { ReactNode, ErrorInfo } from 'react'
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from '@dr.pogodin/react-helmet'
 import { Layout } from './Layout'
 import type { LayoutProps } from './Layout'
 import { Breadcrumb } from './Breadcrumb'
