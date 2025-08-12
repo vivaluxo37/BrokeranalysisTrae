@@ -48,7 +48,7 @@ export function ProfessionalHeader() {
 
   return (
     <header className="professional-nav sticky top-0 z-50">
-      <div className="professional-container">
+      <div className="content-container">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">

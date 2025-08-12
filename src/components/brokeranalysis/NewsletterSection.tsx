@@ -45,7 +45,7 @@ export function NewsletterSection() {
   if (isSubscribed) {
     return (
       <section className="professional-section bg-charcoal-grey">
-        <div className="professional-container">
+        <div className="content-container">
           <div className="professional-card p-12 text-center max-w-2xl mx-auto">
             <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-6" />
             <h2 className="text-2xl font-semibold text-pure-white mb-4">
@@ -62,7 +62,7 @@ export function NewsletterSection() {
 
   return (
     <section className="professional-section bg-charcoal-grey">
-      <div className="professional-container">
+      <div className="content-container">
         <div className="professional-card p-12 text-center max-w-2xl mx-auto">
           {/* Icon */}
           <div className="w-16 h-16 bg-professional-black border border-medium-grey rounded-xl flex items-center justify-center mx-auto mb-6">

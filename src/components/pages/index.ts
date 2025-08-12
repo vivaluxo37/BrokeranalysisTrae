@@ -1,6 +1,4 @@
 // Homepage Integration Components
-export { PersonalizedHomepageSection } from './PersonalizedHomepageSection'
-export { HomepageAuthIntegration } from './HomepageAuthIntegration'
-export { HomepageSearchIntegration } from './HomepageSearchIntegration'
-export { AdvancedSearchIntegration } from './AdvancedSearchIntegration'
-export { HomepageSearchHistoryIntegration } from './HomepageSearchHistoryIntegration'
+export { HomepageAuthIntegration, PersonalizedHomepageSection } from './HomepageAuthIntegration'
+export { AboutUsPage } from './AboutUsPage'
+export { ContactPage } from './ContactPage'

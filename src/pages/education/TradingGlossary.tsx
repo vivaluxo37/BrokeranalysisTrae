@@ -328,7 +328,7 @@ const TradingGlossary: React.FC = () => {
         />
 
         {/* Search and Filter */}
-        <div className="professional-container py-8">
+        <div className="content-container py-8">
           <div className="professional-card p-6 mb-8">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 relative">
@@ -361,7 +361,7 @@ const TradingGlossary: React.FC = () => {
         </div>
 
         {/* Glossary Terms */}
-        <div className="professional-container pb-16">
+        <div className="content-container pb-16">
           <div className="grid gap-6">
             {filteredTerms.map((term, index) => (
               <Card key={index} className="professional-card hover:shadow-lg transition-shadow">
@@ -411,7 +411,7 @@ const TradingGlossary: React.FC = () => {
 
         {/* Categories Overview */}
         <div className="bg-charcoal-grey py-16">
-          <div className="professional-container">
+          <div className="content-container">
             <h2 className="text-3xl font-bold text-pure-white mb-12 text-center">
               Browse by Category
             </h2>

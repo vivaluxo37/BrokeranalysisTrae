@@ -2,7 +2,7 @@ import { BrokerSearchWidget } from './BrokerSearchWidget'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, TrendingUp, Shield, Users } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 interface HeroData {
   title: string
@@ -23,9 +23,15 @@ interface BrokerAnalysisHeroSectionProps {
 }
 
 export function BrokerAnalysisHeroSection({ heroData, trustLogos }: BrokerAnalysisHeroSectionProps) {
+  const navigate = useNavigate()
+  
   const handleSearch = (filters: { assetClass?: string; region?: string }) => {
     console.log('Search filters:', filters)
     // Handle search logic
+  }
+
+  const handleGetRecommendation = () => {
+    navigate('/compare/wizard')
   }
 
   return (
@@ -91,9 +97,10 @@ export function BrokerAnalysisHeroSection({ heroData, trustLogos }: BrokerAnalys
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-scale-in">
               <Button 
                 size="lg" 
+                onClick={handleGetRecommendation}
                 className="bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                {heroData.ctaPrimary}
+                Get Broker Recommendation
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
               <Button 

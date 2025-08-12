@@ -1,0 +1,10 @@
+// ActivTrades specific components
+export { ActivTradesHero } from './ActivTradesHero'
+export { WhyActivTrades } from './WhyActivTrades'
+export { TradingInstruments } from './TradingInstruments'
+export { PlatformShowcase } from './PlatformShowcase'
+export { PortfolioDiversification } from './PortfolioDiversification'
+export { EducationTools } from './EducationTools'
+export { CustomerSupport } from './CustomerSupport'
+export { TestimonialsAwards } from './TestimonialsAwards'
+export { ActivTradesFooter } from './ActivTradesFooter'

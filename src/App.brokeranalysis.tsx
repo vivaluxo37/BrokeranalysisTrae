@@ -1,13 +1,8 @@
-import { BrowserRouter } from 'react-router-dom'
-import { BrokerAnalysisHomePage } from './pages/BrokerAnalysisHomePage'
+import { BrokerComparisonHomePage } from './pages/BrokerComparisonHomePage'
 import './index.css'
 
 function App() {
-  return (
-    <BrowserRouter>
-      <BrokerAnalysisHomePage />
-    </BrowserRouter>
-  )
+  return <BrokerComparisonHomePage />
 }
 
 export default App

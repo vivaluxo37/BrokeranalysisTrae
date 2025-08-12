@@ -42,7 +42,7 @@ export function ProfessionalFooter() {
 
   return (
     <footer className="bg-charcoal-grey border-t border-medium-grey">
-      <div className="professional-container py-16">
+      <div className="content-container py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Logo and description */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">

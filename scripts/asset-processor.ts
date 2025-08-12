@@ -162,14 +162,50 @@ export class BrokerAssetProcessor {
    */
   private findBrokerAsset(brokerName: string, assetType: AssetType): string | null {
     // Implementation will search through Resources from other sites
-    // This is a placeholder for the actual asset discovery logic
+    const sanitizedName = this.sanitizeBrokerName(brokerName);
     const searchPaths = [
       `${this.config.inputDir}/img.brokersview.com/prod/ico/square`,
       `${this.config.inputDir}/www.forexbrokers.com/cdn`,
+      `${this.config.inputDir}/assets/brokers/logos/square`,
+      `${this.config.inputDir}/assets/brokers/logos/horizontal`,
+      `${this.config.inputDir}/assets/brokers/screenshots`,
       // Add more search paths as needed
     ];
 
-    // TODO: Implement actual file search logic
+    // Common file extensions to search for
+    const extensions = ['png', 'jpg', 'jpeg', 'webp', 'svg'];
+    
+    // Search for files in each path
+    for (const searchPath of searchPaths) {
+      try {
+        // Check if directory exists
+        if (!require('fs').existsSync(searchPath)) {
+          continue;
+        }
+        
+        // Search for files with different naming patterns
+        const nameVariations = [
+          sanitizedName,
+          brokerName.toLowerCase(),
+          brokerName.replace(/\s+/g, '-').toLowerCase(),
+          brokerName.replace(/\s+/g, '_').toLowerCase(),
+          brokerName.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+        ];
+        
+        for (const nameVariation of nameVariations) {
+          for (const ext of extensions) {
+            const filePath = path.join(searchPath, `${nameVariation}.${ext}`);
+            if (require('fs').existsSync(filePath)) {
+              return filePath;
+            }
+          }
+        }
+      } catch (error) {
+        // Continue searching in other paths
+        continue;
+      }
+    }
+
     return null;
   }
 
@@ -270,12 +306,56 @@ export class BrokerAssetProcessor {
     assetsByType: Record<string, number>;
     totalSize: number;
   }> {
-    // TODO: Implement asset statistics collection
-    return {
+    const stats = {
       totalAssets: 0,
-      assetsByType: {},
+      assetsByType: {} as Record<string, number>,
       totalSize: 0
     };
+
+    try {
+      // Check if output directory exists
+      if (!require('fs').existsSync(this.config.outputDir)) {
+        return stats;
+      }
+
+      // Recursively scan the output directory
+      const scanDirectory = async (dirPath: string): Promise<void> => {
+        try {
+          const items = await fs.readdir(dirPath, { withFileTypes: true });
+          
+          for (const item of items) {
+            const fullPath = path.join(dirPath, item.name);
+            
+            if (item.isDirectory()) {
+              await scanDirectory(fullPath);
+            } else if (item.isFile()) {
+              // Get file stats
+              const fileStat = await fs.stat(fullPath);
+              const fileExtension = path.extname(item.name).toLowerCase().slice(1);
+              
+              // Update statistics
+              stats.totalAssets++;
+              stats.totalSize += fileStat.size;
+              
+              // Count by file type
+              if (stats.assetsByType[fileExtension]) {
+                stats.assetsByType[fileExtension]++;
+              } else {
+                stats.assetsByType[fileExtension] = 1;
+              }
+            }
+          }
+        } catch (error) {
+          console.warn(`Warning: Could not scan directory ${dirPath}:`, error);
+        }
+      };
+
+      await scanDirectory(this.config.outputDir);
+    } catch (error) {
+      console.error('Error collecting asset statistics:', error);
+    }
+
+    return stats;
   }
 }
 

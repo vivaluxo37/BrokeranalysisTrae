@@ -3,16 +3,24 @@ import LazyTradingViewWidget from '../LazyTradingViewWidget';
 
 const TopStories: React.FC = () => {
   const widgetOptions = {
-    displayMode: 'regular',
-    feedMode: 'all_symbols',
-    colorTheme: 'light',
+    feedMode: "all_symbols",
     isTransparent: false,
-    locale: 'en',
-    width: 400,
+    displayMode: "regular",
+    width: "100%",
     height: 550,
+    colorTheme: "light",
+    locale: "en"
   };
 
-  return <LazyTradingViewWidget widgetOptions={widgetOptions} />;
+  return (
+    <div className="top-stories-widget">
+      <LazyTradingViewWidget 
+        widgetOptions={widgetOptions}
+        title="Top Stories"
+        theme="light"
+      />
+    </div>
+  );
 };
 
 export default TopStories;

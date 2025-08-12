@@ -104,7 +104,7 @@ export function BrokerWizardPage() {
             description="Personalized broker recommendations based on your trading preferences and experience level."
           />
 
-          <div className="professional-container py-8">
+          <div className="content-container py-8">
             <div className="max-w-4xl mx-auto">
               {/* Success Header */}
               <div className="text-center mb-8">
@@ -162,7 +162,7 @@ export function BrokerWizardPage() {
           description="Answer a few questions to get personalized broker recommendations based on your trading needs."
         />
 
-        <div className="professional-container py-8">
+        <div className="content-container py-8">
           <div className="max-w-2xl mx-auto">
             {/* Header */}
             <div className="text-center mb-8">

@@ -90,7 +90,7 @@ export default function InteractiveBrokersDetailedReview() {
       />
       
       <div className="min-h-screen bg-professional-black">
-        <div className="professional-container professional-section">
+        <div className="content-container professional-section">
           <DetailedBrokerReview broker={interactiveBrokersData} />
         </div>
       </div>

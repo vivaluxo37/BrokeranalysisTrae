@@ -126,12 +126,18 @@ export class MockDataLoader {
   }
 
   /**
-   * Extract broker data from TypeScript file content
+   * Extract broker data from file content
    */
   private extractBrokersFromContent(content: string): MockBroker[] {
     const brokers: MockBroker[] = [];
     
     try {
+      // Ensure content is a string
+      if (typeof content !== 'string') {
+        this.logger(`Content is not a string: ${typeof content}`, 'warn');
+        return brokers;
+      }
+      
       // Extract topRatedBrokers arrays
       const topRatedBrokersRegex = /topRatedBrokers:\s*\[(.*?)\]/gs;
       const matches = content.match(topRatedBrokersRegex);
@@ -166,6 +172,12 @@ export class MockDataLoader {
    */
   private parseBrokerObjects(arrayContent: string): MockBroker[] {
     const brokers: MockBroker[] = [];
+    
+    // Ensure arrayContent is a string
+    if (typeof arrayContent !== 'string') {
+      this.logger(`Array content is not a string: ${typeof arrayContent}`, 'warn');
+      return brokers;
+    }
     
     // Split by object boundaries
     const objectRegex = /\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}/g;

@@ -8,5 +8,3 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>
 )
-
-// Dummy comment to force recompile - remove after debugging

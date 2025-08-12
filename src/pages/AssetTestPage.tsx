@@ -5,10 +5,12 @@
 
 import React from 'react';
 import { AssetPreviewComponent, AssetTestComponent } from '@/components/common/AssetTestComponent';
+import { Layout } from '@/components/layout/Layout';
 
 export function AssetTestPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <Layout totalTraders={2500000}>
+      <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -126,5 +128,6 @@ export function AssetTestPage() {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }

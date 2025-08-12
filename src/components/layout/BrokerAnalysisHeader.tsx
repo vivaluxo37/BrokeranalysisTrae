@@ -9,6 +9,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu'
 import {
   NavigationMenu,
@@ -22,29 +23,38 @@ import {
   Menu,
   Search,
   User,
+  UserCircle,
+  Settings,
+  LogOut,
   X,
 } from 'lucide-react'
 import { BrokerAnalysisLogo } from '@/components/common'
 import { TrustBar } from './TrustBar'
 import { cn } from '@/lib/utils'
+import { useAuth } from '@/hooks/useAuth'
 
 interface BrokerAnalysisHeaderProps {
   totalTraders: number
 }
 
-export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps) {
-  const [isSearchFocused, setIsSearchFocused] = useState(false)
+export function BrokerAnalysisHeader({ totalTraders = 2847291 }: BrokerAnalysisHeaderProps) {
   const location = useLocation()
   const navigate = useNavigate()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isSearchFocused, setIsSearchFocused] = useState(false)
   const searchInputRef = useRef<HTMLInputElement>(null)
   
   // Use navigation context
   const { trackNavigation } = useNavigation()
-  const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu, close: closeMobileMenu } = useMobileMenu()
   const { query: searchQuery, setQuery: setSearchQuery, performSearch } = useNavigationSearch()
   const { isActiveRoute } = useRouteUtils()
+  
+  // Use authentication
+  const { user, logout, isAuthenticated } = useAuth()
 
-  // Mobile menu is automatically closed by NavigationContext on route changes
+  // Mobile menu functions
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+  const closeMobileMenu = () => setIsMobileMenuOpen(false)
 
   // Handle keyboard shortcuts
   useEffect(() => {
@@ -244,13 +254,13 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
       <TrustBar totalTraders={totalTraders} />
 
       {/* Main Navigation */}
-      <nav className="professional-nav" role="navigation" aria-label="Main navigation">
-        <div className="professional-container">
-          <div className="flex justify-between items-center h-16">
+      <nav className="w-full professional-nav" role="navigation" aria-label="Main navigation">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 max-w-none">
             {/* Logo */}
             <Link 
               to="/" 
-              className="flex items-center focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
+              className="flex items-center focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md flex-shrink-0"
               aria-label="BrokerAnalysis homepage"
               onClick={() => trackNavigation({
                 type: 'navigation_click',
@@ -263,7 +273,7 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
             </Link>
 
             {/* Enhanced Search Bar */}
-            <div className="flex-1 mx-8 max-w-md hidden lg:block">
+            <div className="flex-1 mx-6 max-w-2xl hidden lg:block">
               <form onSubmit={handleSearch} className="relative" role="search">
                 <label htmlFor="desktop-search" className="sr-only">
                   Search brokers, platforms, or instruments (Ctrl+K)
@@ -304,7 +314,7 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
             </div>
 
             {/* Enhanced Desktop Navigation */}
-            <NavigationMenu className="hidden lg:flex">
+            <NavigationMenu className="hidden lg:flex flex-shrink-0">
               <NavigationMenuList>
                 {navigation.map((item) => (
                   <NavigationMenuItem key={item.name} item={item} />
@@ -313,41 +323,116 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
             </NavigationMenu>
 
             {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center space-x-4">
-              {/* User Menu */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+            <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
+              {isAuthenticated ? (
+                /* Authenticated User Menu */
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-light-grey hover:text-pure-white hover:bg-charcoal-grey focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md flex items-center space-x-2"
+                      aria-label="User account menu"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <UserCircle className="w-4 h-4" aria-hidden="true" />
+                      <span className="text-sm">{user?.name || user?.email}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    align="end" 
+                    className="bg-charcoal-grey border-medium-grey w-56"
+                    role="menu"
+                    aria-label="User account options"
+                  >
+                    <DropdownMenuItem 
+                      className="text-pure-white hover:bg-medium-grey/20 focus:bg-medium-grey/20 focus:outline-none cursor-pointer"
+                      role="menuitem"
+                      onClick={() => {
+                        navigate('/profile')
+                        trackNavigation({
+                          type: 'navigation_click',
+                          path: '/profile',
+                          previousPath: location.pathname,
+                          metadata: { source: 'user_menu' }
+                        })
+                      }}
+                    >
+                      <UserCircle className="w-4 h-4 mr-2" aria-hidden="true" />
+                      Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      className="text-pure-white hover:bg-medium-grey/20 focus:bg-medium-grey/20 focus:outline-none cursor-pointer"
+                      role="menuitem"
+                      onClick={() => {
+                        navigate('/settings')
+                        trackNavigation({
+                          type: 'navigation_click',
+                          path: '/settings',
+                          previousPath: location.pathname,
+                          metadata: { source: 'user_menu' }
+                        })
+                      }}
+                    >
+                      <Settings className="w-4 h-4 mr-2" aria-hidden="true" />
+                      Settings
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="bg-medium-grey" />
+                    <DropdownMenuItem 
+                      className="text-pure-white hover:bg-medium-grey/20 focus:bg-medium-grey/20 focus:outline-none cursor-pointer"
+                      role="menuitem"
+                      onClick={() => {
+                        logout()
+                        trackNavigation({
+                          type: 'auth_action',
+                          path: location.pathname,
+                          previousPath: location.pathname,
+                          metadata: { action: 'logout', source: 'user_menu' }
+                        })
+                      }}
+                    >
+                      <LogOut className="w-4 h-4 mr-2" aria-hidden="true" />
+                      Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                /* Unauthenticated User Actions */
+                <div className="flex items-center space-x-3">
                   <Button
                     variant="ghost"
-                    size="icon"
+                    size="sm"
                     className="text-light-grey hover:text-pure-white hover:bg-charcoal-grey focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black rounded-md"
-                    aria-label="User account menu"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <User className="w-4 h-4" aria-hidden="true" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  align="end" 
-                  className="bg-charcoal-grey border-medium-grey"
-                  role="menu"
-                  aria-label="User account options"
-                >
-                  <DropdownMenuItem 
-                    className="text-pure-white hover:bg-medium-grey/20 focus:bg-medium-grey/20 focus:outline-none"
-                    role="menuitem"
+                    onClick={() => {
+                      navigate('/signin')
+                      trackNavigation({
+                        type: 'navigation_click',
+                        path: '/signin',
+                        previousPath: location.pathname,
+                        metadata: { source: 'header_auth' }
+                      })
+                    }}
                   >
                     Sign In
-                  </DropdownMenuItem>
-                  <DropdownMenuItem 
-                    className="text-pure-white hover:bg-medium-grey/20 focus:bg-medium-grey/20 focus:outline-none"
-                    role="menuitem"
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="btn-professional-primary focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                    onClick={() => {
+                      navigate('/signup')
+                      trackNavigation({
+                        type: 'navigation_click',
+                        path: '/signup',
+                        previousPath: location.pathname,
+                        metadata: { source: 'header_auth' }
+                      })
+                    }}
                   >
-                    Create Account
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                    Join Free
+                  </Button>
+                </div>
+              )}
             </div>
 
             {/* Enhanced Mobile menu */}
@@ -403,48 +488,102 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                       onItemClick={closeMobileMenu}
                     />
 
-                    {/* Mobile Auth Links */}
+                    {/* Mobile Auth/User Section */}
                     <div className="space-y-3 pt-6 border-t border-medium-grey">
-                      <Button 
-                        asChild 
-                        className="btn-professional-secondary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
-                      >
-                        <Link 
-                          to="/signin" 
-                          aria-label="Sign in to your account"
-                          onClick={() => {
-                            trackNavigation({
-                              type: 'navigation_click',
-                              path: '/signin',
-                              previousPath: location.pathname,
-                              metadata: { source: 'mobile_auth', button: 'signin' }
-                            })
-                            closeMobileMenu()
-                          }}
-                        >
-                          Sign In
-                        </Link>
-                      </Button>
-                      <Button 
-                        asChild 
-                        className="btn-professional-primary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
-                      >
-                        <Link 
-                          to="/signup" 
-                          aria-label="Create a new account"
-                          onClick={() => {
-                            trackNavigation({
-                              type: 'navigation_click',
-                              path: '/signup',
-                              previousPath: location.pathname,
-                              metadata: { source: 'mobile_auth', button: 'signup' }
-                            })
-                            closeMobileMenu()
-                          }}
-                        >
-                          Join Free
-                        </Link>
-                      </Button>
+                      {isAuthenticated ? (
+                        /* Authenticated Mobile User */
+                        <div className="space-y-3">
+                          <div className="flex items-center space-x-3 px-3 py-2 bg-charcoal-grey/50 rounded-md">
+                            <UserCircle className="w-5 h-5 text-light-grey" aria-hidden="true" />
+                            <span className="text-pure-white text-sm font-medium">
+                              {user?.name || user?.email}
+                            </span>
+                          </div>
+                          <Button 
+                            className="btn-professional-secondary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                            onClick={() => {
+                              navigate('/profile')
+                              trackNavigation({
+                                type: 'navigation_click',
+                                path: '/profile',
+                                previousPath: location.pathname,
+                                metadata: { source: 'mobile_auth' }
+                              })
+                              closeMobileMenu()
+                            }}
+                          >
+                            <UserCircle className="w-4 h-4 mr-2" aria-hidden="true" />
+                            Profile
+                          </Button>
+                          <Button 
+                            className="btn-professional-secondary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                            onClick={() => {
+                              navigate('/settings')
+                              trackNavigation({
+                                type: 'navigation_click',
+                                path: '/settings',
+                                previousPath: location.pathname,
+                                metadata: { source: 'mobile_auth' }
+                              })
+                              closeMobileMenu()
+                            }}
+                          >
+                            <Settings className="w-4 h-4 mr-2" aria-hidden="true" />
+                            Settings
+                          </Button>
+                          <Button 
+                            variant="outline"
+                            className="w-full border-medium-grey text-light-grey hover:text-pure-white hover:bg-charcoal-grey focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                            onClick={() => {
+                              logout()
+                              trackNavigation({
+                                type: 'auth_action',
+                                path: location.pathname,
+                                previousPath: location.pathname,
+                                metadata: { action: 'logout', source: 'mobile_auth' }
+                              })
+                              closeMobileMenu()
+                            }}
+                          >
+                            <LogOut className="w-4 h-4 mr-2" aria-hidden="true" />
+                            Sign Out
+                          </Button>
+                        </div>
+                      ) : (
+                        /* Unauthenticated Mobile Auth */
+                        <div className="space-y-3">
+                          <Button 
+                            className="btn-professional-secondary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                            onClick={() => {
+                              navigate('/signin')
+                              trackNavigation({
+                                type: 'navigation_click',
+                                path: '/signin',
+                                previousPath: location.pathname,
+                                metadata: { source: 'mobile_auth', button: 'signin' }
+                              })
+                              closeMobileMenu()
+                            }}
+                          >
+                            Sign In
+                          </Button>
+                          <Button 
+                            className="btn-professional-primary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
+                            onClick={() => {
+                              navigate('/signup')
+                              trackNavigation({
+                                type: 'navigation_click',
+                                path: '/signup',
+                                previousPath: location.pathname,
+                                metadata: { source: 'mobile_auth', button: 'signup' }
+                              })
+                              closeMobileMenu()
+                            }}
+                          >
+                            Join Free
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </SheetContent>

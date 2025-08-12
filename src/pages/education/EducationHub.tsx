@@ -279,7 +279,7 @@ const EducationHub: React.FC = () => {
       </Helmet>
 
       <div className="min-h-screen bg-professional-black">
-        <div className="professional-container space-y-12">
+        <div className="content-container space-y-12">
           {/* Hero Section */}
           <ProfessionalHero
             title="Trading Education Hub 2025"

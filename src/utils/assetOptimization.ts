@@ -25,8 +25,8 @@ export interface BrokerAssetPaths {
  */
 export const ASSET_CONFIG: AssetConfig = {
   baseUrl: '/assets/brokers',
-  fallbackImage: '/assets/icons/broker-placeholder.webp',
-  supportedFormats: ['webp', 'png'],
+  fallbackImage: '/assets/brokers/logos/fallback/broker-placeholder-128.svg',
+  supportedFormats: ['webp', 'png', 'svg'],
   sizes: [64, 128, 256]
 };
 
@@ -41,22 +41,24 @@ export function getAssetBaseUrl(): string {
 
 /**
  * Generate broker asset paths for different logo types and sizes
+ * Updated to handle SVG files for specific broker IDs
  */
 export function getBrokerAssetPaths(brokerId: string): BrokerAssetPaths {
   const baseUrl = getAssetBaseUrl();
   
-  // For specific broker IDs that have SVG files, use SVG format
+  // For specific broker IDs that have SVG files, use SVG format and correct naming
   const hasSvgFile = ['24', '50', '67'].includes(brokerId);
   const extension = hasSvgFile ? 'svg' : 'webp';
+  const filePrefix = hasSvgFile ? 'broker-' : '';
   
   return {
     square: {
-      small: `${baseUrl}/logos/square/${brokerId}-64.${extension}`,
-      medium: `${baseUrl}/logos/square/${brokerId}-128.${extension}`,
-      large: `${baseUrl}/logos/square/${brokerId}-256.${extension}`
+      small: `${baseUrl}/logos/square/${filePrefix}${brokerId}-64.${extension}`,
+      medium: `${baseUrl}/logos/square/${filePrefix}${brokerId}-128.${extension}`,
+      large: `${baseUrl}/logos/square/${filePrefix}${brokerId}-256.${extension}`
     },
-    horizontal: `${baseUrl}/logos/horizontal/${brokerId}-horizontal.${extension}`,
-    favicon: `${baseUrl}/logos/favicon/${brokerId}-favicon.${extension}`
+    horizontal: `${baseUrl}/logos/horizontal/${filePrefix}${brokerId}-horizontal.${extension}`,
+    favicon: `${baseUrl}/logos/favicon/${filePrefix}${brokerId}-favicon.${extension}`
   };
 }
 
@@ -128,7 +130,7 @@ export async function validateAssetAccessibility(): Promise<{
   }
   
   // Test placeholder icon
-  const placeholderSvg = '/assets/icons/broker-placeholder.svg';
+  const placeholderSvg = '/assets/brokers/logos/fallback/broker-placeholder-128.svg';
   const placeholderExists = await checkImageExists(placeholderSvg);
   if (!placeholderExists) {
     warnings.push(`Placeholder SVG not accessible: ${placeholderSvg}`);
@@ -170,17 +172,18 @@ export async function validateAssetAccessibility(): Promise<{
 export function getFallbackImageUrl(brokerId: string, type: 'square' | 'horizontal' | 'favicon', format: 'webp' | 'png' | 'svg' = 'webp'): string {
   const baseUrl = getAssetBaseUrl();
   
-  // For specific broker IDs that have SVG files, use SVG format
+  // For specific broker IDs that have SVG files, use SVG format and correct naming
   const hasSvgFile = ['24', '50', '67'].includes(brokerId);
   const actualFormat = hasSvgFile ? 'svg' : format;
+  const filePrefix = hasSvgFile ? 'broker-' : '';
   
   switch (type) {
     case 'square':
-      return `${baseUrl}/logos/square/${brokerId}-128.${actualFormat}`;
+      return `${baseUrl}/logos/square/${filePrefix}${brokerId}-128.${actualFormat}`;
     case 'horizontal':
-      return `${baseUrl}/logos/horizontal/${brokerId}-horizontal.${actualFormat}`;
+      return `${baseUrl}/logos/horizontal/${filePrefix}${brokerId}-horizontal.${actualFormat}`;
     case 'favicon':
-      return `${baseUrl}/logos/favicon/${brokerId}-favicon.${actualFormat}`;
+      return `${baseUrl}/logos/favicon/${filePrefix}${brokerId}-favicon.${actualFormat}`;
     default:
       return ASSET_CONFIG.fallbackImage;
   }

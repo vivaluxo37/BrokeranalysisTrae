@@ -29,7 +29,7 @@ export function TrustFeaturesSection({ features }: TrustFeaturesSectionProps) {
 
   return (
     <section className="professional-section bg-professional-black">
-      <div className="professional-container">
+      <div className="content-container">
         <div className="text-center mb-16">
           <h2 className="text-section-title text-pure-white mb-6">
             Why Millions of Traders Rely on BrokerAnalysis

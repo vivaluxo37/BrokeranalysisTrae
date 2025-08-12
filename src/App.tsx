@@ -11,6 +11,7 @@ import {
   InteractiveBrokersReview,
   ToolsLandingPage
 } from './pages'
+import { BrokerRecommendationWizardPage } from './pages/BrokerRecommendationWizardPage'
 import BrokerCardIntegrationTest from './pages/test/BrokerCardIntegrationTest'
 import BrokerComparisonIntegrationTest from './pages/test/BrokerComparisonIntegrationTest'
 
@@ -152,6 +153,11 @@ import RiskManagementStrategies from './pages/education/articles/RiskManagementS
 // Import news pages
 import NewsHub from './pages/news/NewsHub'
 
+// Import authentication pages
+import SignInPage from './pages/auth/signin'
+import SignUpPage from './pages/auth/signup'
+import DashboardPage from './pages/dashboard'
+
 // Import country pages
 import UnitedStatesPage from './pages/countries/united-states'
 import UnitedKingdomPage from './pages/countries/united-kingdom'
@@ -173,11 +179,17 @@ function App() {
         {/* Main Pages */}
         <Route path="/" element={<HomePage />} />
         <Route path="/compare" element={<BrokerDirectoryPage />} />
-        <Route path="/compare/wizard" element={<BrokerWizardPage />} />
+        <Route path="/compare/wizard" element={<BrokerRecommendationWizardPage />} />
+        <Route path="/broker-recommendation-wizard" element={<BrokerRecommendationWizardPage />} />
         <Route path="/education" element={<EducationHub />} />
         <Route path="/news" element={<NewsHub />} />
         <Route path="/community" element={<ToolsLandingPage />} />
         <Route path="/about" element={<AboutPage />} />
+        
+        {/* Authentication Pages */}
+        <Route path="/auth/signin" element={<SignInPage />} />
+        <Route path="/auth/signup" element={<SignUpPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
         
         {/* Generic Broker Routes */}
         <Route path="/broker/:id" element={<BrokerProfilePage />} />

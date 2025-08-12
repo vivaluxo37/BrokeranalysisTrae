@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
 import { BrokerAnalysisHeader } from './BrokerAnalysisHeader'
 import { BrokerAnalysisFooter } from './BrokerAnalysisFooter'
+import { TrustBar } from './TrustBar'
 import { cn, skipLinkClasses } from '@/lib/style-utils'
 
 /**
@@ -58,7 +59,7 @@ export function Layout({
   totalTraders = 2500000,
   enableSkipLinks = true,
   skipLinks,
-  variant = 'default',
+  variant = 'full-width',
   responsivePadding = true,
 }: LayoutProps) {
   const location = useLocation()
@@ -163,10 +164,12 @@ export function Layout({
         </div>
       )}
 
-      {/* Header */}
+      {/* Header - Full Width */}
       {showHeader && (
-        <div role="banner">
-          {header || <BrokerAnalysisHeader totalTraders={totalTraders} />}
+        <div role="banner" className="w-full">
+          {header || (
+            <BrokerAnalysisHeader totalTraders={totalTraders} />
+          )}
         </div>
       )}
 
@@ -183,9 +186,9 @@ export function Layout({
         {children}
       </main>
 
-      {/* Footer */}
+      {/* Footer - Full Width */}
       {showFooter && (
-        <div role="contentinfo">
+        <div role="contentinfo" className="w-full">
           {footer || <BrokerAnalysisFooter />}
         </div>
       )}

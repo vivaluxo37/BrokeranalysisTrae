@@ -42,7 +42,7 @@ export function ProfessionalHeroSection({ heroData, trustIndicators }: Professio
         }}></div>
       </div>
 
-      <div className="professional-container relative z-10">
+      <div className="content-container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Floating elements - subtle */}
           <div className="absolute top-20 left-10 w-2 h-2 bg-light-grey rounded-full opacity-40 animate-pulse hidden lg:block"></div>
@@ -148,7 +148,7 @@ export function ProfessionalHeroSection({ heroData, trustIndicators }: Professio
 
       {/* Partner logos at bottom */}
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal-grey/50 to-transparent py-8">
-        <div className="professional-container">
+        <div className="content-container">
           <div className="flex justify-center items-center space-x-8 opacity-40">
             <div className="text-light-grey text-sm">Vercel</div>
             <div className="text-light-grey text-sm">loom</div>

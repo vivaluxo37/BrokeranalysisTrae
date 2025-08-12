@@ -45,6 +45,8 @@
   --color-off-white: var(--off-white);
   --color-subtle-accent: var(--subtle-accent);
   --color-accent-blue: var(--accent-blue);
+  --color-racing-red: var(--racing-red);
+  --color-dark-navy: var(--dark-navy);
 }
 
 :root {
@@ -80,6 +82,8 @@
   --off-white: #f5f5f5;
   --subtle-accent: #e5e5e5;
   --accent-blue: #3b82f6; /* Professional blue accent for navigation */
+  --racing-red: #dc2626; /* Racing red for Formula 1 theme */
+  --dark-navy: #0f172a; /* Dark navy for hero sections */
   
   /* Chart colors - monochromatic */
   --chart-1: #ffffff;
@@ -115,6 +119,7 @@
     overflow-x: hidden;
     font-weight: 400;
     line-height: 1.6;
+    font-size: 18px; /* Increased from default 16px for better readability */
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -191,6 +196,22 @@
   .border-accent-blue {
     border-color: var(--accent-blue);
   }
+
+  .bg-racing-red {
+    background-color: var(--racing-red);
+  }
+  
+  .text-racing-red {
+    color: var(--racing-red);
+  }
+  
+  .bg-dark-navy {
+    background-color: var(--dark-navy);
+  }
+  
+  .text-dark-navy {
+    color: var(--dark-navy);
+  }
   
   /* Professional Border Utilities */
   .border-charcoal-grey {
@@ -226,9 +247,9 @@
     color: var(--professional-black);
     border: none;
     border-radius: 6px;
-    padding: 12px 24px;
+    padding: 14px 28px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     transition: all 0.2s ease;
     cursor: pointer;
     display: inline-flex;
@@ -246,9 +267,9 @@
     color: var(--pure-white);
     border: 1px solid var(--medium-grey);
     border-radius: 6px;
-    padding: 12px 24px;
+    padding: 14px 28px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     transition: all 0.2s ease;
     cursor: pointer;
     display: inline-flex;
@@ -290,6 +311,55 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
+  }
+
+  /* Full-width layout utilities - Vercel-style */
+  .full-width-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .content-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .content-container-narrow {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .content-container-wide {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Responsive padding for full-width sections */
+  @media (min-width: 640px) {
+    .content-container,
+    .content-container-narrow,
+    .content-container-wide {
+      padding: 0 32px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .content-container,
+    .content-container-narrow,
+    .content-container-wide {
+      padding: 0 48px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .content-container,
+    .content-container-narrow,
+    .content-container-wide {
+      padding: 0 64px;
+    }
   }
   
   .professional-section {
@@ -401,9 +471,9 @@
     background: var(--charcoal-grey);
     border: 1px solid var(--medium-grey);
     border-radius: 6px;
-    padding: 12px 16px;
+    padding: 14px 18px;
     color: var(--pure-white);
-    font-size: 14px;
+    font-size: 16px;
     transition: all 0.2s ease;
   }
   
@@ -427,10 +497,10 @@
   .professional-nav-item {
     color: var(--light-grey);
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 10px 18px;
     border-radius: 4px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     transition: all 0.2s ease;
   }
   

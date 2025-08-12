@@ -18,6 +18,7 @@ import {
   TopRatedBrokersSection,
   TrustFeaturesSection
 } from '@/components/brokeranalysis'
+import { HomepageAuthIntegration } from '@/components/pages'
 import { Layout } from '@/components/layout/Layout'
 import { dataIntegrationService } from '@/services/dataIntegrationService'
 import { mockQuery } from '@/brokerAnalysisMockData'
@@ -47,9 +48,12 @@ export function HomePage() {
           trustLogos={mockQuery.trustLogos}
         />
 
+        {/* Authentication Integration Section */}
+        <HomepageAuthIntegration />
+
         {/* Market Overview Section */}
         <section className="professional-section bg-charcoal-grey">
-          <div className="professional-container">
+          <div className="content-container">
             <h2 className="text-section-title text-center mb-12 text-pure-white">
               Market Overview
             </h2>
@@ -80,7 +84,7 @@ export function HomePage() {
 
         {/* Trading Insights Section */}
         <section className="professional-section">
-          <div className="professional-container">
+          <div className="content-container">
             <h2 className="text-section-title text-center mb-12 text-pure-white">
               Trading Insights
             </h2>

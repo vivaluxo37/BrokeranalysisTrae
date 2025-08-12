@@ -22,7 +22,7 @@ export default function AppPreview() {
         <div className="min-h-screen bg-professional-black text-pure-white">
           {/* Header Preview */}
           <section className="professional-section">
-            <div className="professional-container">
+            <div className="content-container">
               <h1 className="text-section-title mb-8">BrokerAnalysis - Fixed Consistent Styling</h1>
               
               {/* Logo Showcase */}

@@ -5,6 +5,7 @@ import { PageLayout } from '@/components/layout';
 import { ProfessionalCard } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import TopStories from '@/components/widgets/news/TopStories';
 
 interface NewsArticle {
   id: string;

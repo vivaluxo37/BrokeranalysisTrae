@@ -11,7 +11,7 @@ function NavigationPreviewApp() {
           <BrokerAnalysisHeader totalTraders={2500000} />
           
           {/* Main content area to demonstrate the navigation */}
-          <main id="main-content" className="professional-container professional-section">
+          <main id="main-content" className="content-container professional-section">
             <div className="text-center space-y-8">
               <h1 className="text-hero text-pure-white">
                 Enhanced Navigation System

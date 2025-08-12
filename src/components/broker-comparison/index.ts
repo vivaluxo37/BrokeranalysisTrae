@@ -1,0 +1,11 @@
+// SEO-first broker comparison components
+export { SEOHeader } from './SEOHeader'
+export { SEOHero } from './SEOHero'
+export { TrustStrip } from './TrustStrip'
+export { FeaturedBrokers } from './FeaturedBrokers'
+export { BrokerSearch } from './BrokerSearch'
+export { MethodologySection } from './MethodologySection'
+export { PopularComparisons } from './PopularComparisons'
+export { LatestReviews } from './LatestReviews'
+export { TestimonialsSection } from './TestimonialsSection'
+export { SEOFooter } from './SEOFooter'

@@ -59,13 +59,13 @@ export function BrokerAnalysisFooter() {
   return (
     <footer 
       id="footer"
-      className="bg-charcoal-grey border-t border-medium-grey mt-24"
+      className="w-full bg-charcoal-grey border-t border-medium-grey mt-24"
       role="contentinfo"
       aria-label="Site footer"
       tabIndex={-1}
     >
       {/* Main Footer Content */}
-      <div className="professional-container py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2 lg:col-span-2">
@@ -140,8 +140,8 @@ export function BrokerAnalysisFooter() {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-medium-grey">
-        <div className="professional-container py-6">
+      <div className="w-full border-t border-medium-grey">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Copyright */}
             <div className="text-light-grey text-sm mb-4 md:mb-0" role="contentinfo">

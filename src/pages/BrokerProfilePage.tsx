@@ -120,7 +120,7 @@ export function BrokerProfilePage() {
     return (
       <Layout>
         <div className="min-h-screen bg-professional-black">
-          <div className="professional-container py-8">
+          <div className="content-container py-8">
             <div className="professional-card p-8 mb-8">
               <div className="animate-pulse">
                 <div className="flex items-center mb-6">
@@ -154,7 +154,7 @@ export function BrokerProfilePage() {
     return (
       <Layout>
         <div className="min-h-screen bg-professional-black">
-          <div className="professional-container py-8">
+          <div className="content-container py-8">
             <div className="professional-card p-8 text-center">
               <AlertCircle className="w-16 h-16 text-red-400 mx-auto mb-4" />
               <h1 className="text-2xl font-bold text-pure-white mb-2">
@@ -179,7 +179,7 @@ export function BrokerProfilePage() {
     return (
       <Layout>
         <div className="min-h-screen bg-professional-black">
-          <div className="professional-container py-8">
+          <div className="content-container py-8">
             <div className="professional-card p-8 text-center">
               <AlertCircle className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
               <h1 className="text-2xl font-bold text-pure-white mb-2">
@@ -209,7 +209,7 @@ export function BrokerProfilePage() {
             description={`Detailed review of ${brokerName}. Read expert analysis, user reviews, fees, and regulation information.`}
           />
 
-        <div className="professional-container py-8">
+        <div className="content-container py-8">
           {/* Broker Header */}
           <div className="professional-card p-8 mb-8">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between">
