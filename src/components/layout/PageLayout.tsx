@@ -1,12 +1,14 @@
 import { Suspense, Component } from 'react'
 import type { ReactNode, ErrorInfo } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Layout, LayoutProps } from './Layout'
-import { Breadcrumb, BreadcrumbItem } from './Breadcrumb'
+import { Layout } from './Layout'
+import type { LayoutProps } from './Layout'
+import { Breadcrumb } from './Breadcrumb'
+import type { BreadcrumbItem } from './Breadcrumb'
 import { PageHeader } from './PageHeader'
 import { PageLoadingState } from './PageLoadingState'
 import { PageErrorFallback } from './PageErrorFallback'
-import { StructuredData } from '@/components/common/StructuredData'
+import { WebsiteStructuredData, OrganizationStructuredData, FAQStructuredData } from '@/components/common/StructuredData'
 import { cn, containerClasses, sectionClasses } from '@/lib/style-utils'
 
 /**
@@ -288,7 +290,16 @@ export function PageLayout({
       </Helmet>
 
       {/* Structured Data */}
-      {structuredData && <StructuredData data={defaultStructuredData} />}
+      <WebsiteStructuredData />
+      <OrganizationStructuredData />
+      <FAQStructuredData />
+      {structuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            ...defaultStructuredData,
+          })}
+        </script>
+      )}
 
       {/* Page Content */}
       {renderPageContent()}

@@ -138,6 +138,16 @@ import BrokerageFeeCalculatorPage from './pages/tools/brokerage-fee-calculator'
 import SpreadComparisonPage from './pages/tools/spread-comparison'
 import LeverageCalculatorPage from './pages/tools/leverage-calculator'
 
+// Import new trading tools
+import { EconomicCalendar } from './pages/tools/EconomicCalendar'
+import { PositionCalculator } from './pages/tools/PositionCalculator'
+import { PipCalculator } from './pages/tools/PipCalculator'
+import { ProfitCalculator } from './pages/tools/ProfitCalculator'
+import { MarginCalculator } from './pages/tools/MarginCalculator'
+import { SwapCalculator } from './pages/tools/SwapCalculator'
+import { CorrelationMatrix } from './pages/tools/CorrelationMatrix'
+import { VolatilityCalculator } from './pages/tools/VolatilityCalculator'
+
 // Import education pages
 import EducationHub from './pages/education/EducationHub'
 import TradingGlossary from './pages/education/TradingGlossary'
@@ -169,6 +179,7 @@ function App() {
       <Routes>
         {/* Main Pages */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/brokers" element={<BrokerDirectoryPage />} />
         <Route path="/compare" element={<BrokerDirectoryPage />} />
         <Route path="/compare/wizard" element={<BrokerWizardPage />} />
         <Route path="/education" element={<EducationHub />} />
@@ -305,6 +316,16 @@ function App() {
         <Route path="/tools/brokerage-fee-calculator" element={<BrokerageFeeCalculatorPage />} />
         <Route path="/tools/spread-comparison" element={<SpreadComparisonPage />} />
         <Route path="/tools/leverage-calculator" element={<LeverageCalculatorPage />} />
+        
+        {/* New Trading Tools */}
+        <Route path="/tools/economic-calendar" element={<EconomicCalendar />} />
+        <Route path="/tools/position-calculator" element={<PositionCalculator />} />
+        <Route path="/tools/pip-calculator" element={<PipCalculator />} />
+        <Route path="/tools/profit-calculator" element={<ProfitCalculator />} />
+        <Route path="/tools/margin-calculator" element={<MarginCalculator />} />
+        <Route path="/tools/swap-calculator" element={<SwapCalculator />} />
+        <Route path="/tools/correlation-matrix" element={<CorrelationMatrix />} />
+        <Route path="/tools/volatility-calculator" element={<VolatilityCalculator />} />
         
         {/* Education Pages */}
         <Route path="/education/trading-glossary" element={<TradingGlossary />} />

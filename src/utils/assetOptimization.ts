@@ -45,14 +45,19 @@ export function getAssetBaseUrl(): string {
 export function getBrokerAssetPaths(brokerId: string): BrokerAssetPaths {
   const baseUrl = getAssetBaseUrl();
   
+  // Special handling for broker IDs that have SVG files with "broker-" prefix
+  const svgBrokerIds = ['24', '50', '67'];
+  const filePrefix = svgBrokerIds.includes(brokerId) ? 'broker-' : '';
+  const fileExtension = svgBrokerIds.includes(brokerId) ? 'svg' : 'webp';
+  
   return {
     square: {
-      small: `${baseUrl}/logos/square/${brokerId}-64.webp`,
-      medium: `${baseUrl}/logos/square/${brokerId}-128.webp`,
-      large: `${baseUrl}/logos/square/${brokerId}-256.webp`
+      small: `${baseUrl}/logos/square/${filePrefix}${brokerId}-64.${fileExtension}`,
+      medium: `${baseUrl}/logos/square/${filePrefix}${brokerId}-128.${fileExtension}`,
+      large: `${baseUrl}/logos/square/${filePrefix}${brokerId}-256.${fileExtension}`
     },
-    horizontal: `${baseUrl}/logos/horizontal/${brokerId}-horizontal.webp`,
-    favicon: `${baseUrl}/logos/favicon/${brokerId}-favicon.webp`
+    horizontal: `${baseUrl}/logos/horizontal/${filePrefix}${brokerId}-horizontal.${fileExtension}`,
+    favicon: `${baseUrl}/logos/favicon/${filePrefix}${brokerId}-favicon.${fileExtension}`
   };
 }
 

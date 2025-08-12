@@ -2,7 +2,7 @@
   {
     "id": "interactive-brokers",
     "name": "Interactive Brokers",
-    "logo": "https://img.brokersview.com/prod/image/interactive-brokers-logo.png",
+    "logo": "/assets/brokers/logos/interactive-brokers.png",
     "rating": 4.8,
     "reviewCount": 1250,
     "regulators": [

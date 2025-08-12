@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-import { BreadcrumbItem } from '@/components/layout/Breadcrumb'
+import type { BreadcrumbItem } from '@/components/layout/Breadcrumb'
 
 /**
  * Route Configuration for Breadcrumbs

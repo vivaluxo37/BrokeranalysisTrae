@@ -31,7 +31,7 @@ export const mockQuery = {
     {
       id: 'broker-1',
       name: 'IG Markets',
-      logo: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=100&h=100&fit=crop&crop=center',
+      logo: '/assets/brokers/logos/ig-markets.png',
       rating: 4.8,
       reviewCount: 12500,
       avgSpread: 0.6,
@@ -44,7 +44,7 @@ export const mockQuery = {
     {
       id: 'broker-2', 
       name: 'XM Global',
-      logo: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=100&h=100&fit=crop&crop=center',
+      logo: '/assets/brokers/logos/xm-global.png',
       rating: 4.6,
       reviewCount: 8900,
       avgSpread: 1.0,
@@ -56,21 +56,21 @@ export const mockQuery = {
     },
     {
       id: 'broker-3',
-      name: 'Coinbase Pro', 
-      logo: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=100&h=100&fit=crop&crop=center',
+      name: 'Interactive Brokers', 
+      logo: '/assets/brokers/logos/interactive-brokers.png',
       rating: 4.4,
       reviewCount: 15600,
-      avgSpread: 0.5,
-      minDeposit: 1,
-      leverage: 3,
-      regulationBadges: ['SEC'],
+      avgSpread: 0.1,
+      minDeposit: 0,
+      leverage: 50,
+      regulationBadges: ['SEC', 'FINRA'],
       featured: true,
-      assetClasses: [AssetClass.CRYPTO]
+      assetClasses: [AssetClass.STOCKS, AssetClass.OPTIONS, AssetClass.FUTURES]
     },
     {
       id: 'broker-4',
       name: 'Plus500',
-      logo: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=100&h=100&fit=crop&crop=center',
+      logo: '/assets/brokers/logos/plus500.png',
       rating: 4.2,
       reviewCount: 9800,
       avgSpread: 0.8,

@@ -6,7 +6,6 @@ import { AlertCircle, Star } from 'lucide-react'
 import type { Broker } from '@/types/brokerTypes'
 import { RegulatorType } from '@/enums'
 import { CollectionManager } from '@/utils/SafeCollection'
-import { useBrokerAsset } from '@/hooks/useBrokerAssets'
 import { getBrokerRating } from '@/data/brokers/brokerRatings'
 
 interface BrokerCardProps {
@@ -34,13 +33,10 @@ export function BrokerCard({ broker }: BrokerCardProps) {
     ), [broker.regulators]
   );
   
-  // Use enhanced broker asset loading with proper fallbacks
-  const { isLoading: logoLoading, isError: logoError, imageUrl: logoUrl, fallbackUrl } = useBrokerAsset({
-    brokerId: broker.id,
-    type: 'square',
-    size: 'medium',
-    preload: true
-  });
+  // Use direct logo URL from broker data
+  const logoUrl = broker.logo;
+  const logoLoading = false;
+  const logoError = false;
   
   // Memoized formatting functions for performance
   const formatMinDeposit = useCallback((amount: number): string => {
