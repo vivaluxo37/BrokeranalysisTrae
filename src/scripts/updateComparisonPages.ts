@@ -192,7 +192,7 @@ function generateComparisonPageContent(config: any, brokers: BrokerData[]): stri
   const selectedBrokers = brokers.slice(0, 15);
   
   return `import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Star, CheckCircle, TrendingUp, Award, Filter, ArrowRight, ExternalLink } from 'lucide-react';
 
 interface Broker {

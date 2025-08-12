@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { ArrowRight, Award, CheckCircle, ExternalLink, Filter, Star, TrendingUp } from 'lucide-react';
 
 interface Broker {
@@ -460,7 +460,7 @@ const topBrokers: Broker[] = [
   }
 ];
 
-const bestbeginnerbrokersPage: React.FC = () => {
+const BestBeginnerBrokersPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<'rating' | 'minDeposit' | 'spreads'>('rating');
   const [showFilters, setShowFilters] = useState(false);
 
@@ -742,4 +742,4 @@ const bestbeginnerbrokersPage: React.FC = () => {
   );
 };
 
-export default bestbeginnerbrokersPage;
+export default BestBeginnerBrokersPage;

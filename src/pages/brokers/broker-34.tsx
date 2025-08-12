@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { CheckCircle, DollarSign, ExternalLink, Globe, Mail, Phone, Shield, Star, TrendingUp } from 'lucide-react';
 
 const ICMarketsReview: React.FC = () => {

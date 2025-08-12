@@ -446,7 +446,7 @@ Previous attempt had these issues: ${issues.join(', ')}. Please address these co
 
   private generateReactComponent(slug: string, review: BrokerReviewContent): string {
     return `import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Star, CheckCircle, XCircle, TrendingUp, Shield, Phone, BookOpen } from 'lucide-react';
 
 const ${this.toPascalCase(slug)}Review: React.FC = () => {

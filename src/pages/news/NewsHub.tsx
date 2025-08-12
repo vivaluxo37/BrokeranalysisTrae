@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { BookOpen, Building, Calendar, Clock, Filter, Search, Shield, TrendingUp, BarChart3, Eye, Share2, Bookmark, ArrowUpRight, Tag } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
 import { ProfessionalCard } from '@/components/ui/card';
@@ -368,165 +368,12 @@ const NewsHub: React.FC = () => {
           </div>
         </div>
 
-        {/* Trending Topics Sidebar */}
+        {/* News Content and Sidebar */}
         <div className="grid lg:grid-cols-4 gap-8">
+          {/* Top Stories News Widget */}
           <div className="lg:col-span-3">
-            {/* Featured Articles */}
-            {selectedCategory === 'All' && (
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Stories</h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {featuredArticles.map((article, index) => (
-                    <ProfessionalCard key={article.id} variant="featured" className="hover:shadow-lg transition-shadow">
-                      <div className="aspect-video bg-gray-200 rounded-t-lg overflow-hidden">
-                        <img
-                          src={article.imageUrl}
-                          alt={article.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
-                            {article.category}
-                          </span>
-                          {article.trending && (
-                            <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                              <TrendingUp className="w-3 h-3" />
-                              Trending
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
-                          {article.title}
-                        </h3>
-                        <p className="text-gray-600 mb-4 text-sm line-clamp-2">
-                          {article.excerpt}
-                        </p>
-                        <div className="flex items-center justify-between text-xs text-gray-500">
-                          <div className="flex items-center gap-3">
-                            <span className="flex items-center gap-1">
-                              <Calendar className="w-3 h-3" />
-                              {formatDate(article.publishDate)}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Clock className="w-3 h-3" />
-                              {article.readTime} min
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Eye className="w-3 h-3" />
-                              {article.views?.toLocaleString()}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </ProfessionalCard>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* All Articles */}
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                {selectedCategory === 'All' ? 'Latest News' : selectedCategory}
-              </h2>
-              
-              <div className={viewMode === 'grid' ? 'grid md:grid-cols-2 gap-6' : 'space-y-6'}>
-                {filteredArticles.map((article, index) => (
-                  <ProfessionalCard key={article.id} variant="default" className="hover:shadow-lg transition-shadow">
-                    <div className={viewMode === 'list' ? 'flex gap-4' : ''}>
-                      <div className={viewMode === 'list' ? 'w-48 flex-shrink-0' : 'aspect-video mb-4'}>
-                        <div className="bg-gray-200 rounded-lg overflow-hidden h-full">
-                          <img
-                            src={article.imageUrl}
-                            alt={article.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="p-6 flex-1">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
-                            {article.category}
-                          </span>
-                          {article.featured && (
-                            <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">
-                              Featured
-                            </span>
-                          )}
-                          {article.trending && (
-                            <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                              <TrendingUp className="w-3 h-3" />
-                              Trending
-                            </span>
-                          )}
-                        </div>
-                        
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">
-                          {article.title}
-                        </h3>
-                        <p className="text-gray-600 mb-4 text-sm">
-                          {article.excerpt}
-                        </p>
-                        
-                        <div className="flex flex-wrap gap-1 mb-4">
-                          {article.tags.slice(0, 3).map((tag, tagIndex) => (
-                            <span
-                              key={tagIndex}
-                              className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center gap-1"
-                            >
-                              <Tag className="w-3 h-3" />
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4 text-xs text-gray-500">
-                            <span className="flex items-center gap-1">
-                              <Calendar className="w-3 h-3" />
-                              {formatDate(article.publishDate)}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Clock className="w-3 h-3" />
-                              {article.readTime} min
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Eye className="w-3 h-3" />
-                              {article.views?.toLocaleString()}
-                            </span>
-                          </div>
-                          
-                          <div className="flex items-center gap-2">
-                            <Button variant="ghost" size="sm">
-                              <Share2 className="w-4 h-4" />
-                            </Button>
-                            <Button variant="ghost" size="sm">
-                              <Bookmark className={`w-4 h-4 ${article.bookmarked ? 'fill-current text-blue-600' : ''}`} />
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </ProfessionalCard>
-                ))}
-              </div>
-
-              {filteredArticles.length === 0 && (
-                <div className="text-center py-16">
-                  <TrendingUp className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles found</h3>
-                  <p className="text-gray-500 mb-4">Try adjusting your search or filter criteria.</p>
-                  <Button onClick={() => {
-                    setSearchTerm('');
-                    setSelectedCategory('All');
-                  }}>
-                    Clear Filters
-                  </Button>
-                </div>
-              )}
+            <div className="mt-8" style={{ height: '600px', width: '100%' }}>
+              <TopStories />
             </div>
           </div>
 

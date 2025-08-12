@@ -296,10 +296,18 @@ export function PageLayout({
       {structuredData && (
         <script type="application/ld+json">
           {JSON.stringify({
+<<<<<<< HEAD
+=======
+            '@context': 'https://schema.org',
+>>>>>>> 01603659f5b14843bed62a098719a11b364e6eab
             ...defaultStructuredData,
           })}
         </script>
       )}
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 01603659f5b14843bed62a098719a11b364e6eab
 
       {/* Page Content */}
       {renderPageContent()}

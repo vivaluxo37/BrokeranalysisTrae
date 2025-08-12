@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Building, Clock, HelpCircle, Mail, MapPin, MessageSquare, Phone, Send } from 'lucide-react';
 
 const ContactUs: React.FC = () => {

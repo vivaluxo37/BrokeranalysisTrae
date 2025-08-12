@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { ArrowLeft, ArrowRight, BarChart3, CheckCircle, ChevronRight, DollarSign, Shield, TrendingUp } from 'lucide-react';
 
 interface QuizQuestion {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Award, Globe, Shield, Target, TrendingUp, Users } from 'lucide-react';
 
 const AboutUs: React.FC = () => {

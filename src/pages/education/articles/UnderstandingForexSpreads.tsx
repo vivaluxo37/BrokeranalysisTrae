@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { AlertCircle, BarChart3, Calculator, Clock, DollarSign, Target, TrendingUp, Zap } from 'lucide-react';
 
 const UnderstandingForexSpreads: React.FC = () => {

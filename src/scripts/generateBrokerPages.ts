@@ -47,7 +47,7 @@ function generateBrokerPageContent(broker: BrokerData): string {
   ).join('');
 
   return `import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Star, CheckCircle, Shield, TrendingUp, DollarSign, Globe, Phone, Mail, ExternalLink } from 'lucide-react';
 
 const ${broker.name.replace(/[^a-zA-Z0-9]/g, '')}Review: React.FC = () => {

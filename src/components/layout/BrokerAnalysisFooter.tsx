@@ -59,16 +59,16 @@ export function BrokerAnalysisFooter() {
   return (
     <footer 
       id="footer"
-      className="bg-charcoal-grey border-t border-medium-grey"
+      className="bg-charcoal-grey border-t border-medium-grey mt-24"
       role="contentinfo"
       aria-label="Site footer"
       tabIndex={-1}
     >
       {/* Main Footer Content */}
-      <div className="professional-container py-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+      <div className="professional-container py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Logo and Description */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-1">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2">
             <div className="mb-4">
               <BrokerAnalysisLogo 
                 size="md" 

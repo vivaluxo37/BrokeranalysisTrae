@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { AlertTriangle, BarChart3, Calculator, DollarSign, Download, Info, TrendingUp } from 'lucide-react';
 
 interface LeverageCalculation {
@@ -453,6 +453,10 @@ const LeverageCalculator: React.FC = () => {
                   <p className="text-gray-500">Fill in the form on the left to calculate leverage effects and risk metrics.</p>
                 </div>
               )}
+
+              <div className="mt-8">
+                <AdvancedChart symbol={symbol} />
+              </div>
             </div>
           </div>
 

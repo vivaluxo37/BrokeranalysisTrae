@@ -22,10 +22,10 @@ export function BrokerAnalysisLogo({
 
   const LogoIcon = () => (
     <div className="relative">
-      <div className="bg-gradient-to-br from-brokeranalysis-accent to-rating-excellent rounded-xl p-2 shadow-lg">
+      <div className="bg-pure-white rounded-xl p-2 shadow-lg">
         <div className="relative">
-          <BarChart3 className={`${sizes.icon} text-white`} />
-          <TrendingUp className="w-3 h-3 text-white absolute -top-1 -right-1 bg-brokeranalysis-accent rounded-full p-0.5" />
+          <BarChart3 className={`${sizes.icon} text-professional-black`} />
+          <TrendingUp className="w-3 h-3 text-professional-black absolute -top-1 -right-1 bg-pure-white rounded-full p-0.5 border border-professional-black" />
         </div>
       </div>
     </div>
@@ -33,10 +33,10 @@ export function BrokerAnalysisLogo({
 
   const LogoText = () => (
     <div className="flex flex-col">
-      <span className={`${sizes.text} font-bold text-luminescent-white leading-tight`}>
-        Broker<span className="text-brokeranalysis-accent">Analysis</span>
+      <span className={`${sizes.text} font-bold text-pure-white leading-tight`}>
+        Broker<span className="text-light-grey">Analysis</span>
       </span>
-      <span className="text-xs text-starfield-gray font-medium tracking-wide">
+      <span className="text-xs text-light-grey font-medium tracking-wide">
         TRUSTED BROKER REVIEWS
       </span>
     </div>

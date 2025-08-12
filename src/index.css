@@ -44,6 +44,7 @@
   --color-pure-white: var(--pure-white);
   --color-off-white: var(--off-white);
   --color-subtle-accent: var(--subtle-accent);
+  --color-accent-blue: var(--accent-blue);
 }
 
 :root {
@@ -78,6 +79,7 @@
   --pure-white: #ffffff;
   --off-white: #f5f5f5;
   --subtle-accent: #e5e5e5;
+  --accent-blue: #3b82f6; /* Professional blue accent for navigation */
   
   /* Chart colors - monochromatic */
   --chart-1: #ffffff;
@@ -176,6 +178,18 @@
   
   .text-off-white {
     color: var(--off-white);
+  }
+  
+  .text-accent-blue {
+    color: var(--accent-blue);
+  }
+  
+  .bg-accent-blue {
+    background-color: var(--accent-blue);
+  }
+  
+  .border-accent-blue {
+    border-color: var(--accent-blue);
   }
   
   /* Professional Border Utilities */

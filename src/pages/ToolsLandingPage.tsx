@@ -234,6 +234,40 @@ export function ToolsLandingPage() {
         </section>
 
         <div className="max-w-7xl mx-auto px-6 pb-20">
+          {/* New section for Heatmaps and Screeners */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">Market Insights</h2>
+            <Tabs defaultValue="heatmaps" className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="heatmaps">Heatmaps</TabsTrigger>
+                <TabsTrigger value="screeners">Screeners</TabsTrigger>
+              </TabsList>
+              <TabsContent value="heatmaps">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                  <div style={{ height: '400px', width: '100%' }}>
+                    <StockHeatmap />
+                  </div>
+                  <div style={{ height: '400px', width: '100%' }}>
+                    <CryptoHeatmap />
+                  </div>
+                  <div style={{ height: '400px', width: '100%' }}>
+                    <ForexHeatmap />
+                  </div>
+                </div>
+              </TabsContent>
+              <TabsContent value="screeners">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  <div style={{ height: '500px', width: '100%' }}>
+                    <StockScreener />
+                  </div>
+                  <div style={{ height: '500px', width: '100%' }}>
+                    <CryptoScreener />
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </div>
+
           {/* Search and Filter */}
           <Card className="mb-12 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700">
             <CardContent className="p-6">
@@ -381,6 +415,14 @@ export function ToolsLandingPage() {
                 {filteredTools.map((tool, index) => {
                   const IconComponent = getIcon(tool.icon)
 
+                  if (tool.id === 'economic-calendar') {
+                    return (
+                      <div key={tool.id} className="col-span-full"> {/* Make it span full width */}
+                        <EconomicCalendar />
+                      </div>
+                    );
+                  }
+
                   return (
                     <Link key={tool.id} to={`/tools/${tool.id}`} className="block group">
                       <Card className="h-full bg-gradient-to-br from-gray-800/30 to-gray-900/30 border-gray-700 hover:border-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gray-900/20">
@@ -445,3 +487,5 @@ export function ToolsLandingPage() {
     </Layout>
   )
 }
+
+export default ToolsLandingPage

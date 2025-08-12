@@ -405,6 +405,7 @@ export function BrokerProfilePage() {
             </TabsList>
 
             {/* Overview Tab */}
+            {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Key Features */}
@@ -466,6 +467,11 @@ export function BrokerProfilePage() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Add Advanced Chart widget */}
+              <div style={{ height: '500px', width: '100%' }}>
+                <AdvancedChart symbol="NASDAQ:AAPL" /> {/* Use a default symbol or dynamically get one from broker data */}
               </div>
 
               {/* Description */}

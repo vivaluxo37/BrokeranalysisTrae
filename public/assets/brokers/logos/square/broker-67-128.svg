@@ -1,0 +1,44 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" rx="8" fill="url(#gradient)"/>
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Building/Financial Icon -->
+  <g transform="translate(32, 32)">
+    <!-- Main building -->
+    <rect x="16" y="16" width="32" height="48" fill="white" opacity="0.9" rx="2"/>
+    
+    <!-- Windows -->
+    <rect x="20" y="24" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    <rect x="28" y="24" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    <rect x="36" y="24" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    
+    <rect x="20" y="32" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    <rect x="28" y="32" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    <rect x="36" y="32" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    
+    <rect x="20" y="40" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    <rect x="28" y="40" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    <rect x="36" y="40" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    
+    <rect x="20" y="48" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    <rect x="28" y="48" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    <rect x="36" y="48" width="4" height="4" fill="#10B981" opacity="0.7"/>
+    
+    <!-- Side buildings -->
+    <rect x="4" y="28" width="10" height="36" fill="white" opacity="0.7" rx="1"/>
+    <rect x="50" y="24" width="10" height="40" fill="white" opacity="0.7" rx="1"/>
+    
+    <!-- Chart/Graph overlay -->
+    <polyline points="8,50 16,44 24,46 32,38 40,40 48,34 56,36" 
+              stroke="#3B82F6" stroke-width="2" fill="none" opacity="0.8"/>
+    
+    <!-- Dollar sign -->
+    <text x="32" y="12" font-family="Arial, sans-serif" font-size="8" font-weight="bold" 
+          fill="white" text-anchor="middle">$</text>
+  </g>
+</svg>

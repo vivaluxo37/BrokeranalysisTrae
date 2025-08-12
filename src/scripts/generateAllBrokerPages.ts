@@ -155,7 +155,7 @@ const generateBrokerData = (brokerSlug: string): BrokerPageData => {
 
 const generateBrokerPageContent = (broker: BrokerPageData): string => {
   return `import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Star, Shield, TrendingUp, DollarSign, Globe, Award } from 'lucide-react';
 
 const ${broker.name.replace(/[^a-zA-Z0-9]/g, '')}Review: React.FC = () => {
@@ -408,7 +408,7 @@ const generateAllBrokerPages = async (): Promise<void> => {
   
   // Update index file
   const indexContent = `import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Link } from 'react-router-dom';
 import { Star, TrendingUp, Shield } from 'lucide-react';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { Clock, Eye, FileText, Globe, Lock, Mail, Phone, Shield, Search, ChevronRight, Download, Print } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
 import { ProfessionalCard } from '@/components/ui/card';

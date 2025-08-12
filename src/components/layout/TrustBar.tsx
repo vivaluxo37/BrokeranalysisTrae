@@ -1,12 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Globe, User } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import { LanguageSwitcher } from '@/components/common'
 
 interface TrustBarProps {
   totalTraders: number
@@ -31,49 +24,21 @@ export function TrustBar({ totalTraders }: TrustBarProps) {
 
           {/* Right: Language & Auth */}
           <div className="flex items-center space-x-4">
-            {/* Language Selector */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-light-grey hover:text-pure-white text-sm h-8"
-                >
-                  <Globe className="w-4 h-4 mr-1" />
-                  English
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent 
-                align="end" 
-                className="bg-charcoal-grey border-medium-grey"
-              >
-                <DropdownMenuItem className="text-pure-white hover:bg-medium-grey/20">
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem className="text-pure-white hover:bg-medium-grey/20">
-                  Español
-                </DropdownMenuItem>
-                <DropdownMenuItem className="text-pure-white hover:bg-medium-grey/20">
-                  Français
-                </DropdownMenuItem>
-                <DropdownMenuItem className="text-pure-white hover:bg-medium-grey/20">
-                  Deutsch
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {/* Language Selector with Top 15 Languages */}
+            <LanguageSwitcher variant="desktop" />
 
             <div className="h-4 w-px bg-medium-grey"></div>
 
             {/* Auth Links */}
             <Link 
               to="/signin" 
-              className="text-light-grey hover:text-pure-white transition-colors"
+              className="text-light-grey hover:text-pure-white transition-colors text-sm"
             >
               Sign In
             </Link>
             <Link 
               to="/signup" 
-              className="text-pure-white hover:text-light-grey transition-colors font-medium"
+              className="text-pure-white hover:text-light-grey transition-colors font-medium text-sm"
             >
               Join Free
             </Link>

@@ -1,0 +1,40 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E40AF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="128" height="128" rx="16" fill="url(#grad1)"/>
+  
+  <!-- Building icon -->
+  <rect x="32" y="48" width="24" height="48" fill="white" opacity="0.9"/>
+  <rect x="72" y="32" width="24" height="64" fill="white" opacity="0.9"/>
+  
+  <!-- Windows -->
+  <rect x="36" y="52" width="4" height="4" fill="#1E40AF"/>
+  <rect x="44" y="52" width="4" height="4" fill="#1E40AF"/>
+  <rect x="36" y="60" width="4" height="4" fill="#1E40AF"/>
+  <rect x="44" y="60" width="4" height="4" fill="#1E40AF"/>
+  <rect x="36" y="68" width="4" height="4" fill="#1E40AF"/>
+  <rect x="44" y="68" width="4" height="4" fill="#1E40AF"/>
+  
+  <rect x="76" y="36" width="4" height="4" fill="#1E40AF"/>
+  <rect x="84" y="36" width="4" height="4" fill="#1E40AF"/>
+  <rect x="76" y="44" width="4" height="4" fill="#1E40AF"/>
+  <rect x="84" y="44" width="4" height="4" fill="#1E40AF"/>
+  <rect x="76" y="52" width="4" height="4" fill="#1E40AF"/>
+  <rect x="84" y="52" width="4" height="4" fill="#1E40AF"/>
+  <rect x="76" y="60" width="4" height="4" fill="#1E40AF"/>
+  <rect x="84" y="60" width="4" height="4" fill="#1E40AF"/>
+  
+  <!-- Chart line -->
+  <polyline points="16,80 32,72 48,76 64,68 80,72 96,64 112,68" 
+            stroke="white" stroke-width="3" fill="none" opacity="0.8"/>
+  
+  <!-- Dollar sign -->
+  <text x="64" y="112" font-family="Arial, sans-serif" font-size="20" font-weight="bold" 
+        text-anchor="middle" fill="white" opacity="0.9">$</text>
+</svg>

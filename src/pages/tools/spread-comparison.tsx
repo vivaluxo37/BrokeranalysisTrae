@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { AlertCircle, BarChart3, Clock, Download, RefreshCw, TrendingUp } from 'lucide-react';
 
 interface SpreadData {
@@ -415,6 +415,7 @@ const SpreadComparisonTool: React.FC = () => {
           </div>
 
           {/* Best Spreads Summary */}
+          {/* Best Spreads Summary */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
             {getFilteredInstruments().slice(0, 6).map(instrument => {
               const bestSpread = getBestSpread(instrument.symbol);
@@ -442,6 +443,11 @@ const SpreadComparisonTool: React.FC = () => {
                 </div>
               );
             })}
+          </div>
+
+          {/* Add Forex Cross Rates widget */}
+          <div className="mt-8" style={{ height: '400px', width: '100%' }}>
+            <ForexCrossRates />
           </div>
 
           {/* Information Panel */}

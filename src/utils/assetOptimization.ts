@@ -168,16 +168,20 @@ export async function validateAssetAccessibility(): Promise<{
 /**
  * Get fallback image URL with format preference
  */
-export function getFallbackImageUrl(brokerId: string, type: 'square' | 'horizontal' | 'favicon', format: 'webp' | 'png' = 'webp'): string {
+export function getFallbackImageUrl(brokerId: string, type: 'square' | 'horizontal' | 'favicon', format: 'webp' | 'png' | 'svg' = 'webp'): string {
   const baseUrl = getAssetBaseUrl();
+  
+  // For specific broker IDs that have SVG files, use SVG format
+  const hasSvgFile = ['24', '50', '67'].includes(brokerId);
+  const actualFormat = hasSvgFile ? 'svg' : format;
   
   switch (type) {
     case 'square':
-      return `${baseUrl}/logos/square/${brokerId}-128.${format}`;
+      return `${baseUrl}/logos/square/${brokerId}-128.${actualFormat}`;
     case 'horizontal':
-      return `${baseUrl}/logos/horizontal/${brokerId}-horizontal.${format}`;
+      return `${baseUrl}/logos/horizontal/${brokerId}-horizontal.${actualFormat}`;
     case 'favicon':
-      return `${baseUrl}/logos/favicon/${brokerId}-favicon.${format}`;
+      return `${baseUrl}/logos/favicon/${brokerId}-favicon.${actualFormat}`;
     default:
       return ASSET_CONFIG.fallbackImage;
   }

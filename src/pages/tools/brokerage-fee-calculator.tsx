@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { BarChart3, Calculator, DollarSign, Download, Info, TrendingUp } from 'lucide-react';
 
 interface BrokerFeeStructure {
@@ -475,6 +475,13 @@ const BrokerageFeeCalculator: React.FC = () => {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Live Market Data Widget */}
+                <div className="mt-8">
+                  {inputs.assetType === 'forex' && <ForexHeatmap />}
+                  {inputs.assetType === 'stocks' && <StockHeatmap />}
+                  {inputs.assetType === 'crypto' && <CryptoHeatmap />}
                 </div>
               </div>
 

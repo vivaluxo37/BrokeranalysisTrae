@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { BookOpen, Clock, Filter, Search, Star, ArrowLeft, CheckCircle } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
 import { ProfessionalCard } from '@/components/ui/card';

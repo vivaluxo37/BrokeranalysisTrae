@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
+import { HelmetProvider } from '@dr.pogodin/react-helmet'
 import { NavigationProvider } from '@/contexts/NavigationContext'
 import { 
   AboutPage, 
@@ -13,6 +13,9 @@ import {
 } from './pages'
 import BrokerCardIntegrationTest from './pages/test/BrokerCardIntegrationTest'
 import BrokerComparisonIntegrationTest from './pages/test/BrokerComparisonIntegrationTest'
+
+// Import detailed broker review pages
+import InteractiveBrokersDetailedReview from './pages/brokers/InteractiveBrokersDetailedReview';
 
 // Import all broker pages
 import ActivtradesPage from './pages/brokers/activtrades';
@@ -174,7 +177,7 @@ import './index.css'
 function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <NavigationProvider enableAnalytics={true} maxAnalyticsEvents={1000}>
       <Routes>
         {/* Main Pages */}
@@ -192,6 +195,7 @@ function App() {
         <Route path="/brokers/:id" element={<BrokerProfilePage />} />
         <Route path="/broker-reviews" element={<BrokerReviews />} />
         <Route path="/broker-reviews/interactive-brokers" element={<InteractiveBrokersReview />} />
+        <Route path="/broker-reviews/interactive-brokers-detailed" element={<InteractiveBrokersDetailedReview />} />
         
         {/* Specific Broker Pages */}
         <Route path="/brokers/activtrades" element={<ActivtradesPage />} />

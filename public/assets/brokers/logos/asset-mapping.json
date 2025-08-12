@@ -2,19 +2,19 @@
   "version": "1.0.0",
   "generated": "2024-01-08T10:00:00.000Z",
   "fallback": {
-    "original": "logos/fallbacks/broker-fallback.png",
+    "original": "logos/fallback/broker-placeholder.svg",
     "sizes": {
       "64": {
-        "png": "logos/fallbacks/64x64/broker-fallback.png",
-        "webp": "logos/fallbacks/64x64/broker-fallback.webp"
+        "png": "logos/fallback/broker-placeholder-64.svg",
+        "webp": "logos/fallback/broker-placeholder-64.svg"
       },
       "128": {
-        "png": "logos/fallbacks/128x128/broker-fallback.png",
-        "webp": "logos/fallbacks/128x128/broker-fallback.webp"
+        "png": "logos/fallback/broker-placeholder-128.svg",
+        "webp": "logos/fallback/broker-placeholder-128.svg"
       },
       "256": {
-        "png": "logos/fallbacks/256x256/broker-fallback.png",
-        "webp": "logos/fallbacks/256x256/broker-fallback.webp"
+        "png": "logos/fallback/broker-placeholder-256.svg",
+        "webp": "logos/fallback/broker-placeholder-256.svg"
       }
     }
   },
@@ -213,6 +213,72 @@
           "256": {
             "png": "logos/256x256/easymarkets.png",
             "webp": "logos/256x256/easymarkets.webp"
+          }
+        }
+      }
+    },
+    {
+      "id": "50",
+      "name": "Broker 50",
+      "originalName": "broker-50.svg",
+      "assets": {
+        "original": "logos/square/broker-50-128.svg",
+        "sizes": {
+          "64": {
+            "png": "logos/square/broker-50-128.svg",
+            "webp": "logos/square/broker-50-128.svg"
+          },
+          "128": {
+            "png": "logos/square/broker-50-128.svg",
+            "webp": "logos/square/broker-50-128.svg"
+          },
+          "256": {
+            "png": "logos/square/broker-50-128.svg",
+            "webp": "logos/square/broker-50-128.svg"
+          }
+        }
+      }
+    },
+    {
+      "id": "67",
+      "name": "Broker 67",
+      "originalName": "broker-67.svg",
+      "assets": {
+        "original": "logos/square/broker-67-128.svg",
+        "sizes": {
+          "64": {
+            "png": "logos/square/broker-67-128.svg",
+            "webp": "logos/square/broker-67-128.svg"
+          },
+          "128": {
+            "png": "logos/square/broker-67-128.svg",
+            "webp": "logos/square/broker-67-128.svg"
+          },
+          "256": {
+            "png": "logos/square/broker-67-128.svg",
+            "webp": "logos/square/broker-67-128.svg"
+          }
+        }
+      }
+    },
+    {
+      "id": "24",
+      "name": "Broker 24",
+      "originalName": "broker-24.svg",
+      "assets": {
+        "original": "logos/square/broker-24-128.svg",
+        "sizes": {
+          "64": {
+            "png": "logos/square/broker-24-128.svg",
+            "webp": "logos/square/broker-24-128.svg"
+          },
+          "128": {
+            "png": "logos/square/broker-24-128.svg",
+            "webp": "logos/square/broker-24-128.svg"
+          },
+          "256": {
+            "png": "logos/square/broker-24-128.svg",
+            "webp": "logos/square/broker-24-128.svg"
           }
         }
       }

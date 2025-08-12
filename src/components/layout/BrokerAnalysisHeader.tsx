@@ -12,11 +12,10 @@ import {
 } from '@/components/ui/dropdown-menu'
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
+import { NavigationMenuItem } from './NavigationMenuItem'
+import { MobileNavigationMenu } from './MobileNavigationMenu'
 import {
   ChevronDown,
   Edit3,
@@ -308,72 +307,7 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
             <NavigationMenu className="hidden lg:flex">
               <NavigationMenuList>
                 {navigation.map((item) => (
-                  <NavigationMenuItem key={item.name}>
-                    <NavigationMenuTrigger 
-                      className={getNavItemClass(item.href)}
-                      aria-expanded="false"
-                      aria-haspopup="true"
-                      data-active={isActiveRoute(item.href)}
-                    >
-                      <span className="flex items-center gap-1">
-                        {item.name}
-                        {isActiveRoute(item.href) && (
-                          <div className="w-1 h-1 bg-accent-blue rounded-full" aria-hidden="true" />
-                        )}
-                      </span>
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent 
-                      className="bg-charcoal-grey border-medium-grey p-6 w-96 left-0 shadow-xl"
-                      role="menu"
-                      aria-label={`${item.name} submenu`}
-                    >
-                      <div className="grid gap-6">
-                        {item.sections.map((section) => (
-                          <div key={section.title} role="group" aria-labelledby={`${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}>
-                            <h4 
-                              id={`${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}
-                              className="text-pure-white font-medium mb-3 text-sm uppercase tracking-wide"
-                            >
-                              {section.title}
-                            </h4>
-                            <div className="space-y-1">
-                              {section.items.map((subItem) => (
-                                <Link
-                                  key={subItem.name}
-                                  to={subItem.href}
-                                  className={cn(
-                                    "block text-sm rounded-sm px-3 py-2 transition-all duration-200",
-                                    "focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-charcoal-grey",
-                                    isActiveRoute(subItem.href) 
-                                      ? "text-pure-white bg-accent-blue/10 border-l-2 border-accent-blue" 
-                                      : "text-light-grey hover:text-pure-white hover:bg-medium-grey/20"
-                                  )}
-                                  role="menuitem"
-                                  onClick={() => trackNavigation({
-                                    type: 'navigation_click',
-                                    path: subItem.href,
-                                    previousPath: location.pathname,
-                                    metadata: { 
-                                      source: 'desktop_nav',
-                                      section: section.title,
-                                      parent: item.name
-                                    }
-                                  })}
-                                >
-                                  {subItem.name}
-                                  {isActiveRoute(subItem.href) && (
-                                    <span className="ml-2 text-xs text-accent-blue" aria-label="Current page">
-                                      •
-                                    </span>
-                                  )}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
+                  <NavigationMenuItem key={item.name} item={item} />
                 ))}
               </NavigationMenuList>
             </NavigationMenu>
@@ -414,36 +348,6 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-
-              {/* Primary CTAs */}
-              <Button asChild className="btn-professional-secondary focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
-                <Link 
-                  to="/compare" 
-                  aria-label="Compare different brokers side by side"
-                  onClick={() => trackNavigation({
-                    type: 'navigation_click',
-                    path: '/compare',
-                    previousPath: location.pathname,
-                    metadata: { source: 'desktop_cta', button: 'compare' }
-                  })}
-                >
-                  Compare Brokers
-                </Link>
-              </Button>
-              <Button asChild className="btn-professional-primary focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black">
-                <Link 
-                  to="/find-broker" 
-                  aria-label="Find the best broker for your needs"
-                  onClick={() => trackNavigation({
-                    type: 'navigation_click',
-                    path: '/find-broker',
-                    previousPath: location.pathname,
-                    metadata: { source: 'desktop_cta', button: 'find_broker' }
-                  })}
-                >
-                  Find My Broker
-                </Link>
-              </Button>
             </div>
 
             {/* Enhanced Mobile menu */}
@@ -494,111 +398,31 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                     </form>
 
                     {/* Mobile Navigation */}
-                    <nav role="navigation" aria-label="Mobile navigation" className="space-y-1">
-                      {navigation.map((item) => (
-                        <div key={item.name} className="border-b border-medium-grey/30 pb-4 mb-4 last:border-b-0">
-                          <Link
-                            to={item.href}
-                            className={cn(
-                              "flex items-center justify-between py-3 px-3 text-lg font-medium rounded-md transition-all duration-200",
-                              "focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black",
-                              isActiveRoute(item.href)
-                                ? "text-pure-white bg-accent-blue/10 border-l-4 border-accent-blue"
-                                : "text-light-grey hover:text-pure-white hover:bg-charcoal-grey/50"
-                            )}
-                            onClick={() => {
-                              trackNavigation({
-                                type: 'navigation_click',
-                                path: item.href,
-                                previousPath: location.pathname,
-                                metadata: { 
-                                  source: 'mobile_nav',
-                                  section: item.name
-                                }
-                              })
-                              closeMobileMenu()
-                            }}
-                          >
-                            <span>{item.name}</span>
-                            {isActiveRoute(item.href) && (
-                              <div className="w-2 h-2 bg-accent-blue rounded-full" aria-hidden="true" />
-                            )}
-                          </Link>
-                          
-                          {/* Mobile Submenu */}
-                          <div className="mt-3 space-y-3">
-                            {item.sections.map((section) => (
-                              <div key={section.title} className="ml-4" role="group" aria-labelledby={`mobile-${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}>
-                                <h5 
-                                  id={`mobile-${section.title.replace(/\s+/g, '-').toLowerCase()}-heading`}
-                                  className="text-light-grey text-xs font-medium mb-2 uppercase tracking-wide"
-                                >
-                                  {section.title}
-                                </h5>
-                                <div className="space-y-1">
-                                  {section.items.map((subItem) => (
-                                    <Link
-                                      key={subItem.name}
-                                      to={subItem.href}
-                                      className={cn(
-                                        "block py-2 px-3 text-sm rounded-md transition-all duration-200",
-                                        "focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black",
-                                        isActiveRoute(subItem.href)
-                                          ? "text-pure-white bg-accent-blue/10 border-l-2 border-accent-blue"
-                                          : "text-light-grey hover:text-pure-white hover:bg-medium-grey/20"
-                                      )}
-                                      onClick={() => {
-                                        trackNavigation({
-                                          type: 'navigation_click',
-                                          path: subItem.href,
-                                          previousPath: location.pathname,
-                                          metadata: { 
-                                            source: 'mobile_nav',
-                                            section: section.title,
-                                            parent: item.name
-                                          }
-                                        })
-                                        closeMobileMenu()
-                                      }}
-                                    >
-                                      <span className="flex items-center justify-between">
-                                        {subItem.name}
-                                        {isActiveRoute(subItem.href) && (
-                                          <span className="text-xs text-accent-blue" aria-label="Current page">
-                                            •
-                                          </span>
-                                        )}
-                                      </span>
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </nav>
+                    <MobileNavigationMenu 
+                      navigation={navigation} 
+                      onItemClick={closeMobileMenu}
+                    />
 
-                    {/* Mobile CTAs */}
+                    {/* Mobile Auth Links */}
                     <div className="space-y-3 pt-6 border-t border-medium-grey">
                       <Button 
                         asChild 
                         className="btn-professional-secondary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
                       >
                         <Link 
-                          to="/compare" 
-                          aria-label="Compare different brokers side by side"
+                          to="/signin" 
+                          aria-label="Sign in to your account"
                           onClick={() => {
                             trackNavigation({
                               type: 'navigation_click',
-                              path: '/compare',
+                              path: '/signin',
                               previousPath: location.pathname,
-                              metadata: { source: 'mobile_cta', button: 'compare' }
+                              metadata: { source: 'mobile_auth', button: 'signin' }
                             })
                             closeMobileMenu()
                           }}
                         >
-                          Compare Brokers
+                          Sign In
                         </Link>
                       </Button>
                       <Button 
@@ -606,19 +430,19 @@ export function BrokerAnalysisHeader({ totalTraders }: BrokerAnalysisHeaderProps
                         className="btn-professional-primary w-full focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
                       >
                         <Link 
-                          to="/find-broker" 
-                          aria-label="Find the best broker for your needs"
+                          to="/signup" 
+                          aria-label="Create a new account"
                           onClick={() => {
                             trackNavigation({
                               type: 'navigation_click',
-                              path: '/find-broker',
+                              path: '/signup',
                               previousPath: location.pathname,
-                              metadata: { source: 'mobile_cta', button: 'find_broker' }
+                              metadata: { source: 'mobile_auth', button: 'signup' }
                             })
                             closeMobileMenu()
                           }}
                         >
-                          Find My Broker
+                          Join Free
                         </Link>
                       </Button>
                     </div>

@@ -1,6 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 import { BookOpen, Filter, Search } from 'lucide-react';
+import { Layout } from '@/components/layout/Layout';
+import { ProfessionalHero, ProfessionalBadge } from '@/components/ui/professional-components';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface GlossaryTerm {
   term: string;
@@ -274,7 +277,7 @@ const TradingGlossary: React.FC = () => {
   }, [searchTerm, selectedCategory]);
 
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Trading Glossary 2025 | Complete Trading Terms Dictionary</title>
         <meta name="description" content="Comprehensive trading glossary for 2025. Learn definitions of forex, CFD, and trading terms. Essential dictionary for traders and investors." />
@@ -315,47 +318,35 @@ const TradingGlossary: React.FC = () => {
         </script>
       </Helmet>
 
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-professional-black">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <BookOpen className="w-16 h-16 mx-auto mb-6" />
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Trading Glossary 2025
-              </h1>
-              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                Your comprehensive dictionary of trading terms, forex terminology, and broker-related concepts for 2025.
-              </p>
-              <div className="text-lg">
-                <span className="bg-white/20 px-4 py-2 rounded-full">
-                  {glossaryTerms.length} Terms Defined
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProfessionalHero
+          title="Trading Glossary 2025"
+          subtitle={`${glossaryTerms.length} Terms Defined`}
+          description="Your comprehensive dictionary of trading terms, forex terminology, and broker-related concepts for 2025."
+          icon={<BookOpen className="w-16 h-16" />}
+        />
 
         {/* Search and Filter */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <div className="professional-container py-8">
+          <div className="professional-card p-6 mb-8">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-light-grey w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Search terms or definitions..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="professional-input pl-10"
                 />
               </div>
               <div className="relative">
-                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-light-grey w-5 h-5" />
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="pl-10 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
+                  className="professional-input pl-10 pr-8 min-w-[160px]"
                 >
                   {categories.map(category => (
                     <option key={category} value={category}>{category}</option>
@@ -363,76 +354,78 @@ const TradingGlossary: React.FC = () => {
                 </select>
               </div>
             </div>
-            <div className="mt-4 text-sm text-gray-600">
+            <div className="mt-4 text-sm text-light-grey">
               Showing {filteredTerms.length} of {glossaryTerms.length} terms
             </div>
           </div>
         </div>
 
         {/* Glossary Terms */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="professional-container pb-16">
           <div className="grid gap-6">
             {filteredTerms.map((term, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="flex flex-col md:flex-row md:items-start gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <h3 className="text-2xl font-bold text-gray-900">{term.term}</h3>
-                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                        {term.category}
-                      </span>
-                    </div>
-                    <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                      {term.definition}
-                    </p>
-                    {term.relatedTerms && term.relatedTerms.length > 0 && (
-                      <div>
-                        <h4 className="text-sm font-semibold text-gray-600 mb-2">Related Terms:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {term.relatedTerms.map((relatedTerm, relatedIndex) => (
-                            <button
-                              key={relatedIndex}
-                              onClick={() => setSearchTerm(relatedTerm)}
-                              className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition-colors"
-                            >
-                              {relatedTerm}
-                            </button>
-                          ))}
-                        </div>
+              <Card key={index} className="professional-card hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:items-start gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <h3 className="text-2xl font-bold text-pure-white">{term.term}</h3>
+                        <ProfessionalBadge variant="secondary">
+                          {term.category}
+                        </ProfessionalBadge>
                       </div>
-                    )}
+                      <p className="text-light-grey text-lg leading-relaxed mb-4">
+                        {term.definition}
+                      </p>
+                      {term.relatedTerms && term.relatedTerms.length > 0 && (
+                        <div>
+                          <h4 className="text-sm font-semibold text-light-grey mb-2">Related Terms:</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {term.relatedTerms.map((relatedTerm, relatedIndex) => (
+                              <button
+                                key={relatedIndex}
+                                onClick={() => setSearchTerm(relatedTerm)}
+                                className="bg-charcoal-grey hover:bg-medium-grey text-light-grey hover:text-pure-white px-3 py-1 rounded-full text-sm transition-colors"
+                              >
+                                {relatedTerm}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
 
           {filteredTerms.length === 0 && (
             <div className="text-center py-16">
-              <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No terms found</h3>
-              <p className="text-gray-500">Try adjusting your search or filter criteria.</p>
+              <BookOpen className="w-16 h-16 text-light-grey mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-light-grey mb-2">No terms found</h3>
+              <p className="text-light-grey">Try adjusting your search or filter criteria.</p>
             </div>
           )}
         </div>
 
         {/* Categories Overview */}
-        <div className="bg-gray-100 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+        <div className="bg-charcoal-grey py-16">
+          <div className="professional-container">
+            <h2 className="text-3xl font-bold text-pure-white mb-12 text-center">
               Browse by Category
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="professional-grid professional-grid-3">
               {categories.filter(cat => cat !== 'All').map((category, index) => {
                 const termCount = glossaryTerms.filter(term => term.category === category).length;
                 return (
                   <button
                     key={index}
                     onClick={() => setSelectedCategory(category)}
-                    className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow text-left"
+                    className="professional-card p-6 hover:shadow-lg transition-shadow text-left"
                   >
-                    <h3 className="font-semibold text-gray-900 mb-2">{category}</h3>
-                    <p className="text-gray-600 text-sm">{termCount} terms</p>
+                    <h3 className="font-semibold text-pure-white mb-2">{category}</h3>
+                    <p className="text-light-grey text-sm">{termCount} terms</p>
                   </button>
                 );
               })}
@@ -440,7 +433,7 @@ const TradingGlossary: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
