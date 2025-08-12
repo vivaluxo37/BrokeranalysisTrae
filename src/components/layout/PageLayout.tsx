@@ -1,6 +1,6 @@
 import { Suspense, Component } from 'react'
 import type { ReactNode, ErrorInfo } from 'react'
-import { Helmet } from '@dr.pogodin/react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { Layout } from './Layout'
 import type { LayoutProps } from './Layout'
 import { Breadcrumb } from './Breadcrumb'
@@ -296,12 +296,18 @@ export function PageLayout({
       {structuredData && (
         <script type="application/ld+json">
           {JSON.stringify({
+<<<<<<< HEAD
+=======
             '@context': 'https://schema.org',
+>>>>>>> 01603659f5b14843bed62a098719a11b364e6eab
             ...defaultStructuredData,
           })}
         </script>
       )}
+<<<<<<< HEAD
+=======
       
+>>>>>>> 01603659f5b14843bed62a098719a11b364e6eab
 
       {/* Page Content */}
       {renderPageContent()}
