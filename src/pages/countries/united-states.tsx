@@ -197,15 +197,15 @@ const UnitedStatesPage: React.FC = () => {
                 Compare SEC-regulated brokers with SIPC protection and comprehensive tax reporting
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <span className="bg-blue-500 px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="bg-accent-blue px-3 py-1 rounded-full flex items-center gap-1">
                   <Shield className="w-4 h-4" />
                   SEC Regulated
                 </span>
-                <span className="bg-blue-500 px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="bg-accent-blue px-3 py-1 rounded-full flex items-center gap-1">
                   <DollarSign className="w-4 h-4" />
                   SIPC Protected
                 </span>
-                <span className="bg-blue-500 px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="bg-accent-blue px-3 py-1 rounded-full flex items-center gap-1">
                   <TrendingUp className="w-4 h-4" />
                   Tax Reporting
                 </span>
@@ -221,7 +221,7 @@ const UnitedStatesPage: React.FC = () => {
               <h2 className="text-3xl font-bold text-center mb-8">US Trading Regulations 2025</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="text-center p-6 bg-blue-50 rounded-lg">
-                  <Shield className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                  <Shield className="w-12 h-12 text-accent-blue mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2">SEC Oversight</h3>
                   <p className="text-gray-600">
                     All US brokers must be registered with the Securities and Exchange Commission (SEC) and comply with strict financial regulations.
@@ -256,7 +256,7 @@ const UnitedStatesPage: React.FC = () => {
                   <div key={broker.id} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                     <div className="flex flex-col lg:flex-row gap-6">
                       <div className="flex items-center gap-4">
-                        <div className="text-2xl font-bold text-blue-600">#{index + 1}</div>
+                        <div className="text-2xl font-bold text-accent-blue">#{index + 1}</div>
                         <img src={broker.logo} alt={broker.name} className="w-16 h-16 object-contain" />
                         <div>
                           <h3 className="text-xl font-bold">{broker.name}</h3>
@@ -306,7 +306,7 @@ const UnitedStatesPage: React.FC = () => {
                             </span>
                           )}
                           {broker.usSpecific.taxReporting && (
-                            <span className="text-blue-600 flex items-center gap-1">
+                            <span className="text-accent-blue flex items-center gap-1">
                               <DollarSign className="w-3 h-3" /> Tax Reports
                             </span>
                           )}
@@ -321,7 +321,7 @@ const UnitedStatesPage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.pros.map((pro, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-green-500 mt-1">✓</span>
+                                <span className="text-accent-blue mt-1">✓</span>
                                 {pro}
                               </li>
                             ))}
@@ -332,7 +332,7 @@ const UnitedStatesPage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.cons.map((con, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-red-500 mt-1">✗</span>
+                                <span className="text-accent-blue mt-1">✗</span>
                                 {con}
                               </li>
                             ))}
@@ -354,7 +354,7 @@ const UnitedStatesPage: React.FC = () => {
               <h2 className="text-3xl font-bold text-center mb-8">Popular Payment Methods in the US</h2>
               <div className="grid md:grid-cols-4 gap-6">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <CreditCard className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                  <CreditCard className="w-8 h-8 text-accent-blue mx-auto mb-2" />
                   <h3 className="font-semibold">Bank Transfer</h3>
                   <p className="text-sm text-gray-600">ACH transfers, wire transfers</p>
                 </div>

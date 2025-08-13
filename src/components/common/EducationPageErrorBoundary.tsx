@@ -194,7 +194,7 @@ export class EducationPageErrorBoundary extends Component<Props, State> {
                 </p>
 
                 {this.state.isRetrying ? (
-                  <div className="flex items-center justify-center text-blue-600 mb-6">
+                  <div className="flex items-center justify-center text-accent-blue mb-6">
                     <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
                     Reloading content...
                   </div>
@@ -251,7 +251,7 @@ export class EducationPageErrorBoundary extends Component<Props, State> {
                       href="/education/trading-basics"
                       className="flex items-center p-3 bg-white rounded-md hover:bg-gray-100 transition-colors"
                     >
-                      <BookOpen className="w-5 h-5 text-blue-600 mr-3" />
+                      <BookOpen className="w-5 h-5 text-accent-blue mr-3" />
                       <div>
                         <div className="font-medium text-gray-900">Trading Basics</div>
                         <div className="text-gray-500">Essential trading concepts</div>
@@ -356,7 +356,7 @@ export const EducationContentFallback: React.FC<{
 }> = ({ contentTitle, contentType, onRetry, isRetrying }) => (
   <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
     <div className="flex items-center mb-4">
-      <BookOpen className="w-6 h-6 text-blue-600 mr-3" />
+      <BookOpen className="w-6 h-6 text-accent-blue mr-3" />
       <h3 className="text-lg font-semibold text-blue-900">
         Content Unavailable
       </h3>
@@ -385,7 +385,7 @@ export const EducationContentFallback: React.FC<{
       </a>
     </div>
     {contentType && (
-      <p className="text-xs text-blue-600 mt-2">Content Type: {contentType}</p>
+      <p className="text-xs text-accent-blue mt-2">Content Type: {contentType}</p>
     )}
   </div>
 )

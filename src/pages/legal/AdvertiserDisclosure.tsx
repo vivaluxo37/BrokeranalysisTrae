@@ -85,7 +85,7 @@ const AdvertiserDisclosure: React.FC = () => {
           {/* Quick Navigation */}
           <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
             <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <FileText className="h-5 w-5 mr-2 text-blue-600" />
+              <FileText className="h-5 w-5 mr-2 text-accent-blue" />
               Quick Navigation
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -95,7 +95,7 @@ const AdvertiserDisclosure: React.FC = () => {
                   onClick={() => scrollToSection(item.id)}
                   className="text-left p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors duration-200"
                 >
-                  <span className="text-blue-600 font-medium">{item.title}</span>
+                  <span className="text-accent-blue font-medium">{item.title}</span>
                 </button>
               ))}
             </div>
@@ -107,7 +107,7 @@ const AdvertiserDisclosure: React.FC = () => {
               {/* Advertising Relationships */}
               <section id="advertising-relationships" className="bg-white rounded-xl shadow-lg p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <ExternalLink className="h-6 w-6 mr-3 text-blue-600" />
+                  <ExternalLink className="h-6 w-6 mr-3 text-accent-blue" />
                   Advertising Relationships
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-700">
@@ -257,7 +257,7 @@ const AdvertiserDisclosure: React.FC = () => {
               {/* Transparency Commitment */}
               <section id="transparency-commitment" className="bg-white rounded-xl shadow-lg p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <Eye className="h-6 w-6 mr-3 text-blue-600" />
+                  <Eye className="h-6 w-6 mr-3 text-accent-blue" />
                   Transparency Commitment
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-700">
@@ -356,16 +356,16 @@ const AdvertiserDisclosure: React.FC = () => {
                 <div className="bg-white rounded-xl shadow-lg p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Related Policies</h3>
                   <div className="space-y-3">
-                    <a href="/legal/privacy-policy" className="block text-blue-600 hover:text-blue-800 text-sm">
+                    <a href="/legal/privacy-policy" className="block text-accent-blue hover:text-blue-800 text-sm">
                       Privacy Policy
                     </a>
-                    <a href="/legal/terms-of-service" className="block text-blue-600 hover:text-blue-800 text-sm">
+                    <a href="/legal/terms-of-service" className="block text-accent-blue hover:text-blue-800 text-sm">
                       Terms of Service
                     </a>
-                    <a href="/legal/editorial-policy" className="block text-blue-600 hover:text-blue-800 text-sm">
+                    <a href="/legal/editorial-policy" className="block text-accent-blue hover:text-blue-800 text-sm">
                       Editorial Policy
                     </a>
-                    <a href="/legal/disclaimer" className="block text-blue-600 hover:text-blue-800 text-sm">
+                    <a href="/legal/disclaimer" className="block text-accent-blue hover:text-blue-800 text-sm">
                       Disclaimer
                     </a>
                   </div>
@@ -379,7 +379,7 @@ const AdvertiserDisclosure: React.FC = () => {
                   </p>
                   <a 
                     href="mailto:disclosure@brokeranalysis.com" 
-                    className="inline-block bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors duration-200"
+                    className="inline-block bg-white text-accent-blue px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors duration-200"
                   >
                     Contact Us
                   </a>

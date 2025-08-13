@@ -72,7 +72,7 @@ export function HomepageAuthIntegration({ className = '' }: HomepageAuthIntegrat
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => {/* Navigate to dashboard */}}
-                className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                className="text-sm text-accent-blue hover:text-blue-700 font-medium"
               >
                 Dashboard
               </button>
@@ -163,7 +163,7 @@ export function PersonalizedHomepageSection() {
             <div className="bg-white p-6 rounded-lg shadow-sm border">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Your Saved Brokers</h3>
               <p className="text-gray-600 text-sm mb-4">Quick access to your research</p>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <button className="text-accent-blue hover:text-blue-700 font-medium text-sm">
                 View Saved →
               </button>
             </div>
@@ -171,7 +171,7 @@ export function PersonalizedHomepageSection() {
             <div className="bg-white p-6 rounded-lg shadow-sm border">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Recommendations</h3>
               <p className="text-gray-600 text-sm mb-4">Brokers matched to your profile</p>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <button className="text-accent-blue hover:text-blue-700 font-medium text-sm">
                 See Matches →
               </button>
             </div>
@@ -179,7 +179,7 @@ export function PersonalizedHomepageSection() {
             <div className="bg-white p-6 rounded-lg shadow-sm border">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Market Updates</h3>
               <p className="text-gray-600 text-sm mb-4">Latest news for your interests</p>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <button className="text-accent-blue hover:text-blue-700 font-medium text-sm">
                 Read More →
               </button>
             </div>

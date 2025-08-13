@@ -202,7 +202,7 @@ const LeverageCalculator: React.FC = () => {
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-lg p-6 sticky top-4">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <Calculator className="w-6 h-6 mr-2 text-blue-600" />
+                  <Calculator className="w-6 h-6 mr-2 text-accent-blue" />
                   Trading Parameters
                 </h2>
 
@@ -309,13 +309,13 @@ const LeverageCalculator: React.FC = () => {
                   {/* Key Metrics */}
                   <div className="bg-white rounded-lg shadow-lg p-6">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                      <BarChart3 className="w-6 h-6 mr-2 text-blue-600" />
+                      <BarChart3 className="w-6 h-6 mr-2 text-accent-blue" />
                       Leverage Analysis
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-blue-600">
+                        <div className="text-3xl font-bold text-accent-blue">
                           ${calculation.marginRequired.toLocaleString()}
                         </div>
                         <div className="text-sm text-gray-600">Margin Required</div>
@@ -347,7 +347,7 @@ const LeverageCalculator: React.FC = () => {
                   {/* Risk Scenarios */}
                   <div className="bg-white rounded-lg shadow-lg p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                      <TrendingUp className="w-5 h-5 mr-2 text-blue-600" />
+                      <TrendingUp className="w-5 h-5 mr-2 text-accent-blue" />
                       Profit &amp; Loss Scenarios
                     </h3>
 

@@ -47,7 +47,7 @@ const EditorialPolicy: React.FC = () => {
           <div className="text-center mb-12">
             <div className="flex justify-center mb-6">
               <div className="p-3 bg-blue-100 rounded-full">
-                <FileText className="h-8 w-8 text-blue-600" />
+                <FileText className="h-8 w-8 text-accent-blue" />
               </div>
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -65,28 +65,28 @@ const EditorialPolicy: React.FC = () => {
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Navigation</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <a href="#editorial-mission" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#editorial-mission" className="text-accent-blue hover:text-blue-800 text-sm">
                 Editorial Mission
               </a>
-              <a href="#content-standards" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#content-standards" className="text-accent-blue hover:text-blue-800 text-sm">
                 Content Standards
               </a>
-              <a href="#review-process" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#review-process" className="text-accent-blue hover:text-blue-800 text-sm">
                 Review Process
               </a>
-              <a href="#independence" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#independence" className="text-accent-blue hover:text-blue-800 text-sm">
                 Editorial Independence
               </a>
-              <a href="#fact-checking" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#fact-checking" className="text-accent-blue hover:text-blue-800 text-sm">
                 Fact-Checking
               </a>
-              <a href="#corrections" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#corrections" className="text-accent-blue hover:text-blue-800 text-sm">
                 Corrections Policy
               </a>
-              <a href="#team" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#team" className="text-accent-blue hover:text-blue-800 text-sm">
                 Editorial Team
               </a>
-              <a href="#contact" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#contact" className="text-accent-blue hover:text-blue-800 text-sm">
                 Contact Us
               </a>
             </div>
@@ -96,7 +96,7 @@ const EditorialPolicy: React.FC = () => {
             {/* Editorial Mission */}
             <section id="editorial-mission" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Target className="h-6 w-6 text-blue-600 mr-3" />
+                <Target className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Editorial Mission</h2>
               </div>
               
@@ -145,7 +145,7 @@ const EditorialPolicy: React.FC = () => {
                   
                   <div className="border border-gray-200 rounded-lg p-6">
                     <div className="flex items-center mb-3">
-                      <Eye className="h-5 w-5 text-blue-600 mr-2" />
+                      <Eye className="h-5 w-5 text-accent-blue mr-2" />
                       <h3 className="text-lg font-semibold text-gray-900">Transparency</h3>
                     </div>
                     <p className="text-gray-700 text-sm">
@@ -171,7 +171,7 @@ const EditorialPolicy: React.FC = () => {
             {/* Content Standards */}
             <section id="content-standards" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <BookOpen className="h-6 w-6 text-blue-600 mr-3" />
+                <BookOpen className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Content Standards</h2>
               </div>
               
@@ -270,7 +270,7 @@ const EditorialPolicy: React.FC = () => {
             {/* Review Process */}
             <section id="review-process" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <CheckCircle className="h-6 w-6 text-blue-600 mr-3" />
+                <CheckCircle className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Editorial Review Process</h2>
               </div>
               
@@ -286,7 +286,7 @@ const EditorialPolicy: React.FC = () => {
                     <div className="space-y-4">
                       <div className="flex items-start">
                         <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                          <span className="text-blue-600 font-semibold text-sm">1</span>
+                          <span className="text-accent-blue font-semibold text-sm">1</span>
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900">Initial Draft Review</h4>
@@ -366,7 +366,7 @@ const EditorialPolicy: React.FC = () => {
             {/* Editorial Independence */}
             <section id="independence" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Shield className="h-6 w-6 text-blue-600 mr-3" />
+                <Shield className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Editorial Independence</h2>
               </div>
               
@@ -450,7 +450,7 @@ const EditorialPolicy: React.FC = () => {
             {/* Fact-Checking */}
             <section id="fact-checking" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Eye className="h-6 w-6 text-blue-600 mr-3" />
+                <Eye className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Fact-Checking Process</h2>
               </div>
               
@@ -557,7 +557,7 @@ const EditorialPolicy: React.FC = () => {
             {/* Corrections Policy */}
             <section id="corrections" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <FileText className="h-6 w-6 text-blue-600 mr-3" />
+                <FileText className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Corrections Policy</h2>
               </div>
               
@@ -576,19 +576,19 @@ const EditorialPolicy: React.FC = () => {
                       </p>
                       <div className="space-y-2">
                         <div className="flex items-center">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                          <span className="w-2 h-2 bg-accent-blue rounded-full mr-2"></span>
                           <span className="text-gray-700 text-sm">Email: corrections@brokeranalysis.com</span>
                         </div>
                         <div className="flex items-center">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                          <span className="w-2 h-2 bg-accent-blue rounded-full mr-2"></span>
                           <span className="text-gray-700 text-sm">Contact form on each article</span>
                         </div>
                         <div className="flex items-center">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                          <span className="w-2 h-2 bg-accent-blue rounded-full mr-2"></span>
                           <span className="text-gray-700 text-sm">Social media channels</span>
                         </div>
                         <div className="flex items-center">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                          <span className="w-2 h-2 bg-accent-blue rounded-full mr-2"></span>
                           <span className="text-gray-700 text-sm">Direct message to editorial team</span>
                         </div>
                       </div>
@@ -662,7 +662,7 @@ const EditorialPolicy: React.FC = () => {
             {/* Editorial Team */}
             <section id="team" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Users className="h-6 w-6 text-blue-600 mr-3" />
+                <Users className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Editorial Team</h2>
               </div>
               
@@ -696,7 +696,7 @@ const EditorialPolicy: React.FC = () => {
                   
                   <div className="border border-gray-200 rounded-lg p-6">
                     <div className="flex items-center mb-3">
-                      <BookOpen className="h-5 w-5 text-blue-600 mr-2" />
+                      <BookOpen className="h-5 w-5 text-accent-blue mr-2" />
                       <h3 className="text-lg font-semibold text-gray-900">Content Specialists</h3>
                     </div>
                     <div className="space-y-3">

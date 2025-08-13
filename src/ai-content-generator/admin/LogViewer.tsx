@@ -350,9 +350,9 @@ export const LogViewer: React.FC<LogViewerProps> = ({
   const getLevelIcon = (level: string) => {
     switch (level) {
       case 'debug': return <Bug className="h-4 w-4 text-gray-500" />;
-      case 'info': return <Info className="h-4 w-4 text-blue-500" />;
-      case 'warn': return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
-      case 'error': return <XCircle className="h-4 w-4 text-red-500" />;
+      case 'info': return <Info className="h-4 w-4 text-accent-blue" />;
+      case 'warn': return <AlertTriangle className="h-4 w-4 text-accent-blue" />;
+      case 'error': return <XCircle className="h-4 w-4 text-accent-blue" />;
       case 'fatal': return <AlertCircle className="h-4 w-4 text-red-600" />;
       default: return <Info className="h-4 w-4 text-gray-500" />;
     }

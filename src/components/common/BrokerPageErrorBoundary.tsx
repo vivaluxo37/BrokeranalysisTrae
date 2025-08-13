@@ -177,7 +177,7 @@ export class BrokerPageErrorBoundary extends Component<Props, State> {
                 </p>
 
                 {this.state.isRetrying ? (
-                  <div className="flex items-center justify-center text-blue-600 mb-6">
+                  <div className="flex items-center justify-center text-accent-blue mb-6">
                     <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
                     Reloading broker information...
                   </div>
@@ -223,7 +223,7 @@ export class BrokerPageErrorBoundary extends Component<Props, State> {
                       href="/brokers"
                       className="flex items-center p-3 bg-white rounded-md hover:bg-gray-100 transition-colors"
                     >
-                      <TrendingUp className="w-5 h-5 text-blue-600 mr-3" />
+                      <TrendingUp className="w-5 h-5 text-accent-blue mr-3" />
                       <div>
                         <div className="font-medium text-gray-900">Browse Brokers</div>
                         <div className="text-gray-500">View all available brokers</div>
@@ -339,7 +339,7 @@ export const BrokerDataFallback: React.FC<{
 }> = ({ brokerId, brokerName, onRetry, isRetrying }) => (
   <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
     <div className="flex items-center mb-4">
-      <Building2 className="w-6 h-6 text-blue-600 mr-3" />
+      <Building2 className="w-6 h-6 text-accent-blue mr-3" />
       <h3 className="text-lg font-semibold text-blue-900">
         Broker Data Unavailable
       </h3>
@@ -368,7 +368,7 @@ export const BrokerDataFallback: React.FC<{
       </a>
     </div>
     {brokerId && (
-      <p className="text-xs text-blue-600 mt-2">Broker ID: {brokerId}</p>
+      <p className="text-xs text-accent-blue mt-2">Broker ID: {brokerId}</p>
     )}
   </div>
 )

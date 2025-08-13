@@ -326,7 +326,7 @@ export function PipCalculator() {
             </div>
 
             <div className="p-4 bg-blue-600/10 border border-blue-500/20 rounded-lg">
-              <h4 className="text-sm font-medium text-blue-400 mb-2">Quick Lot Sizes</h4>
+              <h4 className="text-sm font-medium text-accent-blue mb-2">Quick Lot Sizes</h4>
               <div className="grid grid-cols-3 gap-2">
                 <Button
                   variant="outline"
@@ -365,7 +365,7 @@ export function PipCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Card className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 border-blue-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-blue-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <Calculator className="w-5 h-5" />
                     Pip Value
                   </CardTitle>
@@ -380,7 +380,7 @@ export function PipCalculator() {
 
               <Card className="bg-gradient-to-br from-green-600/10 to-green-800/10 border-green-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-green-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <DollarSign className="w-5 h-5" />
                     Total Value
                   </CardTitle>
@@ -400,7 +400,7 @@ export function PipCalculator() {
               }`}>
                 <CardHeader className="pb-3">
                   <CardTitle className={`text-lg flex items-center gap-2 ${
-                    calculation.profitLoss >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.profitLoss >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     <TrendingUp className="w-5 h-5" />
                     P&L
@@ -408,7 +408,7 @@ export function PipCalculator() {
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.profitLoss >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.profitLoss >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.profitLoss >= 0 ? '+' : ''}{selectedAccountCurrency.symbol}{calculation.profitLoss.toFixed(2)}
                   </div>
@@ -420,11 +420,11 @@ export function PipCalculator() {
 
               <Card className="bg-gradient-to-br from-purple-600/10 to-purple-800/10 border-purple-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-purple-400">Percentage</CardTitle>
+                  <CardTitle className="text-lg text-accent-blue">Percentage</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.percentage >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.percentage >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.percentage >= 0 ? '+' : ''}{calculation.percentage.toFixed(4)}%
                   </div>
@@ -446,7 +446,7 @@ export function PipCalculator() {
                       <div key={pips} className="flex justify-between items-center p-3 bg-gray-800/50 rounded">
                         <span className="text-gray-300">{pips > 0 ? '+' : ''}{pips} pips</span>
                         <span className={`font-medium ${
-                          value >= 0 ? 'text-green-400' : 'text-red-400'
+                          value >= 0 ? 'text-accent-blue' : 'text-red-400'
                         }`}>
                           {value >= 0 ? '+' : ''}{selectedAccountCurrency.symbol}{value.toFixed(2)}
                         </span>

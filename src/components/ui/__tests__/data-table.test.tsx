@@ -36,7 +36,7 @@ const mockColumns: ColumnDef<TestData>[] = [
     header: 'Status',
     accessorKey: 'status',
     cell: ({ value }) => (
-      <span className={value === 'active' ? 'text-green-400' : 'text-red-400'}>
+      <span className={value === 'active' ? 'text-accent-blue' : 'text-red-400'}>
         {value}
       </span>
     ),
@@ -237,7 +237,7 @@ describe('DataTable', () => {
 
     // Status column should render custom cell with colored text
     const activeStatus = screen.getAllByText('active')[0]
-    expect(activeStatus).toHaveClass('text-green-400')
+    expect(activeStatus).toHaveClass('text-accent-blue')
     
     const inactiveStatus = screen.getAllByText('inactive')[0]
     expect(inactiveStatus).toHaveClass('text-red-400')

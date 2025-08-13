@@ -449,9 +449,9 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'passed': return <CheckCircle className="w-4 h-4 text-green-500" />;
-      case 'failed': return <XCircle className="w-4 h-4 text-red-500" />;
-      case 'warning': return <AlertTriangle className="w-4 h-4 text-yellow-500" />;
+      case 'passed': return <CheckCircle className="w-4 h-4 text-accent-blue" />;
+      case 'failed': return <XCircle className="w-4 h-4 text-accent-blue" />;
+      case 'warning': return <AlertTriangle className="w-4 h-4 text-accent-blue" />;
       default: return <Clock className="w-4 h-4 text-gray-500" />;
     }
   };
@@ -522,7 +522,7 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
                   <p className="text-sm text-gray-600">Total Tests</p>
                   <p className="text-2xl font-bold">{testMetrics.totalTests}</p>
                 </div>
-                <BarChart3 className="w-8 h-8 text-blue-500" />
+                <BarChart3 className="w-8 h-8 text-accent-blue" />
               </div>
             </CardContent>
           </Card>
@@ -536,7 +536,7 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
                     {testMetrics.totalTests > 0 ? ((testMetrics.passedTests / testMetrics.totalTests) * 100).toFixed(1) : 0}%
                   </p>
                 </div>
-                <CheckCircle className="w-8 h-8 text-green-500" />
+                <CheckCircle className="w-8 h-8 text-accent-blue" />
               </div>
             </CardContent>
           </Card>
@@ -548,7 +548,7 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
                   <p className="text-sm text-gray-600">Brokers Loaded</p>
                   <p className="text-2xl font-bold">{testMetrics.brokersLoaded}</p>
                 </div>
-                <Database className="w-8 h-8 text-purple-500" />
+                <Database className="w-8 h-8 text-accent-blue" />
               </div>
             </CardContent>
           </Card>
@@ -560,7 +560,7 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
                   <p className="text-sm text-gray-600">Performance Score</p>
                   <p className="text-2xl font-bold">{testMetrics.performanceScore.toFixed(1)}/100</p>
                 </div>
-                <Zap className="w-8 h-8 text-orange-500" />
+                <Zap className="w-8 h-8 text-accent-blue" />
               </div>
             </CardContent>
           </Card>
@@ -624,15 +624,15 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <span>Component Rendered</span>
                   {componentTestData.brokerComparisonTable.rendered ? 
-                    <CheckCircle className="w-5 h-5 text-green-500" /> : 
-                    <XCircle className="w-5 h-5 text-red-500" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue" /> : 
+                    <XCircle className="w-5 h-5 text-accent-blue" />
                   }
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Data Loaded</span>
                   {componentTestData.brokerComparisonTable.dataLoaded ? 
-                    <CheckCircle className="w-5 h-5 text-green-500" /> : 
-                    <XCircle className="w-5 h-5 text-red-500" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue" /> : 
+                    <XCircle className="w-5 h-5 text-accent-blue" />
                   }
                 </div>
                 <div className="flex items-center justify-between">
@@ -642,15 +642,15 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <span>Performance Scores</span>
                   {componentTestData.brokerComparisonTable.performanceScores ? 
-                    <CheckCircle className="w-5 h-5 text-green-500" /> : 
-                    <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue" /> : 
+                    <AlertTriangle className="w-5 h-5 text-accent-blue" />
                   }
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Regulatory Info</span>
                   {componentTestData.brokerComparisonTable.regulatoryInfo ? 
-                    <CheckCircle className="w-5 h-5 text-green-500" /> : 
-                    <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue" /> : 
+                    <AlertTriangle className="w-5 h-5 text-accent-blue" />
                   }
                 </div>
                 <div className="flex items-center justify-between">
@@ -669,15 +669,15 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <span>Component Rendered</span>
                   {componentTestData.topBrokerComparison.rendered ? 
-                    <CheckCircle className="w-5 h-5 text-green-500" /> : 
-                    <XCircle className="w-5 h-5 text-red-500" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue" /> : 
+                    <XCircle className="w-5 h-5 text-accent-blue" />
                   }
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Data Loaded</span>
                   {componentTestData.topBrokerComparison.dataLoaded ? 
-                    <CheckCircle className="w-5 h-5 text-green-500" /> : 
-                    <XCircle className="w-5 h-5 text-red-500" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue" /> : 
+                    <XCircle className="w-5 h-5 text-accent-blue" />
                   }
                 </div>
                 <div className="flex items-center justify-between">
@@ -687,15 +687,15 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <span>Features Displayed</span>
                   {componentTestData.topBrokerComparison.featuresDisplayed ? 
-                    <CheckCircle className="w-5 h-5 text-green-500" /> : 
-                    <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue" /> : 
+                    <AlertTriangle className="w-5 h-5 text-accent-blue" />
                   }
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Ratings Displayed</span>
                   {componentTestData.topBrokerComparison.ratingsDisplayed ? 
-                    <CheckCircle className="w-5 h-5 text-green-500" /> : 
-                    <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue" /> : 
+                    <AlertTriangle className="w-5 h-5 text-accent-blue" />
                   }
                 </div>
                 <div className="flex items-center justify-between">
@@ -783,17 +783,17 @@ const BrokerComparisonIntegrationTest: React.FC = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-green-50 rounded-lg">
-                <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2" />
+                <CheckCircle className="w-8 h-8 text-accent-blue mx-auto mb-2" />
                 <p className="text-2xl font-bold text-green-700">{testMetrics.passedTests}</p>
                 <p className="text-sm text-green-600">Passed</p>
               </div>
               <div className="text-center p-4 bg-yellow-50 rounded-lg">
-                <AlertTriangle className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
+                <AlertTriangle className="w-8 h-8 text-accent-blue mx-auto mb-2" />
                 <p className="text-2xl font-bold text-yellow-700">{testMetrics.warningTests}</p>
                 <p className="text-sm text-yellow-600">Warnings</p>
               </div>
               <div className="text-center p-4 bg-red-50 rounded-lg">
-                <XCircle className="w-8 h-8 text-red-500 mx-auto mb-2" />
+                <XCircle className="w-8 h-8 text-accent-blue mx-auto mb-2" />
                 <p className="text-2xl font-bold text-red-700">{testMetrics.failedTests}</p>
                 <p className="text-sm text-red-600">Failed</p>
               </div>

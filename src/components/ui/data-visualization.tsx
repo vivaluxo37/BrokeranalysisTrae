@@ -59,7 +59,7 @@ const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
             <span
               className={cn(
                 'font-medium',
-                change.type === 'increase' && 'text-green-400',
+                change.type === 'increase' && 'text-accent-blue',
                 change.type === 'decrease' && 'text-red-400',
                 change.type === 'neutral' && 'text-gray-400'
               )}
@@ -85,7 +85,7 @@ const ComparisonBar = React.forwardRef<HTMLDivElement, ComparisonBarProps>(
     
     const colorClasses = {
       primary: 'bg-white',
-      success: 'bg-green-500',
+      success: 'bg-accent-blue',
       warning: 'bg-yellow-500',
       error: 'bg-red-500',
     }
@@ -323,7 +323,7 @@ const FeatureComparisonGrid = React.forwardRef<HTMLDivElement, FeatureComparison
                       {typeof value === 'boolean' ? (
                         <span className={cn(
                           'inline-flex h-2 w-2 rounded-full',
-                          value ? 'bg-green-500' : 'bg-red-500'
+                          value ? 'bg-accent-blue' : 'bg-red-500'
                         )} />
                       ) : (
                         <span className="text-white">{value}</span>

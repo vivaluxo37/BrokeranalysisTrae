@@ -323,7 +323,7 @@ export function ProfitCalculator() {
             </div>
 
             <div className="p-4 bg-blue-600/10 border border-blue-500/20 rounded-lg">
-              <h4 className="text-sm font-medium text-blue-400 mb-2">Quick Actions</h4>
+              <h4 className="text-sm font-medium text-accent-blue mb-2">Quick Actions</h4>
               <div className="grid grid-cols-2 gap-2">
                 <Button
                   variant="outline"
@@ -364,14 +364,14 @@ export function ProfitCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Card className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 border-blue-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-blue-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <Calculator className="w-5 h-5" />
                     Gross Profit
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.grossProfit >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.grossProfit >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.grossProfit >= 0 ? '+' : ''}${calculation.grossProfit.toFixed(2)}
                   </div>
@@ -386,7 +386,7 @@ export function ProfitCalculator() {
               }`}>
                 <CardHeader className="pb-3">
                   <CardTitle className={`text-lg flex items-center gap-2 ${
-                    calculation.netProfit >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.netProfit >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     <DollarSign className="w-5 h-5" />
                     Net Profit
@@ -394,7 +394,7 @@ export function ProfitCalculator() {
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.netProfit >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.netProfit >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.netProfit >= 0 ? '+' : ''}${calculation.netProfit.toFixed(2)}
                   </div>
@@ -419,14 +419,14 @@ export function ProfitCalculator() {
 
               <Card className="bg-gradient-to-br from-purple-600/10 to-purple-800/10 border-purple-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-purple-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <BarChart3 className="w-5 h-5" />
                     Return %
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.profitPercentage >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.profitPercentage >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.profitPercentage >= 0 ? '+' : ''}{calculation.profitPercentage.toFixed(2)}%
                   </div>
@@ -484,7 +484,7 @@ export function ProfitCalculator() {
                           ${newExit.toFixed(4)}
                         </div>
                         <div className={`text-sm font-medium ${
-                          netProfit >= 0 ? 'text-green-400' : 'text-red-400'
+                          netProfit >= 0 ? 'text-accent-blue' : 'text-red-400'
                         }`}>
                           {netProfit >= 0 ? '+' : ''}${netProfit.toFixed(2)}
                         </div>

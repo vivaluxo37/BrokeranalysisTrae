@@ -395,7 +395,7 @@ const NewsHub: React.FC = () => {
                         <div className="text-xs text-gray-500">{topic.articles} articles</div>
                       </div>
                       <div className={`w-2 h-2 rounded-full ${
-                        topic.trend === 'up' ? 'bg-green-500' :
+                        topic.trend === 'up' ? 'bg-accent-blue' :
                         topic.trend === 'down' ? 'bg-red-500' : 'bg-gray-400'
                       }`} />
                     </div>

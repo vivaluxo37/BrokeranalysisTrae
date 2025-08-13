@@ -104,7 +104,7 @@ const MarketsXReview: React.FC = () => {
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <Shield className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+              <Shield className="w-8 h-8 text-accent-blue mx-auto mb-3" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Regulation</h3>
               <p className="text-sm text-gray-600">{brokerData.regulators.join(', ')}</p>
             </div>
@@ -213,7 +213,7 @@ const MarketsXReview: React.FC = () => {
                 <p className="text-blue-100 mb-4">
                   Join thousands of traders who trust {brokerData.name} for their trading needs.
                 </p>
-                <button className="w-full bg-white text-blue-600 font-semibold py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">
+                <button className="w-full bg-white text-accent-blue font-semibold py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">
                   Open Account
                 </button>
               </div>

@@ -238,8 +238,8 @@ export function BrokerProfilePage() {
                     </span>
                     {trustScore > 0 && (
                       <div className="ml-4 flex items-center">
-                        <Shield className="w-4 h-4 text-blue-400 mr-1" />
-                        <span className="text-blue-400 font-medium">
+                        <Shield className="w-4 h-4 text-accent-blue mr-1" />
+                        <span className="text-accent-blue font-medium">
                           Trust Score: {trustScore}/100
                         </span>
                       </div>
@@ -249,7 +249,7 @@ export function BrokerProfilePage() {
                     {useSafeBrokerProperty(broker, 'regulation', []).map((reg: any, index: number) => (
                       <Badge 
                         key={reg.authority || index} 
-                        className="bg-green-500/20 text-green-400 border-green-500/30"
+                        className="bg-accent-blue/20 text-accent-blue border-green-500/30"
                       >
                         <Shield className="w-3 h-3 mr-1" />
                         {(reg.authority || 'REGULATED').toUpperCase()}
@@ -258,14 +258,14 @@ export function BrokerProfilePage() {
                     {useSafeBrokerProperty(broker, 'regulators', []).map((regulator: string, index: number) => (
                       <Badge 
                         key={regulator || index} 
-                        className="bg-green-500/20 text-green-400 border-green-500/30"
+                        className="bg-accent-blue/20 text-accent-blue border-green-500/30"
                       >
                         <Shield className="w-3 h-3 mr-1" />
                         {regulator.toUpperCase()}
                       </Badge>
                     ))}
                     {useSafeBrokerProperty(broker, 'category', null) && (
-                      <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
+                      <Badge className="bg-accent-blue/20 text-accent-blue border-blue-500/30">
                         {useSafeBrokerProperty(broker, 'category', '').toUpperCase()}
                       </Badge>
                     )}
@@ -411,7 +411,7 @@ export function BrokerProfilePage() {
                 {/* Key Features */}
                 <div className="professional-card p-6">
                   <h3 className="text-xl font-semibold text-pure-white mb-4 flex items-center">
-                    <ThumbsUp className="w-5 h-5 text-green-400 mr-2" />
+                    <ThumbsUp className="w-5 h-5 text-accent-blue mr-2" />
                     Key Features
                   </h3>
                   <ul className="space-y-3">
@@ -437,7 +437,7 @@ export function BrokerProfilePage() {
                 {/* Asset Classes & Platforms */}
                 <div className="professional-card p-6">
                   <h3 className="text-xl font-semibold text-pure-white mb-4 flex items-center">
-                    <Globe className="w-5 h-5 text-blue-400 mr-2" />
+                    <Globe className="w-5 h-5 text-accent-blue mr-2" />
                     Trading Options
                   </h3>
                   <div className="space-y-4">
@@ -554,10 +554,10 @@ export function BrokerProfilePage() {
                       <div key={index} className="bg-dark-grey rounded-lg p-4">
                         <div className="flex items-center justify-between mb-3">
                           <div className="flex items-center space-x-3">
-                            <Globe className="h-6 w-6 text-blue-400" />
+                            <Globe className="h-6 w-6 text-accent-blue" />
                             <h4 className="text-lg font-semibold text-pure-white">{platform}</h4>
                           </div>
-                          <Badge variant="outline" className="bg-blue-500/20 text-blue-400 border-blue-500/30">
+                          <Badge variant="outline" className="bg-accent-blue/20 text-accent-blue border-blue-500/30">
                             Available
                           </Badge>
                         </div>
@@ -604,37 +604,37 @@ export function BrokerProfilePage() {
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                         {useSafeBrokerProperty(broker, 'features', {})?.advancedCharting && (
                           <div className="flex items-center space-x-2">
-                            <Star className="h-4 w-4 text-green-400" />
+                            <Star className="h-4 w-4 text-accent-blue" />
                             <span className="text-sm text-light-grey">Advanced Charting</span>
                           </div>
                         )}
                         {useSafeBrokerProperty(broker, 'features', {})?.algorithmicTrading && (
                           <div className="flex items-center space-x-2">
-                            <Star className="h-4 w-4 text-green-400" />
+                            <Star className="h-4 w-4 text-accent-blue" />
                             <span className="text-sm text-light-grey">Algorithmic Trading</span>
                           </div>
                         )}
                         {useSafeBrokerProperty(broker, 'features', {})?.socialTrading && (
                           <div className="flex items-center space-x-2">
-                            <Star className="h-4 w-4 text-green-400" />
+                            <Star className="h-4 w-4 text-accent-blue" />
                             <span className="text-sm text-light-grey">Social Trading</span>
                           </div>
                         )}
                         {useSafeBrokerProperty(broker, 'features', {})?.copyTrading && (
                           <div className="flex items-center space-x-2">
-                            <Star className="h-4 w-4 text-green-400" />
+                            <Star className="h-4 w-4 text-accent-blue" />
                             <span className="text-sm text-light-grey">Copy Trading</span>
                           </div>
                         )}
                         {useSafeBrokerProperty(broker, 'features', {})?.mobileTrading && (
                           <div className="flex items-center space-x-2">
-                            <Star className="h-4 w-4 text-green-400" />
+                            <Star className="h-4 w-4 text-accent-blue" />
                             <span className="text-sm text-light-grey">Mobile Trading</span>
                           </div>
                         )}
                         {useSafeBrokerProperty(broker, 'features', {})?.apiTrading && (
                           <div className="flex items-center space-x-2">
-                            <Star className="h-4 w-4 text-green-400" />
+                            <Star className="h-4 w-4 text-accent-blue" />
                             <span className="text-sm text-light-grey">API Trading</span>
                           </div>
                         )}
@@ -775,30 +775,30 @@ export function BrokerProfilePage() {
                   <h3 className="text-xl font-semibold text-pure-white mb-6">Regulatory Status</h3>
                   
                   {useSafeBrokerProperty(broker, 'isRegulated', false) ? (
-                    <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-6">
+                    <div className="bg-accent-blue/10 border border-green-500/30 rounded-lg p-6">
                       <div className="flex items-center space-x-3 mb-4">
-                        <Shield className="h-8 w-8 text-green-400" />
+                        <Shield className="h-8 w-8 text-accent-blue" />
                         <div>
-                          <h4 className="text-xl font-semibold text-green-400">Regulated Broker</h4>
+                          <h4 className="text-xl font-semibold text-accent-blue">Regulated Broker</h4>
                           <p className="text-light-grey">This broker is regulated by recognized financial authorities</p>
                         </div>
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-green-400 mb-1">
+                          <div className="text-2xl font-bold text-accent-blue mb-1">
                             {useSafeBrokerProperty(broker, 'regulation', []).length || 1}
                           </div>
                           <p className="text-sm text-light-grey">Regulatory Bodies</p>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-green-400 mb-1">
+                          <div className="text-2xl font-bold text-accent-blue mb-1">
                             {useSafeBrokerProperty(broker, 'regulation', []).length || 1}
                           </div>
                           <p className="text-sm text-light-grey">Active Licenses</p>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-green-400 mb-1">
+                          <div className="text-2xl font-bold text-accent-blue mb-1">
                             {useSafeBrokerProperty(broker, 'yearEstablished', new Date().getFullYear() - 10)}
                           </div>
                           <p className="text-sm text-light-grey">Established</p>
@@ -835,7 +835,7 @@ export function BrokerProfilePage() {
                                 <h5 className="font-semibold text-pure-white mb-1">{reg.authority || 'Regulatory Authority'}</h5>
                                 <p className="text-sm text-light-grey mb-2">{authorityInfo.fullName}</p>
                                 <div className="flex items-center space-x-2 mb-2">
-                                  <Badge variant="secondary" className="bg-green-500/20 text-green-400 text-xs">
+                                  <Badge variant="secondary" className="bg-accent-blue/20 text-accent-blue text-xs">
                                     {authorityInfo.jurisdiction}
                                   </Badge>
                                   <Badge variant="outline" className="text-xs border-accent-blue/30 text-accent-blue">
@@ -861,15 +861,15 @@ export function BrokerProfilePage() {
                         <div key={index} className="border border-medium-grey rounded-lg p-4">
                           <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center space-x-3">
-                              <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
-                                <CheckCircle className="h-5 w-5 text-green-400" />
+                              <div className="w-10 h-10 bg-accent-blue/20 rounded-lg flex items-center justify-center">
+                                <CheckCircle className="h-5 w-5 text-accent-blue" />
                               </div>
                               <div>
                                 <h5 className="font-semibold text-pure-white">{reg.authority || 'Regulatory Authority'}</h5>
                                 <p className="text-sm text-light-grey">License #{reg.licenseNumber || 'Contact broker'}</p>
                               </div>
                             </div>
-                            <Badge variant="secondary" className="bg-green-500/20 text-green-400">
+                            <Badge variant="secondary" className="bg-accent-blue/20 text-accent-blue">
                               {reg.status || 'Active'}
                             </Badge>
                           </div>
@@ -885,7 +885,7 @@ export function BrokerProfilePage() {
                             </div>
                             <div>
                               <p className="text-light-grey mb-1">Status</p>
-                              <p className="text-green-400 font-medium">Valid</p>
+                              <p className="text-accent-blue font-medium">Valid</p>
                             </div>
                             <div>
                               <p className="text-light-grey mb-1">Jurisdiction</p>
@@ -906,14 +906,14 @@ export function BrokerProfilePage() {
                       <h5 className="font-semibold text-pure-white mb-4">Investor Compensation</h5>
                       <div className="space-y-3">
                         <div className="flex items-center space-x-3">
-                          <CheckCircle className="h-5 w-5 text-green-400" />
+                          <CheckCircle className="h-5 w-5 text-accent-blue" />
                           <div>
                             <p className="text-pure-white font-medium">FSCS Protection</p>
                             <p className="text-sm text-light-grey">Up to £85,000 per client</p>
                           </div>
                         </div>
                         <div className="flex items-center space-x-3">
-                          <CheckCircle className="h-5 w-5 text-green-400" />
+                          <CheckCircle className="h-5 w-5 text-accent-blue" />
                           <div>
                             <p className="text-pure-white font-medium">Segregated Accounts</p>
                             <p className="text-sm text-light-grey">Client funds held separately</p>
@@ -926,14 +926,14 @@ export function BrokerProfilePage() {
                       <h5 className="font-semibold text-pure-white mb-4">Compliance & Reporting</h5>
                       <div className="space-y-3">
                         <div className="flex items-center space-x-3">
-                          <CheckCircle className="h-5 w-5 text-green-400" />
+                          <CheckCircle className="h-5 w-5 text-accent-blue" />
                           <div>
                             <p className="text-pure-white font-medium">Regular Audits</p>
                             <p className="text-sm text-light-grey">Independent financial audits</p>
                           </div>
                         </div>
                         <div className="flex items-center space-x-3">
-                          <CheckCircle className="h-5 w-5 text-green-400" />
+                          <CheckCircle className="h-5 w-5 text-accent-blue" />
                           <div>
                             <p className="text-pure-white font-medium">Regulatory Reporting</p>
                             <p className="text-sm text-light-grey">Transparent financial reporting</p>
@@ -1036,7 +1036,7 @@ export function BrokerProfilePage() {
                             <div className="w-16 bg-medium-grey rounded-full h-2">
                               <div className="bg-green-400 h-2 rounded-full" style={{ width: '85%' }}></div>
                             </div>
-                            <span className="text-xs text-green-400">4.2</span>
+                            <span className="text-xs text-accent-blue">4.2</span>
                           </div>
                         </div>
                         <div className="flex items-center justify-between">
@@ -1045,7 +1045,7 @@ export function BrokerProfilePage() {
                             <div className="w-16 bg-medium-grey rounded-full h-2">
                               <div className="bg-blue-400 h-2 rounded-full" style={{ width: '75%' }}></div>
                             </div>
-                            <span className="text-xs text-blue-400">3.8</span>
+                            <span className="text-xs text-accent-blue">3.8</span>
                           </div>
                         </div>
                         <div className="flex items-center justify-between">
@@ -1103,7 +1103,7 @@ export function BrokerProfilePage() {
                                   {formatDate(review.publishDate)}
                                 </span>
                                 {review.verified && (
-                                  <Badge variant="secondary" className="bg-green-500/20 text-green-400 text-xs">
+                                  <Badge variant="secondary" className="bg-accent-blue/20 text-accent-blue text-xs">
                                     <Shield className="h-3 w-3 mr-1" />
                                     Verified
                                   </Badge>
@@ -1123,8 +1123,8 @@ export function BrokerProfilePage() {
                         {(review.pros.length > 0 || review.cons.length > 0) && (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                             {review.pros.length > 0 && (
-                              <div className="bg-green-500/10 rounded-lg p-4">
-                                <h6 className="font-semibold text-green-400 mb-3 flex items-center">
+                              <div className="bg-accent-blue/10 rounded-lg p-4">
+                                <h6 className="font-semibold text-accent-blue mb-3 flex items-center">
                                   <ThumbsUp className="h-4 w-4 mr-2" />
                                   Pros
                                 </h6>
@@ -1159,7 +1159,7 @@ export function BrokerProfilePage() {
                         
                         <div className="flex items-center justify-between pt-4 border-t border-medium-grey">
                           <div className="flex items-center space-x-6">
-                            <button className="flex items-center space-x-2 text-light-grey hover:text-green-400 transition-colors group">
+                            <button className="flex items-center space-x-2 text-light-grey hover:text-accent-blue transition-colors group">
                               <ThumbsUp className="h-4 w-4 group-hover:scale-110 transition-transform" />
                               <span className="text-sm">Helpful ({review.helpful})</span>
                             </button>

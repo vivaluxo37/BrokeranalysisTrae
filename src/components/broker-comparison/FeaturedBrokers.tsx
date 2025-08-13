@@ -172,7 +172,7 @@ export function FeaturedBrokers() {
                     <ul className="text-xs text-medium-grey space-y-1">
                       {broker.pros.slice(0, 2).map((pro, index) => (
                         <li key={index} className="flex items-center">
-                          <span className="w-1 h-1 bg-green-500 rounded-full mr-2" />
+                          <span className="w-1 h-1 bg-accent-blue rounded-full mr-2" />
                           {pro}
                         </li>
                       ))}

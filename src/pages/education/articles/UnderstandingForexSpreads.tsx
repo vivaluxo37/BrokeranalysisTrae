@@ -258,7 +258,7 @@ const UnderstandingForexSpreads: React.FC = () => {
                 return (
                   <div key={index} className="flex items-start gap-4 p-6 border border-gray-200 rounded-lg">
                     <div className="p-3 rounded-lg bg-blue-100">
-                      <Icon className="w-6 h-6 text-blue-600" />
+                      <Icon className="w-6 h-6 text-accent-blue" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">

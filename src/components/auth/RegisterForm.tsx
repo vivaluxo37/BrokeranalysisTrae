@@ -211,16 +211,16 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
             name="acceptTerms"
             checked={formData.acceptTerms}
             onChange={handleInputChange}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-0.5"
+            className="h-4 w-4 text-accent-blue focus:ring-blue-500 border-gray-300 rounded mt-0.5"
             disabled={isLoading}
           />
           <label htmlFor="acceptTerms" className="ml-2 block text-sm text-gray-700">
             I agree to the{' '}
-            <a href="/terms" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+            <a href="/terms" className="text-accent-blue hover:underline" target="_blank" rel="noopener noreferrer">
               Terms of Service
             </a>{' '}
             and{' '}
-            <a href="/privacy" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+            <a href="/privacy" className="text-accent-blue hover:underline" target="_blank" rel="noopener noreferrer">
               Privacy Policy
             </a>
           </label>
@@ -236,7 +236,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
             name="acceptMarketing"
             checked={formData.acceptMarketing}
             onChange={handleInputChange}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-0.5"
+            className="h-4 w-4 text-accent-blue focus:ring-blue-500 border-gray-300 rounded mt-0.5"
             disabled={isLoading}
           />
           <label htmlFor="acceptMarketing" className="ml-2 block text-sm text-gray-700">
@@ -275,7 +275,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
           <button
             type="button"
             onClick={onSwitchToLogin}
-            className="text-blue-600 hover:text-blue-500 font-medium"
+            className="text-accent-blue hover:text-accent-blue font-medium"
             disabled={isLoading}
           >
             Sign in here

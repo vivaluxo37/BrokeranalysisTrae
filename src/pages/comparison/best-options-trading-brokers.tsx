@@ -551,7 +551,7 @@ const BestOptionsTradingBrokersPage: React.FC = () => {
               We evaluate options traders based on the following key criteria to ensure you get the best trading experience:
             </p>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Options tools</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Strategy support</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Low commissions</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Risk management</li>
+              <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Options tools</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Strategy support</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Low commissions</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Risk management</li>
             </ul>
           </div>
         </div>
@@ -673,7 +673,7 @@ const BestOptionsTradingBrokersPage: React.FC = () => {
                           <ul className="space-y-1">
                             {broker.pros.map((pro, idx) => (
                               <li key={idx} className="flex items-start">
-                                <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                                <CheckCircle className="w-4 h-4 text-accent-blue mr-2 mt-0.5 flex-shrink-0" />
                                 <span className="text-sm text-gray-600">{pro}</span>
                               </li>
                             ))}

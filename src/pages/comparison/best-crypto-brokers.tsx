@@ -551,7 +551,7 @@ const BestCryptoBrokersPage: React.FC = () => {
               We evaluate crypto traders based on the following key criteria to ensure you get the best trading experience:
             </p>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Security features</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Crypto variety</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Low fees</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Wallet integration</li>
+              <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Security features</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Crypto variety</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Low fees</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Wallet integration</li>
             </ul>
           </div>
         </div>
@@ -673,7 +673,7 @@ const BestCryptoBrokersPage: React.FC = () => {
                           <ul className="space-y-1">
                             {broker.pros.map((pro, idx) => (
                               <li key={idx} className="flex items-start">
-                                <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                                <CheckCircle className="w-4 h-4 text-accent-blue mr-2 mt-0.5 flex-shrink-0" />
                                 <span className="text-sm text-gray-600">{pro}</span>
                               </li>
                             ))}

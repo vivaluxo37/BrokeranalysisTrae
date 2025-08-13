@@ -260,7 +260,7 @@ describe('Form Components', () => {
       
       const message = screen.getByText('This is success')
       expect(message).toBeInTheDocument()
-      expect(message).toHaveClass('text-green-400')
+      expect(message).toHaveClass('text-accent-blue')
     })
 
     it('renders info message', () => {
@@ -268,7 +268,7 @@ describe('Form Components', () => {
       
       const message = screen.getByText('This is info')
       expect(message).toBeInTheDocument()
-      expect(message).toHaveClass('text-blue-400')
+      expect(message).toHaveClass('text-accent-blue')
     })
   })
 

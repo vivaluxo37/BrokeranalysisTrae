@@ -318,10 +318,10 @@ export const WorkflowManager: React.FC<WorkflowManagerProps> = ({
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'active': case 'completed': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'running': return <Activity className="h-4 w-4 text-blue-500 animate-pulse" />;
-      case 'pending': return <Clock className="h-4 w-4 text-blue-500" />;
-      case 'failed': case 'cancelled': return <XCircle className="h-4 w-4 text-red-500" />;
+      case 'active': case 'completed': return <CheckCircle className="h-4 w-4 text-accent-blue" />;
+      case 'running': return <Activity className="h-4 w-4 text-accent-blue animate-pulse" />;
+      case 'pending': return <Clock className="h-4 w-4 text-accent-blue" />;
+      case 'failed': case 'cancelled': return <XCircle className="h-4 w-4 text-accent-blue" />;
       case 'inactive': case 'draft': return <Pause className="h-4 w-4 text-gray-500" />;
       default: return <AlertTriangle className="h-4 w-4 text-gray-500" />;
     }
@@ -412,7 +412,7 @@ export const WorkflowManager: React.FC<WorkflowManagerProps> = ({
         </Card>
         <Card>
           <CardContent className="pt-6">
-            <div className="text-2xl font-bold text-blue-600">{executionStats.running}</div>
+            <div className="text-2xl font-bold text-accent-blue">{executionStats.running}</div>
             <p className="text-xs text-muted-foreground">Running</p>
           </CardContent>
         </Card>
@@ -491,7 +491,7 @@ export const WorkflowManager: React.FC<WorkflowManagerProps> = ({
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <div className="p-2 bg-blue-100 rounded-lg">
-                        <Workflow className="h-5 w-5 text-blue-600" />
+                        <Workflow className="h-5 w-5 text-accent-blue" />
                       </div>
                       <div>
                         <CardTitle className="text-lg">{workflow.name}</CardTitle>

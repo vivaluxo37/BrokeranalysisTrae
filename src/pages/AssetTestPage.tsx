@@ -76,7 +76,7 @@ export function AssetTestPage() {
                       href="/assets/icons/broker-placeholder.svg" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-accent-blue hover:underline"
                     >
                       Broker Placeholder SVG
                     </a>
@@ -86,7 +86,7 @@ export function AssetTestPage() {
                       href="/assets/icons/broker-placeholder.webp" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-accent-blue hover:underline"
                     >
                       Broker Placeholder WebP
                     </a>
@@ -96,7 +96,7 @@ export function AssetTestPage() {
                       href="/assets/README.md" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-accent-blue hover:underline"
                     >
                       Assets README
                     </a>
@@ -106,7 +106,7 @@ export function AssetTestPage() {
                       href="/assets/brokers/logos/asset-mapping.json" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-accent-blue hover:underline"
                     >
                       Asset Mapping JSON
                     </a>
@@ -116,7 +116,7 @@ export function AssetTestPage() {
                       href="/favicon.svg" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-accent-blue hover:underline"
                     >
                       Favicon SVG
                     </a>

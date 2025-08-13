@@ -121,7 +121,7 @@ export function TraderTestimonials() {
                   <span className="neural-text text-sm">Matched with:</span>
                   <span className="text-topforex-accent font-semibold">{currentReview.brokerFound}</span>
                   {currentReview.verifiedTrader && (
-                    <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium">
+                    <span className="bg-accent-blue/20 text-accent-blue px-2 py-1 rounded-full text-xs font-medium">
                       ✓ Verified Trader
                     </span>
                   )}

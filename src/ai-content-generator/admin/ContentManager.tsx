@@ -222,11 +222,11 @@ export const ContentManager: React.FC<ContentManagerProps> = ({
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'pending': return <Clock className="h-4 w-4 text-yellow-500" />;
-      case 'running': return <Play className="h-4 w-4 text-blue-500" />;
-      case 'completed': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'failed': return <XCircle className="h-4 w-4 text-red-500" />;
-      case 'paused': return <Pause className="h-4 w-4 text-orange-500" />;
+      case 'pending': return <Clock className="h-4 w-4 text-accent-blue" />;
+      case 'running': return <Play className="h-4 w-4 text-accent-blue" />;
+      case 'completed': return <CheckCircle className="h-4 w-4 text-accent-blue" />;
+      case 'failed': return <XCircle className="h-4 w-4 text-accent-blue" />;
+      case 'paused': return <Pause className="h-4 w-4 text-accent-blue" />;
       default: return <AlertTriangle className="h-4 w-4 text-gray-500" />;
     }
   };
@@ -421,7 +421,7 @@ export const ContentManager: React.FC<ContentManagerProps> = ({
 
                     {job.error && (
                       <Alert className="border-red-200">
-                        <XCircle className="h-4 w-4 text-red-500" />
+                        <XCircle className="h-4 w-4 text-accent-blue" />
                         <AlertDescription>{job.error}</AlertDescription>
                       </Alert>
                     )}

@@ -65,22 +65,22 @@ const Disclaimer: React.FC = () => {
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Navigation</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <a href="#general-disclaimer" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#general-disclaimer" className="text-accent-blue hover:text-blue-800 text-sm">
                 General Disclaimer
               </a>
-              <a href="#financial-advice" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#financial-advice" className="text-accent-blue hover:text-blue-800 text-sm">
                 Financial Advice
               </a>
-              <a href="#broker-information" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#broker-information" className="text-accent-blue hover:text-blue-800 text-sm">
                 Broker Information
               </a>
-              <a href="#trading-risks" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#trading-risks" className="text-accent-blue hover:text-blue-800 text-sm">
                 Trading Risks
               </a>
-              <a href="#accuracy-limitations" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#accuracy-limitations" className="text-accent-blue hover:text-blue-800 text-sm">
                 Accuracy & Limitations
               </a>
-              <a href="#liability" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#liability" className="text-accent-blue hover:text-blue-800 text-sm">
                 Liability
               </a>
             </div>
@@ -90,7 +90,7 @@ const Disclaimer: React.FC = () => {
             {/* General Disclaimer */}
             <section id="general-disclaimer" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Info className="h-6 w-6 text-blue-600 mr-3" />
+                <Info className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">General Disclaimer</h2>
               </div>
               
@@ -146,7 +146,7 @@ const Disclaimer: React.FC = () => {
             {/* Financial Advice Disclaimer */}
             <section id="financial-advice" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Scale className="h-6 w-6 text-blue-600 mr-3" />
+                <Scale className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Financial Advice Disclaimer</h2>
               </div>
               
@@ -207,7 +207,7 @@ const Disclaimer: React.FC = () => {
             {/* Broker Information Disclaimer */}
             <section id="broker-information" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <ExternalLink className="h-6 w-6 text-blue-600 mr-3" />
+                <ExternalLink className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Broker Information Disclaimer</h2>
               </div>
               
@@ -338,7 +338,7 @@ const Disclaimer: React.FC = () => {
             {/* Accuracy and Limitations */}
             <section id="accuracy-limitations" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Shield className="h-6 w-6 text-blue-600 mr-3" />
+                <Shield className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Accuracy and Limitations</h2>
               </div>
               
@@ -415,7 +415,7 @@ const Disclaimer: React.FC = () => {
             {/* Liability Disclaimer */}
             <section id="liability" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <FileText className="h-6 w-6 text-blue-600 mr-3" />
+                <FileText className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Limitation of Liability</h2>
               </div>
               

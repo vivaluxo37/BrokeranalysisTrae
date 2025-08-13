@@ -401,7 +401,7 @@ const SpreadComparisonTool: React.FC = () => {
                           </a>
                           <a
                             href={`/brokers/${broker.broker.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="border border-blue-600 text-blue-600 px-3 py-1 rounded text-xs hover:bg-blue-50 transition-colors"
+                            className="border border-blue-600 text-accent-blue px-3 py-1 rounded text-xs hover:bg-blue-50 transition-colors"
                           >
                             Review
                           </a>

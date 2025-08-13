@@ -47,7 +47,7 @@ const ICMarketsReview: React.FC = () => {
                     <span className="ml-2 text-gray-500">(369 reviews)</span>
                   </div>
                   <div className="flex items-center">
-                    <Shield className="w-5 h-5 text-green-500 mr-2" />
+                    <Shield className="w-5 h-5 text-accent-blue mr-2" />
                     <span className="text-green-700 font-medium">Trust Score: 100/100</span>
                   </div>
                 </div>
@@ -84,10 +84,10 @@ const ICMarketsReview: React.FC = () => {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center">
-                <TrendingUp className="w-8 h-8 text-blue-600 mb-2" />
+                <TrendingUp className="w-8 h-8 text-accent-blue mb-2" />
                 <div className="ml-3">
                   <h3 className="font-semibold text-gray-900">Max Leverage</h3>
-                  <p className="text-2xl font-bold text-blue-600">1:500</p>
+                  <p className="text-2xl font-bold text-accent-blue">1:500</p>
                 </div>
               </div>
             </div>
@@ -136,7 +136,7 @@ const ICMarketsReview: React.FC = () => {
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Features</h2>
                 <ul className="space-y-2">
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Spreads from 70 pips</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Risk Level: 1/10</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Regulated broker</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Multiple trading platforms</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Competitive swap rates</li>
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Spreads from 70 pips</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Risk Level: 1/10</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Regulated broker</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Multiple trading platforms</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Competitive swap rates</li>
                 </ul>
               </div>
 
@@ -144,7 +144,7 @@ const ICMarketsReview: React.FC = () => {
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Trading Platforms</h2>
                 <ul className="space-y-2">
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />MT4</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />MT5</li>
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />MT4</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />MT5</li>
                 </ul>
               </div>
 
@@ -152,7 +152,7 @@ const ICMarketsReview: React.FC = () => {
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Available Asset Classes</h2>
                 <ul className="grid grid-cols-2 gap-2">
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Forex</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Cfd</li>
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Forex</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-accent-blue mr-2" />Cfd</li>
                 </ul>
               </div>
             </div>
@@ -175,7 +175,7 @@ const ICMarketsReview: React.FC = () => {
                   </div>
                   <div className="flex items-center">
                     <Globe className="w-4 h-4 text-gray-500 mr-2" />
-                    <a href="https://www.icmarkets.com" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
+                    <a href="https://www.icmarkets.com" target="_blank" rel="noopener noreferrer" className="text-sm text-accent-blue hover:underline">
                       Official Website
                     </a>
                   </div>
@@ -188,7 +188,7 @@ const ICMarketsReview: React.FC = () => {
                 <div className="space-y-2">
                   
                   <div className="flex items-center">
-                    <Shield className="w-4 h-4 text-green-500 mr-2" />
+                    <Shield className="w-4 h-4 text-accent-blue mr-2" />
                     <span className="text-sm text-gray-700">FCA</span>
                   </div>
                 </div>

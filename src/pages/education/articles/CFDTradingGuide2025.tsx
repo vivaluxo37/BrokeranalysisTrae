@@ -259,7 +259,7 @@ const CFDTradingGuide2025: React.FC = () => {
 
             <div className="grid md:grid-cols-3 gap-4">
               <div className="bg-blue-100 p-4 rounded-lg text-center">
-                <div className="text-sm text-blue-600 mb-1">Total Exposure</div>
+                <div className="text-sm text-accent-blue mb-1">Total Exposure</div>
                 <div className="text-2xl font-bold text-blue-800">${result.exposure}</div>
               </div>
               <div className={`p-4 rounded-lg text-center ${
@@ -295,7 +295,7 @@ const CFDTradingGuide2025: React.FC = () => {
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-2">{cfd.type}</h3>
                       <p className="text-gray-700 mb-2">{cfd.description}</p>
-                      <div className="text-sm text-blue-600">Typical Leverage: {cfd.leverage}</div>
+                      <div className="text-sm text-accent-blue">Typical Leverage: {cfd.leverage}</div>
                     </div>
                   </div>
                   
@@ -435,7 +435,7 @@ const CFDTradingGuide2025: React.FC = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-8">How to Choose a CFD Broker in 2025</h2>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <Shield className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                <Shield className="w-6 h-6 text-accent-blue mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Regulation & Safety</h3>
                   <p className="text-gray-700">Ensure the broker is regulated by reputable authorities like FCA, CySEC, or ASIC. Check for investor compensation schemes.</p>

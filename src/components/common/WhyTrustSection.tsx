@@ -7,7 +7,7 @@ export function WhyTrustSection() {
       icon: Shield,
       title: "Regulatory Compliance Verified Brokers",
       description: "Every broker undergoes rigorous regulatory verification. We only feature brokers licensed by top-tier financial authorities including FCA, CySEC, ASIC, and SEC.",
-      color: "text-green-400",
+      color: "text-accent-blue",
       bulletPoints: [
         "Multi-jurisdiction regulatory checks",
         "Real-time license status monitoring",
@@ -18,7 +18,7 @@ export function WhyTrustSection() {
       icon: BarChart3,
       title: "AI-Powered Broker Analysis",
       description: "Our advanced 10-point evaluation system uses machine learning to analyze trading costs, platform quality, execution speed, and customer satisfaction for complete transparency.",
-      color: "text-blue-400",
+      color: "text-accent-blue",
       bulletPoints: [
         "Real-time spread monitoring",
         "Execution quality metrics",
@@ -29,7 +29,7 @@ export function WhyTrustSection() {
       icon: Users,
       title: "Community-Driven Reviews",
       description: "Access thousands of verified trader reviews with sentiment analysis. Our community-driven feedback system helps you understand real trading experiences with authenticity verification.",
-      color: "text-purple-400",
+      color: "text-accent-blue",
       bulletPoints: [
         "Verified trader testimonials",
         "Sentiment analysis scoring",

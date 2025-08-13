@@ -306,7 +306,7 @@ const UnitedKingdomPage: React.FC = () => {
                             </span>
                           )}
                           {broker.ukSpecific.isaSuitability && (
-                            <span className="text-blue-600 flex items-center gap-1">
+                            <span className="text-accent-blue flex items-center gap-1">
                               <DollarSign className="w-3 h-3" /> ISA
                             </span>
                           )}
@@ -326,7 +326,7 @@ const UnitedKingdomPage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.pros.map((pro, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-green-500 mt-1">✓</span>
+                                <span className="text-accent-blue mt-1">✓</span>
                                 {pro}
                               </li>
                             ))}
@@ -337,7 +337,7 @@ const UnitedKingdomPage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.cons.map((con, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-red-500 mt-1">✗</span>
+                                <span className="text-accent-blue mt-1">✗</span>
                                 {con}
                               </li>
                             ))}
@@ -359,7 +359,7 @@ const UnitedKingdomPage: React.FC = () => {
               <h2 className="text-3xl font-bold text-center mb-8">Popular Payment Methods in the UK</h2>
               <div className="grid md:grid-cols-4 gap-6">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <CreditCard className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                  <CreditCard className="w-8 h-8 text-accent-blue mx-auto mb-2" />
                   <h3 className="font-semibold">Bank Transfer</h3>
                   <p className="text-sm text-gray-600">Faster Payments, BACS</p>
                 </div>

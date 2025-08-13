@@ -140,7 +140,7 @@ const generateVolatilityData = (instrument: any, timeframe: string, customPrice?
 const getRiskLevelColor = (riskLevel: string) => {
   switch (riskLevel) {
     case 'low':
-      return 'bg-green-500/20 text-green-400 border-green-500/30'
+      return 'bg-accent-blue/20 text-accent-blue border-green-500/30'
     case 'medium':
       return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
     case 'high':
@@ -317,7 +317,7 @@ export function VolatilityCalculator() {
         {isLoading ? (
           <Card className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700">
             <CardContent className="p-8 text-center">
-              <Activity className="w-8 h-8 text-blue-400 mx-auto mb-4 animate-pulse" />
+              <Activity className="w-8 h-8 text-accent-blue mx-auto mb-4 animate-pulse" />
               <h3 className="text-xl font-semibold text-white mb-2">Calculating Volatility</h3>
               <p className="text-gray-400">Analyzing market data...</p>
             </CardContent>
@@ -329,7 +329,7 @@ export function VolatilityCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <Card className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 border-blue-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-blue-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <Activity className="w-5 h-5" />
                     Historical Volatility
                   </CardTitle>
@@ -345,7 +345,7 @@ export function VolatilityCalculator() {
               {volatilityData.impliedVolatility && (
                 <Card className="bg-gradient-to-br from-purple-600/10 to-purple-800/10 border-purple-500/20">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-lg text-purple-400 flex items-center gap-2">
+                    <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                       <TrendingUp className="w-5 h-5" />
                       Implied Volatility
                     </CardTitle>
@@ -361,7 +361,7 @@ export function VolatilityCalculator() {
 
               <Card className="bg-gradient-to-br from-green-600/10 to-green-800/10 border-green-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-green-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <BarChart3 className="w-5 h-5" />
                     Average Range
                   </CardTitle>
@@ -382,7 +382,7 @@ export function VolatilityCalculator() {
               }`}>
                 <CardHeader className="pb-3">
                   <CardTitle className={`text-lg flex items-center gap-2 ${
-                    volatilityData.riskLevel === 'low' ? 'text-green-400' :
+                    volatilityData.riskLevel === 'low' ? 'text-accent-blue' :
                     volatilityData.riskLevel === 'medium' ? 'text-yellow-400' :
                     volatilityData.riskLevel === 'high' ? 'text-orange-400' :
                     'text-red-400'
@@ -449,7 +449,7 @@ export function VolatilityCalculator() {
                     </div>
                   </div>
                   <div className="text-center p-4 bg-green-600/10 border border-green-500/20 rounded-lg">
-                    <div className="text-sm text-green-400 mb-2">Resistance Level</div>
+                    <div className="text-sm text-accent-blue mb-2">Resistance Level</div>
                     <div className="text-2xl font-bold text-white">
                       {volatilityData.supportResistance.resistance}
                     </div>
@@ -477,7 +477,7 @@ export function VolatilityCalculator() {
                         isSelected ? 'bg-blue-600/20 border border-blue-500/30' : 'bg-gray-800/50'
                       }`}>
                         <div className="flex items-center gap-3">
-                          <span className={`font-medium ${isSelected ? 'text-blue-400' : 'text-white'}`}>
+                          <span className={`font-medium ${isSelected ? 'text-accent-blue' : 'text-white'}`}>
                             {instrument.label}
                           </span>
                           <Badge variant="outline" className="text-xs">
@@ -510,8 +510,8 @@ export function VolatilityCalculator() {
                   <div>
                     <h4 className="font-semibold text-white mb-2">Volatility Types:</h4>
                     <ul className="space-y-1">
-                      <li>• <span className="text-blue-400">Historical</span>: Past price movements</li>
-                      <li>• <span className="text-purple-400">Implied</span>: Market expectations</li>
+                      <li>• <span className="text-accent-blue">Historical</span>: Past price movements</li>
+                      <li>• <span className="text-accent-blue">Implied</span>: Market expectations</li>
                       <li>• Higher volatility = Higher risk & potential reward</li>
                       <li>• Lower volatility = More stable price movements</li>
                     </ul>
@@ -519,7 +519,7 @@ export function VolatilityCalculator() {
                   <div>
                     <h4 className="font-semibold text-white mb-2">Risk Levels:</h4>
                     <ul className="space-y-1">
-                      <li>• <span className="text-green-400">Low</span>: &lt;15% annual volatility</li>
+                      <li>• <span className="text-accent-blue">Low</span>: &lt;15% annual volatility</li>
                       <li>• <span className="text-yellow-400">Medium</span>: 15-25% annual volatility</li>
                       <li>• <span className="text-orange-400">High</span>: 25-40% annual volatility</li>
                       <li>• <span className="text-red-400">Extreme</span>: &gt;40% annual volatility</li>

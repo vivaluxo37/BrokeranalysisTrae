@@ -256,7 +256,7 @@ export function PositionCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <Card className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 border-blue-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-blue-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <Calculator className="w-5 h-5" />
                     Position Size
                   </CardTitle>
@@ -271,7 +271,7 @@ export function PositionCalculator() {
 
               <Card className="bg-gradient-to-br from-green-600/10 to-green-800/10 border-green-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-green-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <TrendingUp className="w-5 h-5" />
                     Lot Size
                   </CardTitle>
@@ -301,7 +301,7 @@ export function PositionCalculator() {
 
               <Card className="bg-gradient-to-br from-purple-600/10 to-purple-800/10 border-purple-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-purple-400">Stop Loss</CardTitle>
+                  <CardTitle className="text-lg text-accent-blue">Stop Loss</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-white mb-1">

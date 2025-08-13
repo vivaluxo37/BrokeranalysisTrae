@@ -46,7 +46,7 @@ export function EducationalHubTeaser() {
 
   const getLevelColor = (level: string) => {
     switch (level) {
-      case 'Beginner': return 'bg-green-500/20 text-green-400'
+      case 'Beginner': return 'bg-accent-blue/20 text-accent-blue'
       case 'Intermediate': return 'bg-yellow-500/20 text-yellow-400'
       case 'Advanced': return 'bg-red-500/20 text-red-400'
       default: return 'bg-gray-500/20 text-gray-400'

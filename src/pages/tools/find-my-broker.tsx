@@ -304,7 +304,7 @@ const FindMyBrokerQuiz: React.FC = () => {
                   {option.icon}
                   <span className="font-medium">{option.label}</span>
                   {currentAnswer === option.value && (
-                    <CheckCircle className="w-5 h-5 text-blue-500 ml-auto" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue ml-auto" />
                   )}
                 </div>
               </button>
@@ -334,7 +334,7 @@ const FindMyBrokerQuiz: React.FC = () => {
                 <div className="flex items-center space-x-3">
                   <span className="font-medium">{option.label}</span>
                   {multipleAnswers.includes(option.value) && (
-                    <CheckCircle className="w-5 h-5 text-blue-500 ml-auto" />
+                    <CheckCircle className="w-5 h-5 text-accent-blue ml-auto" />
                   )}
                 </div>
               </button>
@@ -347,7 +347,7 @@ const FindMyBrokerQuiz: React.FC = () => {
         return (
           <div className="space-y-6">
             <div className="text-center">
-              <span className="text-3xl font-bold text-blue-600">
+              <span className="text-3xl font-bold text-accent-blue">
                 {question.unit}{rangeValue.toLocaleString()}
               </span>
             </div>
@@ -454,7 +454,7 @@ const FindMyBrokerQuiz: React.FC = () => {
                     <ul className="space-y-1">
                       {broker.reasons.map((reason, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <CheckCircle className="w-4 h-4 text-accent-blue" />
                           <span className="text-gray-700">{reason}</span>
                         </li>
                       ))}
@@ -472,7 +472,7 @@ const FindMyBrokerQuiz: React.FC = () => {
                     </a>
                     <a
                       href={`/brokers/${broker.name.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="border border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50 transition-colors"
+                      className="border border-blue-600 text-accent-blue px-6 py-2 rounded-lg hover:bg-blue-50 transition-colors"
                     >
                       Read Review
                     </a>

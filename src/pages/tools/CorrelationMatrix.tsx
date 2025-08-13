@@ -94,7 +94,7 @@ const getCorrelationColor = (correlation: number) => {
   const abs = Math.abs(correlation)
   if (correlation > 0) {
     if (abs >= 0.8) return 'bg-green-600 text-white'
-    if (abs >= 0.6) return 'bg-green-500 text-white'
+    if (abs >= 0.6) return 'bg-accent-blue text-white'
     if (abs >= 0.4) return 'bg-green-400 text-black'
     if (abs >= 0.2) return 'bg-green-300 text-black'
     return 'bg-green-200 text-black'
@@ -109,8 +109,8 @@ const getCorrelationColor = (correlation: number) => {
 
 const getStrengthBadge = (strength: string) => {
   const colors = {
-    'very-strong': 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-    'strong': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    'very-strong': 'bg-accent-blue/20 text-accent-blue border-purple-500/30',
+    'strong': 'bg-accent-blue/20 text-accent-blue border-blue-500/30',
     'moderate': 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
     'weak': 'bg-orange-500/20 text-orange-400 border-orange-500/30',
     'very-weak': 'bg-gray-500/20 text-gray-400 border-gray-500/30'
@@ -311,7 +311,7 @@ export function CorrelationMatrix() {
         {isLoading ? (
           <Card className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700">
             <CardContent className="p-8 text-center">
-              <RefreshCw className="w-8 h-8 text-blue-400 mx-auto mb-4 animate-spin" />
+              <RefreshCw className="w-8 h-8 text-accent-blue mx-auto mb-4 animate-spin" />
               <h3 className="text-xl font-semibold text-white mb-2">Calculating Correlations</h3>
               <p className="text-gray-400">Analyzing market relationships...</p>
             </CardContent>
@@ -344,7 +344,7 @@ export function CorrelationMatrix() {
                       </div>
                       <div className="flex items-center gap-2">
                         {corr.direction === 'positive' ? (
-                          <TrendingUp className="w-4 h-4 text-green-400" />
+                          <TrendingUp className="w-4 h-4 text-accent-blue" />
                         ) : (
                           <TrendingDown className="w-4 h-4 text-red-400" />
                         )}
@@ -368,7 +368,7 @@ export function CorrelationMatrix() {
                     <div className="mt-3 bg-gray-800/50 rounded-full h-2">
                       <div
                         className={`h-2 rounded-full ${
-                          corr.correlation >= 0 ? 'bg-green-500' : 'bg-red-500'
+                          corr.correlation >= 0 ? 'bg-accent-blue' : 'bg-red-500'
                         }`}
                         style={{ width: `${Math.abs(corr.correlation) * 100}%` }}
                       />
@@ -389,7 +389,7 @@ export function CorrelationMatrix() {
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center p-3 bg-gray-800/50 rounded">
-                    <div className="text-2xl font-bold text-green-400">
+                    <div className="text-2xl font-bold text-accent-blue">
                       {correlations.filter(c => c.correlation > 0).length}
                     </div>
                     <div className="text-sm text-gray-400">Positive</div>
@@ -401,7 +401,7 @@ export function CorrelationMatrix() {
                     <div className="text-sm text-gray-400">Negative</div>
                   </div>
                   <div className="text-center p-3 bg-gray-800/50 rounded">
-                    <div className="text-2xl font-bold text-purple-400">
+                    <div className="text-2xl font-bold text-accent-blue">
                       {correlations.filter(c => Math.abs(c.correlation) >= 0.6).length}
                     </div>
                     <div className="text-sm text-gray-400">Strong</div>
@@ -426,8 +426,8 @@ export function CorrelationMatrix() {
                   <div>
                     <h4 className="font-semibold text-white mb-2">Correlation Strength:</h4>
                     <ul className="space-y-1">
-                      <li>• <span className="text-purple-400">Very Strong</span>: ±0.8 to ±1.0</li>
-                      <li>• <span className="text-blue-400">Strong</span>: ±0.6 to ±0.8</li>
+                      <li>• <span className="text-accent-blue">Very Strong</span>: ±0.8 to ±1.0</li>
+                      <li>• <span className="text-accent-blue">Strong</span>: ±0.6 to ±0.8</li>
                       <li>• <span className="text-yellow-400">Moderate</span>: ±0.4 to ±0.6</li>
                       <li>• <span className="text-orange-400">Weak</span>: ±0.2 to ±0.4</li>
                       <li>• <span className="text-gray-400">Very Weak</span>: 0 to ±0.2</li>
@@ -436,7 +436,7 @@ export function CorrelationMatrix() {
                   <div>
                     <h4 className="font-semibold text-white mb-2">Trading Implications:</h4>
                     <ul className="space-y-1">
-                      <li>• <span className="text-green-400">Positive</span>: Pairs move in same direction</li>
+                      <li>• <span className="text-accent-blue">Positive</span>: Pairs move in same direction</li>
                       <li>• <span className="text-red-400">Negative</span>: Pairs move in opposite directions</li>
                       <li>• High correlation = Higher risk if trading both</li>
                       <li>• Low correlation = Better diversification</li>

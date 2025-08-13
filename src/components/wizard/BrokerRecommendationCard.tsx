@@ -26,7 +26,7 @@ export function BrokerRecommendationCard({ broker, index }: BrokerRecommendation
     <div className="professional-card p-6">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center">
-          <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mr-4">
+          <Badge className="bg-accent-blue/20 text-accent-blue border-green-500/30 mr-4">
             #{index + 1} Match
           </Badge>
           <BrokerLogo
@@ -51,7 +51,7 @@ export function BrokerRecommendationCard({ broker, index }: BrokerRecommendation
               {broker.regulation.map((reg) => (
                 <Badge 
                   key={reg} 
-                  className="bg-green-500/20 text-green-400 border-green-500/30 text-xs"
+                  className="bg-accent-blue/20 text-accent-blue border-green-500/30 text-xs"
                 >
                   {reg}
                 </Badge>

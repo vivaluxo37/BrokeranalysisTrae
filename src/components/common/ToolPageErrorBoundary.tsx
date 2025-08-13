@@ -195,7 +195,7 @@ export class ToolPageErrorBoundary extends Component<Props, State> {
                 </p>
 
                 {this.state.isRetrying ? (
-                  <div className="flex items-center justify-center text-blue-600 mb-6">
+                  <div className="flex items-center justify-center text-accent-blue mb-6">
                     <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
                     Reloading tool...
                   </div>
@@ -241,7 +241,7 @@ export class ToolPageErrorBoundary extends Component<Props, State> {
                       href="/tools/broker-finder"
                       className="flex items-center p-3 bg-white rounded-md hover:bg-gray-100 transition-colors"
                     >
-                      <Settings className="w-5 h-5 text-blue-600 mr-3" />
+                      <Settings className="w-5 h-5 text-accent-blue mr-3" />
                       <div>
                         <div className="font-medium text-gray-900">Find My Broker</div>
                         <div className="text-gray-500">Get personalized recommendations</div>

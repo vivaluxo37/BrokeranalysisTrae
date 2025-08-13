@@ -72,7 +72,7 @@ describe('Textarea', () => {
     expect(textarea).toHaveClass('border-green-500')
     expect(textarea).toHaveAttribute('aria-describedby', 'test-textarea-success')
     expect(successMessage).toBeInTheDocument()
-    expect(successMessage).toHaveClass('text-green-400')
+    expect(successMessage).toHaveClass('text-accent-blue')
   })
 
   it('shows helper text', () => {

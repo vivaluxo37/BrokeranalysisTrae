@@ -122,7 +122,7 @@ export function TraderTestimonialsSection() {
                 {/* Verification badge */}
                 {currentReview.verifiedTrader && (
                   <div className="flex items-center justify-center pt-4 border-t border-white/10">
-                    <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full text-sm font-medium">
                       ✓ Verified Trader
                     </span>
                   </div>

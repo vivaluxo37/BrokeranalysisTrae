@@ -84,7 +84,7 @@ const ContactUs: React.FC = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Contact <span className="text-blue-600">BrokerAnalysis</span>
+              Contact <span className="text-accent-blue">BrokerAnalysis</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
               Get expert support, ask questions about brokers, or explore partnership opportunities. 
@@ -100,11 +100,11 @@ const ContactUs: React.FC = () => {
               {/* General Support */}
               <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageSquare className="w-8 h-8 text-blue-600" />
+                  <MessageSquare className="w-8 h-8 text-accent-blue" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">General Support</h3>
                 <p className="text-gray-600 mb-4">Questions about brokers, platform features, or account issues</p>
-                <a href="mailto:support@brokeranalysis.com" className="text-blue-600 hover:text-blue-700 font-semibold">
+                <a href="mailto:support@brokeranalysis.com" className="text-accent-blue hover:text-blue-700 font-semibold">
                   support@brokeranalysis.com
                 </a>
               </div>
@@ -300,7 +300,7 @@ const ContactUs: React.FC = () => {
                   {/* Office Address */}
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-blue-600" />
+                      <MapPin className="w-6 h-6 text-accent-blue" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Office Address</h3>

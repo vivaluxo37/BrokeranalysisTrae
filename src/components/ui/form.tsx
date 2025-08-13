@@ -170,8 +170,8 @@ const FormMessage = React.forwardRef<
       'text-sm font-medium',
       {
         'text-red-400': type === 'error',
-        'text-green-400': type === 'success',
-        'text-blue-400': type === 'info',
+        'text-accent-blue': type === 'success',
+        'text-accent-blue': type === 'info',
       },
       className
     )}

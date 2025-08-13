@@ -38,15 +38,15 @@ export function SecurePaymentSection() {
         {/* Security badges */}
         <div className="flex justify-center items-center gap-8 mt-12 flex-wrap">
           <div className="flex items-center gap-2">
-            <Shield className="w-5 h-5 text-green-400" />
+            <Shield className="w-5 h-5 text-accent-blue" />
             <span className="neural-text text-sm">SSL Secured</span>
           </div>
           <div className="flex items-center gap-2">
-            <Lock className="w-5 h-5 text-green-400" />
+            <Lock className="w-5 h-5 text-accent-blue" />
             <span className="neural-text text-sm">Bank Grade Security</span>
           </div>
           <div className="flex items-center gap-2">
-            <CreditCard className="w-5 h-5 text-green-400" />
+            <CreditCard className="w-5 h-5 text-accent-blue" />
             <span className="neural-text text-sm">PCI Compliant</span>
           </div>
         </div>

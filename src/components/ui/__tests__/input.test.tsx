@@ -120,7 +120,7 @@ describe('Input', () => {
     expect(input).toHaveClass('border-green-500')
     expect(input).toHaveAttribute('aria-describedby', 'test-input-success')
     expect(successMessage).toBeInTheDocument()
-    expect(successMessage).toHaveClass('text-green-400')
+    expect(successMessage).toHaveClass('text-accent-blue')
   })
 
   it('shows helper text', () => {

@@ -347,7 +347,7 @@ const RiskManagementStrategies: React.FC = () => {
                 <div className="text-2xl font-bold text-red-800">${riskCalc.riskAmount}</div>
               </div>
               <div className="bg-blue-100 p-4 rounded-lg text-center">
-                <div className="text-sm text-blue-600 mb-1">Position Size</div>
+                <div className="text-sm text-accent-blue mb-1">Position Size</div>
                 <div className="text-2xl font-bold text-blue-800">{riskCalc.positionSize} shares</div>
               </div>
               <div className="bg-green-100 p-4 rounded-lg text-center">
@@ -370,7 +370,7 @@ const RiskManagementStrategies: React.FC = () => {
                 return (
                   <div key={index} className="flex items-start gap-4 p-6 border border-gray-200 rounded-lg">
                     <div className="p-3 rounded-lg bg-blue-100">
-                      <Icon className="w-6 h-6 text-blue-600" />
+                      <Icon className="w-6 h-6 text-accent-blue" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold text-gray-900 mb-2">{rule.title}</h3>

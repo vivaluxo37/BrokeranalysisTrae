@@ -109,7 +109,7 @@ const EnhancedPrivacyPolicy: React.FC = () => {
                       <a
                         key={section.id}
                         href={`#${section.id}`}
-                        className="flex items-center gap-3 p-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        className="flex items-center gap-3 p-2 text-sm text-gray-700 hover:text-accent-blue hover:bg-blue-50 rounded-lg transition-colors"
                       >
                         <IconComponent className="w-4 h-4" />
                         {section.title}
@@ -141,7 +141,7 @@ const EnhancedPrivacyPolicy: React.FC = () => {
               <ProfessionalCard variant="default">
                 <div className="p-8">
                   <div className="flex items-center mb-6">
-                    <FileText className="h-6 w-6 text-blue-600 mr-3" />
+                    <FileText className="h-6 w-6 text-accent-blue mr-3" />
                     <h2 className="text-2xl font-bold text-gray-900">Information We Collect</h2>
                   </div>
                   
@@ -184,7 +184,7 @@ const EnhancedPrivacyPolicy: React.FC = () => {
               <ProfessionalCard variant="default">
                 <div className="p-8">
                   <div className="flex items-center mb-6">
-                    <Eye className="h-6 w-6 text-blue-600 mr-3" />
+                    <Eye className="h-6 w-6 text-accent-blue mr-3" />
                     <h2 className="text-2xl font-bold text-gray-900">How We Use Your Information</h2>
                   </div>
                   
@@ -218,7 +218,7 @@ const EnhancedPrivacyPolicy: React.FC = () => {
               <ProfessionalCard variant="default">
                 <div className="p-8">
                   <div className="flex items-center mb-6">
-                    <Globe className="h-6 w-6 text-blue-600 mr-3" />
+                    <Globe className="h-6 w-6 text-accent-blue mr-3" />
                     <h2 className="text-2xl font-bold text-gray-900">Data Sharing and Disclosure</h2>
                   </div>
                   
@@ -255,7 +255,7 @@ const EnhancedPrivacyPolicy: React.FC = () => {
               <ProfessionalCard variant="default">
                 <div className="p-8">
                   <div className="flex items-center mb-6">
-                    <Lock className="h-6 w-6 text-blue-600 mr-3" />
+                    <Lock className="h-6 w-6 text-accent-blue mr-3" />
                     <h2 className="text-2xl font-bold text-gray-900">Data Security</h2>
                   </div>
                   
@@ -289,7 +289,7 @@ const EnhancedPrivacyPolicy: React.FC = () => {
               <ProfessionalCard variant="default">
                 <div className="p-8">
                   <div className="flex items-center mb-6">
-                    <Shield className="h-6 w-6 text-blue-600 mr-3" />
+                    <Shield className="h-6 w-6 text-accent-blue mr-3" />
                     <h2 className="text-2xl font-bold text-gray-900">Your Privacy Rights</h2>
                   </div>
                   
@@ -343,7 +343,7 @@ const EnhancedPrivacyPolicy: React.FC = () => {
               <ProfessionalCard variant="default">
                 <div className="p-8">
                   <div className="flex items-center mb-6">
-                    <Mail className="h-6 w-6 text-blue-600 mr-3" />
+                    <Mail className="h-6 w-6 text-accent-blue mr-3" />
                     <h2 className="text-2xl font-bold text-gray-900">Contact Us</h2>
                   </div>
                   

@@ -47,7 +47,7 @@ const TermsOfService: React.FC = () => {
           <div className="text-center mb-12">
             <div className="flex justify-center mb-6">
               <div className="p-3 bg-blue-100 rounded-full">
-                <Scale className="h-8 w-8 text-blue-600" />
+                <Scale className="h-8 w-8 text-accent-blue" />
               </div>
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -65,22 +65,22 @@ const TermsOfService: React.FC = () => {
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Navigation</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <a href="#acceptance" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#acceptance" className="text-accent-blue hover:text-blue-800 text-sm">
                 Acceptance of Terms
               </a>
-              <a href="#services" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#services" className="text-accent-blue hover:text-blue-800 text-sm">
                 Our Services
               </a>
-              <a href="#user-accounts" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#user-accounts" className="text-accent-blue hover:text-blue-800 text-sm">
                 User Accounts
               </a>
-              <a href="#prohibited-uses" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#prohibited-uses" className="text-accent-blue hover:text-blue-800 text-sm">
                 Prohibited Uses
               </a>
-              <a href="#disclaimers" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#disclaimers" className="text-accent-blue hover:text-blue-800 text-sm">
                 Disclaimers
               </a>
-              <a href="#termination" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#termination" className="text-accent-blue hover:text-blue-800 text-sm">
                 Termination
               </a>
             </div>
@@ -90,7 +90,7 @@ const TermsOfService: React.FC = () => {
             {/* Acceptance of Terms */}
             <section id="acceptance" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <FileText className="h-6 w-6 text-blue-600 mr-3" />
+                <FileText className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Acceptance of Terms</h2>
               </div>
               
@@ -121,7 +121,7 @@ const TermsOfService: React.FC = () => {
             {/* Description of Services */}
             <section id="services" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Globe className="h-6 w-6 text-blue-600 mr-3" />
+                <Globe className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Description of Services</h2>
               </div>
               
@@ -173,7 +173,7 @@ const TermsOfService: React.FC = () => {
             {/* User Accounts */}
             <section id="user-accounts" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Users className="h-6 w-6 text-blue-600 mr-3" />
+                <Users className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">User Accounts and Registration</h2>
               </div>
               
@@ -310,7 +310,7 @@ const TermsOfService: React.FC = () => {
             {/* Disclaimers */}
             <section id="disclaimers" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Shield className="h-6 w-6 text-blue-600 mr-3" />
+                <Shield className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Disclaimers and Limitations</h2>
               </div>
               

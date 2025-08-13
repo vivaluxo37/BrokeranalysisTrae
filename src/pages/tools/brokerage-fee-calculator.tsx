@@ -280,7 +280,7 @@ const BrokerageFeeCalculator: React.FC = () => {
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-lg p-6 sticky top-4">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <Calculator className="w-6 h-6 mr-2 text-blue-600" />
+                  <Calculator className="w-6 h-6 mr-2 text-accent-blue" />
                   Trading Parameters
                 </h2>
 
@@ -381,7 +381,7 @@ const BrokerageFeeCalculator: React.FC = () => {
               <div className="bg-white rounded-lg shadow-lg p-6">
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-2xl font-bold text-gray-900 flex items-center">
-                    <BarChart3 className="w-6 h-6 mr-2 text-blue-600" />
+                    <BarChart3 className="w-6 h-6 mr-2 text-accent-blue" />
                     Fee Comparison Results
                   </h2>
                   <div className="flex space-x-2">
@@ -426,7 +426,7 @@ const BrokerageFeeCalculator: React.FC = () => {
                           <h3 className="text-lg font-semibold text-gray-900">{calc.broker.name}</h3>
                         </div>
                         <div className="text-right">
-                          <div className="text-2xl font-bold text-blue-600">
+                          <div className="text-2xl font-bold text-accent-blue">
                             ${calc.monthlyFees.total.toFixed(2)}
                           </div>
                           <div className="text-sm text-gray-500">per month</div>
@@ -467,7 +467,7 @@ const BrokerageFeeCalculator: React.FC = () => {
                           </a>
                           <a
                             href={`/brokers/${calc.broker.name.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="border border-blue-600 text-blue-600 px-4 py-2 rounded text-sm hover:bg-blue-50 transition-colors"
+                            className="border border-blue-600 text-accent-blue px-4 py-2 rounded text-sm hover:bg-blue-50 transition-colors"
                           >
                             Read Review
                           </a>

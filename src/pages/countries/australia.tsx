@@ -197,15 +197,15 @@ const AustraliaPage: React.FC = () => {
                 Compare ASIC regulated brokers with investor protection and competitive fees
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <span className="bg-green-500 px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="bg-accent-blue px-3 py-1 rounded-full flex items-center gap-1">
                   <Shield className="w-4 h-4" />
                   ASIC Regulated
                 </span>
-                <span className="bg-green-500 px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="bg-accent-blue px-3 py-1 rounded-full flex items-center gap-1">
                   <DollarSign className="w-4 h-4" />
                   Investor Protection
                 </span>
-                <span className="bg-green-500 px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="bg-accent-blue px-3 py-1 rounded-full flex items-center gap-1">
                   <TrendingUp className="w-4 h-4" />
                   ASX Trading
                 </span>
@@ -235,7 +235,7 @@ const AustraliaPage: React.FC = () => {
                   </p>
                 </div>
                 <div className="text-center p-6 bg-blue-50 rounded-lg">
-                  <AlertTriangle className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                  <AlertTriangle className="w-12 h-12 text-accent-blue mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2">CFD Restrictions</h3>
                   <p className="text-gray-600">
                     ASIC has implemented product intervention orders for CFDs, including leverage limits and negative balance protection.
@@ -324,7 +324,7 @@ const AustraliaPage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.pros.map((pro, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-green-500 mt-1">✓</span>
+                                <span className="text-accent-blue mt-1">✓</span>
                                 {pro}
                               </li>
                             ))}
@@ -335,7 +335,7 @@ const AustraliaPage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.cons.map((con, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-red-500 mt-1">✗</span>
+                                <span className="text-accent-blue mt-1">✗</span>
                                 {con}
                               </li>
                             ))}
@@ -357,7 +357,7 @@ const AustraliaPage: React.FC = () => {
               <h2 className="text-3xl font-bold text-center mb-8">Popular Payment Methods in Australia</h2>
               <div className="grid md:grid-cols-4 gap-6">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <CreditCard className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                  <CreditCard className="w-8 h-8 text-accent-blue mx-auto mb-2" />
                   <h3 className="font-semibold">Bank Transfer</h3>
                   <p className="text-sm text-gray-600">BPAY, Direct Debit</p>
                 </div>

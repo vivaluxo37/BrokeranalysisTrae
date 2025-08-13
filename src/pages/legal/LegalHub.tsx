@@ -174,7 +174,7 @@ const LegalHub: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-6">
           <ProfessionalCard variant="compact" className="text-center hover:shadow-lg transition-shadow">
             <div className="p-6">
-              <Shield className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+              <Shield className="w-8 h-8 text-accent-blue mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 mb-2">Privacy Rights</h3>
               <p className="text-sm text-gray-600 mb-4">
                 Exercise your data protection rights under GDPR and CCPA
@@ -258,7 +258,7 @@ const LegalHub: React.FC = () => {
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-4 flex-1">
                       <div className="p-3 bg-blue-50 rounded-lg">
-                        <IconComponent className="w-6 h-6 text-blue-600" />
+                        <IconComponent className="w-6 h-6 text-accent-blue" />
                       </div>
                       
                       <div className="flex-1">

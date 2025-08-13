@@ -47,7 +47,7 @@ export function AssetTestComponent({ showDetails = false, autoRun = false }: Ass
         <button
           onClick={runTests}
           disabled={isRunning}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
+          className="px-4 py-2 bg-accent-blue text-white rounded hover:bg-blue-600 disabled:opacity-50"
         >
           {isRunning ? 'Running Tests...' : 'Test Assets'}
         </button>

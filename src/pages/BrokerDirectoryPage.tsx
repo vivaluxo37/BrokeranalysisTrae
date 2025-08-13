@@ -105,15 +105,15 @@ export function BrokerDirectoryPage() {
             {/* Trust Indicators */}
             <div className="flex justify-center items-center gap-8 mb-8 animate-fade-in">
               <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <Shield className="w-4 h-4 text-green-400" />
+                <Shield className="w-4 h-4 text-accent-blue" />
                 <span>500+ Regulated</span>
               </div>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <Users className="w-4 h-4 text-blue-400" />
+                <Users className="w-4 h-4 text-accent-blue" />
                 <span>Verified Reviews</span>
               </div>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <TrendingUp className="w-4 h-4 text-purple-400" />
+                <TrendingUp className="w-4 h-4 text-accent-blue" />
                 <span>Real-time Data</span>
               </div>
             </div>
@@ -134,15 +134,15 @@ export function BrokerDirectoryPage() {
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-blue-600/10 to-blue-800/10 border border-blue-500/20">
-                <div className="text-3xl font-bold text-blue-400 mb-2">{totalCount}+</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">{totalCount}+</div>
                 <div className="text-gray-300">Brokers Listed</div>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-green-600/10 to-green-800/10 border border-green-500/20">
-                <div className="text-3xl font-bold text-green-400 mb-2">100%</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">100%</div>
                 <div className="text-gray-300">Verified Data</div>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-purple-600/10 to-purple-800/10 border border-purple-500/20">
-                <div className="text-3xl font-bold text-purple-400 mb-2">24/7</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">24/7</div>
                 <div className="text-gray-300">Updated</div>
               </div>
             </div>
@@ -237,7 +237,7 @@ export function BrokerDirectoryPage() {
                               type="checkbox"
                               checked={selectedBrokers.includes(broker.id)}
                               onChange={() => toggleBrokerSelection(broker.id)}
-                              className="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
+                              className="w-4 h-4 text-accent-blue bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
                             />
                             <img 
                               src={brokerDataService.getBrokerProperty(broker, 'logo', '/assets/icons/broker-placeholder.svg')} 
@@ -291,7 +291,7 @@ export function BrokerDirectoryPage() {
                             {brokerDataService.getBrokerProperty(broker, 'regulators', []).map((reg: string) => (
                               <Badge 
                                 key={reg} 
-                                className="bg-green-500/20 text-green-400 border-green-500/30 text-xs"
+                                className="bg-accent-blue/20 text-accent-blue border-green-500/30 text-xs"
                               >
                                 <Shield className="w-3 h-3 mr-1" />
                                 {reg}
@@ -355,7 +355,7 @@ export function BrokerDirectoryPage() {
                             type="checkbox"
                             checked={selectedBrokers.includes(broker.id)}
                             onChange={() => toggleBrokerSelection(broker.id)}
-                            className="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
+                            className="w-4 h-4 text-accent-blue bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
                           />
                           <img 
                             src={brokerDataService.getBrokerProperty(broker, 'logo', '/assets/icons/broker-placeholder.svg')} 
@@ -402,7 +402,7 @@ export function BrokerDirectoryPage() {
                           {brokerDataService.getBrokerProperty(broker, 'regulators', []).slice(0, 2).map((reg: string) => (
                             <Badge 
                               key={reg} 
-                              className="bg-green-500/20 text-green-400 border-green-500/30 text-xs"
+                              className="bg-accent-blue/20 text-accent-blue border-green-500/30 text-xs"
                             >
                               <Shield className="w-3 h-3 mr-1" />
                               {reg}

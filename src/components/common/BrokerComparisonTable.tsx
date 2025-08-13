@@ -435,7 +435,7 @@ export const BrokerComparisonTable = React.memo(function BrokerComparisonTable({
       
       <td className="p-6 text-center">
         <div className="space-y-1">
-          <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+          <span className="bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full text-sm font-medium">
             {broker.tradingFees}
           </span>
           {broker.spreads && (
@@ -662,7 +662,7 @@ export const BrokerComparisonTable = React.memo(function BrokerComparisonTable({
               <div className="flex items-center gap-2 text-cosmic-muted">
                 <span className="text-sm">Updated {lastUpdated.toLocaleTimeString()}</span>
                 {autoRefresh && (
-                  <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full">
+                  <span className="text-xs bg-accent-blue/20 text-accent-blue px-2 py-1 rounded-full">
                     Auto-refresh: {Math.round(refreshInterval / 1000)}s
                   </span>
                 )}

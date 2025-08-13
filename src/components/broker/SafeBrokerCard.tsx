@@ -126,7 +126,7 @@ export function SafeBrokerCard({ brokerId, className = '', showActions = true }:
           </div>
           
           {brokerIsRegulated && (
-            <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+            <Badge className="bg-accent-blue/20 text-accent-blue border-green-500/30">
               <Shield className="w-3 h-3 mr-1" />
               Regulated
             </Badge>

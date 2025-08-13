@@ -138,7 +138,7 @@ export class HomepageErrorBoundary extends Component<Props, State> {
           </p>
           
           {this.state.isRetrying ? (
-            <div className="flex items-center text-blue-600 mb-4">
+            <div className="flex items-center text-accent-blue mb-4">
               <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
               Retrying...
             </div>

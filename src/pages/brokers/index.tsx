@@ -799,7 +799,7 @@ const BrokersIndex: React.FC = () => {
                 </div>
                 
                 <div className="mt-4 pt-4 border-t border-gray-200">
-                  <span className="text-blue-600 font-medium hover:text-blue-700">
+                  <span className="text-accent-blue font-medium hover:text-blue-700">
                     Read Full Review →
                   </span>
                 </div>

@@ -51,14 +51,14 @@ export function DetailedBrokerReview({ broker }: BrokerReviewProps) {
   }
 
   const getRatingColor = (rating: number) => {
-    if (rating >= 4.5) return 'text-green-400'
+    if (rating >= 4.5) return 'text-accent-blue'
     if (rating >= 4.0) return 'text-yellow-400'
     if (rating >= 3.0) return 'text-orange-400'
     return 'text-red-400'
   }
 
   const getTrustScoreColor = (score: number) => {
-    if (score >= 90) return 'bg-green-500'
+    if (score >= 90) return 'bg-accent-blue'
     if (score >= 80) return 'bg-yellow-500'
     if (score >= 70) return 'bg-orange-500'
     return 'bg-red-500'
@@ -95,7 +95,7 @@ export function DetailedBrokerReview({ broker }: BrokerReviewProps) {
           <div className="flex-1 lg:text-right">
             <div className="space-y-2">
               <div className="flex items-center justify-start lg:justify-end gap-2">
-                <Shield className="w-5 h-5 text-green-400" />
+                <Shield className="w-5 h-5 text-accent-blue" />
                 <span className="text-light-grey">Trust Score:</span>
                 <span className="text-pure-white font-semibold">{broker.trustScore}/100</span>
               </div>
@@ -161,7 +161,7 @@ export function DetailedBrokerReview({ broker }: BrokerReviewProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="professional-card">
               <CardHeader>
-                <CardTitle className="text-green-400 flex items-center gap-2">
+                <CardTitle className="text-accent-blue flex items-center gap-2">
                   <CheckCircle className="w-5 h-5" />
                   Pros
                 </CardTitle>
@@ -170,7 +170,7 @@ export function DetailedBrokerReview({ broker }: BrokerReviewProps) {
                 <ul className="space-y-2">
                   {broker.pros.map((pro, index) => (
                     <li key={index} className="flex items-start gap-2 text-light-grey">
-                      <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-accent-blue mt-0.5 flex-shrink-0" />
                       <span>{pro}</span>
                     </li>
                   ))}
@@ -244,7 +244,7 @@ export function DetailedBrokerReview({ broker }: BrokerReviewProps) {
                   <div key={index} className="flex items-center justify-between">
                     <span className="text-light-grey text-sm">{feature.name}</span>
                     {feature.available ? (
-                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <CheckCircle className="w-4 h-4 text-accent-blue" />
                     ) : (
                       <XCircle className="w-4 h-4 text-red-400" />
                     )}

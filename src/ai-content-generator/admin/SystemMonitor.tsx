@@ -246,18 +246,18 @@ export const SystemMonitor: React.FC<SystemMonitorProps> = ({
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'online': return 'text-green-500';
-      case 'degraded': return 'text-yellow-500';
-      case 'offline': return 'text-red-500';
+      case 'online': return 'text-accent-blue';
+      case 'degraded': return 'text-accent-blue';
+      case 'offline': return 'text-accent-blue';
       default: return 'text-gray-500';
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'online': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'degraded': return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
-      case 'offline': return <XCircle className="h-4 w-4 text-red-500" />;
+      case 'online': return <CheckCircle className="h-4 w-4 text-accent-blue" />;
+      case 'degraded': return <AlertTriangle className="h-4 w-4 text-accent-blue" />;
+      case 'offline': return <XCircle className="h-4 w-4 text-accent-blue" />;
       default: return <Activity className="h-4 w-4 text-gray-500" />;
     }
   };
@@ -271,9 +271,9 @@ export const SystemMonitor: React.FC<SystemMonitorProps> = ({
 
   const getAlertIcon = (type: string) => {
     switch (type) {
-      case 'error': return <XCircle className="h-4 w-4 text-red-500" />;
-      case 'warning': return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
-      case 'info': return <CheckCircle className="h-4 w-4 text-blue-500" />;
+      case 'error': return <XCircle className="h-4 w-4 text-accent-blue" />;
+      case 'warning': return <AlertTriangle className="h-4 w-4 text-accent-blue" />;
+      case 'info': return <CheckCircle className="h-4 w-4 text-accent-blue" />;
       default: return <Activity className="h-4 w-4" />;
     }
   };
@@ -524,7 +524,7 @@ export const SystemMonitor: React.FC<SystemMonitorProps> = ({
           {alerts.length === 0 ? (
             <Card>
               <CardContent className="text-center py-8">
-                <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                <CheckCircle className="h-12 w-12 text-accent-blue mx-auto mb-4" />
                 <p className="text-muted-foreground">No alerts - system is running smoothly</p>
               </CardContent>
             </Card>

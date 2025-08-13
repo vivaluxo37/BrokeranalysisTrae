@@ -116,7 +116,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {success && !error && (
               <p 
                 id={`${props.id}-success`}
-                className="text-green-400"
+                className="text-accent-blue"
               >
                 {success}
               </p>

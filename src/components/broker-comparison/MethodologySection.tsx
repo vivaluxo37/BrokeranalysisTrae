@@ -9,35 +9,35 @@ export function MethodologySection() {
       title: 'Costs & Fees',
       weight: '25%',
       description: 'Trading commissions, spreads, overnight fees, deposit/withdrawal costs',
-      color: 'text-green-500'
+      color: 'text-accent-blue'
     },
     {
       icon: Monitor,
       title: 'Platform & Tools',
       weight: '25%',
       description: 'Trading platforms, charting tools, research, mobile apps, order types',
-      color: 'text-blue-500'
+      color: 'text-accent-blue'
     },
     {
       icon: Zap,
       title: 'Execution',
       weight: '20%',
       description: 'Order execution speed, slippage, requotes, market access',
-      color: 'text-yellow-500'
+      color: 'text-accent-blue'
     },
     {
       icon: Shield,
       title: 'Safety & Regulation',
       weight: '20%',
       description: 'Regulatory licenses, client fund protection, company history',
-      color: 'text-purple-500'
+      color: 'text-accent-blue'
     },
     {
       icon: Headphones,
       title: 'Customer Support',
       weight: '10%',
       description: 'Support availability, response times, education resources',
-      color: 'text-orange-500'
+      color: 'text-accent-blue'
     }
   ]
 
@@ -64,7 +64,7 @@ export function MethodologySection() {
           {scoringCriteria.map((criteria, index) => (
             <Card key={index} className="bg-white border-gray-200 text-professional-black hover:shadow-lg transition-shadow group">
               <CardHeader className="text-center">
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center group-hover:scale-110 transition-transform ${criteria.color}`}>
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-accent-blue/20 flex items-center justify-center group-hover:scale-110 transition-transform ${criteria.color}`}>
                   <criteria.icon size={32} />
                 </div>
                 <CardTitle level={4} className="text-professional-black mb-2">
@@ -90,7 +90,7 @@ export function MethodologySection() {
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-0.5">
+                  <div className="w-6 h-6 bg-accent-blue rounded-full flex items-center justify-center mt-0.5">
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <div>
@@ -99,7 +99,7 @@ export function MethodologySection() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-0.5">
+                  <div className="w-6 h-6 bg-accent-blue rounded-full flex items-center justify-center mt-0.5">
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <div>
@@ -108,7 +108,7 @@ export function MethodologySection() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-0.5">
+                  <div className="w-6 h-6 bg-accent-blue rounded-full flex items-center justify-center mt-0.5">
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <div>
@@ -117,7 +117,7 @@ export function MethodologySection() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-0.5">
+                  <div className="w-6 h-6 bg-accent-blue rounded-full flex items-center justify-center mt-0.5">
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <div>
@@ -135,7 +135,7 @@ export function MethodologySection() {
                   <span className="text-sm text-medium-grey">Costs & Fees</span>
                   <div className="flex items-center space-x-2">
                     <div className="w-24 h-2 bg-gray-200 rounded-full">
-                      <div className="w-20 h-2 bg-green-500 rounded-full"></div>
+                      <div className="w-20 h-2 bg-accent-blue rounded-full"></div>
                     </div>
                     <span className="text-sm font-medium">4.2/5</span>
                   </div>
@@ -144,7 +144,7 @@ export function MethodologySection() {
                   <span className="text-sm text-medium-grey">Platform & Tools</span>
                   <div className="flex items-center space-x-2">
                     <div className="w-24 h-2 bg-gray-200 rounded-full">
-                      <div className="w-22 h-2 bg-blue-500 rounded-full"></div>
+                      <div className="w-22 h-2 bg-accent-blue rounded-full"></div>
                     </div>
                     <span className="text-sm font-medium">4.6/5</span>
                   </div>
@@ -162,7 +162,7 @@ export function MethodologySection() {
                   <span className="text-sm text-medium-grey">Safety & Regulation</span>
                   <div className="flex items-center space-x-2">
                     <div className="w-24 h-2 bg-gray-200 rounded-full">
-                      <div className="w-24 h-2 bg-purple-500 rounded-full"></div>
+                      <div className="w-24 h-2 bg-accent-blue rounded-full"></div>
                     </div>
                     <span className="text-sm font-medium">5.0/5</span>
                   </div>

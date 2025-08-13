@@ -46,7 +46,7 @@ const AboutUs: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center">
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                About <span className="text-blue-600">BrokerAnalysis</span>
+                About <span className="text-accent-blue">BrokerAnalysis</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
                 Your trusted partner in finding the perfect broker since 2020. We provide unbiased, 
@@ -91,7 +91,7 @@ const AboutUs: React.FC = () => {
                   of the global trading community.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <div className="flex items-center gap-2 text-blue-600">
+                  <div className="flex items-center gap-2 text-accent-blue">
                     <Target className="w-5 h-5" />
                     <span className="font-semibold">Transparency First</span>
                   </div>
@@ -155,7 +155,7 @@ const AboutUs: React.FC = () => {
                   JS
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">John Smith</h3>
-                <p className="text-blue-600 font-semibold mb-3">Chief Executive Officer</p>
+                <p className="text-accent-blue font-semibold mb-3">Chief Executive Officer</p>
                 <p className="text-gray-600 text-sm">
                   Former investment banker with 15+ years in financial markets. 
                   John founded BrokerAnalysis to bring transparency to broker selection.
@@ -244,7 +244,7 @@ const AboutUs: React.FC = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">500+</div>
+                <div className="text-4xl md:text-5xl font-bold text-accent-blue mb-2">500+</div>
                 <div className="text-gray-600 font-semibold">Brokers Reviewed</div>
                 <div className="text-sm text-gray-500 mt-1">Comprehensive analysis</div>
               </div>
@@ -279,13 +279,13 @@ const AboutUs: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/compare"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                className="bg-white text-accent-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Compare Brokers
               </a>
               <a
                 href="/tools/find-my-broker"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-blue transition-colors"
               >
                 Find My Broker
               </a>

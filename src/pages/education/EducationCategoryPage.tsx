@@ -43,7 +43,7 @@ const EducationCategoryPage: React.FC = () => {
       title: 'Trading Basics',
       description: 'Essential knowledge for new traders starting their journey in 2025',
       icon: BookOpen,
-      color: 'bg-blue-500',
+      color: 'bg-accent-blue',
       level: 'Beginner',
       totalArticles: 12,
       estimatedTime: '3-4 hours',
@@ -105,7 +105,7 @@ const EducationCategoryPage: React.FC = () => {
       title: 'Advanced Strategies',
       description: 'Professional trading techniques and advanced market strategies',
       icon: BookOpen,
-      color: 'bg-green-500',
+      color: 'bg-accent-blue',
       level: 'Advanced',
       totalArticles: 15,
       estimatedTime: '6-8 hours',
@@ -304,7 +304,7 @@ const EducationCategoryPage: React.FC = () => {
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-3">
                       {article.featured && (
-                        <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                        <Star className="w-4 h-4 text-accent-blue fill-current" />
                       )}
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         article.level === 'Beginner' ? 'bg-green-100 text-green-800' :
@@ -318,7 +318,7 @@ const EducationCategoryPage: React.FC = () => {
                         {article.duration}
                       </span>
                       {article.completed && (
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <CheckCircle className="w-4 h-4 text-accent-blue" />
                       )}
                     </div>
                     
@@ -377,14 +377,14 @@ const EducationCategoryPage: React.FC = () => {
             
             <ProfessionalCard variant="compact" className="text-center hover:shadow-lg transition-shadow">
               <Link to="/education/category/market-analysis" className="block p-4">
-                <div className="w-8 h-8 bg-purple-500 rounded-lg mx-auto mb-2"></div>
+                <div className="w-8 h-8 bg-accent-blue rounded-lg mx-auto mb-2"></div>
                 <h3 className="font-semibold text-gray-900 text-sm">Market Analysis</h3>
               </Link>
             </ProfessionalCard>
             
             <ProfessionalCard variant="compact" className="text-center hover:shadow-lg transition-shadow">
               <Link to="/education/trading-glossary" className="block p-4">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg mx-auto mb-2"></div>
+                <div className="w-8 h-8 bg-accent-blue rounded-lg mx-auto mb-2"></div>
                 <h3 className="font-semibold text-gray-900 text-sm">Trading Glossary</h3>
               </Link>
             </ProfessionalCard>

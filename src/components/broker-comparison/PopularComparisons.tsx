@@ -47,31 +47,31 @@ export function PopularComparisons() {
       icon: Calculator,
       title: 'Fee Calculator',
       description: 'Calculate trading costs across different brokers',
-      color: 'text-blue-500'
+      color: 'text-accent-blue'
     },
     {
       icon: TrendingUp,
       title: 'Spread Comparison',
       description: 'Compare real-time spreads on major currency pairs',
-      color: 'text-green-500'
+      color: 'text-accent-blue'
     },
     {
       icon: PieChart,
       title: 'Portfolio Analyzer',
       description: 'Analyze your portfolio allocation and risk',
-      color: 'text-purple-500'
+      color: 'text-accent-blue'
     },
     {
       icon: BarChart3,
       title: 'P&L Calculator',
       description: 'Calculate potential profits and losses',
-      color: 'text-orange-500'
+      color: 'text-accent-blue'
     },
     {
       icon: DollarSign,
       title: 'Currency Converter',
       description: 'Real-time currency conversion rates',
-      color: 'text-yellow-500'
+      color: 'text-accent-blue'
     }
   ]
 

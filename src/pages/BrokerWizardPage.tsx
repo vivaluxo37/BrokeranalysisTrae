@@ -108,7 +108,7 @@ export function BrokerWizardPage() {
             <div className="max-w-4xl mx-auto">
               {/* Success Header */}
               <div className="text-center mb-8">
-                <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                <CheckCircle className="w-16 h-16 text-accent-blue mx-auto mb-4" />
                 <h1 className="text-section-title text-pure-white mb-4">
                   Your Recommended Brokers
                 </h1>

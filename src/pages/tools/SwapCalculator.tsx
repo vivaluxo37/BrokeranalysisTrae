@@ -410,7 +410,7 @@ export function SwapCalculator() {
             </div>
 
             <div className="p-4 bg-blue-600/10 border border-blue-500/20 rounded-lg">
-              <h4 className="text-sm font-medium text-blue-400 mb-2">Quick Periods</h4>
+              <h4 className="text-sm font-medium text-accent-blue mb-2">Quick Periods</h4>
               <div className="grid grid-cols-3 gap-2">
                 <Button
                   variant="outline"
@@ -449,14 +449,14 @@ export function SwapCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Card className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 border-blue-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-blue-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <Clock className="w-5 h-5" />
                     Daily Swap
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.dailySwap >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.dailySwap >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.dailySwap >= 0 ? '+' : ''}${calculation.dailySwap.toFixed(2)}
                   </div>
@@ -466,14 +466,14 @@ export function SwapCalculator() {
 
               <Card className="bg-gradient-to-br from-green-600/10 to-green-800/10 border-green-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-green-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <BarChart3 className="w-5 h-5" />
                     Weekly Swap
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.weeklySwap >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.weeklySwap >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.weeklySwap >= 0 ? '+' : ''}${calculation.weeklySwap.toFixed(2)}
                   </div>
@@ -483,14 +483,14 @@ export function SwapCalculator() {
 
               <Card className="bg-gradient-to-br from-purple-600/10 to-purple-800/10 border-purple-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-purple-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <Calculator className="w-5 h-5" />
                     Monthly Swap
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.monthlySwap >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.monthlySwap >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.monthlySwap >= 0 ? '+' : ''}${calculation.monthlySwap.toFixed(2)}
                   </div>
@@ -507,7 +507,7 @@ export function SwapCalculator() {
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.yearlySwap >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.yearlySwap >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     {calculation.yearlySwap >= 0 ? '+' : ''}${calculation.yearlySwap.toFixed(2)}
                   </div>
@@ -525,7 +525,7 @@ export function SwapCalculator() {
               </CardHeader>
               <CardContent>
                 <div className={`text-3xl font-bold ${
-                  (calculation.dailySwap * parseFloat(holdingDays)) >= 0 ? 'text-green-400' : 'text-red-400'
+                  (calculation.dailySwap * parseFloat(holdingDays)) >= 0 ? 'text-accent-blue' : 'text-red-400'
                 }`}>
                   {(calculation.dailySwap * parseFloat(holdingDays)) >= 0 ? '+' : ''}$
                   {(calculation.dailySwap * parseFloat(holdingDays)).toFixed(2)}
@@ -557,7 +557,7 @@ export function SwapCalculator() {
                           {adjustedRate.toFixed(2)}%
                         </div>
                         <div className={`text-sm font-medium ${
-                          dailySwap >= 0 ? 'text-green-400' : 'text-red-400'
+                          dailySwap >= 0 ? 'text-accent-blue' : 'text-red-400'
                         }`}>
                           {dailySwap >= 0 ? '+' : ''}${dailySwap.toFixed(2)}/day
                         </div>

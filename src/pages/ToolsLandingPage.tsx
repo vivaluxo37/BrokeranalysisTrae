@@ -146,11 +146,11 @@ export function ToolsLandingPage() {
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'beginner':
-        return 'bg-green-500/20 text-green-400 border-green-500/30'
+        return 'bg-accent-blue/20 text-accent-blue border-green-500/30'
       case 'intermediate':
-        return 'bg-blue-500/20 text-blue-400 border-blue-500/30'
+        return 'bg-accent-blue/20 text-accent-blue border-blue-500/30'
       case 'advanced':
-        return 'bg-purple-500/20 text-purple-400 border-purple-500/30'
+        return 'bg-accent-blue/20 text-accent-blue border-purple-500/30'
       default:
         return 'bg-medium-grey/20 text-light-grey border-medium-grey'
     }
@@ -193,11 +193,11 @@ export function ToolsLandingPage() {
                 <span>Free Tools</span>
               </div>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <Users className="w-4 h-4 text-blue-400" />
+                <Users className="w-4 h-4 text-accent-blue" />
                 <span>500K+ Users</span>
               </div>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <Star className="w-4 h-4 text-purple-400" />
+                <Star className="w-4 h-4 text-accent-blue" />
                 <span>Professional Grade</span>
               </div>
             </div>
@@ -218,15 +218,15 @@ export function ToolsLandingPage() {
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-blue-600/10 to-blue-800/10 border border-blue-500/20">
-                <div className="text-3xl font-bold text-blue-400 mb-2">15+</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">15+</div>
                 <div className="text-gray-300">Trading Tools</div>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-green-600/10 to-green-800/10 border border-green-500/20">
-                <div className="text-3xl font-bold text-green-400 mb-2">Real-time</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">Real-time</div>
                 <div className="text-gray-300">Market Data</div>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-purple-600/10 to-purple-800/10 border border-purple-500/20">
-                <div className="text-3xl font-bold text-purple-400 mb-2">100%</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">100%</div>
                 <div className="text-gray-300">Free to Use</div>
               </div>
             </div>
@@ -322,7 +322,7 @@ export function ToolsLandingPage() {
                         <CardHeader className="pb-4">
                           <div className="flex items-start justify-between mb-4">
                             <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                              <IconComponent className="w-8 h-8 text-blue-400" />
+                              <IconComponent className="w-8 h-8 text-accent-blue" />
                             </div>
                             <div className="flex gap-2">
                               <Badge className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-400 border-yellow-500/30 text-xs font-medium">
@@ -334,7 +334,7 @@ export function ToolsLandingPage() {
                               </Badge>
                             </div>
                           </div>
-                          <CardTitle className="text-2xl text-white group-hover:text-blue-400 transition-colors duration-300">
+                          <CardTitle className="text-2xl text-white group-hover:text-accent-blue transition-colors duration-300">
                             {tool.name}
                           </CardTitle>
                         </CardHeader>
@@ -443,7 +443,7 @@ export function ToolsLandingPage() {
                               </Badge>
                             </div>
                           </div>
-                          <CardTitle className="text-xl text-white group-hover:text-blue-400 transition-colors duration-300">
+                          <CardTitle className="text-xl text-white group-hover:text-accent-blue transition-colors duration-300">
                             {tool.name}
                           </CardTitle>
                         </CardHeader>

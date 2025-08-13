@@ -235,7 +235,7 @@ const GermanyPage: React.FC = () => {
                   </p>
                 </div>
                 <div className="text-center p-6 bg-blue-50 rounded-lg">
-                  <TrendingUp className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                  <TrendingUp className="w-12 h-12 text-accent-blue mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2">MiFID II</h3>
                   <p className="text-gray-600">
                     Markets in Financial Instruments Directive provides enhanced investor protection and transparency.
@@ -301,7 +301,7 @@ const GermanyPage: React.FC = () => {
                         </div>
                         <div className="flex items-center gap-2 text-sm">
                           {broker.germanySpecific.mifidII && (
-                            <span className="text-blue-600 flex items-center gap-1">
+                            <span className="text-accent-blue flex items-center gap-1">
                               <Shield className="w-3 h-3" /> MiFID II
                             </span>
                           )}
@@ -321,7 +321,7 @@ const GermanyPage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.pros.map((pro, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-green-500 mt-1">✓</span>
+                                <span className="text-accent-blue mt-1">✓</span>
                                 {pro}
                               </li>
                             ))}
@@ -332,7 +332,7 @@ const GermanyPage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.cons.map((con, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-red-500 mt-1">✗</span>
+                                <span className="text-accent-blue mt-1">✗</span>
                                 {con}
                               </li>
                             ))}
@@ -354,7 +354,7 @@ const GermanyPage: React.FC = () => {
               <h2 className="text-3xl font-bold text-center mb-8">Popular Payment Methods in Germany</h2>
               <div className="grid md:grid-cols-4 gap-6">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <CreditCard className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                  <CreditCard className="w-8 h-8 text-accent-blue mx-auto mb-2" />
                   <h3 className="font-semibold">SEPA Transfer</h3>
                   <p className="text-sm text-gray-600">Bank transfer</p>
                 </div>
@@ -398,7 +398,7 @@ const GermanyPage: React.FC = () => {
                 </div>
                 <div className="bg-white p-6 rounded-lg">
                   <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-blue-600" />
+                    <TrendingUp className="w-5 h-5 text-accent-blue" />
                     Freistellungsauftrag
                   </h3>
                   <ul className="space-y-2 text-gray-700">

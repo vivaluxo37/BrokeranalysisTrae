@@ -56,7 +56,7 @@ export function AuthContainer({
             onClick={() => setActiveTab('login')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
               activeTab === 'login'
-                ? 'bg-white text-blue-600 shadow-sm'
+                ? 'bg-white text-accent-blue shadow-sm'
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
@@ -66,7 +66,7 @@ export function AuthContainer({
             onClick={() => setActiveTab('register')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
               activeTab === 'register'
-                ? 'bg-white text-blue-600 shadow-sm'
+                ? 'bg-white text-accent-blue shadow-sm'
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
@@ -94,11 +94,11 @@ export function AuthContainer({
       <div className="mt-6 pt-6 border-t border-gray-200">
         <p className="text-xs text-gray-500 text-center">
           By continuing, you agree to our{' '}
-          <a href="/terms" className="text-blue-600 hover:underline">
+          <a href="/terms" className="text-accent-blue hover:underline">
             Terms of Service
           </a>{' '}
           and{' '}
-          <a href="/privacy" className="text-blue-600 hover:underline">
+          <a href="/privacy" className="text-accent-blue hover:underline">
             Privacy Policy
           </a>
         </p>

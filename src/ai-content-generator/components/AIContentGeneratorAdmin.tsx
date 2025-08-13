@@ -201,18 +201,18 @@ export const AIContentGeneratorAdmin: React.FC<AIContentGeneratorAdminProps> = (
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'completed': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'failed': return <XCircle className="h-4 w-4 text-red-500" />;
-      case 'running': return <RefreshCw className="h-4 w-4 text-blue-500 animate-spin" />;
-      default: return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+      case 'completed': return <CheckCircle className="h-4 w-4 text-accent-blue" />;
+      case 'failed': return <XCircle className="h-4 w-4 text-accent-blue" />;
+      case 'running': return <RefreshCw className="h-4 w-4 text-accent-blue animate-spin" />;
+      default: return <AlertTriangle className="h-4 w-4 text-accent-blue" />;
     }
   };
 
   const getHealthStatusColor = (status: string) => {
     switch (status) {
-      case 'healthy': return 'text-green-500';
-      case 'degraded': return 'text-yellow-500';
-      case 'unhealthy': return 'text-red-500';
+      case 'healthy': return 'text-accent-blue';
+      case 'degraded': return 'text-accent-blue';
+      case 'unhealthy': return 'text-accent-blue';
       default: return 'text-gray-500';
     }
   };
@@ -309,11 +309,11 @@ export const AIContentGeneratorAdmin: React.FC<AIContentGeneratorAdminProps> = (
                       <span className="capitalize">{service.replace(/([A-Z])/g, ' $1').trim()}</span>
                       <div className="flex items-center space-x-2">
                         {status ? (
-                          <CheckCircle className="h-4 w-4 text-green-500" />
+                          <CheckCircle className="h-4 w-4 text-accent-blue" />
                         ) : (
-                          <XCircle className="h-4 w-4 text-red-500" />
+                          <XCircle className="h-4 w-4 text-accent-blue" />
                         )}
-                        <span className={status ? 'text-green-500' : 'text-red-500'}>
+                        <span className={status ? 'text-accent-blue' : 'text-accent-blue'}>
                           {status ? 'Healthy' : 'Unhealthy'}
                         </span>
                       </div>

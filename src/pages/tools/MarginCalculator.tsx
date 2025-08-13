@@ -167,7 +167,7 @@ export function MarginCalculator() {
   const selectedInstrumentInfo = instruments.find(i => i.value === selectedInstrument)
 
   const getMarginLevelColor = (level: number) => {
-    if (level >= 200) return 'text-green-400'
+    if (level >= 200) return 'text-accent-blue'
     if (level >= 100) return 'text-yellow-400'
     return 'text-red-400'
   }
@@ -300,7 +300,7 @@ export function MarginCalculator() {
             </div>
 
             <div className="p-4 bg-blue-600/10 border border-blue-500/20 rounded-lg">
-              <h4 className="text-sm font-medium text-blue-400 mb-2">Quick Position Sizes</h4>
+              <h4 className="text-sm font-medium text-accent-blue mb-2">Quick Position Sizes</h4>
               <div className="grid grid-cols-3 gap-2">
                 <Button
                   variant="outline"
@@ -339,7 +339,7 @@ export function MarginCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <Card className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 border-blue-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-blue-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <Calculator className="w-5 h-5" />
                     Required Margin
                   </CardTitle>
@@ -354,14 +354,14 @@ export function MarginCalculator() {
 
               <Card className="bg-gradient-to-br from-green-600/10 to-green-800/10 border-green-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-green-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <DollarSign className="w-5 h-5" />
                     Free Margin
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className={`text-2xl font-bold mb-1 ${
-                    calculation.freeMargin >= 0 ? 'text-green-400' : 'text-red-400'
+                    calculation.freeMargin >= 0 ? 'text-accent-blue' : 'text-red-400'
                   }`}>
                     ${calculation.freeMargin.toLocaleString()}
                   </div>
@@ -392,7 +392,7 @@ export function MarginCalculator() {
 
               <Card className="bg-gradient-to-br from-purple-600/10 to-purple-800/10 border-purple-500/20">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-purple-400 flex items-center gap-2">
+                  <CardTitle className="text-lg text-accent-blue flex items-center gap-2">
                     <TrendingUp className="w-5 h-5" />
                     Position Value
                   </CardTitle>

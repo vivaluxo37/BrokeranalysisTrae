@@ -543,7 +543,7 @@ const BestLowCostBrokers2025: React.FC = () => {
                   <ul className="space-y-1">
                     {selectedBroker.pros.map((pro, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <CheckCircle className="w-4 h-4 text-accent-blue" />
                         {pro}
                       </li>
                     ))}
@@ -554,7 +554,7 @@ const BestLowCostBrokers2025: React.FC = () => {
                   <ul className="space-y-1">
                     {selectedBroker.cons.map((con, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm">
-                        <span className="w-4 h-4 text-red-500">✕</span>
+                        <span className="w-4 h-4 text-accent-blue">✕</span>
                         {con}
                       </li>
                     ))}

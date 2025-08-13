@@ -25,11 +25,11 @@ interface BaseToolPageProps {
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
     case 'beginner':
-      return 'bg-green-500/20 text-green-400 border-green-500/30'
+      return 'bg-accent-blue/20 text-accent-blue border-green-500/30'
     case 'intermediate':
-      return 'bg-blue-500/20 text-blue-400 border-blue-500/30'
+      return 'bg-accent-blue/20 text-accent-blue border-blue-500/30'
     case 'advanced':
-      return 'bg-purple-500/20 text-purple-400 border-purple-500/30'
+      return 'bg-accent-blue/20 text-accent-blue border-purple-500/30'
     default:
       return 'bg-medium-grey/20 text-light-grey border-medium-grey'
   }
@@ -75,7 +75,7 @@ export function BaseToolPage({
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl flex items-center justify-center">
-                    <Calculator className="w-6 h-6 text-blue-400" />
+                    <Calculator className="w-6 h-6 text-accent-blue" />
                   </div>
                   <div className="flex gap-2">
                     <Badge variant="outline" className="text-gray-300 border-gray-600">

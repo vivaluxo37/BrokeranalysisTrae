@@ -151,15 +151,15 @@ export function AboutPage() {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-blue-600/10 to-blue-800/10 border border-blue-500/20">
-                <div className="text-3xl font-bold text-blue-400 mb-2">500+</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">500+</div>
                 <div className="text-gray-300">Brokers Analyzed</div>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-green-600/10 to-green-800/10 border border-green-500/20">
-                <div className="text-3xl font-bold text-green-400 mb-2">2M+</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">2M+</div>
                 <div className="text-gray-300">Users Served</div>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-purple-600/10 to-purple-800/10 border border-purple-500/20">
-                <div className="text-3xl font-bold text-purple-400 mb-2">50+</div>
+                <div className="text-3xl font-bold text-accent-blue mb-2">50+</div>
                 <div className="text-gray-300">Countries</div>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-yellow-600/10 to-yellow-800/10 border border-yellow-500/20">
@@ -174,7 +174,7 @@ export function AboutPage() {
           {/* Mission Statement */}
           <Card className="mb-16 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700">
             <CardContent className="p-12 text-center">
-              <Target className="w-16 h-16 text-blue-400 mx-auto mb-6" />
+              <Target className="w-16 h-16 text-accent-blue mx-auto mb-6" />
               <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
               <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
                 To democratize access to financial markets by providing traders with the tools, 
@@ -196,7 +196,7 @@ export function AboutPage() {
               {values.map((value, index) => (
                 <Card key={index} className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 border-gray-700 hover:border-gray-600 transition-all duration-300 hover:scale-105">
                   <CardContent className="p-6 text-center">
-                    <value.icon className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                    <value.icon className="w-12 h-12 text-accent-blue mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-white mb-3">{value.title}</h3>
                     <p className="text-gray-300 leading-relaxed">{value.description}</p>
                   </CardContent>
@@ -245,10 +245,10 @@ export function AboutPage() {
                 <Card key={index} className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 border-gray-700 hover:border-gray-600 transition-all duration-300 hover:scale-105">
                   <CardContent className="p-6 text-center">
                     <div className="w-24 h-24 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <Users className="w-12 h-12 text-blue-400" />
+                      <Users className="w-12 h-12 text-accent-blue" />
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-1">{member.name}</h3>
-                    <p className="text-blue-400 font-medium mb-3">{member.role}</p>
+                    <p className="text-accent-blue font-medium mb-3">{member.role}</p>
                     <p className="text-gray-300 text-sm leading-relaxed mb-4">{member.bio}</p>
                     <div className="flex justify-center gap-3">
                       <Button variant="ghost" size="sm" className="p-2">
@@ -278,7 +278,7 @@ export function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="bg-gradient-to-br from-green-600/10 to-green-800/10 border-green-500/20">
                 <CardContent className="p-8 text-center">
-                  <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                  <CheckCircle className="w-16 h-16 text-accent-blue mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-white mb-3">Verified Data</h3>
                   <p className="text-gray-300 leading-relaxed">
                     All broker information is verified through multiple sources and updated regularly 
@@ -288,7 +288,7 @@ export function AboutPage() {
               </Card>
               <Card className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 border-blue-500/20">
                 <CardContent className="p-8 text-center">
-                  <Shield className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+                  <Shield className="w-16 h-16 text-accent-blue mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-white mb-3">Unbiased Reviews</h3>
                   <p className="text-gray-300 leading-relaxed">
                     Our reviews are completely independent. We don't accept payment for positive 
@@ -298,7 +298,7 @@ export function AboutPage() {
               </Card>
               <Card className="bg-gradient-to-br from-purple-600/10 to-purple-800/10 border-purple-500/20">
                 <CardContent className="p-8 text-center">
-                  <Star className="w-16 h-16 text-purple-400 mx-auto mb-4" />
+                  <Star className="w-16 h-16 text-accent-blue mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-white mb-3">Industry Recognition</h3>
                   <p className="text-gray-300 leading-relaxed">
                     Recognized by leading financial publications and trusted by millions of 

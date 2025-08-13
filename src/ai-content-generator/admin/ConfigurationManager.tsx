@@ -260,9 +260,9 @@ export const ConfigurationManager: React.FC<ConfigurationManagerProps> = ({
 
   const getHealthStatusIcon = (status: string) => {
     switch (status) {
-      case 'healthy': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'degraded': return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
-      case 'offline': return <XCircle className="h-4 w-4 text-red-500" />;
+      case 'healthy': return <CheckCircle className="h-4 w-4 text-accent-blue" />;
+      case 'degraded': return <AlertTriangle className="h-4 w-4 text-accent-blue" />;
+      case 'offline': return <XCircle className="h-4 w-4 text-accent-blue" />;
       default: return <AlertTriangle className="h-4 w-4 text-gray-500" />;
     }
   };

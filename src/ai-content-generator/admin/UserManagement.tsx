@@ -272,19 +272,19 @@ export const UserManagement: React.FC<UserManagementProps> = ({
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'active': return <CheckCircle className="h-4 w-4 text-green-500" />;
+      case 'active': return <CheckCircle className="h-4 w-4 text-accent-blue" />;
       case 'inactive': return <Clock className="h-4 w-4 text-gray-500" />;
-      case 'suspended': return <Ban className="h-4 w-4 text-red-500" />;
-      case 'pending': return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+      case 'suspended': return <Ban className="h-4 w-4 text-accent-blue" />;
+      case 'pending': return <AlertTriangle className="h-4 w-4 text-accent-blue" />;
       default: return <AlertTriangle className="h-4 w-4 text-gray-500" />;
     }
   };
 
   const getActivityStatusIcon = (status: string) => {
     switch (status) {
-      case 'success': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'failure': return <XCircle className="h-4 w-4 text-red-500" />;
-      case 'warning': return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+      case 'success': return <CheckCircle className="h-4 w-4 text-accent-blue" />;
+      case 'failure': return <XCircle className="h-4 w-4 text-accent-blue" />;
+      case 'warning': return <AlertTriangle className="h-4 w-4 text-accent-blue" />;
       default: return <AlertTriangle className="h-4 w-4 text-gray-500" />;
     }
   };

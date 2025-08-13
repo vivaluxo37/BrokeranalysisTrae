@@ -48,8 +48,8 @@ export function NewsletterSection() {
         <div className="container mx-auto container-padding text-center">
           <Card className="glass-card max-w-2xl mx-auto cosmic-glow">
             <CardContent className="p-8">
-              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-8 h-8 text-green-400" />
+              <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-8 h-8 text-accent-blue" />
               </div>
               <h2 id="newsletter-success-heading" className="text-3xl font-bold cosmic-text mb-4 text-glow">
                 Welcome to the Community!
@@ -59,15 +59,15 @@ export function NewsletterSection() {
               </p>
               <div className="grid md:grid-cols-3 gap-4 neural-text text-sm">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <CheckCircle className="w-4 h-4 text-accent-blue" />
                   <span>Weekly market insights</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <CheckCircle className="w-4 h-4 text-accent-blue" />
                   <span>Broker updates & alerts</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <CheckCircle className="w-4 h-4 text-accent-blue" />
                   <span>Exclusive trading tips</span>
                 </div>
               </div>

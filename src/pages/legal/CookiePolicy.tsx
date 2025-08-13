@@ -65,22 +65,22 @@ const CookiePolicy: React.FC = () => {
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Navigation</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <a href="#what-are-cookies" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#what-are-cookies" className="text-accent-blue hover:text-blue-800 text-sm">
                 What Are Cookies
               </a>
-              <a href="#cookie-types" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#cookie-types" className="text-accent-blue hover:text-blue-800 text-sm">
                 Types of Cookies
               </a>
-              <a href="#how-we-use" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#how-we-use" className="text-accent-blue hover:text-blue-800 text-sm">
                 How We Use Cookies
               </a>
-              <a href="#third-party" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#third-party" className="text-accent-blue hover:text-blue-800 text-sm">
                 Third-Party Cookies
               </a>
-              <a href="#manage-cookies" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#manage-cookies" className="text-accent-blue hover:text-blue-800 text-sm">
                 Manage Cookies
               </a>
-              <a href="#contact" className="text-blue-600 hover:text-blue-800 text-sm">
+              <a href="#contact" className="text-accent-blue hover:text-blue-800 text-sm">
                 Contact Us
               </a>
             </div>
@@ -90,7 +90,7 @@ const CookiePolicy: React.FC = () => {
             {/* What Are Cookies */}
             <section id="what-are-cookies" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Info className="h-6 w-6 text-blue-600 mr-3" />
+                <Info className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">What Are Cookies?</h2>
               </div>
               
@@ -137,7 +137,7 @@ const CookiePolicy: React.FC = () => {
             {/* Types of Cookies */}
             <section id="cookie-types" className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex items-center mb-6">
-                <Settings className="h-6 w-6 text-blue-600 mr-3" />
+                <Settings className="h-6 w-6 text-accent-blue mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Types of Cookies We Use</h2>
               </div>
               
@@ -176,7 +176,7 @@ const CookiePolicy: React.FC = () => {
                 {/* Performance Cookies */}
                 <div className="border border-blue-200 rounded-lg p-6">
                   <div className="flex items-center mb-4">
-                    <Eye className="h-5 w-5 text-blue-600 mr-2" />
+                    <Eye className="h-5 w-5 text-accent-blue mr-2" />
                     <h3 className="text-lg font-semibold text-blue-800">Performance Cookies</h3>
                   </div>
                   <p className="text-gray-700 mb-4">
@@ -318,7 +318,7 @@ const CookiePolicy: React.FC = () => {
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">Data Retention</h3>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">Session</div>
+                      <div className="text-2xl font-bold text-accent-blue">Session</div>
                       <div className="text-sm text-gray-600">Essential cookies expire when you close your browser</div>
                     </div>
                     <div className="text-center">
@@ -351,14 +351,14 @@ const CookiePolicy: React.FC = () => {
                       <div>
                         <h4 className="font-semibold text-gray-800">Google Analytics</h4>
                         <p className="text-gray-600 text-sm">Website traffic analysis and user behavior insights</p>
-                        <a href="https://policies.google.com/privacy" className="text-blue-600 text-sm hover:underline">
+                        <a href="https://policies.google.com/privacy" className="text-accent-blue text-sm hover:underline">
                           Privacy Policy →
                         </a>
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-800">Hotjar</h4>
                         <p className="text-gray-600 text-sm">User experience analysis and heatmap tracking</p>
-                        <a href="https://www.hotjar.com/legal/policies/privacy/" className="text-blue-600 text-sm hover:underline">
+                        <a href="https://www.hotjar.com/legal/policies/privacy/" className="text-accent-blue text-sm hover:underline">
                           Privacy Policy →
                         </a>
                       </div>
@@ -371,14 +371,14 @@ const CookiePolicy: React.FC = () => {
                       <div>
                         <h4 className="font-semibold text-gray-800">Google Ads</h4>
                         <p className="text-gray-600 text-sm">Advertising campaigns and conversion tracking</p>
-                        <a href="https://policies.google.com/privacy" className="text-blue-600 text-sm hover:underline">
+                        <a href="https://policies.google.com/privacy" className="text-accent-blue text-sm hover:underline">
                           Privacy Policy →
                         </a>
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-800">Facebook Pixel</h4>
                         <p className="text-gray-600 text-sm">Social media advertising and audience insights</p>
-                        <a href="https://www.facebook.com/privacy/policy/" className="text-blue-600 text-sm hover:underline">
+                        <a href="https://www.facebook.com/privacy/policy/" className="text-accent-blue text-sm hover:underline">
                           Privacy Policy →
                         </a>
                       </div>
@@ -441,7 +441,7 @@ const CookiePolicy: React.FC = () => {
                     <div className="border border-gray-200 rounded-lg p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Chrome</h4>
                       <p className="text-gray-600 text-sm mb-2">Settings → Privacy and Security → Cookies</p>
-                      <a href="https://support.google.com/chrome/answer/95647" className="text-blue-600 text-sm hover:underline">
+                      <a href="https://support.google.com/chrome/answer/95647" className="text-accent-blue text-sm hover:underline">
                         Learn More →
                       </a>
                     </div>
@@ -449,7 +449,7 @@ const CookiePolicy: React.FC = () => {
                     <div className="border border-gray-200 rounded-lg p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Firefox</h4>
                       <p className="text-gray-600 text-sm mb-2">Options → Privacy & Security → Cookies</p>
-                      <a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" className="text-blue-600 text-sm hover:underline">
+                      <a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" className="text-accent-blue text-sm hover:underline">
                         Learn More →
                       </a>
                     </div>
@@ -457,7 +457,7 @@ const CookiePolicy: React.FC = () => {
                     <div className="border border-gray-200 rounded-lg p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Safari</h4>
                       <p className="text-gray-600 text-sm mb-2">Preferences → Privacy → Cookies</p>
-                      <a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" className="text-blue-600 text-sm hover:underline">
+                      <a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" className="text-accent-blue text-sm hover:underline">
                         Learn More →
                       </a>
                     </div>
@@ -465,7 +465,7 @@ const CookiePolicy: React.FC = () => {
                     <div className="border border-gray-200 rounded-lg p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Edge</h4>
                       <p className="text-gray-600 text-sm mb-2">Settings → Cookies and Site Permissions</p>
-                      <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" className="text-blue-600 text-sm hover:underline">
+                      <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" className="text-accent-blue text-sm hover:underline">
                         Learn More →
                       </a>
                     </div>

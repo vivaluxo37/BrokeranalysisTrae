@@ -86,7 +86,7 @@ const getImpactColor = (impact: string) => {
     case 'medium':
       return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
     case 'low':
-      return 'bg-green-500/20 text-green-400 border-green-500/30'
+      return 'bg-accent-blue/20 text-accent-blue border-green-500/30'
     default:
       return 'bg-gray-500/20 text-gray-400 border-gray-500/30'
   }
@@ -312,7 +312,7 @@ export function EconomicCalendar() {
                           <div className="text-gray-400">Actual</div>
                           <div className={`font-medium ${
                             parseFloat(event.actual) > parseFloat(event.forecast) 
-                              ? 'text-green-400' 
+                              ? 'text-accent-blue' 
                               : parseFloat(event.actual) < parseFloat(event.forecast)
                               ? 'text-red-400'
                               : 'text-white'
@@ -349,7 +349,7 @@ export function EconomicCalendar() {
                 <span className="text-gray-400 text-sm">Moderate market impact</span>
               </div>
               <div className="flex items-center gap-2">
-                <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                <Badge className="bg-accent-blue/20 text-accent-blue border-green-500/30">
                   <TrendingDown className="w-3 h-3 mr-1" />
                   Low
                 </Badge>

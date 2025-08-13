@@ -197,7 +197,7 @@ const FrancePage: React.FC = () => {
                 Compare AMF regulated brokers with PEA accounts and FGDR protection
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <span className="bg-blue-500 px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="bg-accent-blue px-3 py-1 rounded-full flex items-center gap-1">
                   <Shield className="w-4 h-4" />
                   AMF Regulated
                 </span>
@@ -221,7 +221,7 @@ const FrancePage: React.FC = () => {
               <h2 className="text-3xl font-bold text-center mb-8">French Financial Regulations 2025</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="text-center p-6 bg-blue-50 rounded-lg">
-                  <Shield className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                  <Shield className="w-12 h-12 text-accent-blue mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2">AMF Oversight</h3>
                   <p className="text-gray-600">
                     The Autorité des Marchés Financiers (AMF) regulates financial markets and investment services in France.
@@ -256,7 +256,7 @@ const FrancePage: React.FC = () => {
                   <div key={broker.id} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                     <div className="flex flex-col lg:flex-row gap-6">
                       <div className="flex items-center gap-4">
-                        <div className="text-2xl font-bold text-blue-600">#{index + 1}</div>
+                        <div className="text-2xl font-bold text-accent-blue">#{index + 1}</div>
                         <img src={broker.logo} alt={broker.name} className="w-16 h-16 object-contain" />
                         <div>
                           <h3 className="text-xl font-bold">{broker.name}</h3>
@@ -321,7 +321,7 @@ const FrancePage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.pros.map((pro, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-green-500 mt-1">✓</span>
+                                <span className="text-accent-blue mt-1">✓</span>
                                 {pro}
                               </li>
                             ))}
@@ -332,7 +332,7 @@ const FrancePage: React.FC = () => {
                           <ul className="text-sm space-y-1">
                             {broker.cons.map((con, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <span className="text-red-500 mt-1">✗</span>
+                                <span className="text-accent-blue mt-1">✗</span>
                                 {con}
                               </li>
                             ))}
@@ -354,7 +354,7 @@ const FrancePage: React.FC = () => {
               <h2 className="text-3xl font-bold text-center mb-8">Popular Payment Methods in France</h2>
               <div className="grid md:grid-cols-4 gap-6">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <CreditCard className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                  <CreditCard className="w-8 h-8 text-accent-blue mx-auto mb-2" />
                   <h3 className="font-semibold">Virement SEPA</h3>
                   <p className="text-sm text-gray-600">Bank transfer</p>
                 </div>
@@ -398,7 +398,7 @@ const FrancePage: React.FC = () => {
                 </div>
                 <div className="bg-white p-6 rounded-lg">
                   <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-blue-600" />
+                    <DollarSign className="w-5 h-5 text-accent-blue" />
                     Compte-Titres Ordinaire
                   </h3>
                   <ul className="space-y-2 text-gray-700">

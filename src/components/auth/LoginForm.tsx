@@ -124,7 +124,7 @@ export function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormProps) {
             name="rememberMe"
             checked={formData.rememberMe}
             onChange={handleInputChange}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            className="h-4 w-4 text-accent-blue focus:ring-blue-500 border-gray-300 rounded"
             disabled={isLoading}
           />
           <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
@@ -133,7 +133,7 @@ export function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormProps) {
         </div>
         <button
           type="button"
-          className="text-sm text-blue-600 hover:text-blue-500"
+          className="text-sm text-accent-blue hover:text-accent-blue"
           disabled={isLoading}
         >
           Forgot password?
@@ -170,7 +170,7 @@ export function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormProps) {
           <button
             type="button"
             onClick={onSwitchToRegister}
-            className="text-blue-600 hover:text-blue-500 font-medium"
+            className="text-accent-blue hover:text-accent-blue font-medium"
             disabled={isLoading}
           >
             Sign up here
