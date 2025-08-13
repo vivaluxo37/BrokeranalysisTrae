@@ -7,15 +7,12 @@ import {
   BrokerProfilePage, 
   BrokerReviews, 
   BrokerWizardPage, 
-  HomePage,
   InteractiveBrokersReview,
   ToolsLandingPage
 } from './pages'
 import { BrokerRecommendationWizardPage } from './pages/BrokerRecommendationWizardPage'
-import { ActivTradesHomePage } from './pages/ActivTradesHomePage'
-import { BrokerAnalysisHomePage } from './pages/BrokerAnalysisHomePage'
 import { BrokerComparisonHomePage } from './pages/BrokerComparisonHomePage'
-import BrokerCardIntegrationTest from './pages/test/BrokerCardIntegrationTest'
+
 import BrokerComparisonIntegrationTest from './pages/test/BrokerComparisonIntegrationTest'
 
 // Import detailed broker review pages
@@ -191,9 +188,6 @@ function App() {
       <Routes>
         {/* Main Pages */}
         <Route path="/" element={<BrokerComparisonHomePage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/activtrades" element={<ActivTradesHomePage />} />
-        <Route path="/broker-analysis" element={<BrokerAnalysisHomePage />} />
         <Route path="/brokers" element={<BrokerDirectoryPage />} />
         <Route path="/compare" element={<BrokerDirectoryPage />} />
         <Route path="/compare/wizard" element={<BrokerRecommendationWizardPage />} />
@@ -367,11 +361,11 @@ function App() {
         <Route path="/countries/japan" element={<JapanPage />} />
         
         {/* Test Pages */}
-        <Route path="/test/broker-card-integration" element={<BrokerCardIntegrationTest />} />
+
         <Route path="/test/broker-comparison-integration" element={<BrokerComparisonIntegrationTest />} />
         
         {/* Fallback */}
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<BrokerComparisonHomePage />} />
       </Routes>
         </NavigationProvider>
     </BrowserRouter>
