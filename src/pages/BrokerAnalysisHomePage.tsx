@@ -2,7 +2,7 @@ import {
   AssetCategoriesSection,
   EducationalHubSection,
   FeaturedBrokersSection,
-  HeroSection,
+  BrokerAnalysisHeroSection,
   TradingToolsSection,
   TrustSignalsSection
 } from '@/components/brokeranalysis'
@@ -14,9 +14,9 @@ export function BrokerAnalysisHomePage() {
     <Layout>
       <div className="min-h-screen cosmic-void">
         {/* Hero Section with Search */}
-        <HeroSection 
+        <BrokerAnalysisHeroSection 
           heroData={mockRootProps.heroData}
-          trustIndicators={mockRootProps.trustIndicators}
+          trustLogos={mockRootProps.trustLogos}
         />
 
         {/* Multi-Asset Categories */}

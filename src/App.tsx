@@ -13,6 +13,8 @@ import {
 } from './pages'
 import { BrokerRecommendationWizardPage } from './pages/BrokerRecommendationWizardPage'
 import { ActivTradesHomePage } from './pages/ActivTradesHomePage'
+import { BrokerAnalysisHomePage } from './pages/BrokerAnalysisHomePage'
+import { BrokerComparisonHomePage } from './pages/BrokerComparisonHomePage'
 import BrokerCardIntegrationTest from './pages/test/BrokerCardIntegrationTest'
 import BrokerComparisonIntegrationTest from './pages/test/BrokerComparisonIntegrationTest'
 
@@ -188,8 +190,10 @@ function App() {
         <NavigationProvider enableAnalytics={true} maxAnalyticsEvents={1000}>
       <Routes>
         {/* Main Pages */}
-        <Route path="/" element={<ActivTradesHomePage />} />
+        <Route path="/" element={<BrokerComparisonHomePage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/activtrades" element={<ActivTradesHomePage />} />
+        <Route path="/broker-analysis" element={<BrokerAnalysisHomePage />} />
         <Route path="/brokers" element={<BrokerDirectoryPage />} />
         <Route path="/compare" element={<BrokerDirectoryPage />} />
         <Route path="/compare/wizard" element={<BrokerRecommendationWizardPage />} />
