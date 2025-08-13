@@ -2,7 +2,7 @@ import { ChevronRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { BrokerRecommendation } from '@/types/wizard'
+import type { BrokerRecommendation } from '@/types/wizard'
 
 interface BrokerResultsPanelProps {
   brokers: BrokerRecommendation[]

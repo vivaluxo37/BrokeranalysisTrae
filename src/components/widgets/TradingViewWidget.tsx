@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { TradingViewWidgetProps } from './types';
+import type { TradingViewWidgetProps } from './types';
 import widgetManager from '../../services/widgetManager';
 
 const TradingViewWidget: React.FC<TradingViewWidgetProps> = ({ widgetOptions, title, theme = 'light' }) => {

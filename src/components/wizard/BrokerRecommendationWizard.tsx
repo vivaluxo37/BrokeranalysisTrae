@@ -10,7 +10,8 @@ import { FeesStep } from './steps/FeesStep'
 import { FrequencyStep } from './steps/FrequencyStep'
 import { DepositStep } from './steps/DepositStep'
 import { ResultsStep } from './steps/ResultsStep'
-import { WizardStep, UserPreferences } from '@/types/wizard'
+import { WizardStep } from '@/types/wizard'
+import type { UserPreferences } from '@/types/wizard'
 import { mockQuery } from '@/brokerRecommendationMockData'
 
 interface BrokerRecommendationWizardProps {

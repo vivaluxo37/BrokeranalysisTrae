@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { formatStepNumber } from '@/utils/wizardFormatters'
-import { Country } from '@/types/wizard'
+import type { Country } from '@/types/wizard'
 
 interface CountryStepProps {
   countries: Country[]
