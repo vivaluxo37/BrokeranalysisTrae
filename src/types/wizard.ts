@@ -109,3 +109,14 @@ export interface WizardQueryTypes {
   countries: Country[];
   brokerRecommendations: BrokerRecommendation[];
 }
+
+// Re-export all types for better module resolution
+export type {
+  BrokerRecommendation,
+  Country,
+  UserPreferences,
+  BrokerRecommendationWizardProps,
+  WizardStepProps,
+  WizardStoreTypes,
+  WizardQueryTypes
+}
