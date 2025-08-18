@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Star, ArrowRight, TrendingUp, Shield, Zap } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '../ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 
 export function FeaturedBrokers() {
   const [activeFilter, setActiveFilter] = useState('All')
@@ -68,14 +68,14 @@ export function FeaturedBrokers() {
     : featuredBrokers.filter(broker => broker.categories.includes(activeFilter))
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-charcoal-grey">
       <div className="content-container">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-section-title text-professional-black mb-4">
+          <h2 className="text-section-title text-pure-white mb-4">
             Top-Rated Brokers
           </h2>
-          <p className="text-lg text-medium-grey max-w-2xl mx-auto">
+          <p className="text-lg text-light-grey max-w-2xl mx-auto">
             Compare our highest-rated brokers based on comprehensive analysis of fees, platforms, regulation, and user reviews.
           </p>
         </div>
@@ -89,7 +89,7 @@ export function FeaturedBrokers() {
               className={`px-6 py-3 rounded-full font-medium transition-colors ${
                 activeFilter === filter
                   ? 'bg-accent-blue text-white'
-                  : 'bg-gray-100 text-medium-grey hover:bg-gray-200'
+                  : 'bg-medium-grey text-light-grey hover:bg-light-grey hover:text-professional-black'
               }`}
             >
               {filter}
@@ -100,7 +100,7 @@ export function FeaturedBrokers() {
         {/* Brokers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {filteredBrokers.map((broker) => (
-            <Card key={broker.id} variant="interactive" className="bg-white border-gray-200 text-professional-black">
+            <Card key={broker.id} className="professional-card">
               <CardHeader>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
@@ -108,7 +108,7 @@ export function FeaturedBrokers() {
                       {broker.logo}
                     </div>
                     <div>
-                      <CardTitle level={4} className="text-professional-black">{broker.name}</CardTitle>
+                      <CardTitle className="text-pure-white">{broker.name}</CardTitle>
                       {broker.featured && (
                         <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                           Featured
@@ -132,8 +132,8 @@ export function FeaturedBrokers() {
                       />
                     ))}
                   </div>
-                  <span className="font-semibold text-professional-black">{broker.rating}</span>
-                  <span className="text-sm text-medium-grey">({broker.reviewCount} reviews)</span>
+                  <span className="font-semibold text-pure-white">{broker.rating}</span>
+                  <span className="text-sm text-light-grey">({broker.reviewCount} reviews)</span>
                 </div>
 
                 {/* Categories */}
@@ -141,7 +141,7 @@ export function FeaturedBrokers() {
                   {broker.categories.map((category) => (
                     <span 
                       key={category}
-                      className="px-2 py-1 bg-gray-100 text-xs rounded-full text-medium-grey"
+                      className="px-2 py-1 bg-medium-grey text-xs rounded-full text-pure-white"
                     >
                       {category}
                     </span>
@@ -153,12 +153,12 @@ export function FeaturedBrokers() {
                 {/* Key Info */}
                 <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
                   <div>
-                    <span className="text-medium-grey">Min Deposit:</span>
-                    <div className="font-semibold text-professional-black">{broker.minDeposit}</div>
+                    <span className="text-light-grey">Min Deposit:</span>
+                    <div className="font-semibold text-pure-white">{broker.minDeposit}</div>
                   </div>
                   <div>
-                    <span className="text-medium-grey">Regulation:</span>
-                    <div className="font-semibold text-professional-black">{broker.regulation}</div>
+                    <span className="text-light-grey">Regulation:</span>
+                    <div className="font-semibold text-pure-white">{broker.regulation}</div>
                   </div>
                 </div>
 
@@ -169,7 +169,7 @@ export function FeaturedBrokers() {
                       <TrendingUp className="w-3 h-3 mr-1" />
                       Pros
                     </h5>
-                    <ul className="text-xs text-medium-grey space-y-1">
+                    <ul className="text-xs text-light-grey space-y-1">
                       {broker.pros.slice(0, 2).map((pro, index) => (
                         <li key={index} className="flex items-center">
                           <span className="w-1 h-1 bg-accent-blue rounded-full mr-2" />
@@ -185,7 +185,7 @@ export function FeaturedBrokers() {
                   <Button size="sm" className="flex-1">
                     Read Review
                   </Button>
-                  <Button size="sm" variant="outline" className="flex-1 border-gray-300 text-professional-black hover:bg-gray-50">
+                  <Button size="sm" variant="outline" className="flex-1">
                     Compare
                   </Button>
                 </div>

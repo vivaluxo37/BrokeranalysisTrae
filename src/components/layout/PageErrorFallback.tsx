@@ -48,7 +48,7 @@ export function PageErrorFallback({
   icon,
   variant = 'default',
   className,
-  showDetails = process.env.NODE_ENV === 'development',
+  showDetails = import.meta.env.DEV,
   actions,
   showNavigation = true,
 }: PageErrorFallbackProps) {

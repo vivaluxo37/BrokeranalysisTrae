@@ -134,5 +134,17 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("daisyui")
+  ],
+  daisyui: {
+    themes: false, // Disable Daisy UI themes to prevent conflicts
+    darkTheme: false, // Disable dark theme
+    base: false, // Disable base styles to prevent conflicts with shadcn
+    styled: true, // Keep styled components
+    utils: true, // Keep utility classes
+    prefix: "daisy-", // Add prefix to avoid conflicts
+    logs: false, // Disable logs
+  },
 }

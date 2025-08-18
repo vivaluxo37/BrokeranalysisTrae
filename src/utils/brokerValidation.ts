@@ -10,7 +10,7 @@
  */
 
 import { z } from 'zod';
-import type { Broker, BrokerRating } from '../types/brokerTypes';
+import type { Broker, BrokerRating } from '@/types/brokerTypes';
 
 // Validation schemas
 const BrokerValidationSchema = z.object({

@@ -1,6 +1,6 @@
 import { Calculator, TrendingUp, PieChart, ArrowRight, BarChart3, DollarSign } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '../ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 
 export function PopularComparisons() {
   const popularComparisons = [
@@ -76,23 +76,23 @@ export function PopularComparisons() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-charcoal-grey">
       <div className="content-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Popular Comparisons */}
           <div>
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-professional-black mb-4">
+              <h2 className="text-2xl font-bold text-pure-white mb-4">
                 Popular Comparisons
               </h2>
-              <p className="text-medium-grey">
+              <p className="text-light-grey">
                 Discover the most searched broker comparisons and guides
               </p>
             </div>
 
             <div className="space-y-4">
               {popularComparisons.map((comparison, index) => (
-                <Card key={index} className="bg-white border-gray-200 text-professional-black hover:shadow-md transition-shadow cursor-pointer group">
+                <Card key={index} className="professional-card cursor-pointer group">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
@@ -100,16 +100,16 @@ export function PopularComparisons() {
                           <span className="px-2 py-1 bg-accent-blue/10 text-accent-blue text-xs rounded-full font-medium">
                             {comparison.category}
                           </span>
-                          <span className="text-xs text-medium-grey">{comparison.views}</span>
+                          <span className="text-xs text-light-grey">{comparison.views}</span>
                         </div>
-                        <h3 className="font-semibold text-professional-black mb-1 group-hover:text-accent-blue transition-colors">
+                        <h3 className="font-semibold text-pure-white mb-1 group-hover:text-accent-blue transition-colors">
                           {comparison.title}
                         </h3>
-                        <p className="text-sm text-medium-grey">
+                        <p className="text-sm text-light-grey">
                           {comparison.description}
                         </p>
                       </div>
-                      <ArrowRight className="w-5 h-5 text-medium-grey group-hover:text-accent-blue transition-colors ml-4" />
+                      <ArrowRight className="w-5 h-5 text-light-grey group-hover:text-accent-blue transition-colors ml-4" />
                     </div>
                   </CardContent>
                 </Card>
@@ -127,30 +127,30 @@ export function PopularComparisons() {
           {/* Trading Tools */}
           <div>
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-professional-black mb-4">
+              <h2 className="text-2xl font-bold text-pure-white mb-4">
                 Trading Tools
               </h2>
-              <p className="text-medium-grey">
+              <p className="text-light-grey">
                 Free calculators and tools to enhance your trading decisions
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {tradingTools.map((tool, index) => (
-                <Card key={index} className="bg-white border-gray-200 text-professional-black hover:shadow-md transition-shadow cursor-pointer group">
+                <Card key={index} className="professional-card cursor-pointer group">
                   <CardHeader className="pb-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform ${tool.color}`}>
+                    <div className={`w-10 h-10 rounded-lg bg-medium-grey flex items-center justify-center mb-3 group-hover:scale-110 transition-transform ${tool.color}`}>
                       <tool.icon size={20} />
                     </div>
-                    <CardTitle level={5} className="text-professional-black group-hover:text-accent-blue transition-colors">
+                    <CardTitle className="text-pure-white group-hover:text-accent-blue transition-colors">
                       {tool.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    <p className="text-sm text-medium-grey mb-4">
+                    <p className="text-sm text-light-grey mb-4">
                       {tool.description}
                     </p>
-                    <Button size="sm" variant="outline" className="w-full border-gray-300 text-professional-black hover:bg-gray-50">
+                    <Button size="sm" variant="outline" className="w-full border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white">
                       Use Tool
                     </Button>
                   </CardContent>

@@ -13,7 +13,7 @@ export function SeoHeroSection() {
       <div className="container mx-auto container-padding text-center">
         {/* SEO-optimized heading structure */}
         <header className="mb-12 animate-fade-in">
-          <h1 id="hero-heading" className="text-hero cosmic-text mb-6 text-glow">
+          <h1 id="hero-heading" className="text-section-title cosmic-text mb-6 text-glow">
             AI-Driven Broker Comparison & Matching
           </h1>
           <h2 className="text-2xl md:text-3xl neural-text mb-8 max-w-5xl mx-auto leading-relaxed">

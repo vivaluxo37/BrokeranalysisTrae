@@ -287,7 +287,7 @@ export class ToolPageErrorBoundary extends Component<Props, State> {
                 )}
 
                 {/* Development error details */}
-                {process.env.NODE_ENV === 'development' && this.state.error && (
+                {import.meta.env.DEV && this.state.error && (
                   <details className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg text-left">
                     <summary className="cursor-pointer text-red-800 font-medium mb-2">
                       Error Details (Development)

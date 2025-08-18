@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { HelmetProvider } from '@dr.pogodin/react-helmet'
 import { NavigationProvider } from '@/contexts/NavigationContext'
+import { SupabaseProvider, SupabaseErrorBoundary } from './providers/SupabaseProvider'
+import I18nProvider from './providers/I18nProvider'
 import { 
   AboutPage, 
   BrokerDirectoryPage, 
@@ -23,6 +25,7 @@ import ActivtradesPage from './pages/brokers/activtrades';
 import AdmiralsAdmiralMarketsPage from './pages/brokers/admirals-admiral-markets';
 import AjBellYouinvestPage from './pages/brokers/aj-bell-youinvest';
 import AllyInvestPage from './pages/brokers/ally-invest';
+import { AllyInvestReviewPage } from './components/AllyInvestReviewPage';
 import AlpacaTradingPage from './pages/brokers/alpaca-trading';
 import AmpFuturesPage from './pages/brokers/amp-futures';
 import AvatradePage from './pages/brokers/avatrade';
@@ -160,6 +163,9 @@ import UnderstandingForexSpreads from './pages/education/articles/UnderstandingF
 import CFDTradingGuide2025 from './pages/education/articles/CFDTradingGuide2025'
 import RiskManagementStrategies from './pages/education/articles/RiskManagementStrategies'
 
+// Import demo pages
+import TranslationDemo from './pages/TranslationDemo'
+
 // Import news pages
 import NewsHub from './pages/news/NewsHub'
 
@@ -178,18 +184,35 @@ import FrancePage from './pages/countries/france'
 import SingaporePage from './pages/countries/singapore'
 import JapanPage from './pages/countries/japan'
 
+// Import regulator pages
+import FCARegulatedBrokersPage from './pages/regulators/fca-regulated-brokers'
+import ASICRegulatedBrokersPage from './pages/regulators/asic-regulated-brokers'
+import CySECRegulatedBrokersPage from './pages/regulators/cysec-regulated-brokers'
+import ESMARegulatedBrokersPage from './pages/regulators/esma-regulated-brokers'
+
 import './index.css'
+import { LocaleSuggestionBanner } from './components/LocaleSuggestionBanner'
+import BrokerDetail from './components/BrokerDetail'
+import AuthCallback from './pages/auth/AuthCallback'
+import { HomepageIntegrationProvider } from './contexts/HomepageIntegrationProvider'
 
 function App() {
   return (
-    <HelmetProvider>
-      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <NavigationProvider enableAnalytics={true} maxAnalyticsEvents={1000}>
-      <Routes>
+    <SupabaseErrorBoundary>
+      <SupabaseProvider>
+        <I18nProvider>
+          <HelmetProvider>
+            <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+              <NavigationProvider enableAnalytics={true} maxAnalyticsEvents={1000}>
+                <LocaleSuggestionBanner />
+                <Routes>
         {/* Main Pages */}
-        <Route path="/" element={<BrokerComparisonHomePage />} />
+        <Route path="/" element={
+          <HomepageIntegrationProvider>
+            <BrokerComparisonHomePage />
+          </HomepageIntegrationProvider>
+        } />
         <Route path="/brokers" element={<BrokerDirectoryPage />} />
-        <Route path="/compare" element={<BrokerDirectoryPage />} />
         <Route path="/compare/wizard" element={<BrokerRecommendationWizardPage />} />
         <Route path="/broker-recommendation-wizard" element={<BrokerRecommendationWizardPage />} />
         <Route path="/education" element={<EducationHub />} />
@@ -200,11 +223,12 @@ function App() {
         {/* Authentication Pages */}
         <Route path="/auth/signin" element={<SignInPage />} />
         <Route path="/auth/signup" element={<SignUpPage />} />
+        <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         
         {/* Generic Broker Routes */}
         <Route path="/broker/:id" element={<BrokerProfilePage />} />
-        <Route path="/brokers/:id" element={<BrokerProfilePage />} />
+        <Route path="/brokers/:slug" element={<BrokerDetail />} />
         <Route path="/broker-reviews" element={<BrokerReviews />} />
         <Route path="/broker-reviews/interactive-brokers" element={<InteractiveBrokersReview />} />
         <Route path="/broker-reviews/interactive-brokers-detailed" element={<InteractiveBrokersDetailedReview />} />
@@ -213,7 +237,7 @@ function App() {
         <Route path="/brokers/activtrades" element={<ActivtradesPage />} />
         <Route path="/brokers/admirals-admiral-markets" element={<AdmiralsAdmiralMarketsPage />} />
         <Route path="/brokers/aj-bell-youinvest" element={<AjBellYouinvestPage />} />
-        <Route path="/brokers/ally-invest" element={<AllyInvestPage />} />
+        <Route path="/brokers/ally-invest" element={<AllyInvestReviewPage />} />
         <Route path="/brokers/alpaca-trading" element={<AlpacaTradingPage />} />
         <Route path="/brokers/amp-futures" element={<AmpFuturesPage />} />
         <Route path="/brokers/avatrade" element={<AvatradePage />} />
@@ -360,17 +384,26 @@ function App() {
         <Route path="/countries/singapore" element={<SingaporePage />} />
         <Route path="/countries/japan" element={<JapanPage />} />
         
+        {/* Regulator Pages */}
+        <Route path="/regulators/fca-regulated-brokers" element={<FCARegulatedBrokersPage />} />
+        <Route path="/regulators/asic-regulated-brokers" element={<ASICRegulatedBrokersPage />} />
+        <Route path="/regulators/cysec-regulated-brokers" element={<CySECRegulatedBrokersPage />} />
+        <Route path="/regulators/esma-regulated-brokers" element={<ESMARegulatedBrokersPage />} />
+        
         {/* Test Pages */}
-
+        <Route path="/demo/translations" element={<TranslationDemo />} />
         <Route path="/test/broker-comparison-integration" element={<BrokerComparisonIntegrationTest />} />
         
         {/* Fallback */}
         <Route path="*" element={<BrokerComparisonHomePage />} />
       </Routes>
         </NavigationProvider>
-    </BrowserRouter>
+      </BrowserRouter>
     </HelmetProvider>
-  )
+  </I18nProvider>
+  </SupabaseProvider>
+</SupabaseErrorBoundary>
+)
 }
 
 export default App

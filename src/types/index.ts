@@ -3,7 +3,10 @@
 
 export type {
   Broker,
-  BrokerRating,
+  BrokerRating
+} from './brokerTypes';
+
+export type {
   BrokerDetails,
   BrokerContact,
   BrokerRegulation,

@@ -9,7 +9,7 @@
  * @since 2025-01-10
  */
 
-import type { BrokerRating } from '../../types/brokerTypes';
+import type { BrokerRating } from '@/types/brokerTypes';
 import { brokers } from './brokerData';
 
 /**

@@ -1,0 +1,272 @@
+name: SEO Monitoring & Prerender Quality Check
+
+on:
+  # Run after successful prerendering
+  workflow_run:
+    workflows: ["Automated Prerendering", "Deploy to Vercel"]
+    types:
+      - completed
+  
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'Target URL to test (leave empty for production)'
+        required: false
+        type: string
+
+  # Run weekly for comprehensive SEO audit
+  schedule:
+    - cron: '0 6 * * 1'  # Monday at 6 AM UTC
+
+jobs:
+  seo-audit:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' }}
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install SEO audit tools
+        run: |
+          npm install -g lighthouse
+          npm install -g @lhci/cli
+
+      - name: Determine target URL
+        id: target-url
+        run: |
+          if [ "${{ github.event.inputs.target_url }}" != "" ]; then
+            echo "url=${{ github.event.inputs.target_url }}" >> $GITHUB_OUTPUT
+          else
+            echo "url=https://brokeranalysis.vercel.app" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Lighthouse SEO audit
+        run: |
+          lighthouse ${{ steps.target-url.outputs.url }} \
+            --only-categories=seo,performance,accessibility \
+            --output=json \
+            --output-path=./lighthouse-report.json \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"
+
+      - name: Check prerendered meta tags
+        run: |
+          node -e "
+          const https = require('https');
+          const http = require('http');
+          const url = require('url');
+          
+          const targetUrl = '${{ steps.target-url.outputs.url }}';
+          const parsedUrl = url.parse(targetUrl);
+          const client = parsedUrl.protocol === 'https:' ? https : http;
+          
+          const testPages = [
+            '/',
+            '/brokers',
+            '/brokers/pepperstone',
+            '/tools/spread-comparison',
+            '/education'
+          ];
+          
+          const results = [];
+          
+          async function checkPage(path) {
+            return new Promise((resolve) => {
+              const options = {
+                hostname: parsedUrl.hostname,
+                port: parsedUrl.port,
+                path: path,
+                method: 'GET',
+                headers: {
+                  'User-Agent': 'Mozilla/5.0 (compatible; SEO-Bot/1.0)'
+                }
+              };
+              
+              const req = client.request(options, (res) => {
+                let data = '';
+                res.on('data', (chunk) => data += chunk);
+                res.on('end', () => {
+                  const metaTags = {
+                    title: (data.match(/<title[^>]*>([^<]+)<\/title>/i) || [])[1] || 'Missing',
+                    description: (data.match(/<meta[^>]*name=[\"']description[\"'][^>]*content=[\"']([^\"']+)[\"']/i) || [])[1] || 'Missing',
+                    ogTitle: (data.match(/<meta[^>]*property=[\"']og:title[\"'][^>]*content=[\"']([^\"']+)[\"']/i) || [])[1] || 'Missing',
+                    ogDescription: (data.match(/<meta[^>]*property=[\"']og:description[\"'][^>]*content=[\"']([^\"']+)[\"']/i) || [])[1] || 'Missing',
+                    canonical: (data.match(/<link[^>]*rel=[\"']canonical[\"'][^>]*href=[\"']([^\"']+)[\"']/i) || [])[1] || 'Missing'
+                  };
+                  
+                  results.push({ path, metaTags, status: res.statusCode });
+                  resolve();
+                });
+              });
+              
+              req.on('error', () => {
+                results.push({ path, error: 'Request failed', status: 'Error' });
+                resolve();
+              });
+              
+              req.setTimeout(10000, () => {
+                results.push({ path, error: 'Timeout', status: 'Timeout' });
+                resolve();
+              });
+              
+              req.end();
+            });
+          }
+          
+          async function runChecks() {
+            for (const page of testPages) {
+              await checkPage(page);
+            }
+            
+            console.log('\n=== SEO Meta Tags Audit ===');
+            results.forEach(result => {
+              console.log(\`\nPage: \${result.path}\`);
+              console.log(\`Status: \${result.status}\`);
+              if (result.metaTags) {
+                console.log(\`Title: \${result.metaTags.title}\`);
+                console.log(\`Description: \${result.metaTags.description}\`);
+                console.log(\`OG Title: \${result.metaTags.ogTitle}\`);
+                console.log(\`OG Description: \${result.metaTags.ogDescription}\`);
+                console.log(\`Canonical: \${result.metaTags.canonical}\`);
+              } else if (result.error) {
+                console.log(\`Error: \${result.error}\`);
+              }
+            });
+            
+            // Generate summary
+            const successful = results.filter(r => r.status === 200).length;
+            const withTitle = results.filter(r => r.metaTags && r.metaTags.title !== 'Missing').length;
+            const withDescription = results.filter(r => r.metaTags && r.metaTags.description !== 'Missing').length;
+            const withOgTags = results.filter(r => r.metaTags && r.metaTags.ogTitle !== 'Missing').length;
+            
+            console.log(\`\n=== Summary ===\`);
+            console.log(\`Pages tested: \${testPages.length}\`);
+            console.log(\`Successful requests: \${successful}\`);
+            console.log(\`Pages with title: \${withTitle}\`);
+            console.log(\`Pages with description: \${withDescription}\`);
+            console.log(\`Pages with OG tags: \${withOgTags}\`);
+            
+            // Save results for artifact
+            require('fs').writeFileSync('seo-audit-results.json', JSON.stringify(results, null, 2));
+          }
+          
+          runChecks().catch(console.error);
+          "
+
+      - name: Generate SEO report
+        run: |
+          node -e "
+          const fs = require('fs');
+          const lighthouse = JSON.parse(fs.readFileSync('lighthouse-report.json', 'utf8'));
+          const seoResults = JSON.parse(fs.readFileSync('seo-audit-results.json', 'utf8'));
+          
+          const report = \`## SEO Audit Report
+          
+**Date:** \${new Date().toISOString()}
+**Target URL:** ${{ steps.target-url.outputs.url }}
+**Commit:** ${{ github.sha }}
+          
+### Lighthouse Scores
+- **SEO Score:** \${lighthouse.categories.seo.score * 100}/100
+- **Performance Score:** \${lighthouse.categories.performance.score * 100}/100
+- **Accessibility Score:** \${lighthouse.categories.accessibility.score * 100}/100
+          
+### Meta Tags Analysis
+\${seoResults.map(result => \`
+**\${result.path}**
+- Status: \${result.status}
+- Title: \${result.metaTags?.title || 'Missing'}
+- Description: \${result.metaTags?.description ? 'Present' : 'Missing'}
+- OG Tags: \${result.metaTags?.ogTitle ? 'Present' : 'Missing'}
+\`).join('\n')}
+          
+### Recommendations
+\${lighthouse.categories.seo.score < 0.9 ? '⚠️ SEO score below 90%. Review Lighthouse recommendations.' : '✅ SEO score is good.'}
+\${seoResults.filter(r => !r.metaTags?.title || r.metaTags.title === 'Missing').length > 0 ? '⚠️ Some pages missing titles.' : '✅ All pages have titles.'}
+\${seoResults.filter(r => !r.metaTags?.description || r.metaTags.description === 'Missing').length > 0 ? '⚠️ Some pages missing descriptions.' : '✅ All pages have descriptions.'}
+\`;
+          
+          fs.writeFileSync('seo-report.md', report);
+          console.log(report);
+          "
+
+      - name: Upload audit artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-audit-results
+          path: |
+            lighthouse-report.json
+            seo-audit-results.json
+            seo-report.md
+          retention-days: 30
+
+      - name: Comment SEO report on commit
+        if: github.event_name == 'workflow_run' && github.event.workflow_run.head_branch == 'main'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('seo-report.md', 'utf8');
+            
+            github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: '${{ github.event.workflow_run.head_sha }}',
+              body: \`🔍 **SEO Audit Completed**\n\n\${report}\`
+            });
+
+      - name: Create issue for SEO problems
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            try {
+              const lighthouse = JSON.parse(fs.readFileSync('lighthouse-report.json', 'utf8'));
+              const seoResults = JSON.parse(fs.readFileSync('seo-audit-results.json', 'utf8'));
+              
+              const seoScore = lighthouse.categories.seo.score * 100;
+              const missingTitles = seoResults.filter(r => !r.metaTags?.title || r.metaTags.title === 'Missing').length;
+              const missingDescriptions = seoResults.filter(r => !r.metaTags?.description || r.metaTags.description === 'Missing').length;
+              
+              if (seoScore < 80 || missingTitles > 0 || missingDescriptions > 0) {
+                const issues = [];
+                if (seoScore < 80) issues.push(\`SEO score is \${seoScore}/100\`);
+                if (missingTitles > 0) issues.push(\`\${missingTitles} pages missing titles\`);
+                if (missingDescriptions > 0) issues.push(\`\${missingDescriptions} pages missing descriptions\`);
+                
+                const issueBody = \`## SEO Issues Detected
+                
+**Problems found:**
+\${issues.map(issue => \`- \${issue}\`).join('\n')}
+                
+**Audit Date:** \${new Date().toISOString()}
+**Target URL:** ${{ steps.target-url.outputs.url }}
+**Commit:** ${{ github.sha }}
+                
+Please review the prerendering configuration and meta tag implementation.
+                
+[View full audit results](\${context.payload.repository.html_url}/actions/runs/\${context.runId})\`;
+                
+                github.rest.issues.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: \`SEO Issues Detected - Score: \${seoScore}/100\`,
+                  body: issueBody,
+                  labels: ['seo', 'prerendering', 'bug']
+                });
+              }
+            } catch (error) {
+              console.log('Could not create SEO issue:', error.message);
+            }

@@ -1,12 +1,19 @@
 // shadcn/ui components
 // Export all UI components here for easy importing
 
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from './accordion'
 export { Button, buttonVariants, type ButtonProps } from './button'
 export { Badge, badgeVariants, type BadgeProps } from './badge'
 export { Input, inputVariants, type InputProps } from './input'
 export { Textarea, textareaVariants, type TextareaProps } from './textarea'
 export { Checkbox } from './checkbox'
 export { Label } from './label'
+export { Separator } from './separator'
 export {
   Select,
   SelectGroup,
@@ -170,3 +177,17 @@ export {
   TooltipContent,
   TooltipProvider,
 } from './tooltip'
+export {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from './chart'
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from './breadcrumb'

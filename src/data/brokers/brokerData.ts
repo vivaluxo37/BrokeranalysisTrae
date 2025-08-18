@@ -9,7 +9,7 @@
  * @since 2025-01-10
  */
 
-import type { Broker } from '../../types/brokerTypes';
+import type { Broker } from '@/types/brokerTypes';
 import { compiledBrokers } from '../compiled/compiledBrokers';
 
 /**

@@ -1,0 +1,43 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "think-mcp": {
+      "command": "uvx",
+      "args": ["think-mcp"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "puppeteer-mcp-claude": {
+      "command": "npx",
+      "args": ["-y", "puppeteer-mcp-claude", "serve"],
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "mcp-sequentialthinking-tools": {
+      "command": "npx",
+      "args": ["-y", "mcp-sequentialthinking-tools"],
+      "env": {
+        "MAX_HISTORY_SIZE": "1000"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

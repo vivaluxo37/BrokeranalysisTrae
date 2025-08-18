@@ -399,6 +399,6 @@ export class BrokerDataService {
 export const brokerDataService = new BrokerDataService()
 
 // Development helper
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.DEV) {
   ;(window as any).brokerDataService = brokerDataService
 }

@@ -185,7 +185,7 @@ const defaultFeatureFlags: FeatureFlags = {
  * Default API configuration
  */
 const defaultApiConfig: ApiConfig = {
-  baseUrl: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001',
+  baseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001',
   timeout: 10000,
   retryAttempts: 3,
 }
@@ -217,3 +217,4 @@ export interface HomepageIntegrationProviderProps {
 }
 
 export { HomepageIntegrationContext, defaultFeatureFlags, defaultApiConfig, defaultAIConfig }
+export type { HomepageHooks }

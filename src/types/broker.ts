@@ -1,7 +1,7 @@
 /**
  * Broker interface definition
  */
-export interface Broker {
+export interface BrokerDefinition {
   id: string;
   name: string;
   rating: number;

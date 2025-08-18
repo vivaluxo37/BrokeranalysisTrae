@@ -79,12 +79,12 @@ export class ErrorReportingService {
     this.notifyListeners(report)
 
     // Log to console in development
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       console.error('Error reported:', report)
     }
 
     // Send to external service in production
-    if (process.env.NODE_ENV === 'production') {
+    if (import.meta.env.PROD) {
       this.sendToExternalService(report)
     }
 
@@ -388,6 +388,6 @@ if (typeof window !== 'undefined') {
 }
 
 // Development helper
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.DEV) {
   ;(window as any).errorReporting = errorReportingService
 }

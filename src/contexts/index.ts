@@ -8,6 +8,11 @@ export {
 
 export { HomepageIntegrationProvider } from './HomepageIntegrationProvider'
 
+export {
+  QuestionnaireProvider,
+  useQuestionnaire,
+} from './QuestionnaireContext'
+
 export type {
   FeatureFlags,
   ApiConfig,
@@ -18,3 +23,9 @@ export type {
   HomepageIntegrationContextType,
   HomepageIntegrationProviderProps,
 } from './HomepageIntegrationContext'
+
+export type {
+  QuestionnaireState,
+  QuestionnaireAction,
+  QuestionnaireContextType,
+} from './QuestionnaireContext'

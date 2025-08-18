@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useNavigation, useMobileMenu, useNavigationSearch, useRouteUtils } from '@/contexts/NavigationContext'
+import { useNavigation, useMobileMenu, useRouteUtils } from '@/contexts/NavigationContext'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import {
   DropdownMenu,
@@ -21,7 +21,6 @@ import {
   ChevronDown,
   Edit3,
   Menu,
-  Search,
   User,
   UserCircle,
   Settings,
@@ -41,12 +40,9 @@ export function BrokerAnalysisHeader({ totalTraders = 2847291 }: BrokerAnalysisH
   const location = useLocation()
   const navigate = useNavigate()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isSearchFocused, setIsSearchFocused] = useState(false)
-  const searchInputRef = useRef<HTMLInputElement>(null)
   
   // Use navigation context
   const { trackNavigation } = useNavigation()
-  const { query: searchQuery, setQuery: setSearchQuery, performSearch } = useNavigationSearch()
   const { isActiveRoute } = useRouteUtils()
   
   // Use authentication
@@ -59,11 +55,6 @@ export function BrokerAnalysisHeader({ totalTraders = 2847291 }: BrokerAnalysisH
   // Handle keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ctrl/Cmd + K to focus search
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault()
-        searchInputRef.current?.focus()
-      }
       // Escape to close mobile menu
       if (e.key === 'Escape' && isMobileMenuOpen) {
         closeMobileMenu()
@@ -73,14 +64,6 @@ export function BrokerAnalysisHeader({ totalTraders = 2847291 }: BrokerAnalysisH
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isMobileMenuOpen])
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      performSearch(searchQuery.trim())
-      searchInputRef.current?.blur()
-    }
-  }
 
   // isActiveRoute is now provided by useRouteUtils hook
 
@@ -272,46 +255,7 @@ export function BrokerAnalysisHeader({ totalTraders = 2847291 }: BrokerAnalysisH
               <BrokerAnalysisLogo size="md" />
             </Link>
 
-            {/* Enhanced Search Bar */}
-            <div className="flex-1 mx-6 max-w-2xl hidden lg:block">
-              <form onSubmit={handleSearch} className="relative" role="search">
-                <label htmlFor="desktop-search" className="sr-only">
-                  Search brokers, platforms, or instruments (Ctrl+K)
-                </label>
-                <Search 
-                  className={cn(
-                    "absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors",
-                    isSearchFocused ? "text-pure-white" : "text-light-grey"
-                  )}
-                  aria-hidden="true"
-                />
-                <Input
-                  ref={searchInputRef}
-                  id="desktop-search"
-                  type="text"
-                  placeholder="Search brokers, platforms, or instruments... (Ctrl+K)"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onFocus={() => setIsSearchFocused(true)}
-                  onBlur={() => setIsSearchFocused(false)}
-                  className={cn(
-                    "professional-input pl-10 pr-16 transition-all duration-200",
-                    "focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black",
-                    isSearchFocused && "border-accent-blue shadow-lg"
-                  )}
-                  aria-describedby="search-help"
-                  autoComplete="off"
-                />
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  <kbd className="hidden sm:inline-flex items-center px-2 py-1 text-xs font-medium text-light-grey bg-charcoal-grey border border-medium-grey rounded">
-                    ⌘K
-                  </kbd>
-                </div>
-                <div id="search-help" className="sr-only">
-                  Press Enter to search, Ctrl+K to focus, or use arrow keys to navigate suggestions
-                </div>
-              </form>
-            </div>
+            {/* Search Bar Removed */}
 
             {/* Enhanced Desktop Navigation */}
             <NavigationMenu className="hidden lg:flex flex-shrink-0">
@@ -462,25 +406,7 @@ export function BrokerAnalysisHeader({ totalTraders = 2847291 }: BrokerAnalysisH
                   aria-label="Mobile navigation menu"
                 >
                   <div className="space-y-6 mt-8">
-                    {/* Mobile Search */}
-                    <form onSubmit={handleSearch} className="relative" role="search">
-                      <label htmlFor="mobile-search" className="sr-only">
-                        Search brokers, platforms, or instruments
-                      </label>
-                      <Search 
-                        className="absolute left-3 top-1/2 transform -translate-y-1/2 text-light-grey w-4 h-4" 
-                        aria-hidden="true"
-                      />
-                      <Input
-                        id="mobile-search"
-                        type="text"
-                        placeholder="Search brokers, platforms..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="professional-input pl-10 focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-professional-black"
-                        autoComplete="off"
-                      />
-                    </form>
+                    {/* Mobile Search Removed */}
 
                     {/* Mobile Navigation */}
                     <MobileNavigationMenu 

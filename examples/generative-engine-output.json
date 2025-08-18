@@ -1,0 +1,65 @@
+{
+  "tldr": "IG Markets is a regulated by FCA, ASIC, MAS broker offering forex, cfds, stocks, indices, commodities trading on MetaTrader 4 with a minimum deposit of $250. The broker has earned 4.3/5 stars from 1247 reviews, with spreads starting from 0.6 pips and maximum leverage up to 1:30.",
+  "pros": [
+    "Regulated by FCA, ASIC, MAS providing client fund protection",
+    "MetaTrader 4 platform with expert advisors and custom indicators",
+    "Competitive spreads starting from 0.6 pips",
+    "Diverse trading options including forex, cfds, stocks, indices, commodities",
+    "High trust score of 9.2/10 based on regulatory compliance"
+  ],
+  "cons": [
+    "Lower leverage limits may restrict advanced trading strategies",
+    "Withdrawal fees may apply depending on payment method",
+    "Limited educational content for beginner traders",
+    "Customer support not available 24/7 on weekends",
+    "Some advanced features require higher account tiers"
+  ],
+  "facts": {
+    "min_deposit": "$250",
+    "platform": "MetaTrader 4",
+    "fees_summary": "Spreads from 0.6 pips, No commission on forex, Withdrawal: Free (bank transfer)",
+    "base_currency": "GBP",
+    "support_hours": "24/5 (Mon-Fri)"
+  },
+  "faqs": [
+    {
+      "question": "Is IG Markets regulated?",
+      "answer": "Yes, regulated by FCA, ASIC, MAS."
+    },
+    {
+      "question": "What is the minimum deposit for IG Markets?",
+      "answer": "The minimum deposit is $250."
+    },
+    {
+      "question": "What trading platforms does IG Markets offer?",
+      "answer": "IG Markets offers mt4, proprietary, web, mobile for trading."
+    },
+    {
+      "question": "What are IG Markets's spreads?",
+      "answer": "Spreads start from 0.6 pips depending on the account type and market conditions."
+    },
+    {
+      "question": "What leverage does IG Markets provide?",
+      "answer": "Maximum leverage is 1:30, subject to regulatory restrictions in your jurisdiction."
+    },
+    {
+      "question": "What assets can I trade with IG Markets?",
+      "answer": "You can trade forex, cfds, stocks, indices, commodities with this broker."
+    }
+  ],
+  "editorial": "IG Markets is established in 1974, regulated by FCA and ASIC and MAS. The broker provides access to forex, cfds, stocks, indices, commodities through MetaTrader 4, with spreads starting from 0.6 pips and offering leverage up to 1:30. Based on 1247 user reviews, the platform has earned 4.3/5 stars. The minimum deposit requirement is $250, making it accessible to various trader profiles. The broker maintains a trust score of 9.2/10. Traders should consider their individual needs, risk tolerance, and regulatory preferences when evaluating this broker against alternatives in the market.",
+  "internal_links": [
+    {
+      "anchor": "Best FCA-regulated brokers",
+      "target_slug": "/brokers/fca-regulated"
+    },
+    {
+      "anchor": "Top MetaTrader 4 brokers",
+      "target_slug": "/brokers/metatrader-4"
+    },
+    {
+      "anchor": "Best forex brokers 2024",
+      "target_slug": "/brokers/forex"
+    }
+  ]
+}

@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
-import { Eye, Plus, Star, Filter, Grid3X3, List, Search, TrendingUp, Shield, Users } from 'lucide-react'
+import { Eye, Plus, Star, Filter, Grid3X3, List, Search, TrendingUp, Shield, Users, Loader2 } from 'lucide-react'
 import { BrokerDirectoryFilters } from '@/components/common/BrokerDirectoryFilters'
 import { Layout } from '@/components/layout/Layout'
 import { SeoHead } from '@/components/common'
-import { brokerDataService } from '@/services/BrokerDataService'
-import { mockQuery } from '@/additionalPagesMockData'
+import { useAllBrokers, useBrokerSearch } from '@/hooks/useBrokers'
+import type { AssetClass, RegulatorType, TradingPlatform } from '@/enums'
 
 interface FilterState {
-  assetClass: string
+  assetClass: AssetClass | ''
   region: string
-  regulation: string
+  regulation: RegulatorType | ''
   minDeposit: string
   sortBy: string
   search: string
@@ -33,21 +33,61 @@ export function BrokerDirectoryPage() {
   
   const [currentPage, setCurrentPage] = useState(1)
   const [selectedBrokers, setSelectedBrokers] = useState<string[]>([])
-  const [isLoading, setIsLoading] = useState(false)
   const [viewMode, setViewMode] = useState<'table' | 'grid'>('table')
+  const itemsPerPage = 20
 
-  const {brokers} = mockQuery.brokerDirectory
-  const {totalPages} = mockQuery.brokerDirectory
-  const {totalCount} = mockQuery.brokerDirectory
+  // Build search filters for TanStack Query
+  const searchFilters = useMemo(() => {
+    const queryFilters: {
+      assetClass?: AssetClass
+      minRating?: number
+      maxMinDeposit?: number
+      regulators?: RegulatorType[]
+    } = {}
 
-  useEffect(() => {
-    // Simulate API call when filters change
-    setIsLoading(true)
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 500)
-    return () => clearTimeout(timer)
-  }, [filters, currentPage])
+    if (filters.assetClass) {
+      queryFilters.assetClass = filters.assetClass as AssetClass
+    }
+    if (filters.regulation) {
+      queryFilters.regulators = [filters.regulation as RegulatorType]
+    }
+    if (filters.minDeposit) {
+      const maxDeposit = parseInt(filters.minDeposit)
+      if (!isNaN(maxDeposit)) {
+        queryFilters.maxMinDeposit = maxDeposit
+      }
+    }
+
+    return queryFilters
+  }, [filters.assetClass, filters.regulation, filters.minDeposit])
+
+  // Use TanStack Query to fetch brokers
+  const { data: allBrokers = [], isLoading, error } = useBrokerSearch(filters.search, searchFilters)
+
+  // Sort and paginate brokers
+  const sortedBrokers = useMemo(() => {
+    const sorted = [...allBrokers]
+    
+    switch (filters.sortBy) {
+      case 'rating_desc':
+        return sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0))
+      case 'rating_asc':
+        return sorted.sort((a, b) => (a.rating || 0) - (b.rating || 0))
+      case 'name_asc':
+        return sorted.sort((a, b) => a.name.localeCompare(b.name))
+      case 'name_desc':
+        return sorted.sort((a, b) => b.name.localeCompare(a.name))
+      case 'reviews_desc':
+        return sorted.sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0))
+      default:
+        return sorted
+    }
+  }, [allBrokers, filters.sortBy])
+
+  const totalCount = sortedBrokers.length
+  const totalPages = Math.ceil(totalCount / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const brokers = sortedBrokers.slice(startIndex, startIndex + itemsPerPage)
 
   const handleFiltersChange = (newFilters: FilterState) => {
     setFilters(newFilters)

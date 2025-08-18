@@ -2,7 +2,7 @@ import * as React from 'react'
 import { type VariantProps, cva } from 'class-variance-authority'
 import { type LucideIcon } from 'lucide-react'
 
-import { cn } from '@/lib/style-utils'
+import { cn } from '../../lib/style-utils'
 
 const cardVariants = cva(
   'rounded-lg border bg-[#1a1a1a] text-white shadow-sm transition-all duration-200 h-full',

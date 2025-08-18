@@ -1,32 +1,65 @@
-import { Info, ArrowLeft, ArrowRight } from 'lucide-react'
+import { Info, ArrowLeft, ArrowRight, TrendingUp, Calendar, Clock, BarChart3, HelpCircle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Badge } from '@/components/ui/badge'
+import { useQuestionnaire } from '@/contexts/QuestionnaireContext'
 import { formatStepNumber } from '@/utils/wizardFormatters'
 import { TradingFrequency } from '@/types/wizard'
 
-interface FrequencyStepProps {
-  selectedFrequency: string
-  onFrequencyChange: (frequency: string) => void
-  onNext: () => void
-  onBack: () => void
-}
+interface FrequencyStepProps {}
 
-export function FrequencyStep({ 
-  selectedFrequency, 
-  onFrequencyChange, 
-  onNext, 
-  onBack 
-}: FrequencyStepProps) {
+export function FrequencyStep({}: FrequencyStepProps) {
+  const { state, updatePreferences, nextStep, previousStep } = useQuestionnaire()
+  const selectedFrequency = state.userPreferences.tradingFrequency || ''
+  const filteredBrokersCount = state.filteredBrokers.length
+
   const frequencyOptions = [
-    { value: TradingFrequency.DAILY, label: 'Daily' },
-    { value: TradingFrequency.WEEKLY, label: 'Weekly' },
-    { value: TradingFrequency.MONTHLY, label: 'Monthly' },
-    { value: TradingFrequency.YEARLY, label: 'Yearly' },
-    { value: TradingFrequency.DONT_KNOW, label: "I don't know" }
+    { 
+      value: TradingFrequency.DAILY, 
+      label: 'Daily',
+      icon: BarChart3,
+      description: 'Active trading with frequent transactions'
+    },
+    { 
+      value: TradingFrequency.WEEKLY, 
+      label: 'Weekly',
+      icon: Calendar,
+      description: 'Regular trading with weekly reviews'
+    },
+    { 
+      value: TradingFrequency.MONTHLY, 
+      label: 'Monthly',
+      icon: Clock,
+      description: 'Long-term investing with monthly adjustments'
+    },
+    { 
+      value: TradingFrequency.YEARLY, 
+      label: 'Yearly',
+      icon: TrendingUp,
+      description: 'Buy and hold strategy with annual reviews'
+    },
+    { 
+      value: TradingFrequency.DONT_KNOW, 
+      label: "I don't know",
+      icon: HelpCircle,
+      description: 'We\'ll help you determine the best approach'
+    }
   ]
+
+  const handleFrequencyChange = (frequency: string) => {
+    updatePreferences({ tradingFrequency: frequency })
+  }
+
+  const handleNext = () => {
+    nextStep()
+  }
+
+  const handleBack = () => {
+    previousStep()
+  }
 
   const isValid = selectedFrequency !== ''
 
@@ -54,38 +87,71 @@ export function FrequencyStep({
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-professional-black">
-              How often do you want to deal with your investments and trades?
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-professional-black">
+                How often do you want to deal with your investments and trades?
+              </h2>
+              {selectedFrequency && (
+                <Badge variant="secondary" className="bg-accent-blue/10 text-accent-blue">
+                  <TrendingUp size={14} className="mr-1" />
+                  {filteredBrokersCount} brokers
+                </Badge>
+              )}
+            </div>
+            {selectedFrequency && (
+              <p className="text-sm text-medium-grey">
+                Based on your trading frequency, we found {filteredBrokersCount} matching brokers.
+              </p>
+            )}
           </div>
 
-          <RadioGroup value={selectedFrequency} onValueChange={onFrequencyChange}>
-            <div className="space-y-3">
-              {frequencyOptions.map((option) => (
-                <div key={option.value} className="flex items-center space-x-3">
-                  <RadioGroupItem value={option.value} id={option.value} />
-                  <Label
-                    htmlFor={option.value}
-                    className="text-sm text-professional-black cursor-pointer flex-1"
+          <RadioGroup value={selectedFrequency} onValueChange={handleFrequencyChange}>
+            <div className="space-y-4">
+              {frequencyOptions.map((option) => {
+                const IconComponent = option.icon
+                const isSelected = selectedFrequency === option.value
+                return (
+                  <div 
+                    key={option.value} 
+                    className={`flex items-start space-x-4 p-4 rounded-lg border-2 transition-all cursor-pointer ${
+                      isSelected 
+                        ? 'border-accent-blue bg-accent-blue/5' 
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                    onClick={() => handleFrequencyChange(option.value)}
                   >
-                    {option.label}
-                  </Label>
-                </div>
-              ))}
+                    <RadioGroupItem value={option.value} id={option.value} className="mt-1" />
+                    <div className="flex-1 space-y-1">
+                      <div className="flex items-center space-x-2">
+                        <IconComponent size={18} className={isSelected ? 'text-accent-blue' : 'text-medium-grey'} />
+                        <Label
+                          htmlFor={option.value}
+                          className="text-sm font-medium text-professional-black cursor-pointer"
+                        >
+                          {option.label}
+                        </Label>
+                      </div>
+                      <p className="text-xs text-medium-grey pl-6">
+                        {option.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </RadioGroup>
 
           <div className="flex space-x-4">
             <Button
               variant="outline"
-              onClick={onBack}
+              onClick={handleBack}
               className="flex-1"
             >
               <ArrowLeft size={20} />
               Back
             </Button>
             <Button
-              onClick={onNext}
+              onClick={handleNext}
               disabled={!isValid}
               className="flex-1 bg-accent-blue hover:bg-accent-blue/90"
             >

@@ -1,7 +1,15 @@
 {
+  "name": "brokeranalysis-mcp-servers",
+  "version": "1.0.0",
+  "description": "MCP servers for BrokerAnalysis platform",
   "dependencies": {
+    "@supabase/mcp-server-supabase": "latest",
     "@types/node": "^24.2.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
+  },
+  "scripts": {
+    "install-supabase": "npm install @supabase/mcp-server-supabase",
+    "test-supabase": "npx @supabase/mcp-server-supabase --help"
   }
 }

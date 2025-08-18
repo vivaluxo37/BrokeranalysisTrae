@@ -1,8 +1,8 @@
 import { Search, Filter, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
 
 export function SEOHero() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -23,7 +23,7 @@ export function SEOHero() {
       <div className="content-container">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline - SEO Optimized */}
-          <h1 className="text-hero font-bold text-white mb-6 leading-tight">
+          <h1 className="text-section-title font-bold text-white mb-6 leading-tight">
             Independent Broker Reviews & Comparisons for 
             <span className="text-accent-blue"> Forex, Stocks, Crypto & CFDs</span>
           </h1>

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Star, ChevronLeft, ChevronRight, Quote, Award, Users, Globe } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '../ui/button'
+import { Card, CardContent } from '../ui/card'
 
 export function TestimonialsSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
@@ -87,14 +87,14 @@ export function TestimonialsSection() {
   }
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-professional-black">
       <div className="content-container">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-section-title text-professional-black mb-4">
+          <h2 className="text-section-title text-pure-white mb-4">
             Trusted by Traders Worldwide
           </h2>
-          <p className="text-lg text-medium-grey max-w-2xl mx-auto">
+          <p className="text-lg text-light-grey max-w-2xl mx-auto">
             Join thousands of traders who have found their perfect broker through our independent reviews and comparisons.
           </p>
         </div>
@@ -106,15 +106,15 @@ export function TestimonialsSection() {
               <div className="w-16 h-16 bg-accent-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <signal.icon className="w-8 h-8 text-accent-blue" />
               </div>
-              <div className="text-2xl font-bold text-professional-black mb-1">{signal.value}</div>
-              <div className="text-sm text-medium-grey">{signal.label}</div>
+              <div className="text-2xl font-bold text-pure-white mb-1">{signal.value}</div>
+              <div className="text-sm text-light-grey">{signal.label}</div>
             </div>
           ))}
         </div>
 
         {/* Testimonials Carousel */}
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-white border-gray-200 text-professional-black overflow-hidden">
+          <Card className="professional-card overflow-hidden">
             <CardContent className="p-0">
               <div className="relative">
                 {/* Current Testimonial */}
@@ -128,13 +128,13 @@ export function TestimonialsSection() {
                         className="w-20 h-20 rounded-full mx-auto lg:mx-0 mb-4"
                         style={{ width: '80px', height: '80px' }}
                       />
-                      <h4 className="font-semibold text-professional-black">
+                      <h4 className="font-semibold text-pure-white">
                         {testimonials[currentTestimonial].name}
                       </h4>
-                      <p className="text-sm text-medium-grey">
+                      <p className="text-sm text-light-grey">
                         {testimonials[currentTestimonial].role}
                       </p>
-                      <p className="text-xs text-medium-grey">
+                      <p className="text-xs text-light-grey">
                         {testimonials[currentTestimonial].location}
                       </p>
                       <p className="text-xs text-accent-blue mt-1">
@@ -154,7 +154,7 @@ export function TestimonialsSection() {
                       </div>
 
                       {/* Testimonial Text */}
-                      <blockquote className="text-lg text-professional-black leading-relaxed text-center lg:text-left">
+                      <blockquote className="text-lg text-pure-white leading-relaxed text-center lg:text-left">
                         "{testimonials[currentTestimonial].text}"
                       </blockquote>
                     </div>
@@ -162,10 +162,10 @@ export function TestimonialsSection() {
                 </div>
 
                 {/* Navigation */}
-                <div className="flex items-center justify-between p-6 bg-gray-50 border-t">
+                <div className="flex items-center justify-between p-6 bg-medium-grey border-t border-charcoal-grey">
                   <button
                     onClick={prevTestimonial}
-                    className="flex items-center space-x-2 text-medium-grey hover:text-professional-black transition-colors"
+                    className="flex items-center space-x-2 text-light-grey hover:text-pure-white transition-colors"
                   >
                     <ChevronLeft size={20} />
                     <span className="hidden sm:inline">Previous</span>
@@ -186,7 +186,7 @@ export function TestimonialsSection() {
 
                   <button
                     onClick={nextTestimonial}
-                    className="flex items-center space-x-2 text-medium-grey hover:text-professional-black transition-colors"
+                    className="flex items-center space-x-2 text-light-grey hover:text-pure-white transition-colors"
                   >
                     <span className="hidden sm:inline">Next</span>
                     <ChevronRight size={20} />
@@ -199,10 +199,10 @@ export function TestimonialsSection() {
 
         {/* CTA Section */}
         <div className="text-center mt-12">
-          <h3 className="text-xl font-semibold text-professional-black mb-4">
+          <h3 className="text-xl font-semibold text-pure-white mb-4">
             Ready to Find Your Perfect Broker?
           </h3>
-          <p className="text-medium-grey mb-6">
+          <p className="text-light-grey mb-6">
             Join thousands of satisfied traders who found their ideal broker through our platform.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

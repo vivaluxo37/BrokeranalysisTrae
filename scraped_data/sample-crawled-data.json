@@ -1,0 +1,78 @@
+{
+  "crawledAt": "2025-01-14T05:30:00.000Z",
+  "total": 3,
+  "pages": [
+    {
+      "url": "https://brokerchooser.com/broker-reviews/interactive-brokers-review",
+      "status": 200,
+      "fetchedAt": "2025-01-14T05:30:00.000Z",
+      "title": "Interactive Brokers Review 2025 - BrokerChooser",
+      "language": "en",
+      "pageType": "broker_review",
+      "html": "<!DOCTYPE html><html><head><title>Interactive Brokers Review 2025 - BrokerChooser</title></head><body><h1>Interactive Brokers Review</h1><div class='broker-rating'>Rating: 9.2/10</div><div class='pros-cons'><h3>Pros:</h3><ul><li>Low fees</li><li>Wide range of markets</li><li>Professional platform</li></ul><h3>Cons:</h3><ul><li>Complex for beginners</li><li>High minimum deposit</li></ul></div><div class='review-content'>Interactive Brokers is a leading online broker offering access to global markets with competitive pricing...</div></body></html>",
+      "textContent": "Interactive Brokers Review Rating: 9.2/10 Pros: Low fees Wide range of markets Professional platform Cons: Complex for beginners High minimum deposit Interactive Brokers is a leading online broker offering access to global markets with competitive pricing...",
+      "data": {
+        "reviewData": {
+          "brokerName": "Interactive Brokers",
+          "rating": 9.2,
+          "pros": ["Low fees", "Wide range of markets", "Professional platform"],
+          "cons": ["Complex for beginners", "High minimum deposit"],
+          "summary": "Interactive Brokers is a leading online broker offering access to global markets with competitive pricing."
+        },
+        "extractionMetadata": {
+          "extractedAt": "2025-01-14T05:30:00.000Z",
+          "source": "sample_data",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "url": "https://brokerchooser.com/broker-reviews/etoro-review",
+      "status": 200,
+      "fetchedAt": "2025-01-14T05:30:15.000Z",
+      "title": "eToro Review 2025 - Social Trading Platform - BrokerChooser",
+      "language": "en",
+      "pageType": "broker_review",
+      "html": "<!DOCTYPE html><html><head><title>eToro Review 2025 - Social Trading Platform - BrokerChooser</title></head><body><h1>eToro Review</h1><div class='broker-rating'>Rating: 8.5/10</div><div class='pros-cons'><h3>Pros:</h3><ul><li>Social trading features</li><li>User-friendly interface</li><li>Copy trading</li></ul><h3>Cons:</h3><ul><li>Limited research tools</li><li>Higher spreads</li></ul></div><div class='review-content'>eToro is a social trading platform that allows users to copy successful traders and invest in various assets...</div></body></html>",
+      "textContent": "eToro Review Rating: 8.5/10 Pros: Social trading features User-friendly interface Copy trading Cons: Limited research tools Higher spreads eToro is a social trading platform that allows users to copy successful traders and invest in various assets...",
+      "data": {
+        "reviewData": {
+          "brokerName": "eToro",
+          "rating": 8.5,
+          "pros": ["Social trading features", "User-friendly interface", "Copy trading"],
+          "cons": ["Limited research tools", "Higher spreads"],
+          "summary": "eToro is a social trading platform that allows users to copy successful traders and invest in various assets."
+        },
+        "extractionMetadata": {
+          "extractedAt": "2025-01-14T05:30:15.000Z",
+          "source": "sample_data",
+          "confidence": 0.92
+        }
+      }
+    },
+    {
+      "url": "https://brokerchooser.com/pl/broker-reviews/plus500-review",
+      "status": 200,
+      "fetchedAt": "2025-01-14T05:30:30.000Z",
+      "title": "Plus500 Recenzja 2025 - BrokerChooser",
+      "language": "pl",
+      "pageType": "broker_review",
+      "html": "<!DOCTYPE html><html><head><title>Plus500 Recenzja 2025 - BrokerChooser</title></head><body><h1>Plus500 Recenzja</h1><div class='broker-rating'>Ocena: 7.8/10</div><div class='pros-cons'><h3>Zalety:</h3><ul><li>Prosta platforma</li><li>Regulacja CFD</li><li>Demo konto</li></ul><h3>Wady:</h3><ul><li>Tylko CFD</li><li>Ograniczone narzędzia</li></ul></div><div class='review-content'>Plus500 to broker CFD oferujący prostą platformę handlową...</div></body></html>",
+      "textContent": "Plus500 Recenzja Ocena: 7.8/10 Zalety: Prosta platforma Regulacja CFD Demo konto Wady: Tylko CFD Ograniczone narzędzia Plus500 to broker CFD oferujący prostą platformę handlową...",
+      "data": {
+        "reviewData": {
+          "brokerName": "Plus500",
+          "rating": 7.8,
+          "pros": ["Prosta platforma", "Regulacja CFD", "Demo konto"],
+          "cons": ["Tylko CFD", "Ograniczone narzędzia"],
+          "summary": "Plus500 to broker CFD oferujący prostą platformę handlową."
+        },
+        "extractionMetadata": {
+          "extractedAt": "2025-01-14T05:30:30.000Z",
+          "source": "sample_data",
+          "confidence": 0.88
+        }
+      }
+    }
+  ]
+}

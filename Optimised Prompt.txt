@@ -1,0 +1,128 @@
+You are a Senior Web Data Engineer & Crawler Architect. You have explicit permission from BrokerChooser to crawl brokerchooser.com for QA and data structuring.
+
+Objective
+Crawl the ENTIRE site (all locales), discover every page (especially ALL broker review pages), extract structured data, and upsert everything into Supabase. The previous run only captured a few brokers; this run must achieve near-complete coverage and produce a coverage report.
+
+Environment (required env vars)
+- BRIGHTDATA_API_KEY, BRIGHTDATA_ZONE
+- SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+
+Data store (Supabase)
+Use/extend table `crawled_pages` with columns:
+  id uuid pk default gen_random_uuid()
+  url text unique
+  final_url text
+  status int
+  fetched_at timestamptz default now()
+  sha256 text
+  content_type text
+  lang text
+  page_type text
+  html text
+  text_content text
+  meta jsonb
+  data jsonb
+Create GIN index on data if missing.
+
+High-Level Plan (must implement all)
+1) Discovery (multi-source; deduped)
+   a) Sitemaps-first:
+      - Start at https://brokerchooser.com/sitemap.xml
+      - Recursively follow sitemap indexes; collect all <loc> URLs.
+      - Include EVERY locale (e.g., /en/, /de/, /es/, etc.) and every sitemap shard.
+   b) In-site crawl (BFS):
+      - Seed with homepage and key hubs discovered from sitemaps (e.g., /broker-reviews/, category/listing pages).
+      - Fetch a page, extract all same-domain <a href> links, canonicalize (see rules below), enqueue new ones.
+   c) Canonical & alternate:
+      - If a page has <link rel="canonical"> or hreflang alternates, add those targets to the queue.
+   d) Scope:
+      - Only keep https://brokerchooser.com/* (any locale).
+      - Avoid infinite traps (calendar, search, “?page=” with huge numbers): apply sane caps but ensure broker lists are fully paginated.
+
+2) URL normalization (must be deterministic)
+   - Lowercase host; strip fragment (#...).
+   - Remove tracking params (utm_*, fbclid, gclid, ref, ?share=...).
+   - Sort remaining query params alphabetically.
+   - Normalize trailing slashes (choose one form) and decode safe characters.
+   - Store both requested `url` and `final_url` (after redirects). Deduplicate by `final_url`.
+
+3) Fetching (Bright Data Web Unlocker – Direct API)
+   - Endpoint: POST https://api.brightdata.com/request
+   - Headers: Authorization: Bearer ${BRIGHTDATA_API_KEY}
+   - Body: { "zone": "${BRIGHTDATA_ZONE}", "url": "<TARGET>", "format": "raw" }
+   - Concurrency: start 6, adaptive backoff on 429/5xx.
+   - Retries: 3 with exponential backoff & jitter; drop concurrency by 1 on repeated 429.
+   - Timeouts: 120s.
+   - Capture status code (if available), response headers (if returned), and final URL.
+   - Heuristic fallback: if HTML < 10KB OR has empty main content for known templates, re-try once more; if still empty, record as fetched but flag `meta.empty_render=true`.
+
+4) Page classification
+   - Use URL patterns + DOM cues to classify:
+     • broker_review (any /broker-reviews/* page)
+     • broker_list / category (listings, comparisons, top lists)
+     • article / education / blog
+     • landing / tool / other
+   - Detect `lang` from URL (e.g., /en/) or <html lang>.
+
+5) Extraction (all page types)
+   - Common:
+     • title, meta description, canonical, h1
+     • headings outline (h2/h3), all <script type="application/ld+json"> blobs parsed to JSON
+     • OpenGraph/Twitter tags
+   - For broker_review pages (CRITICAL):
+     - brokerName, rating (if present), lastUpdated
+     - pros[], cons[]
+     - sections{} harvested from headings & following content; include (opportunistic, not exhaustive):
+       fees, non_trading_fees, account_opening, deposits_withdrawals, platforms (web/desktop/mobile),
+       products (forex, stocks, crypto, CFDs, options, futures, commodities, bonds, ETFs),
+       research, education, safety & regulation, customer_service, order_types, alerts, portfolio_analysis,
+       countries_served, restrictions, payment_methods, FAQs.
+     - Tables: capture any pricing/fee tables into structured arrays.
+     - Images/screenshots: capture alt/captions into meta.images[] (no downloading).
+   - For lists/categories:
+     - Extract broker cards (name, link, short blurb) into data.list_items[].
+   - Always store raw HTML (html), text_content (main/body text), meta (canonical, og, etc.), and structured data.
+
+6) Supabase upsert (idempotent)
+   - Upsert by `final_url` if present else `url`.
+   - Compute sha256(html) and store; on re-runs, skip re-parse if sha unchanged unless `--force`.
+   - Store: url, final_url, status, fetched_at, sha256, content_type (if known), lang, page_type, html, text_content, meta, data.
+
+7) Coverage & verification (MUST output a report)
+   - Print totals:
+     • discovered URLs, unique normalized URLs, crawled successes, failures.
+     • breakdown by page_type and by lang.
+     • count of broker_review pages discovered vs successfully parsed.
+   - Cross-check broker coverage:
+     • From all broker_list/category pages, collect unique broker links and compare against parsed broker_review pages; list missing review URLs.
+   - Save a CSV/JSON report locally: `out/coverage_report.json` with arrays:
+     • all_urls, crawled, failures (with reason), broker_reviews_parsed, broker_reviews_missing.
+   - Exit with non-zero code if < 90% of discovered broker_review pages were parsed (configurable threshold).
+
+8) Resumability & robustness
+   - Work queue persisted (in memory + optional table/JSON file) so restarts continue.
+   - On error bursts (5 consecutive 5xx/429), back off globally 60–120s.
+   - Respect domain permission; avoid login or private endpoints.
+
+9) Deliverables
+   - Provide/adjust scripts:
+     • unlocker.js (Bright Data request wrapper)
+     • sitemap.js (recursive sitemap collector)
+     • crawlQueue.js (BFS queue + normalization + dedupe)
+     • classify.js (page type detection)
+     • parseCommon.js (meta/headings/jsonld), parseBrokerReview.js (detailed fields)
+     • db.js (Supabase client + upsert)
+     • crawl.js (driver; CLI flags: --force, --concurrency, --maxPages)
+   - Provide README with run instructions and env var setup.
+   - Print a final summary table to stdout and write coverage_report.json.
+
+Quality Gates (do not skip)
+- ≥ 95% of URLs from sitemaps must be crawled (excluding non-HTML assets).
+- ≥ 90% of discovered /broker-reviews/* URLs must be parsed with non-empty sections.
+- No duplicate final_url records in Supabase.
+- Parser unit tests for 3–5 representative broker review pages (snapshots).
+
+Run Now
+- Implement/adjust code accordingly.
+- Run with concurrency=6.
+- After completion, output the coverage report and list any missing broker review pages to investigate.

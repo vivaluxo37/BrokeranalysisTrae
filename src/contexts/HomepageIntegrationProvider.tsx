@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
-  HomepageHooks,
   HomepageIntegrationContext,
+  defaultAIConfig,
+  defaultApiConfig,
+  defaultFeatureFlags,
+} from './HomepageIntegrationContext'
+import type {
+  HomepageHooks,
   HomepageIntegrationContextType,
   HomepageIntegrationProviderProps,
   HomepageServices,
   HomepageState,
-  defaultAIConfig,
-  defaultApiConfig,
-  defaultFeatureFlags,
 } from './HomepageIntegrationContext'
 import {
   useAIChatState,
@@ -26,7 +28,7 @@ import { authService } from '@/services/authService'
 import { SearchService } from '@/services/search/SearchService'
 import { AIGateway } from '@/services/ai/AIGateway'
 import { profileService } from '@/services/profileService'
-import { ExternalAPIService } from '@/services/external'
+import { ExternalAPIService } from '@/services/external/ExternalAPIService'
 import { DataSyncService } from '@/services/sync/DataSyncService'
 import { CacheService } from '@/services/sync/CacheService'
 import { useAuth } from '@/hooks/useAuth'
@@ -76,17 +78,17 @@ export const HomepageIntegrationProvider: React.FC<HomepageIntegrationProviderPr
   const services = useMemo<HomepageServices>(() => {
     // Initialize SearchService with default config
     const searchService = new SearchService({
-      node: process.env.REACT_APP_ELASTICSEARCH_URL || 'http://localhost:9200',
+      node: import.meta.env.VITE_ELASTICSEARCH_URL || 'http://localhost:9200',
       auth: {
-        username: process.env.REACT_APP_ELASTICSEARCH_USERNAME || '',
-        password: process.env.REACT_APP_ELASTICSEARCH_PASSWORD || '',
+        username: import.meta.env.VITE_ELASTICSEARCH_USERNAME || '',
+        password: import.meta.env.VITE_ELASTICSEARCH_PASSWORD || '',
       },
       indices: {
         brokers: 'brokers',
         reviews: 'reviews',
         news: 'news',
       },
-      useMockData: process.env.NODE_ENV === 'development',
+      useMockData: import.meta.env.DEV,
     })
 
     // Initialize AIGateway with default config
@@ -95,8 +97,8 @@ export const HomepageIntegrationProvider: React.FC<HomepageIntegrationProviderPr
     // Initialize ExternalAPIService with default config
     const externalAPIService = new ExternalAPIService({
       brokerData: {
-        baseURL: process.env.REACT_APP_BROKER_API_URL || 'http://localhost:3001',
-        apiKey: process.env.REACT_APP_BROKER_API_KEY || '',
+        baseURL: import.meta.env.VITE_BROKER_API_URL || 'http://localhost:3001',
+        apiKey: import.meta.env.VITE_BROKER_API_KEY || '',
         timeout: 10000,
         rateLimit: { maxRequests: 100, windowMs: 60000 },
         retryConfig: { maxRetries: 3, retryDelay: 1000 },
@@ -107,8 +109,8 @@ export const HomepageIntegrationProvider: React.FC<HomepageIntegrationProviderPr
         }
       },
       financialData: {
-        baseURL: process.env.REACT_APP_FINANCIAL_API_URL || 'https://www.alphavantage.co/query',
-        apiKey: process.env.REACT_APP_FINANCIAL_API_KEY || '',
+        baseURL: import.meta.env.VITE_FINANCIAL_API_URL || 'https://www.alphavantage.co/query',
+        apiKey: import.meta.env.VITE_FINANCIAL_API_KEY || '',
         timeout: 15000,
         rateLimit: { maxRequests: 500, windowMs: 60000 },
         retryConfig: { maxRetries: 2, retryDelay: 500 },
@@ -120,8 +122,8 @@ export const HomepageIntegrationProvider: React.FC<HomepageIntegrationProviderPr
         }
       },
       news: {
-        baseURL: process.env.REACT_APP_NEWS_API_URL || 'https://newsapi.org/v2',
-        apiKey: process.env.REACT_APP_NEWS_API_KEY || '',
+        baseURL: import.meta.env.VITE_NEWS_API_URL || 'https://newsapi.org/v2',
+        apiKey: import.meta.env.VITE_NEWS_API_KEY || '',
         timeout: 10000,
         rateLimit: { maxRequests: 1000, windowMs: 60000 },
         retryConfig: { maxRetries: 2, retryDelay: 1000 },
@@ -133,8 +135,8 @@ export const HomepageIntegrationProvider: React.FC<HomepageIntegrationProviderPr
         }
       },
       regulatory: {
-        baseURL: process.env.REACT_APP_REGULATORY_API_URL || 'http://localhost:3002',
-        apiKey: process.env.REACT_APP_REGULATORY_API_KEY || '',
+        baseURL: import.meta.env.VITE_REGULATORY_API_URL || 'http://localhost:3002',
+        apiKey: import.meta.env.VITE_REGULATORY_API_KEY || '',
         timeout: 15000,
         rateLimit: { maxRequests: 200, windowMs: 60000 },
         retryConfig: { maxRetries: 3, retryDelay: 2000 },
@@ -147,7 +149,7 @@ export const HomepageIntegrationProvider: React.FC<HomepageIntegrationProviderPr
           search: '/v1/search'
         }
       },
-      useMockData: process.env.NODE_ENV === 'development',
+      useMockData: import.meta.env.DEV,
     })
 
     // Initialize DataSyncService with default config

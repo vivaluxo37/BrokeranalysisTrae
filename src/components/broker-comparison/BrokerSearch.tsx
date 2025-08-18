@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Search, Filter, X, ChevronDown } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import { Card, CardContent } from '../ui/card'
 
 export function BrokerSearch() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -77,14 +77,14 @@ export function BrokerSearch() {
   )
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-professional-black">
       <div className="content-container">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-section-title text-professional-black mb-4">
+          <h2 className="text-section-title text-pure-white mb-4">
             Find Your Perfect Broker
           </h2>
-          <p className="text-lg text-medium-grey max-w-2xl mx-auto">
+          <p className="text-lg text-light-grey max-w-2xl mx-auto">
             Use our advanced search and filtering system to discover brokers that match your trading needs and preferences.
           </p>
         </div>
@@ -102,7 +102,7 @@ export function BrokerSearch() {
                 icon={Search}
                 iconPosition="left"
                 inputSize="lg"
-                className="w-full bg-white border-gray-300"
+                className="w-full"
               />
             </div>
             <Button
@@ -110,7 +110,7 @@ export function BrokerSearch() {
               variant={showFilters ? "primary" : "outline"}
               size="lg"
               icon={Filter}
-              className="px-8 border-gray-300"
+              className="px-8"
             >
               Filters {hasActiveFilters && `(${Object.values(selectedFilters).flat().length})`}
             </Button>
@@ -118,10 +118,10 @@ export function BrokerSearch() {
 
           {/* Advanced Filters */}
           {showFilters && (
-            <Card className="bg-white border-gray-200 text-professional-black">
+            <Card className="professional-card">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-semibold text-professional-black">Advanced Filters</h3>
+                  <h3 className="text-lg font-semibold text-pure-white">Advanced Filters</h3>
                   {hasActiveFilters && (
                     <Button onClick={clearFilters} variant="ghost" size="sm">
                       Clear All
@@ -132,7 +132,7 @@ export function BrokerSearch() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {/* Asset Class Filter */}
                   <div>
-                    <h4 className="font-medium text-professional-black mb-3">Asset Classes</h4>
+                    <h4 className="font-medium text-pure-white mb-3">Asset Classes</h4>
                     <div className="space-y-2">
                       {filterOptions.assetClass.map((asset) => (
                         <label key={asset} className="flex items-center space-x-2 cursor-pointer">
@@ -142,7 +142,7 @@ export function BrokerSearch() {
                             onChange={() => toggleFilter('assetClass', asset)}
                             className="rounded border-gray-300"
                           />
-                          <span className="text-sm text-medium-grey">{asset}</span>
+                          <span className="text-sm text-light-grey">{asset}</span>
                         </label>
                       ))}
                     </div>
@@ -150,7 +150,7 @@ export function BrokerSearch() {
 
                   {/* Regulation Filter */}
                   <div>
-                    <h4 className="font-medium text-professional-black mb-3">Regulation</h4>
+                    <h4 className="font-medium text-pure-white mb-3">Regulation</h4>
                     <div className="space-y-2">
                       {filterOptions.regulation.map((reg) => (
                         <label key={reg} className="flex items-center space-x-2 cursor-pointer">
@@ -160,7 +160,7 @@ export function BrokerSearch() {
                             onChange={() => toggleFilter('regulation', reg)}
                             className="rounded border-gray-300"
                           />
-                          <span className="text-sm text-medium-grey">{reg}</span>
+                          <span className="text-sm text-light-grey">{reg}</span>
                         </label>
                       ))}
                     </div>
@@ -168,7 +168,7 @@ export function BrokerSearch() {
 
                   {/* Min Deposit Filter */}
                   <div>
-                    <h4 className="font-medium text-professional-black mb-3">Minimum Deposit</h4>
+                    <h4 className="font-medium text-pure-white mb-3">Minimum Deposit</h4>
                     <div className="space-y-2">
                       {filterOptions.minDeposit.map((deposit) => (
                         <label key={deposit} className="flex items-center space-x-2 cursor-pointer">
@@ -179,7 +179,7 @@ export function BrokerSearch() {
                             onChange={() => setSelectedFilters(prev => ({ ...prev, minDeposit: deposit }))}
                             className="border-gray-300"
                           />
-                          <span className="text-sm text-medium-grey">{deposit}</span>
+                          <span className="text-sm text-light-grey">{deposit}</span>
                         </label>
                       ))}
                     </div>
@@ -187,7 +187,7 @@ export function BrokerSearch() {
 
                   {/* Platform Filter */}
                   <div>
-                    <h4 className="font-medium text-professional-black mb-3">Trading Platform</h4>
+                    <h4 className="font-medium text-pure-white mb-3">Trading Platform</h4>
                     <div className="space-y-2">
                       {filterOptions.platform.map((platform) => (
                         <label key={platform} className="flex items-center space-x-2 cursor-pointer">
@@ -197,7 +197,7 @@ export function BrokerSearch() {
                             onChange={() => toggleFilter('platform', platform)}
                             className="rounded border-gray-300"
                           />
-                          <span className="text-sm text-medium-grey">{platform}</span>
+                          <span className="text-sm text-light-grey">{platform}</span>
                         </label>
                       ))}
                     </div>
@@ -211,10 +211,10 @@ export function BrokerSearch() {
         {/* Search Results */}
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-professional-black">
+            <h3 className="text-xl font-semibold text-pure-white">
               Search Results ({mockResults.length} brokers found)
             </h3>
-            <select className="px-4 py-2 border border-gray-300 rounded-md bg-white text-professional-black">
+            <select className="px-4 py-2 border border-medium-grey rounded-md bg-charcoal-grey text-pure-white">
               <option>Sort by Rating</option>
               <option>Sort by Name</option>
               <option>Sort by Min Deposit</option>
@@ -224,7 +224,7 @@ export function BrokerSearch() {
           {/* Results List */}
           <div className="space-y-4">
             {mockResults.map((broker) => (
-              <Card key={broker.id} className="bg-white border-gray-200 text-professional-black hover:shadow-md transition-shadow">
+              <Card key={broker.id} className="professional-card">
                 <CardContent className="p-6">
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
                     <div className="flex-1">
@@ -233,30 +233,30 @@ export function BrokerSearch() {
                           {broker.name.substring(0, 2)}
                         </div>
                         <div>
-                          <h4 className="text-lg font-semibold text-professional-black">{broker.name}</h4>
+                          <h4 className="text-lg font-semibold text-pure-white">{broker.name}</h4>
                           <div className="flex items-center space-x-2">
                             <div className="flex items-center space-x-1">
                               <span className="text-yellow-400">★</span>
                               <span className="font-medium">{broker.rating}</span>
                             </div>
-                            <span className="text-medium-grey">•</span>
-                            <span className="text-medium-grey">{broker.country}</span>
+                            <span className="text-light-grey">•</span>
+                            <span className="text-light-grey">{broker.country}</span>
                           </div>
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 text-sm">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 text-sm">
                         <div>
-                          <span className="text-medium-grey">Instruments:</span>
-                          <div className="font-semibold">{broker.instruments}</div>
+                          <span className="text-light-grey">Instruments:</span>
+                          <div className="font-semibold text-pure-white">{broker.instruments}</div>
                         </div>
                         <div>
-                          <span className="text-medium-grey">Min Deposit:</span>
-                          <div className="font-semibold">{broker.minDeposit}</div>
+                          <span className="text-light-grey">Min Deposit:</span>
+                          <div className="font-semibold text-pure-white">{broker.minDeposit}</div>
                         </div>
                         <div>
-                          <span className="text-medium-grey">Regulation:</span>
-                          <div className="font-semibold">{broker.regulation}</div>
+                          <span className="text-light-grey">Regulation:</span>
+                          <div className="font-semibold text-pure-white">{broker.regulation}</div>
                         </div>
                       </div>
 
@@ -276,7 +276,7 @@ export function BrokerSearch() {
                       <Button size="sm" className="px-6">
                         Read Review
                       </Button>
-                      <Button size="sm" variant="outline" className="px-6 border-gray-300 text-professional-black hover:bg-gray-50">
+                      <Button size="sm" variant="outline" className="px-6 border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white">
                         Compare
                       </Button>
                     </div>
@@ -288,7 +288,7 @@ export function BrokerSearch() {
 
           {/* Load More */}
           <div className="text-center mt-8">
-            <Button variant="outline" size="lg" className="border-gray-300 text-professional-black hover:bg-gray-50">
+            <Button variant="outline" size="lg" className="border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white">
               Load More Results
             </Button>
           </div>

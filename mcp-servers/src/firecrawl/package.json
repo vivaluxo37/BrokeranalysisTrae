@@ -1,0 +1,27 @@
+{
+  "name": "firecrawl-mcp-server",
+  "version": "1.0.0",
+  "description": "Firecrawl MCP Server for web scraping and content extraction",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "build": "echo 'No build step required for JavaScript'"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.2",
+    "@mendable/firecrawl-js": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30"
+  },
+  "keywords": [
+    "mcp",
+    "firecrawl",
+    "web-scraping",
+    "content-extraction"
+  ],
+  "author": "BrokerAnalysis Team",
+  "license": "MIT"
+}

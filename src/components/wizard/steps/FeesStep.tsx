@@ -1,31 +1,59 @@
-import { Info, ArrowLeft, ArrowRight } from 'lucide-react'
+import { Info, ArrowLeft, ArrowRight, TrendingUp, DollarSign, Zap, HelpCircle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Badge } from '@/components/ui/badge'
+import { useQuestionnaire } from '@/contexts/QuestionnaireContext'
 import { formatStepNumber } from '@/utils/wizardFormatters'
 import { FeePreference } from '@/types/wizard'
 
-interface FeesStepProps {
-  selectedFeePreference: string
-  onFeePreferenceChange: (preference: string) => void
-  onNext: () => void
-  onBack: () => void
-}
+interface FeesStepProps {}
 
-export function FeesStep({ 
-  selectedFeePreference, 
-  onFeePreferenceChange, 
-  onNext, 
-  onBack 
-}: FeesStepProps) {
+export function FeesStep({}: FeesStepProps) {
+  const { state, updatePreferences, nextStep, previousStep } = useQuestionnaire()
+  const selectedFeePreference = state.userPreferences.feePreference || ''
+  const filteredBrokersCount = state.filteredBrokers.length
+
   const feeOptions = [
-    { value: FeePreference.REASONABLE_FEES, label: "I'm fine with reasonable fees if the services are exceptional" },
-    { value: FeePreference.LOW_COST, label: 'I want to pay as little as possible in fees. I only need basic functions' },
-    { value: FeePreference.ZERO_COMMISSION, label: "I want a zero-commission broker, I only want to pay what's absolutely necessary" },
-    { value: FeePreference.DONT_KNOW, label: "I don't know" }
+    { 
+      value: FeePreference.REASONABLE_FEES, 
+      label: "I'm fine with reasonable fees if the services are exceptional",
+      icon: DollarSign,
+      description: "Premium services with competitive pricing"
+    },
+    { 
+      value: FeePreference.LOW_COST, 
+      label: 'I want to pay as little as possible in fees. I only need basic functions',
+      icon: TrendingUp,
+      description: "Cost-effective trading with essential features"
+    },
+    { 
+      value: FeePreference.ZERO_COMMISSION, 
+      label: "I want a zero-commission broker, I only want to pay what's absolutely necessary",
+      icon: Zap,
+      description: "Minimal fees, maximum savings"
+    },
+    { 
+      value: FeePreference.DONT_KNOW, 
+      label: "I don't know",
+      icon: HelpCircle,
+      description: "We'll help you find the best option"
+    }
   ]
+
+  const handleFeePreferenceChange = (preference: string) => {
+    updatePreferences({ feePreference: preference })
+  }
+
+  const handleNext = () => {
+    nextStep()
+  }
+
+  const handleBack = () => {
+    previousStep()
+  }
 
   const isValid = selectedFeePreference !== ''
 
@@ -53,38 +81,71 @@ export function FeesStep({
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-professional-black">
-              Brokers charge fees, not just for trading. How cost conscious are you?
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-professional-black">
+                Brokers charge fees, not just for trading. How cost conscious are you?
+              </h2>
+              {selectedFeePreference && (
+                <Badge variant="secondary" className="bg-accent-blue/10 text-accent-blue">
+                  <TrendingUp size={14} className="mr-1" />
+                  {filteredBrokersCount} brokers
+                </Badge>
+              )}
+            </div>
+            {selectedFeePreference && (
+              <p className="text-sm text-medium-grey">
+                Based on your fee preference, we found {filteredBrokersCount} matching brokers.
+              </p>
+            )}
           </div>
 
-          <RadioGroup value={selectedFeePreference} onValueChange={onFeePreferenceChange}>
-            <div className="space-y-3">
-              {feeOptions.map((option) => (
-                <div key={option.value} className="flex items-center space-x-3">
-                  <RadioGroupItem value={option.value} id={option.value} />
-                  <Label
-                    htmlFor={option.value}
-                    className="text-sm text-professional-black cursor-pointer flex-1"
+          <RadioGroup value={selectedFeePreference} onValueChange={handleFeePreferenceChange}>
+            <div className="space-y-4">
+              {feeOptions.map((option) => {
+                const IconComponent = option.icon
+                const isSelected = selectedFeePreference === option.value
+                return (
+                  <div 
+                    key={option.value} 
+                    className={`flex items-start space-x-4 p-4 rounded-lg border-2 transition-all cursor-pointer ${
+                      isSelected 
+                        ? 'border-accent-blue bg-accent-blue/5' 
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                    onClick={() => handleFeePreferenceChange(option.value)}
                   >
-                    {option.label}
-                  </Label>
-                </div>
-              ))}
+                    <RadioGroupItem value={option.value} id={option.value} className="mt-1" />
+                    <div className="flex-1 space-y-1">
+                      <div className="flex items-center space-x-2">
+                        <IconComponent size={18} className={isSelected ? 'text-accent-blue' : 'text-medium-grey'} />
+                        <Label
+                          htmlFor={option.value}
+                          className="text-sm font-medium text-professional-black cursor-pointer"
+                        >
+                          {option.label}
+                        </Label>
+                      </div>
+                      <p className="text-xs text-medium-grey pl-6">
+                        {option.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </RadioGroup>
 
           <div className="flex space-x-4">
             <Button
               variant="outline"
-              onClick={onBack}
+              onClick={handleBack}
               className="flex-1"
             >
               <ArrowLeft size={20} />
               Back
             </Button>
             <Button
-              onClick={onNext}
+              onClick={handleNext}
               disabled={!isValid}
               className="flex-1 bg-accent-blue hover:bg-accent-blue/90"
             >

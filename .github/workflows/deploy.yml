@@ -35,36 +35,60 @@ jobs:
       - name: Run tests
         run: npm run test:unit
 
-      - name: Build project
-        run: npm run build
+      - name: Build project with prerendering
+        run: |
+          cd brokeranalysis
+          npm ci
+          npm run build
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
           VITE_GROQ_API_KEY: ${{ secrets.VITE_GROQ_API_KEY }}
           VITE_OPENROUTER_API_KEY: ${{ secrets.VITE_OPENROUTER_API_KEY }}
 
+      - name: Install Puppeteer dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+        
+      - name: Run prerendering
+        run: |
+          cd brokeranalysis
+          npm run prerender
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          cd brokeranalysis
+          vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         if: github.ref == 'refs/heads/main'
 
       - name: Pull Vercel Environment Information (Preview)
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          cd brokeranalysis
+          vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
         if: github.ref != 'refs/heads/main'
 
       - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          cd brokeranalysis
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
         if: github.ref == 'refs/heads/main'
 
       - name: Build Project Artifacts (Preview)
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          cd brokeranalysis
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
         if: github.ref != 'refs/heads/main'
 
       - name: Deploy Project Artifacts to Vercel (Production)
         id: deploy-production
         run: |
+          cd brokeranalysis
           url=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
           echo "url=$url" >> $GITHUB_OUTPUT
         if: github.ref == 'refs/heads/main'
@@ -72,6 +96,7 @@ jobs:
       - name: Deploy Project Artifacts to Vercel (Preview)
         id: deploy-preview
         run: |
+          cd brokeranalysis
           url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
           echo "url=$url" >> $GITHUB_OUTPUT
         if: github.ref != 'refs/heads/main'

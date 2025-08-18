@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { AlertCircle, ExternalLink, Plus, RefreshCw, Shield, Star, ThumbsDown, ThumbsUp, Phone, Mail, Globe, MapPin, Monitor, Smartphone, Download, AlertTriangle, CheckCircle } from 'lucide-react'
+import { AlertCircle, ExternalLink, Plus, RefreshCw, Shield, Star, ThumbsDown, ThumbsUp, Phone, Mail, Globe, MapPin, Monitor, Smartphone, Download, AlertTriangle, CheckCircle, Loader2 } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
 import { SeoHead } from '@/components/common'
 import { getBrokerById } from '@/data/brokers/brokerData'
@@ -12,36 +12,38 @@ import { getBrokerRating } from '@/data/brokers/brokerRatings'
 import { BrokerPageErrorBoundary } from '@/components/common/BrokerPageErrorBoundary'
 import { mockQuery } from '@/additionalPagesMockData'
 import { useSafeBrokerProperty } from '@/hooks/useSafeBrokerData'
+import { useBroker } from '@/hooks/useBrokers'
 import type { Broker, BrokerRating } from '@/types/brokerTypes'
 
 export function BrokerProfilePage() {
   const { brokerId } = useParams()
   const [activeTab, setActiveTab] = useState('overview')
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
   
-  // Get real broker data
-  const broker: Broker | undefined = brokerId ? getBrokerById(brokerId) : undefined
+  // Use TanStack Query to fetch broker data
+  const { data: broker, isLoading, error, refetch } = useBroker(brokerId || '')
+  
+  // Fallback to static data if TanStack Query doesn't find the broker
+  const fallbackBroker: Broker | undefined = brokerId ? getBrokerById(brokerId) : undefined
   const brokerRating: BrokerRating | undefined = brokerId ? getBrokerRating(brokerId) : undefined
   
+  // Use the broker from TanStack Query if available, otherwise fallback
+  const finalBroker = broker || fallbackBroker
+  
   // Safe property access with fallbacks
-  const brokerName = useSafeBrokerProperty(broker, 'name', 'Unknown Broker')
-  const brokerLogo = useSafeBrokerProperty(broker, 'logo', '/assets/icons/broker-placeholder.svg')
-  const overallRating = useSafeBrokerProperty(broker, 'rating', 0)
-  const reviewCount = useSafeBrokerProperty(broker, 'reviewCount', 0)
-  const trustScore = useSafeBrokerProperty(broker, 'trustScore', 0)
-  const yearEstablished = useSafeBrokerProperty(broker, 'details', {})?.foundedYear || useSafeBrokerProperty(broker, 'yearEstablished', null)
-  const headquarters = useSafeBrokerProperty(broker, 'details', {})?.headquarters || useSafeBrokerProperty(broker, 'headquarters', null)
-  const website = useSafeBrokerProperty(broker, 'details', {})?.website || useSafeBrokerProperty(broker, 'website', null)
-  const description = useSafeBrokerProperty(broker, 'details', {})?.description || useSafeBrokerProperty(broker, 'description', null)
+  const brokerName = useSafeBrokerProperty(finalBroker, 'name', 'Unknown Broker')
+  const brokerLogo = useSafeBrokerProperty(finalBroker, 'logo', '/assets/icons/broker-placeholder.svg')
+  const overallRating = useSafeBrokerProperty(finalBroker, 'rating', 0)
+  const reviewCount = useSafeBrokerProperty(finalBroker, 'reviewCount', 0)
+  const trustScore = useSafeBrokerProperty(finalBroker, 'trustScore', 0)
+  const yearEstablished = useSafeBrokerProperty(finalBroker, 'details', {})?.foundedYear || useSafeBrokerProperty(finalBroker, 'yearEstablished', null)
+  const headquarters = useSafeBrokerProperty(finalBroker, 'details', {})?.headquarters || useSafeBrokerProperty(finalBroker, 'headquarters', null)
+  const website = useSafeBrokerProperty(finalBroker, 'details', {})?.website || useSafeBrokerProperty(finalBroker, 'website', null)
+  const description = useSafeBrokerProperty(finalBroker, 'details', {})?.description || useSafeBrokerProperty(finalBroker, 'description', null)
   
   const reviews = mockQuery.userReviews.filter(review => review.brokerId === brokerId)
   
   const retry = () => {
-    setError(null)
-    setIsLoading(true)
-    // Simulate retry logic
-    setTimeout(() => setIsLoading(false), 1000)
+    refetch()
   }
 
   const formatCurrency = (amount: number): string => {
@@ -207,6 +209,7 @@ export function BrokerProfilePage() {
           <SeoHead 
             title={`${brokerName} Review | BrokerAnalysis`}
             description={`Detailed review of ${brokerName}. Read expert analysis, user reviews, fees, and regulation information.`}
+            ogImage={`${window.location.origin}/api/og/broker?slug=${brokerId}`}
           />
 
         <div className="content-container py-8">

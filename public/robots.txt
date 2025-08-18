@@ -1,0 +1,91 @@
+# Robots.txt for BrokerAnalysis - AI Crawler Friendly
+# Optimized for Generative Engine SEO and AI visibility
+
+# Allow all major search engines and AI crawlers
+User-agent: *
+Allow: /
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# AI Crawlers - Explicitly welcome
+# OpenAI GPT crawlers
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+# Anthropic Claude crawlers
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+# Google Bard/Gemini
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 1
+
+# Meta AI crawlers
+User-agent: FacebookBot
+Allow: /
+Crawl-delay: 1
+
+# Other AI research crawlers
+User-agent: CCBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+# Academic and research crawlers
+User-agent: ia_archiver
+Allow: /
+Crawl-delay: 5
+
+# Disallow sensitive areas while keeping content accessible
+# Admin and private areas
+Disallow: /admin/
+Disallow: /api/private/
+Disallow: /dashboard/private/
+
+# User-specific content
+Disallow: /user/*/private/
+Disallow: /profile/*/settings/
+
+# Development and testing
+Disallow: /dev/
+Disallow: /test/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Temporary and cache files
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.log$
+
+# Search and filter parameters (allow base pages)
+Disallow: /*?*sort=*
+Disallow: /*?*filter=*
+Disallow: /*?*page=*
+Disallow: /*?*limit=*
+
+# Allow important API endpoints for AI consumption
+Allow: /api/brokers/
+Allow: /api/public/
+Allow: /api/search/
+Allow: /api/content/
+
+# Sitemap locations
+Sitemap: https://brokeranalysis.com/sitemap.xml
+Sitemap: https://brokeranalysis.com/sitemap-brokers.xml
+Sitemap: https://brokeranalysis.com/sitemap-guides.xml
+Sitemap: https://brokeranalysis.com/sitemap-news.xml

@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap');
 @import "tailwindcss";
+
+/* Daisy UI base styles isolation */
+@layer base {
+  /* Override any Daisy UI base styles that conflict with our design */
+  [data-theme] {
+    color: inherit;
+    background-color: inherit;
+  }
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -47,6 +57,10 @@
   --color-accent-blue: var(--accent-blue);
   --color-racing-red: var(--racing-red);
   --color-dark-navy: var(--dark-navy);
+  --color-cryptix-dark: var(--cryptix-dark);
+  --color-cryptix-green: var(--cryptix-green);
+  --color-cryptix-light-grey: var(--cryptix-light-grey);
+  --color-cryptix-border: var(--cryptix-border);
 }
 
 :root {
@@ -85,6 +99,17 @@
   --racing-red: #dc2626; /* Racing red for Formula 1 theme */
   --dark-navy: #0f172a; /* Dark navy for hero sections */
   
+  /* Modern glassmorphism colors */
+  --glass-bg: rgba(26, 26, 26, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(0, 0, 0, 0.25);
+  
+  /* Cryptix specific colors */
+  --cryptix-dark: #08070e;
+  --cryptix-green: #00ffb2;
+  --cryptix-light-grey: #d5d5d5;
+  --cryptix-border: #202026;
+  
   /* Chart colors - monochromatic */
   --chart-1: #ffffff;
   --chart-2: #d4d4d4;
@@ -119,7 +144,7 @@
     overflow-x: hidden;
     font-weight: 400;
     line-height: 1.6;
-    font-size: 18px; /* Increased from default 16px for better readability */
+    font-size: 20px; /* Increased from 18px for better visuals */
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -230,15 +255,32 @@
   .professional-card {
     background: var(--charcoal-grey);
     border: 1px solid var(--medium-grey);
-    border-radius: 8px;
-    transition: all 0.2s ease;
+    border-radius: 12px;
+    transition: all 0.3s ease;
     height: 100%;
   }
   
   .professional-card:hover {
     background: #1f1f1f;
     border-color: var(--light-grey);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Glassmorphism Card Styles */
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
   }
   
   /* Professional Button Styles */
@@ -284,7 +326,7 @@
   
   /* Typography Utilities */
   .text-hero {
-    font-size: clamp(3rem, 8vw, 5rem);
+    font-size: clamp(3.5rem, 8vw, 6rem);
     font-weight: 700;
     line-height: 1.1;
     font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
@@ -292,7 +334,7 @@
   }
   
   .text-section-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 600;
     line-height: 1.2;
     font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
@@ -300,7 +342,7 @@
   }
   
   .text-subtitle {
-    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
     font-weight: 400;
     line-height: 1.6;
     color: var(--light-grey);
@@ -320,18 +362,21 @@
   }
 
   .content-container {
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
   .content-container-narrow {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
   .content-container-wide {
+    width: 100%;
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 24px;
@@ -558,6 +603,104 @@
   
   .gradient-professional-reverse {
     background: linear-gradient(135deg, var(--charcoal-grey) 0%, var(--professional-black) 100%);
+  }
+  
+  /* Modern gradient backgrounds */
+  .gradient-hero {
+    background: linear-gradient(135deg, var(--professional-black) 0%, var(--dark-navy) 50%, var(--professional-black) 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, #2563eb 100%);
+  }
+  
+  /* Animated gradient backgrounds */
+  .gradient-animated {
+    background: linear-gradient(-45deg, var(--professional-black), var(--dark-navy), var(--charcoal-grey), var(--professional-black));
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Cryptix specific utilities */
+  .bg-cryptix-dark {
+    background-color: var(--cryptix-dark);
+  }
+  
+  .bg-cryptix-green {
+    background-color: var(--cryptix-green);
+  }
+  
+  .text-cryptix-green {
+    color: var(--cryptix-green);
+  }
+  
+  .text-cryptix-light-grey {
+    color: var(--cryptix-light-grey);
+  }
+  
+  .border-cryptix-border {
+    border-color: var(--cryptix-border);
+  }
+  
+  /* Cryptix button styles */
+  .btn-cryptix-primary {
+    background-color: var(--cryptix-green);
+    color: #000000;
+    border-radius: 48px;
+    padding: 14px 28px;
+    font-weight: 500;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    box-shadow: 0px 0px 0px 4px rgba(0, 255, 178, 0.10), 0px 0px 34px rgba(42, 240, 124, 0.30);
+  }
+  
+  .btn-cryptix-secondary {
+    background-color: transparent;
+    color: var(--cryptix-green);
+    border: 1px solid var(--cryptix-border);
+    border-radius: 48px;
+    padding: 14px 28px;
+    font-weight: 400;
+    font-size: 18px;
+    transition: all 0.2s ease;
+  }
+  
+  /* Cryptix card styles */
+  .card-cryptix {
+    background-color: var(--cryptix-dark);
+    border: 1px solid rgba(95, 95, 113, 0.22);
+    border-radius: 40px;
+    box-shadow: inset 0px 0px 16px rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Typography utilities for Cryptix */
+  .text-cryptix-hero {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: -0.80px;
+    line-height: 48px;
+  }
+  
+  .text-cryptix-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  
+  .text-cryptix-small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
   }
 }
 

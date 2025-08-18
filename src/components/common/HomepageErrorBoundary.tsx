@@ -178,7 +178,7 @@ export class HomepageErrorBoundary extends Component<Props, State> {
             </p>
           )}
 
-          {process.env.NODE_ENV === 'development' && this.state.error && (
+          {import.meta.env.DEV && this.state.error && (
             <details className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md w-full max-w-2xl">
               <summary className="cursor-pointer text-red-800 font-medium">
                 Error Details (Development)

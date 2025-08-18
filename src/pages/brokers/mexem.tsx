@@ -106,19 +106,19 @@ const MexemReview: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <Shield className="w-8 h-8 text-accent-blue mx-auto mb-3" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Regulation</h3>
-              <p className="text-sm text-gray-600">{brokerData.regulators.join(', ')}</p>
+              <p className="text-sm text-gray-600">{(brokerData?.regulators || []).join(', ')}</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-3" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Asset Classes</h3>
-              <p className="text-sm text-gray-600">{brokerData.assetClasses.length}+ Markets</p>
+              <p className="text-sm text-gray-600">{(brokerData?.assetClasses || []).length}+ Markets</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <Globe className="w-8 h-8 text-indigo-600 mx-auto mb-3" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Platforms</h3>
-              <p className="text-sm text-gray-600">{brokerData.platforms.length} Platforms</p>
+              <p className="text-sm text-gray-600">{(brokerData?.platforms || []).length} Platforms</p>
             </div>
           </div>
 
@@ -156,7 +156,7 @@ const MexemReview: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">Trading Platforms</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {brokerData.platforms.map((platform, index) => (
+                      {(brokerData?.platforms || []).map((platform, index) => (
                         <div key={index} className="border border-gray-200 rounded-lg p-4">
                           <h4 className="font-semibold text-gray-900">{platform}</h4>
                           <p className="text-sm text-gray-600 mt-1">
@@ -170,7 +170,7 @@ const MexemReview: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">Available Markets</h3>
                     <div className="flex flex-wrap gap-2">
-                      {brokerData.assetClasses.map((asset, index) => (
+                      {(brokerData?.assetClasses || []).map((asset, index) => (
                         <span 
                           key={index}
                           className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
@@ -199,7 +199,7 @@ const MexemReview: React.FC = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Regulation</span>
-                    <span className="font-semibold">{brokerData.regulators[0]}</span>
+                    <span className="font-semibold">{(brokerData?.regulators || [])[0] || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Founded</span>

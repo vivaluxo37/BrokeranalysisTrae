@@ -1,5 +1,6 @@
-// Broker and trading related enums for BrokerAnalysis platform
+// Enums for the BrokerAnalysis platform
 
+// Broker and trading related enums
 export enum AssetClass {
   FOREX = 'forex',
   STOCKS = 'stocks', 
@@ -30,7 +31,8 @@ export enum RegulatorType {
   ASIC = 'asic',
   SEC = 'sec',
   FINRA = 'finra',
-  ESMA = 'esma'
+  ESMA = 'esma',
+  CFTC = 'cftc'
 }
 
 export enum TradingPlatform {
@@ -64,4 +66,54 @@ export enum ToolType {
   SCANNER = 'scanner',
   CALENDAR = 'calendar',
   ANALYZER = 'analyzer'
+}
+
+export enum BrokerStatus {
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+  PENDING = 'pending',
+  SUSPENDED = 'suspended'
+}
+
+export enum BrokerRatingCategory {
+  OVERALL = 'overall',
+  FEES = 'fees',
+  PLATFORM = 'platform',
+  RESEARCH = 'research',
+  CUSTOMER_SERVICE = 'customer_service',
+  MOBILE = 'mobile'
+}
+
+export enum TradingExperience {
+  BEGINNER = 'beginner',
+  INTERMEDIATE = 'intermediate',
+  ADVANCED = 'advanced',
+  PROFESSIONAL = 'professional',
+  FIRST_TIMER = 'first_timer',
+  SIMPLE_TRANSACTIONS = 'simple_transactions',
+  EXPERIENCED = 'experienced'
+}
+
+export enum RegionAvailability {
+  GLOBAL = 'global',
+  US = 'us',
+  EU = 'eu',
+  UK = 'uk',
+  ASIA = 'asia',
+  AUSTRALIA = 'australia'
+}
+
+// Cryptix application enums
+export enum CryptoCurrency {
+  BITCOIN = 'Bitcoin',
+  SOLANA = 'Solana', 
+  DASH = 'Dash',
+  XRP = 'XRP'
+}
+
+export enum FAQCategory {
+  GENERAL = 'general',
+  SECURITY = 'security',
+  TECHNICAL = 'technical',
+  SUPPORT = 'support'
 }

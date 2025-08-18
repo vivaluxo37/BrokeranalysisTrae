@@ -1,0 +1,43 @@
+{
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "email": "Ingrese un email válido",
+    "minLength": "Mínimo {{min}} caracteres",
+    "maxLength": "Máximo {{max}} caracteres",
+    "pattern": "Formato inválido"
+  },
+  "labels": {
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "phone": "Teléfono",
+    "country": "País",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar sesión"
+  },
+  "placeholders": {
+    "email": "ejemplo@correo.com",
+    "password": "Ingrese su contraseña",
+    "search": "Buscar brokers...",
+    "firstName": "Su nombre",
+    "lastName": "Su apellido"
+  },
+  "buttons": {
+    "submit": "Enviar",
+    "reset": "Restablecer",
+    "clear": "Limpiar",
+    "apply": "Aplicar",
+    "close": "Cerrar"
+  }
+}

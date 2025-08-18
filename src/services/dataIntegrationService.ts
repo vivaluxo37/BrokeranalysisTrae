@@ -153,7 +153,7 @@ export class DataIntegrationService {
     // Combine with existing mock brokers for fallback
     const allBrokers = [
       ...convertedBrokers,
-      ...mockRootProps.featuredBrokers.filter(
+      ...mockQuery.topRatedBrokers.filter(
         mockBroker => !convertedBrokers.some(extracted => extracted.name === mockBroker.name)
       )
     ];

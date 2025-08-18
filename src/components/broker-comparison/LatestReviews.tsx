@@ -1,6 +1,6 @@
 import { Calendar, User, ArrowRight, TrendingUp, AlertTriangle } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '../ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 
 export function LatestReviews() {
   const latestArticles = [
@@ -58,25 +58,25 @@ export function LatestReviews() {
   }
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-professional-black">
       <div className="content-container">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-section-title text-professional-black mb-4">
+          <h2 className="text-section-title text-pure-white mb-4">
             Latest Reviews & Analysis
           </h2>
-          <p className="text-lg text-medium-grey max-w-2xl mx-auto">
+          <p className="text-lg text-light-grey max-w-2xl mx-auto">
             Stay updated with our latest broker reviews, market analysis, and trading insights from our expert team.
           </p>
         </div>
 
         {/* Featured Article */}
         {latestArticles.filter(article => article.featured).map((article) => (
-          <Card key={article.id} className="bg-white border-gray-200 text-professional-black mb-12 overflow-hidden">
+          <Card key={article.id} className="professional-card mb-12 overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="bg-gray-100 h-64 lg:h-auto flex items-center justify-center">
-                <div className="text-center text-medium-grey">
-                  <div className="w-16 h-16 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center">
+              <div className="bg-medium-grey h-64 lg:h-auto flex items-center justify-center">
+                <div className="text-center text-light-grey">
+                  <div className="w-16 h-16 bg-charcoal-grey rounded-full mx-auto mb-4 flex items-center justify-center">
                     <TrendingUp size={24} />
                   </div>
                   <p>Featured Article Image</p>
@@ -87,7 +87,7 @@ export function LatestReviews() {
                   <span className="px-3 py-1 bg-accent-blue text-white text-sm rounded-full font-medium">
                     Featured
                   </span>
-                  <span className="px-3 py-1 bg-gray-100 text-medium-grey text-sm rounded-full">
+                  <span className="px-3 py-1 bg-medium-grey text-light-grey text-sm rounded-full">
                     {article.category}
                   </span>
                   {article.rating && (
@@ -98,16 +98,16 @@ export function LatestReviews() {
                   )}
                 </div>
                 
-                <h3 className="text-2xl font-bold text-professional-black mb-4 leading-tight">
+                <h3 className="text-2xl font-bold text-pure-white mb-4 leading-tight">
                   {article.title}
                 </h3>
                 
-                <p className="text-medium-grey mb-6 leading-relaxed">
+                <p className="text-light-grey mb-6 leading-relaxed">
                   {article.excerpt}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4 text-sm text-medium-grey">
+                  <div className="flex items-center space-x-4 text-sm text-light-grey">
                     <div className="flex items-center space-x-1">
                       <User size={16} />
                       <span>{article.author}</span>
@@ -132,14 +132,14 @@ export function LatestReviews() {
         {/* Regular Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {latestArticles.filter(article => !article.featured).map((article) => (
-            <Card key={article.id} className="bg-white border-gray-200 text-professional-black hover:shadow-lg transition-shadow group cursor-pointer">
+            <Card key={article.id} className="professional-card group cursor-pointer">
               <CardHeader>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
                     <span className={`px-2 py-1 text-xs rounded-full font-medium ${
                       article.trending ? 'bg-green-100 text-green-800' :
                       article.urgent ? 'bg-red-100 text-red-800' :
-                      'bg-gray-100 text-medium-grey'
+                      'bg-medium-grey text-light-grey'
                     }`}>
                       {article.trending && <TrendingUp size={12} className="inline mr-1" />}
                       {article.urgent && <AlertTriangle size={12} className="inline mr-1" />}
@@ -154,17 +154,17 @@ export function LatestReviews() {
                   )}
                 </div>
                 
-                <CardTitle level={4} className="text-professional-black group-hover:text-accent-blue transition-colors leading-tight">
+                <CardTitle level={4} className="text-pure-white group-hover:text-accent-blue transition-colors leading-tight">
                   {article.title}
                 </CardTitle>
               </CardHeader>
               
               <CardContent>
-                <p className="text-medium-grey text-sm mb-4 leading-relaxed">
+                <p className="text-light-grey text-sm mb-4 leading-relaxed">
                   {article.excerpt}
                 </p>
                 
-                <div className="flex items-center justify-between text-xs text-medium-grey">
+                <div className="flex items-center justify-between text-xs text-light-grey">
                   <div className="flex items-center space-x-2">
                     <span>{article.author}</span>
                     <span>•</span>

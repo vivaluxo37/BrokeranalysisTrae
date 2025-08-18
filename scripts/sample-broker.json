@@ -1,0 +1,107 @@
+{
+  "broker": {
+    "id": "sample-broker-2024",
+    "name": "Sample Broker Ltd",
+    "slug": "sample-broker",
+    "website_url": "https://www.samplebroker.com",
+    "rating": 4.2,
+    "review_count": 85,
+    "min_deposit": 100,
+    "max_leverage": 500,
+    "spread_eur_usd": 0.8,
+    "commission_type": "Variable",
+    "founded_year": 2015,
+    "headquarters": "London, UK",
+    "is_active": true,
+    "status": "active"
+  },
+  "features": [
+    {
+      "key": "platforms",
+      "value": "MetaTrader 4, MetaTrader 5, WebTrader",
+      "category": "trading"
+    },
+    {
+      "key": "instruments",
+      "value": "Forex, CFDs, Commodities, Indices",
+      "category": "trading"
+    },
+    {
+      "key": "deposit_methods",
+      "value": "Credit Card, Bank Transfer, PayPal, Skrill",
+      "category": "payment"
+    },
+    {
+      "key": "withdrawal_methods",
+      "value": "Bank Transfer, Credit Card, E-wallets",
+      "category": "payment"
+    },
+    {
+      "key": "customer_support",
+      "value": "24/5 Live Chat, Email, Phone",
+      "category": "support"
+    },
+    {
+      "key": "mobile_app",
+      "value": "iOS, Android",
+      "category": "technology"
+    },
+    {
+      "key": "demo_account",
+      "value": "Yes, Unlimited",
+      "category": "account"
+    },
+    {
+      "key": "education",
+      "value": "Webinars, Trading Guides, Market Analysis",
+      "category": "education"
+    }
+  ],
+  "regulation": [
+    {
+      "authority": "FCA",
+      "license_number": "123456",
+      "status": "active",
+      "country_code": "GB"
+    },
+    {
+      "authority": "CySEC",
+      "license_number": "789012",
+      "status": "active",
+      "country_code": "CY"
+    },
+    {
+      "authority": "ASIC",
+      "license_number": "345678",
+      "status": "active",
+      "country_code": "AU"
+    }
+  ],
+  "i18n": [
+    {
+      "locale": "en",
+      "title": "Sample Broker Review 2024 - Comprehensive Trading Platform",
+      "description": "Sample Broker offers competitive spreads, multiple trading platforms, and strong regulatory oversight. Read our detailed review covering fees, features, and user experience.",
+      "content": "## About Sample Broker\n\nSample Broker Ltd is a well-established online trading platform founded in 2015 and headquartered in London, UK. The broker has built a solid reputation in the financial services industry by offering competitive trading conditions and maintaining strong regulatory compliance.\n\n## Key Features\n\n### Trading Platforms\n- **MetaTrader 4**: Industry-standard platform with advanced charting\n- **MetaTrader 5**: Next-generation platform with additional features\n- **WebTrader**: Browser-based trading without downloads\n\n### Available Instruments\n- **Forex**: 50+ currency pairs including majors, minors, and exotics\n- **CFDs**: Contracts for Difference on various assets\n- **Commodities**: Gold, Silver, Oil, and other precious metals\n- **Indices**: Major global stock indices\n\n### Account Types\n- **Standard Account**: Minimum deposit $100, variable spreads\n- **Premium Account**: Minimum deposit $1,000, tighter spreads\n- **VIP Account**: Minimum deposit $10,000, dedicated support\n\n## Regulation and Safety\n\nSample Broker is regulated by multiple tier-1 financial authorities:\n- **FCA (UK)**: License #123456\n- **CySEC (Cyprus)**: License #789012\n- **ASIC (Australia)**: License #345678\n\nClient funds are segregated and held in top-tier banks, ensuring maximum security and protection.\n\n## Fees and Spreads\n\n- **EUR/USD Spread**: From 0.8 pips\n- **Commission**: Variable based on account type\n- **Deposit Fees**: Free for most methods\n- **Withdrawal Fees**: Free for bank transfers over $100\n\n## Customer Support\n\nSample Broker provides comprehensive customer support:\n- **Live Chat**: Available 24/5 during market hours\n- **Email Support**: Response within 24 hours\n- **Phone Support**: Dedicated lines for different regions\n- **Educational Resources**: Webinars, guides, and market analysis\n\n## Pros and Cons\n\n### Pros\n- Strong regulatory oversight\n- Competitive spreads and fees\n- Multiple trading platforms\n- Comprehensive educational resources\n- Excellent customer support\n\n### Cons\n- Limited cryptocurrency offerings\n- No 24/7 customer support\n- Minimum deposit requirements for premium accounts\n\n## Conclusion\n\nSample Broker is a reliable choice for both beginner and experienced traders. With strong regulation, competitive pricing, and excellent support, it offers a comprehensive trading experience. The variety of platforms and educational resources make it particularly suitable for traders looking to develop their skills.",
+      "meta_title": "Sample Broker Review 2024 | Fees, Platforms & Regulation Guide",
+      "meta_description": "Comprehensive Sample Broker review covering trading platforms, fees, regulation, and user experience. Compare spreads, features, and safety measures in our detailed analysis."
+    },
+    {
+      "locale": "es",
+      "title": "Reseña de Sample Broker 2024 - Plataforma de Trading Integral",
+      "description": "Sample Broker ofrece spreads competitivos, múltiples plataformas de trading y una sólida supervisión regulatoria. Lee nuestra reseña detallada sobre comisiones, características y experiencia del usuario.",
+      "content": "## Acerca de Sample Broker\n\nSample Broker Ltd es una plataforma de trading en línea bien establecida, fundada en 2015 con sede en Londres, Reino Unido. El broker ha construido una sólida reputación en la industria de servicios financieros ofreciendo condiciones de trading competitivas y manteniendo un fuerte cumplimiento regulatorio.\n\n## Características Principales\n\n### Plataformas de Trading\n- **MetaTrader 4**: Plataforma estándar de la industria con gráficos avanzados\n- **MetaTrader 5**: Plataforma de próxima generación con características adicionales\n- **WebTrader**: Trading basado en navegador sin descargas\n\n### Instrumentos Disponibles\n- **Forex**: Más de 50 pares de divisas incluyendo principales, menores y exóticas\n- **CFDs**: Contratos por Diferencia en varios activos\n- **Materias Primas**: Oro, Plata, Petróleo y otros metales preciosos\n- **Índices**: Principales índices bursátiles globales",
+      "meta_title": "Reseña Sample Broker 2024 | Guía de Comisiones, Plataformas y Regulación",
+      "meta_description": "Reseña integral de Sample Broker cubriendo plataformas de trading, comisiones, regulación y experiencia del usuario. Compara spreads, características y medidas de seguridad."
+    },
+    {
+      "locale": "fr",
+      "title": "Avis Sample Broker 2024 - Plateforme de Trading Complète",
+      "description": "Sample Broker offre des spreads compétitifs, plusieurs plateformes de trading et une surveillance réglementaire solide. Lisez notre avis détaillé sur les frais, fonctionnalités et expérience utilisateur.",
+      "content": "## À propos de Sample Broker\n\nSample Broker Ltd est une plateforme de trading en ligne bien établie, fondée en 2015 et basée à Londres, Royaume-Uni. Le courtier a bâti une solide réputation dans l'industrie des services financiers en offrant des conditions de trading compétitives et en maintenant une forte conformité réglementaire.\n\n## Caractéristiques Principales\n\n### Plateformes de Trading\n- **MetaTrader 4**: Plateforme standard de l'industrie avec graphiques avancés\n- **MetaTrader 5**: Plateforme de nouvelle génération avec fonctionnalités supplémentaires\n- **WebTrader**: Trading basé sur navigateur sans téléchargements",
+      "meta_title": "Avis Sample Broker 2024 | Guide des Frais, Plateformes et Régulation",
+      "meta_description": "Avis complet de Sample Broker couvrant les plateformes de trading, frais, régulation et expérience utilisateur. Comparez les spreads, fonctionnalités et mesures de sécurité."
+    }
+  ],
+  "logoFilePath": "sample-logo.png"
+}

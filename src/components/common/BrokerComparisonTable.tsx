@@ -4,19 +4,30 @@ import { ExternalLink, Filter, RefreshCw, SortAsc, SortDesc, Star } from 'lucide
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { CollectionManager } from '@/utils/SafeCollection';
-import {
-  getBrokerWithRating,
-  getTopRatedBrokers,
-  queryBrokers
-} from '@/utils/brokerDataAccess';
-import type { 
-  BrokerSearchOptions, 
-  BrokerSortOptions, 
-  PaginationOptions
-} from '@/utils/brokerDataAccess';
-import { getBrokerRating } from '@/data/brokers/brokerRatings';
+import { useBrokers, useSearchBrokers } from '@/hooks/useSupabase';
 import type { Broker, BrokerRating } from '@/types/brokerTypes';
 import { RegulatorType } from '@/enums';
+
+// Supabase search options interface
+interface BrokerSearchOptions {
+  minRating?: number;
+  maxMinDeposit?: number;
+  assetClasses?: string[];
+  platforms?: string[];
+  jurisdictions?: string[];
+  minTrustScore?: number;
+  regulatedOnly?: boolean;
+}
+
+interface BrokerSortOptions {
+  sortBy: 'rating' | 'trustScore' | 'minDeposit' | 'name' | 'reviewCount';
+  sortOrder: 'asc' | 'desc';
+}
+
+interface PaginationOptions {
+  page: number;
+  limit: number;
+}
 
 // Enhanced interface for comparison broker data with real data integration
 interface ComparisonBroker {
@@ -82,22 +93,23 @@ export const BrokerComparisonTable = React.memo(function BrokerComparisonTable({
   const [isRefreshing, setIsRefreshing] = useState(false);
   const refreshIntervalRef = useRef<NodeJS.Timeout | null>(null);
   
+  // Supabase data fetching
+  const { data: supabaseBrokers, isLoading: supabaseLoading, error: supabaseError, refetch } = useBrokers(maxBrokers);
+  
   // Enhanced data transformation functions
-  const transformBrokerToComparison = useCallback((broker: Broker): ComparisonBroker => {
-    const ratingData = getBrokerRating(broker.id);
-    
+  const transformBrokerToComparison = useCallback((broker: any): ComparisonBroker => {
     return {
-      id: broker.id,
-      name: broker.name,
-      rating: broker.rating,
-      reviews: broker.reviewCount,
-      minDeposit: formatMinDeposit(broker.minDeposit),
+      id: broker.id || broker.slug,
+      name: broker.name || broker.display_name,
+      rating: broker.avg_rating || broker.rating || 0,
+      reviews: broker.review_count || broker.reviewCount || 0,
+      minDeposit: formatMinDeposit(broker.min_deposit || broker.minDeposit || 0),
       tradingFees: getTradingFeesCategory(broker),
-      regulatedBy: formatRegulators(extractRegulatoryInfo(broker).authorities),
-      trustScore: broker.trustScore,
-      assetClasses: broker.assetClasses || [],
+      regulatedBy: formatRegulators(broker.regulators || []),
+      trustScore: broker.trust_score || broker.trustScore || 0,
+      assetClasses: broker.asset_classes || broker.assetClasses || [],
       platforms: broker.platforms || [],
-      maxLeverage: broker.maxLeverage || 0,
+      maxLeverage: broker.max_leverage || broker.maxLeverage || 0,
       spreads: {
         eurusd: broker.costs?.spreads?.eurusd || 0,
         gbpusd: broker.costs?.spreads?.gbpusd || 0,
@@ -200,43 +212,90 @@ export const BrokerComparisonTable = React.memo(function BrokerComparisonTable({
     };
   }, []);
 
-  // Manual refresh function
-  const handleRefresh = useCallback(async () => {
+  // Manual refresh with loading state
+  const handleManualRefresh = useCallback(async () => {
     setIsRefreshing(true);
     try {
-      // Trigger data reload by updating lastUpdated
+      await refetch();
       setLastUpdated(new Date());
     } catch (err) {
       console.error('Error during manual refresh:', err);
     } finally {
       setIsRefreshing(false);
     }
-  }, []);
+  }, [refetch]);
 
-  // Load broker data function
+  // Manual refresh function
+  const handleRefresh = useCallback(async () => {
+    await refetch();
+  }, [refetch]);
+
+  // Load broker data function using Supabase
   const loadBrokerData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
       
-      // Get top-rated brokers using real data access functions with filtering
-      const queryResult = queryBrokers(
-        filters,
-        { sortBy, sortOrder },
-        { page: 1, limit: maxBrokers }
-      );
-      
-      // Convert to comparison format
-      const comparisonBrokers: ComparisonBroker[] = queryResult.brokers.map(transformBrokerToComparison);
-      
-      // Create safe collection wrapper for brokers
-      const safeBrokers = CollectionManager.validateCollection<ComparisonBroker>(
-        comparisonBrokers,
-        'brokers'
-      );
-      
-      // Fallback to mock data if no real data available
-      if (safeBrokers.isEmpty()) {
+      // Use Supabase data if available
+      if (supabaseBrokers?.data && Array.isArray(supabaseBrokers.data)) {
+        // Convert Supabase data to comparison format
+        const comparisonBrokers: ComparisonBroker[] = supabaseBrokers.data.map(transformBrokerToComparison);
+        
+        // Apply client-side filtering and sorting
+        let filteredBrokers = comparisonBrokers;
+        
+        // Apply filters
+        if (filters.minRating) {
+          filteredBrokers = filteredBrokers.filter(broker => broker.rating >= filters.minRating!);
+        }
+        if (filters.regulatedOnly) {
+          filteredBrokers = filteredBrokers.filter(broker => broker.regulatedBy.length > 0);
+        }
+        if (filters.assetClasses?.length) {
+          filteredBrokers = filteredBrokers.filter(broker => 
+            filters.assetClasses!.some(asset => broker.assetClasses.includes(asset))
+          );
+        }
+        
+        // Apply sorting
+        filteredBrokers.sort((a, b) => {
+          let aValue: any, bValue: any;
+          switch (sortBy) {
+            case 'rating':
+              aValue = a.rating;
+              bValue = b.rating;
+              break;
+            case 'trustScore':
+              aValue = a.trustScore;
+              bValue = b.trustScore;
+              break;
+            case 'name':
+              aValue = a.name.toLowerCase();
+              bValue = b.name.toLowerCase();
+              break;
+            default:
+              aValue = a.rating;
+              bValue = b.rating;
+          }
+          
+          if (sortOrder === 'asc') {
+            return aValue > bValue ? 1 : -1;
+          } else {
+            return aValue < bValue ? 1 : -1;
+          }
+        });
+        
+        // Create safe collection wrapper for brokers
+        const safeBrokers = CollectionManager.validateCollection<ComparisonBroker>(
+          filteredBrokers,
+          'supabaseBrokers'
+        );
+        
+        const finalBrokers = safeBrokers.toArray();
+        setDisplayBrokers(finalBrokers);
+        onDataUpdate?.(finalBrokers);
+      } else {
+        // Fallback to mock data if Supabase data not available
         const safeFallbackBrokers = CollectionManager.validateCollection<ComparisonBroker>(
           fallbackBrokers,
           'fallbackBrokers'
@@ -245,10 +304,6 @@ export const BrokerComparisonTable = React.memo(function BrokerComparisonTable({
         const displayData = maxBrokers ? finalBrokers.slice(0, maxBrokers) : finalBrokers;
         setDisplayBrokers(displayData);
         onDataUpdate?.(displayData);
-      } else {
-        const finalBrokers = safeBrokers.toArray();
-        setDisplayBrokers(finalBrokers);
-        onDataUpdate?.(finalBrokers);
       }
       
       setLastUpdated(new Date());
@@ -263,13 +318,25 @@ export const BrokerComparisonTable = React.memo(function BrokerComparisonTable({
     } finally {
       setLoading(false);
     }
-  }, [maxBrokers, filters, sortBy, sortOrder, transformBrokerToComparison, onDataUpdate]);
+  }, [supabaseBrokers, maxBrokers, filters, sortBy, sortOrder, transformBrokerToComparison, onDataUpdate, fallbackBrokers]);
+
+  // Load data when Supabase data changes
+  useEffect(() => {
+    if (supabaseLoading) {
+      setLoading(true);
+    } else if (supabaseError) {
+      setError(supabaseError.message || 'Failed to load broker data');
+      setLoading(false);
+    } else {
+      loadBrokerData();
+    }
+  }, [supabaseBrokers, supabaseLoading, supabaseError, loadBrokerData]);
 
   // Setup auto-refresh interval
   useEffect(() => {
     if (autoRefresh && refreshInterval > 0) {
       refreshIntervalRef.current = setInterval(() => {
-        loadBrokerData();
+        refetch(); // Use Supabase refetch instead of loadBrokerData
       }, refreshInterval);
       
       return () => {
@@ -278,7 +345,7 @@ export const BrokerComparisonTable = React.memo(function BrokerComparisonTable({
         }
       };
     }
-  }, [autoRefresh, refreshInterval, loadBrokerData]);
+  }, [autoRefresh, refreshInterval, refetch]);
 
   // Cleanup interval on unmount
   useEffect(() => {
@@ -373,8 +440,10 @@ export const BrokerComparisonTable = React.memo(function BrokerComparisonTable({
 
   // Initial data load and dependency-based reloads
   useEffect(() => {
-    loadBrokerData();
-  }, [loadBrokerData, lastUpdated]);
+    if (!supabaseLoading && !supabaseError) {
+      loadBrokerData();
+    }
+  }, [loadBrokerData, lastUpdated, supabaseLoading, supabaseError]);
 
   const performanceCategories = useMemo(() => [
     { key: 'tradingCosts', label: 'Trading Costs' },

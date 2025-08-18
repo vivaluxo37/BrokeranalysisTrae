@@ -16,7 +16,7 @@ interface HomepageErrorProviderProps {
  */
 export const HomepageErrorProvider: React.FC<HomepageErrorProviderProps> = ({
   children,
-  enableMonitoring = process.env.NODE_ENV === 'development',
+  enableMonitoring = import.meta.env.DEV,
 }) => {
   const { actions } = useHomepageIntegration()
   const errorMonitoring = useErrorMonitoring()

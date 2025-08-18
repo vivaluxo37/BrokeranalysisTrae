@@ -5,7 +5,8 @@
  */
 
 import React, { useState } from 'react'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '../../hooks/useSupabase'
+import OAuthButtons from './OAuthButtons'
 import type { LoginCredentials } from '@/types/auth'
 
 interface LoginFormProps {
@@ -14,7 +15,8 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormProps) {
-  const { login, isLoading, error, clearError } = useAuth()
+  const { signIn, loading, error } = useAuth()
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState<LoginCredentials>({
     email: '',
     password: '',
@@ -43,17 +45,21 @@ export function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    clearError()
 
     if (!validateForm()) {
       return
     }
 
+    setIsLoading(true)
     try {
-      await login(formData)
-      onSuccess?.()
+      const { error: signInError } = await signIn(formData.email, formData.password)
+      if (!signInError) {
+        onSuccess?.()
+      }
     } catch (error) {
       console.error('Login failed:', error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -73,7 +79,15 @@ export function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="space-y-6">
+      {/* OAuth Buttons */}
+      <OAuthButtons 
+        isLoading={isLoading || loading}
+        onLoadingChange={setIsLoading}
+      />
+      
+      {/* Email/Password Form */}
+      <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
           Email Address
@@ -142,16 +156,16 @@ export function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormProps) {
 
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-md p-3">
-          <p className="text-sm text-red-600">{error}</p>
+          <p className="text-sm text-red-600">{error.message || error}</p>
         </div>
       )}
 
       <button
         type="submit"
-        disabled={isLoading}
+        disabled={isLoading || loading}
         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isLoading ? (
+        {(isLoading || loading) ? (
           <div className="flex items-center">
             <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -171,12 +185,13 @@ export function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormProps) {
             type="button"
             onClick={onSwitchToRegister}
             className="text-accent-blue hover:text-accent-blue font-medium"
-            disabled={isLoading}
+            disabled={isLoading || loading}
           >
             Sign up here
           </button>
         </p>
       </div>
     </form>
+    </div>
   )
 }

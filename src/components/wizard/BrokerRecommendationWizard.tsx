@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { WizardProgress } from './WizardProgress'
 import { BrokerResultsPanel } from './BrokerResultsPanel'
-import { SaveModal } from './SaveModal'
+import { WizardEducationalContent } from './WizardEducationalContent'
+import { SaveResultModal } from '@/components/SavedResults/SaveResultModal'
 import { CountryStep } from './steps/CountryStep'
 import { AssetsStep } from './steps/AssetsStep'
 import { ExperienceStep } from './steps/ExperienceStep'
@@ -13,6 +14,10 @@ import { ResultsStep } from './steps/ResultsStep'
 import { WizardStep } from '@/types/wizard'
 import type { UserPreferences } from '@/types/wizard'
 import { mockQuery } from '@/brokerRecommendationMockData'
+import { useAuth } from '@/hooks/useAuth'
+import { useToast } from '@/hooks/use-toast'
+import { ChevronDown, ChevronUp } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 interface BrokerRecommendationWizardProps {
   onComplete?: () => void
@@ -26,9 +31,12 @@ export function BrokerRecommendationWizard({
   initialStep = 1
 }: BrokerRecommendationWizardProps) {
   const navigate = useNavigate()
+  const { user } = useAuth()
+  const { toast } = useToast()
   const [currentStep, setCurrentStep] = useState(initialStep)
   const [isCompleted, setIsCompleted] = useState(false)
   const [showSaveModal, setShowSaveModal] = useState(false)
+  const [showEducationalContent, setShowEducationalContent] = useState(false)
   const [userPreferences, setUserPreferences] = useState<UserPreferences>({
     country: 'PH', // Default to Philippines
     assets: [],
@@ -58,6 +66,15 @@ export function BrokerRecommendationWizard({
   }
 
   const handleSaveResults = () => {
+    if (!user) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to save your search results.",
+        variant: "destructive"
+      })
+      navigate('/auth/signin')
+      return
+    }
     setShowSaveModal(true)
   }
 
@@ -152,8 +169,40 @@ export function BrokerRecommendationWizard({
       
       <div className="flex">
         <div className="flex-1 p-6">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto space-y-6">
             {renderCurrentStep()}
+            
+            {/* Educational Content Section */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <div className="p-4 border-b border-gray-200">
+                <Button
+                  variant="ghost"
+                  onClick={() => setShowEducationalContent(!showEducationalContent)}
+                  className="w-full flex items-center justify-between text-left p-0 h-auto font-medium text-gray-900 hover:text-blue-600"
+                >
+                  <span className="flex items-center space-x-2">
+                    <span>Learn About Our Process</span>
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                      FAQ & Methodology
+                    </span>
+                  </span>
+                  {showEducationalContent ? (
+                    <ChevronUp className="w-5 h-5 text-gray-400" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                  )}
+                </Button>
+              </div>
+              
+              {showEducationalContent && (
+                <div className="p-0">
+                  <WizardEducationalContent 
+                    currentStep={currentStep}
+                    className="border-0 shadow-none"
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
         
@@ -165,10 +214,18 @@ export function BrokerRecommendationWizard({
         />
       </div>
 
-      <SaveModal
+      <SaveResultModal
         isOpen={showSaveModal}
         onClose={() => setShowSaveModal(false)}
-        onLogin={handleLogin}
+        brokers={mockQuery.brokerRecommendations}
+        searchCriteria={userPreferences}
+        onSaveSuccess={() => {
+          setShowSaveModal(false)
+          toast({
+            title: "Results Saved",
+            description: "Your broker search results have been saved successfully."
+          })
+        }}
       />
     </div>
   )

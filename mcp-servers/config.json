@@ -15,14 +15,34 @@
         "user_interaction"
       ],
       "tools": [
-        "puppeteer_launch",
         "puppeteer_navigate",
         "puppeteer_screenshot",
-        "puppeteer_get_content",
         "puppeteer_click",
-        "puppeteer_type",
-        "puppeteer_evaluate",
-        "puppeteer_close"
+        "puppeteer_fill",
+        "puppeteer_select",
+        "puppeteer_hover",
+        "puppeteer_evaluate"
+      ]
+    },
+    "firecrawl": {
+      "name": "Firecrawl Web Scraping",
+      "description": "Advanced web scraping and content extraction using Firecrawl API",
+      "command": "node",
+      "args": ["./src/firecrawl/index.js"],
+      "cwd": "./mcp-servers",
+      "env": {},
+      "capabilities": [
+        "web_scraping",
+        "content_extraction",
+        "website_crawling",
+        "web_search",
+        "url_mapping"
+      ],
+      "tools": [
+        "firecrawl_scrape",
+        "firecrawl_crawl",
+        "firecrawl_search",
+        "firecrawl_map"
       ]
     },
     "filesystem": {
@@ -35,6 +55,27 @@
       "capabilities": [
         "file_operations",
         "directory_management"
+      ]
+    },
+    "supabase": {
+      "name": "Supabase Database Operations",
+      "description": "Supabase database and API operations server",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--read-only",
+        "--project-ref=diykotyhjwcwdscozltq"
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "sbp_8087b02f65063c3d389df0c661d7439f1c000375"
+      },
+      "capabilities": [
+        "database_operations",
+        "api_access",
+        "real_time_subscriptions"
       ]
     }
   },

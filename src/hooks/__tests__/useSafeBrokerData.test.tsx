@@ -2,7 +2,7 @@ import { renderHook, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { useSafeBrokerData, useSafeBrokerProperty, useSafeBrokersData } from '../useSafeBrokerData'
 import { brokerDataService } from '@/services/BrokerDataService'
-import { Broker } from '@/types/broker'
+import type { Broker } from '@/types/brokerTypes'
 
 // Mock the BrokerDataService
 vi.mock('@/services/BrokerDataService', () => ({

@@ -1,6 +1,6 @@
 import { DollarSign, Monitor, Zap, Shield, Headphones, ArrowRight } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '../ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 
 export function MethodologySection() {
   const scoringCriteria = [
@@ -42,14 +42,14 @@ export function MethodologySection() {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-charcoal-grey">
       <div className="content-container">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-section-title text-professional-black mb-4">
+          <h2 className="text-section-title text-pure-white mb-4">
             Why We're Different
           </h2>
-          <p className="text-xl text-medium-grey max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-light-grey max-w-3xl mx-auto mb-8">
             Our transparent 5-point scoring methodology ensures you get unbiased, comprehensive broker reviews. 
             Every broker is evaluated using the same rigorous criteria.
           </p>
@@ -62,18 +62,18 @@ export function MethodologySection() {
         {/* Scoring Criteria Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
           {scoringCriteria.map((criteria, index) => (
-            <Card key={index} className="bg-white border-gray-200 text-professional-black hover:shadow-lg transition-shadow group">
+            <Card key={index} className="professional-card group">
               <CardHeader className="text-center">
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-accent-blue/20 flex items-center justify-center group-hover:scale-110 transition-transform ${criteria.color}`}>
                   <criteria.icon size={32} />
                 </div>
-                <CardTitle level={4} className="text-professional-black mb-2">
+                <CardTitle className="text-pure-white mb-2">
                   {criteria.title}
                 </CardTitle>
                 <div className="text-2xl font-bold text-accent-blue">{criteria.weight}</div>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-sm text-medium-grey leading-relaxed">
+                <p className="text-sm text-light-grey leading-relaxed">
                   {criteria.description}
                 </p>
               </CardContent>
@@ -82,10 +82,10 @@ export function MethodologySection() {
         </div>
 
         {/* Methodology Highlights */}
-        <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
+        <div className="bg-professional-black rounded-2xl p-8 lg:p-12 border border-medium-grey">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-professional-black mb-6">
+              <h3 className="text-2xl font-bold text-pure-white mb-6">
                 Transparent & Independent Reviews
               </h3>
               <div className="space-y-4">
@@ -94,8 +94,8 @@ export function MethodologySection() {
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-professional-black">No Paid Rankings</h4>
-                    <p className="text-medium-grey text-sm">Our reviews are never influenced by broker partnerships or payments</p>
+                    <h4 className="font-semibold text-pure-white">No Paid Rankings</h4>
+                    <p className="text-light-grey text-sm">Our reviews are never influenced by broker partnerships or payments</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -103,8 +103,8 @@ export function MethodologySection() {
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-professional-black">Real Account Testing</h4>
-                    <p className="text-medium-grey text-sm">We test brokers with real money to verify execution and costs</p>
+                    <h4 className="font-semibold text-pure-white">Real Account Testing</h4>
+                    <p className="text-light-grey text-sm">We test brokers with real money to verify execution and costs</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -112,8 +112,8 @@ export function MethodologySection() {
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-professional-black">Regular Updates</h4>
-                    <p className="text-medium-grey text-sm">Reviews are updated quarterly to reflect current conditions</p>
+                    <h4 className="font-semibold text-pure-white">Regular Updates</h4>
+                    <p className="text-light-grey text-sm">Reviews are updated quarterly to reflect current conditions</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -121,18 +121,18 @@ export function MethodologySection() {
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-professional-black">Expert Analysis</h4>
-                    <p className="text-medium-grey text-sm">Reviews conducted by experienced traders and financial analysts</p>
+                    <h4 className="font-semibold text-pure-white">Expert Analysis</h4>
+                    <p className="text-light-grey text-sm">Reviews conducted by experienced traders and financial analysts</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h4 className="font-bold text-professional-black mb-4">Sample Scoring Breakdown</h4>
+            <div className="bg-charcoal-grey rounded-xl p-6 border border-medium-grey">
+              <h4 className="font-bold text-pure-white mb-4">Sample Scoring Breakdown</h4>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-medium-grey">Costs & Fees</span>
+                  <span className="text-sm text-light-grey">Costs & Fees</span>
                   <div className="flex items-center space-x-2">
                     <div className="w-24 h-2 bg-gray-200 rounded-full">
                       <div className="w-20 h-2 bg-accent-blue rounded-full"></div>
@@ -141,7 +141,7 @@ export function MethodologySection() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-medium-grey">Platform & Tools</span>
+                  <span className="text-sm text-light-grey">Platform & Tools</span>
                   <div className="flex items-center space-x-2">
                     <div className="w-24 h-2 bg-gray-200 rounded-full">
                       <div className="w-22 h-2 bg-accent-blue rounded-full"></div>
@@ -150,7 +150,7 @@ export function MethodologySection() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-medium-grey">Execution</span>
+                  <span className="text-sm text-light-grey">Execution</span>
                   <div className="flex items-center space-x-2">
                     <div className="w-24 h-2 bg-gray-200 rounded-full">
                       <div className="w-18 h-2 bg-yellow-500 rounded-full"></div>
@@ -159,7 +159,7 @@ export function MethodologySection() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-medium-grey">Safety & Regulation</span>
+                  <span className="text-sm text-light-grey">Safety & Regulation</span>
                   <div className="flex items-center space-x-2">
                     <div className="w-24 h-2 bg-gray-200 rounded-full">
                       <div className="w-24 h-2 bg-accent-blue rounded-full"></div>
@@ -168,7 +168,7 @@ export function MethodologySection() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-medium-grey">Customer Support</span>
+                  <span className="text-sm text-light-grey">Customer Support</span>
                   <div className="flex items-center space-x-2">
                     <div className="w-24 h-2 bg-gray-200 rounded-full">
                       <div className="w-16 h-2 bg-orange-500 rounded-full"></div>
@@ -178,7 +178,7 @@ export function MethodologySection() {
                 </div>
                 <div className="border-t pt-3 mt-4">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-professional-black">Overall Score</span>
+                    <span className="font-semibold text-pure-white">Overall Score</span>
                     <span className="text-xl font-bold text-accent-blue">4.3/5</span>
                   </div>
                 </div>

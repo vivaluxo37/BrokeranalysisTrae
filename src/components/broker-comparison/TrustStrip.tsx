@@ -39,8 +39,8 @@ export function TrustStrip() {
                 <indicator.icon className="w-5 h-5 text-accent-blue" />
               </div>
               <div>
-                <h3 className="font-semibold text-white text-sm">{indicator.title}</h3>
-                <p className="text-xs text-light-grey">{indicator.description}</p>
+                <h3 className="font-semibold text-white text-xl">{indicator.title}</h3>
+              <p className="text-lg text-light-grey">{indicator.description}</p>
               </div>
             </li>
           ))}

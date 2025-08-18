@@ -564,7 +564,7 @@ export function getSpacingValue(key: keyof typeof spacing): string {
  * Add debug border (development only)
  */
 export function debugBorder(color: string = 'red'): string {
-  if (process.env.NODE_ENV !== 'development') return '';
+  if (!import.meta.env.DEV) return '';
   
   const colorMap = {
     red: 'border-red-500',
@@ -581,7 +581,7 @@ export function debugBorder(color: string = 'red'): string {
  * Add debug background (development only)
  */
 export function debugBackground(color: string = 'red'): string {
-  if (process.env.NODE_ENV !== 'development') return '';
+  if (!import.meta.env.DEV) return '';
   
   const colorMap = {
     red: 'bg-red-500/20',
